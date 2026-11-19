@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A2E4D">
+<meta name="description" content="German A2 for Bosnian, Croatian and Serbian speakers: vocabulary, grammar shortcuts and Goethe A2 practice.">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Deutsch BKS">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Deutsch A2 für BKS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: navy brand band on top, sticky German-labelled tab bar, content column ~1100px; word cards in an auto-fill grid */
+:root{
+  --navy:#0A2E4D; --blue:#0B76C5; --sky:#A9D3F0; --tint:#EAF4FB; --slate:#52657A; --orange:#F2A33A;
+  --bg:#F4F8FB; --surface:#FFFFFF; --fg:#0A2E4D; --muted:#52657A; --line:#D6E4EF; --chip:#EAF4FB;
+  --accent:#0B76C5; --accent-fg:#FFFFFF; --warn-bg:#FDF1DF; --warn-fg:#7A4A05;
+  --der:#0B76C5; --die:#C2410C; --das:#15803D;
+  --ok:#15803D; --ok-bg:#E3F4E8; --bad:#B42318; --bad-bg:#FBE7E5;
+  --band:#0A2E4D; --band-fg:#FFFFFF; --band-sub:#A9D3F0;
+  --f-display:"Poppins", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#06192B; --surface:#0C2740; --fg:#E4EEF7; --muted:#9FB4C8; --line:#1C3D5C; --chip:#123352;
+  --accent:#4FA8EC; --accent-fg:#06192B; --warn-bg:#3A2A10; --warn-fg:#F7CD8A;
+  --der:#62B2F0; --die:#F59565; --das:#5CCB86;
+  --ok:#5CCB86; --ok-bg:#12341F; --bad:#F28B82; --bad-bg:#3B1714;
+  --band:#04121F; --band-fg:#FFFFFF; --band-sub:#A9D3F0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#06192B; --surface:#0C2740; --fg:#E4EEF7; --muted:#9FB4C8; --line:#1C3D5C; --chip:#123352;
+  --accent:#4FA8EC; --accent-fg:#06192B; --warn-bg:#3A2A10; --warn-fg:#F7CD8A;
+  --der:#62B2F0; --die:#F59565; --das:#5CCB86;
+  --ok:#5CCB86; --ok-bg:#12341F; --bad:#F28B82; --bad-bg:#3B1714;
+  --band:#04121F; --band-fg:#FFFFFF; --band-sub:#A9D3F0; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.55}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* brand band */
+.band{background:var(--band);color:var(--band-fg)}
+.band .wrap{padding-block:28px 26px;display:flex;flex-wrap:wrap;gap:20px 32px;align-items:flex-end;justify-content:space-between}
+.brand{display:flex;flex-direction:column;gap:2px}
+.wordmark{font-family:var(--f-display);font-weight:300;font-size:22px;letter-spacing:.01em;color:var(--band-fg);display:flex;align-items:center;gap:8px}
+.wordmark svg{width:20px;height:24px}
+.tagline{font-family:var(--f-display);font-size:12px;color:var(--band-sub);letter-spacing:.06em}
+.hero h1{font-weight:500;font-size:clamp(26px,4.4vw,40px);line-height:1.15;margin-top:18px}
+.hero h1 .arrow{color:var(--sky);font-weight:300}
+.hero p{margin:8px 0 0;color:var(--band-sub);max-width:58ch;font-size:15px}
+.pair{display:flex;gap:8px;align-items:center;font-family:var(--f-display);font-size:13px}
+.pair span{border:1px solid rgba(169,211,240,.45);border-radius:999px;padding:5px 12px;color:var(--band-fg)}
+
+/* tabs */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--surface)}
+.tabs{position:sticky;top:env(safe-area-inset-top, 0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tab{background:none;border:0;padding:14px 14px 12px;border-bottom:3px solid transparent;font-family:var(--f-display);font-size:14px;white-space:nowrap;color:var(--muted);display:flex;flex-direction:column;align-items:flex-start;line-height:1.2}
+.tab small{font-family:var(--f-body);font-size:11px;opacity:.8}
+.tab[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--accent);font-weight:500}
+
+main{padding-block:24px 48px}
+.panel{display:flex;flex-direction:column;gap:20px}
+
+/* toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
+.progress{display:flex;align-items:center;gap:12px;min-width:220px;flex:1}
+.bar{flex:1;height:8px;background:var(--chip);border-radius:99px;overflow:hidden;max-width:280px}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.progress span{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.seg{display:inline-flex;background:var(--chip);border-radius:10px;padding:3px;gap:2px}
+.seg button{border:0;background:none;padding:6px 11px;border-radius:8px;font-size:13px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--fg);font-weight:500;box-shadow:0 1px 2px rgba(10,46,77,.12)}
+.lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:7px 12px;font-size:13px;display:inline-flex;gap:6px;align-items:center}
+.btn[aria-pressed="true"]{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+input[type=search],input[type=text],textarea{font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+input[type=search]{width:200px;max-width:100%}
+
+details.plan{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+details.plan summary{padding:12px 16px;cursor:pointer;font-family:var(--f-display);font-weight:500;font-size:14px}
+.plan ol{margin:0;padding:0 16px 14px;list-style:none;display:grid;gap:8px}
+.plan li{display:grid;grid-template-columns:76px 1fr;gap:10px;font-size:14px}
+.plan li b{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:600;font-size:13px}
+
+.cats{display:flex;flex-wrap:wrap;gap:6px}
+.cat{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 11px;font-size:13px;display:inline-flex;gap:6px;align-items:center}
+.cat em{font-style:normal;color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.cat[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.cat[aria-pressed="true"] em{color:var(--sky)}
+:root[data-theme="dark"] .cat[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .cat[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}}
+
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);align-items:center}
+.legend b{font-weight:600}
+.g-der{color:var(--der)} .g-die{color:var(--die)} .g-das{color:var(--das)}
+
+section.group{display:flex;flex-direction:column;gap:12px}
+.group-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:8px}
+.group-head h2{font-size:19px;font-weight:500}
+.group-head h2 small{font-family:var(--f-body);font-weight:400;font-size:13px;color:var(--muted);margin-left:8px}
+.group-head span{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tip{background:var(--warn-bg);color:var(--warn-fg);border-radius:10px;padding:10px 14px;font-size:14px;display:flex;gap:10px}
+.tip b{font-family:var(--f-display);font-weight:600;white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;position:relative;min-width:0}
+.card.learned{border-color:var(--ok);background:linear-gradient(0deg,var(--ok-bg),var(--ok-bg))}
+.card .de{font-family:var(--f-display);font-weight:500;font-size:16px;line-height:1.3;padding-right:56px;overflow-wrap:anywhere}
+.card .de .art{font-weight:600}
+.card .en{font-size:13px;color:var(--muted)}
+.card .bks{font-size:14px;display:flex;flex-wrap:wrap;gap:4px 10px}
+.var{display:inline-flex;gap:4px;align-items:baseline}
+.var i{font-style:normal;font-size:10px;font-weight:600;letter-spacing:.04em;color:var(--accent);background:var(--chip);border-radius:4px;padding:1px 4px}
+.card .acts{position:absolute;top:8px;right:8px;display:flex;gap:2px}
+.icon{border:0;background:none;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--muted)}
+.icon:hover{background:var(--chip);color:var(--fg)}
+.icon svg{width:16px;height:16px}
+.card.learned .chk{color:var(--ok)}
+.flash .card .meaning{filter:blur(6px);user-select:none;transition:filter .2s}
+.flash .card.open .meaning{filter:none}
+.flash .card{cursor:pointer}
+.empty{padding:24px;text-align:center;color:var(--muted)}
+
+/* exam & bridge shared */
+.box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.box h2{font-size:20px;font-weight:500}
+.box h3{font-size:15px;font-weight:600;font-family:var(--f-display)}
+.eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.lead{color:var(--muted);margin:0;max-width:70ch}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.stat{background:var(--chip);border-radius:10px;padding:10px 12px}
+.stat b{font-family:var(--f-display);font-size:22px;font-weight:500;display:block;font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--muted)}
+.modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.module{border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.module h3{display:flex;justify-content:space-between;gap:8px}
+.module h3 span{font-family:var(--f-body);font-weight:400;font-size:12px;color:var(--muted)}
+.module ul{margin:0;padding-left:18px;font-size:13px;display:grid;gap:4px;color:var(--muted)}
+.module ul b{color:var(--fg);font-weight:600}
+
+.q{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:10px}
+.q:first-of-type{border-top:0;padding-top:0}
+.teil{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:6px}
+.prompt{font-weight:500}
+.text{background:var(--chip);border-radius:10px;padding:10px 14px;font-size:14px;white-space:pre-line}
+.sign{border:2px solid var(--fg);border-radius:6px;padding:10px 14px;font-family:var(--f-display);font-weight:500;max-width:420px}
+.sign small{display:block;font-family:var(--f-body);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 14px;font-size:14px;text-align:left}
+.opt:hover{border-color:var(--accent)}
+.opt.right{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);font-weight:600}
+.opt.wrong{background:var(--bad-bg);border-color:var(--bad);color:var(--bad)}
+.opt:disabled{cursor:default}
+.explain{font-size:13px;color:var(--muted);border-left:3px solid var(--accent);padding-left:10px}
+.listen{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.score{display:flex;gap:16px;align-items:center;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.score b{color:var(--fg);font-family:var(--f-display);font-weight:500;font-size:18px;font-variant-numeric:tabular-nums}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--chip)}
+tr:last-child td{border-bottom:0}
+td.big{font-family:var(--f-display);font-weight:600;font-size:16px;color:var(--accent);white-space:nowrap}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.pairs{display:grid;gap:8px;font-size:14px}
+.pairs div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.pairs div:last-child{border-bottom:0}
+.pairs b{font-weight:600}
+.pairs span{color:var(--muted)}
+
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.field{display:flex;flex-direction:column;gap:4px;font-size:13px}
+.field label{color:var(--muted)}
+.field input.ok{border-color:var(--ok);background:var(--ok-bg)}
+.field input.no{border-color:var(--bad);background:var(--bad-bg)}
+.field input[readonly]{background:var(--chip);color:var(--muted)}
+textarea{width:100%;min-height:140px;resize:vertical}
+.counter{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.model{background:var(--chip);border-radius:10px;padding:12px 14px;white-space:pre-line;font-size:14px}
+.cardset{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.flip{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:14px;text-align:left;display:flex;flex-direction:column;gap:6px;min-height:110px}
+.flip .front{font-family:var(--f-display);font-weight:500;font-size:16px}
+.flip .front small{display:block;font-family:var(--f-body);font-weight:400;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.flip .back{font-size:14px;display:none}
+.flip .back span{display:block;color:var(--muted);font-size:13px}
+.flip.open .back{display:block}
+.flip.open{border-color:var(--accent)}
+.alpha{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:6px}
+.alpha button{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px;font-size:13px;text-align:left}
+.alpha button b{font-family:var(--f-display);font-size:16px;margin-right:4px}
+.alpha button.trap{border-color:var(--orange)}
+
+footer{border-top:1px solid var(--line);padding-block:24px 32px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center}
+footer a{color:var(--accent)}
+.cta{background:var(--band);color:var(--band-fg);border-radius:14px;padding:18px 20px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between}
+.cta p{margin:0;max-width:56ch}
+.cta strong{font-family:var(--f-display);font-weight:500;font-size:17px;display:block}
+.cta a{background:var(--orange);color:#0A2E4D;border-radius:10px;padding:9px 16px;font-weight:600;text-decoration:none;font-size:14px}
+.note{font-size:12px;color:var(--muted)}
+@media (max-width:560px){.card .de{font-size:15px}.plan li{grid-template-columns:64px 1fr}input[type=search]{width:100%}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+.g-aux{color:var(--accent)}
+.card .de small.inf{font-family:var(--f-body);font-weight:400;font-size:12px;color:var(--muted)}
+.pair span.lvl{background:var(--orange);color:#0A2E4D;border-color:var(--orange);font-weight:600}
+.sign.board{line-height:1.9;font-weight:400;font-family:var(--f-body);font-size:14px}
+.topic{display:flex;flex-direction:column;gap:12px}
+.topic-card{border:2px solid var(--accent);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;max-width:520px}
+.topic-card small{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.topic-card b{font-family:var(--f-display);font-weight:500;font-size:18px}
+.prompts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.prompts span{background:var(--chip);border-radius:8px;padding:6px 10px;font-size:14px}
+.cal{display:grid;grid-template-columns:80px minmax(0,1fr) minmax(0,1fr);gap:4px;max-width:640px}
+.cal .ch{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:4px 6px}
+.cal .hr{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px;font-variant-numeric:tabular-nums;font-weight:600;font-size:13px}
+.cal .hr:hover,.cal .hr.sel{border-color:var(--accent);color:var(--accent)}
+.cal .slot{border-radius:8px;padding:6px 10px;font-size:13px;background:var(--ok-bg);color:var(--ok)}
+.cal .slot.busy{background:var(--chip);color:var(--muted)}
+
+.voicebar{background:var(--chip);border-bottom:1px solid var(--line)}
+.voicebar .wrap{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;padding-block:8px}
+.voicebar select{font:inherit;font-size:13px;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 8px;max-width:100%}
+.voicebar details{font-size:13px;flex-basis:100%}
+.voicebar summary{cursor:pointer;color:var(--warn-fg)}
+.voicebar ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px}
+
+.home{display:inline-flex;align-items:center;gap:6px;color:var(--band-sub);text-decoration:none;font-size:13px;margin-bottom:14px}
+.home:hover{color:var(--band-fg)}
+</style>
+</head>
+<body>
+
+
+<header class="band">
+  <div class="wrap">
+    <div class="hero">
+      <a class="home" href="../">&larr; Alle Kurse · svi kursevi</a>
+      <div class="brand">
+        <div class="wordmark"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5 10V6.5a5 5 0 0 1 10 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.2" stroke-linecap="round"/><rect x="1" y="10" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16" r="1.6" fill="#fff"/><circle cx="13" cy="16" r="1.6" fill="#fff"/></svg>Expert Tongue</div>
+        <div class="tagline">unlock your communication</div>
+      </div>
+      <h1>Deutsch A2 <span class="arrow">za govornike</span> BKS</h1>
+      <p>German A2 vocabulary, grammar shortcuts and Goethe-Zertifikat A2 practice for speakers of Bosnian, Croatian and Serbian. Sljedeći korak nakon A1.</p>
+    </div>
+    <div class="pair" aria-label="Level and languages"><span class="lvl">A2</span><span>DE</span><span>EN</span><span>BS · HR · SR</span></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" data-tab="wortschatz" aria-selected="true">Wortschatz<small>vokabular</small></button>
+    <button class="tab" role="tab" data-tab="grammatik" aria-selected="false">Grammatik-Brücke<small>gramatika · vaša prednost</small></button>
+    <button class="tab" role="tab" data-tab="pruefung" aria-selected="false">Prüfung<small>ispit · Hören & Lesen</small></button>
+    <button class="tab" role="tab" data-tab="schreiben" aria-selected="false">Schreiben<small>pisanje</small></button>
+    <button class="tab" role="tab" data-tab="sprechen" aria-selected="false">Sprechen<small>govor</small></button>
+  </div>
+</nav>
+<div class="voicebar"><div class="wrap">
+  <span class="lbl">Stimme · glas</span>
+  <select id="voiceSel" aria-label="German voice"></select>
+  <button class="btn" id="voiceTest">Test the voice</button>
+  <span class="note" id="voiceOk">If it still sounds English, pick another German voice from the list.</span>
+  <details id="voiceMissing" hidden><summary><b>No German voice found on this device.</b> The audio will sound English. Here's how to add one (2 minutes):</summary>
+    <ul>
+      <li><b>Windows:</b> Settings → Time &amp; language → Speech → Add voices → Deutsch (Deutschland). Then restart the browser.</li>
+      <li><b>Mac:</b> System Settings → Accessibility → Spoken Content → System voice → Manage Voices → German (e.g. Anna). Then reload the page.</li>
+      <li><b>iPhone / iPad:</b> Settings → Accessibility → Spoken Content → Voices → German → download a voice.</li>
+      <li><b>Android:</b> Settings → System → Languages → Text-to-speech → Google speech engine → Install voice data → Deutsch.</li>
+      <li><b>Easiest option:</b> open this page in Google Chrome or Microsoft Edge. Both include good German voices.</li>
+    </ul>
+  </details>
+</div></div>
+
+
+<main class="wrap">
+
+<!-- ============ WORTSCHATZ ============ -->
+<div class="panel" id="p-wortschatz">
+  <div class="toolbar">
+    <div class="progress"><div class="bar"><i id="pbar"></i></div><span id="ptext">0 learned · 0 total</span></div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search · traži…" aria-label="Search words">
+      <button class="btn" id="flashBtn" aria-pressed="false">Flashcards</button>
+      <button class="btn" id="resetBtn">Reset</button>
+    </div>
+  </div>
+  <div class="controls">
+    <span class="lbl">Show</span>
+    <div class="seg" id="showSeg">
+      <button data-v="all" aria-pressed="true">DE + EN + BKS</button>
+      <button data-v="bks" aria-pressed="false">DE + BKS</button>
+      <button data-v="en" aria-pressed="false">DE + EN</button>
+    </div>
+    <span class="lbl">Moja varijanta</span>
+    <div class="seg" id="varSeg">
+      <button data-v="ALL" aria-pressed="true">sve</button>
+      <button data-v="BS" aria-pressed="false">bosanski</button>
+      <button data-v="HR" aria-pressed="false">hrvatski</button>
+      <button data-v="SR" aria-pressed="false">srpski</button>
+    </div>
+  </div>
+  <div id="resetConfirm" class="tip" hidden><span>Reset all learned words? This clears your progress on this device.</span> <button class="btn" id="resetYes">Yes, reset</button> <button class="btn" id="resetNo">Cancel</button></div>
+
+  <details class="plan">
+    <summary>A2 study plan: 6 weeks · plan učenja</summary>
+    <ol>
+      <li><b>Week 1</b><span>Arbeit, Wohnungssuche, Ämter: the words you need for life in Germany. Practise the Perfekt list every day.</span></li>
+      <li><b>Week 2</b><span>Gesundheit, Kommunikation, Einkaufen. Write one SMS per day (Schreiben Teil 1).</span></li>
+      <li><b>Week 3</b><span>Konnektoren: weil, dass, wenn, obwohl. Verb to the end! Read one short German news text per day.</span></li>
+      <li><b>Week 4</b><span>Reflexive verbs and verbs with prepositions (warten auf, sich freuen auf/über).</span></li>
+      <li><b>Week 5</b><span>Freizeit, Feste, Gefühle, Vergleich. Talk about your weekend for 1 minute (Sprechen Teil 2).</span></li>
+      <li><b>Week 6</b><span>Full exam practice: Hören, Lesen, both Schreiben tasks, and plan a meeting with a partner (Sprechen Teil 3).</span></li>
+    </ol>
+  </details>
+
+  <div class="cats" id="cats"></div>
+  <div class="legend">
+    <span>Colours:</span><span><b class="g-der">der</b> muški rod</span><span><b class="g-die">die</b> ženski rod / množina</span><span><b class="g-das">das</b> srednji rod</span><span><b class="g-aux">hat / ist</b> pomoćni glagol u perfektu</span>
+  </div>
+  <div id="vocab"></div>
+</div>
+
+<!-- ============ GRAMMATIK ============ -->
+<div class="panel" id="p-grammatik" hidden>
+  <div class="box">
+    <span class="eyebrow">Warum A2 für BKS-Sprecher leichter ist</span>
+    <h2>Most A2 grammar already exists in your language</h2>
+    <p class="lead">A2 is the level where German grammar opens up: the past tense, two-way prepositions, subordinate clauses, reflexive verbs, comparisons and polite forms. For English speakers these are new ideas. For you, nearly every one has a direct twin in Bosnian, Croatian or Serbian.</p>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">1 · Perfekt · perfekt</span>
+    <h2>Ich habe gearbeitet = Radio sam</h2>
+    <p class="lead">Both languages build the spoken past the same way: <b>helper verb + past participle</b>. The only new thing: German has two helpers. Most verbs use <b class="g-aux">haben</b>; verbs of movement or change use <b class="g-aux">sein</b>.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>German</th><th>BKS</th><th>Helper</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Ich <b class="g-aux">habe</b> Kaffee <u>getrunken</u>.</td><td>Pio/pila sam kavu / kafu.</td><td>haben</td><td>most verbs</td></tr>
+        <tr><td>Wir <b class="g-aux">haben</b> Deutsch <u>gelernt</u>.</td><td>Učili smo njemački / nemački.</td><td>haben</td><td>most verbs</td></tr>
+        <tr><td>Ich <b class="g-aux">bin</b> nach Zagreb <u>gefahren</u>.</td><td>Putovao/la sam u Zagreb.</td><td>sein</td><td>movement A → B</td></tr>
+        <tr><td>Er <b class="g-aux">ist</b> spät <u>aufgestanden</u>.</td><td>Kasno je ustao.</td><td>sein</td><td>change of state</td></tr>
+        <tr><td>Sie <b class="g-aux">ist</b> zu Hause <u>geblieben</u>.</td><td>Ostala je kod kuće.</td><td>sein</td><td>exception: bleiben, sein</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Pazi!</b><span>In BKS the participle shows gender (radio / radila). In German it never changes: <b>er hat gearbeitet, sie hat gearbeitet</b>. One form for everyone. And the participle goes to the very end of the sentence.</span></div>
+    <div class="two">
+      <div class="pairs">
+        <h3>Präteritum for the most common verbs</h3>
+        <div><b>Ich war in Mostar.</b><span>Bio/bila sam u Mostaru.</span></div>
+        <div><b>Ich hatte keine Zeit.</b><span>Nisam imao/imala vremena.</span></div>
+        <div><b>Ich musste arbeiten.</b><span>Morao/morala sam raditi.</span></div>
+        <div><b>Ich konnte nicht kommen.</b><span>Nisam mogao/mogla doći.</span></div>
+      </div>
+      <div class="pairs">
+        <h3>Use Präteritum, not Perfekt, for</h3>
+        <div><b>sein, haben</b><span>war, hatte</span></div>
+        <div><b>Modalverben</b><span>musste, konnte, wollte, durfte, sollte</span></div>
+        <div><b>es gibt</b><span>es gab (bilo je)</span></div>
+        <div><b>All other verbs</b><span>use the Perfekt when you speak</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">2 · Wechselpräpositionen · kamo ili gdje?</span>
+    <h2>Akkusativ = kamo, Dativ = gdje</h2>
+    <p class="lead">This is the rule English speakers find hardest, and you already use it every day. In BKS „u grad" (akuzativ) means movement, „u gradu" (lokativ) means location. German does exactly the same with nine prepositions: Akkusativ for <b>Wohin?</b>, Dativ for <b>Wo?</b></p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Wohin? → Akkusativ</th><th>Kamo/Kuda? → akuzativ</th><th>Wo? → Dativ</th><th>Gdje/Gde? → lokativ</th></tr></thead>
+      <tbody>
+        <tr><td>Ich gehe <b>in die</b> Stadt.</td><td>Idem <b>u grad</b>.</td><td>Ich bin <b>in der</b> Stadt.</td><td>Ja sam <b>u gradu</b>.</td></tr>
+        <tr><td>Ich lege das Buch <b>auf den</b> Tisch.</td><td>Stavljam knjigu <b>na stol/sto</b>.</td><td>Das Buch liegt <b>auf dem</b> Tisch.</td><td>Knjiga je <b>na stolu</b>.</td></tr>
+        <tr><td>Wir fahren <b>an den</b> See.</td><td>Idemo <b>na jezero</b>.</td><td>Wir sind <b>am</b> See.</td><td>Mi smo <b>na jezeru</b>.</td></tr>
+        <tr><td>Die Katze läuft <b>unter das</b> Bett.</td><td>Mačka bježi <b>pod krevet</b>.</td><td>Die Katze schläft <b>unter dem</b> Bett.</td><td>Mačka spava <b>pod krevetom</b>.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Nine words</b><span><b>in, an, auf, unter, über, vor, hinter, neben, zwischen.</b> Ask yourself „kamo?" or „gdje/gde?" exactly as in your language, then choose Akkusativ or Dativ.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">3 · Nebensätze · zavisne rečenice</span>
+    <h2>After weil, dass, wenn: the verb goes to the end</h2>
+    <p class="lead">You use these clauses all the time (jer, da, ako, iako). German adds one strict rule: in the clause the conjugated verb moves to the <b>last position</b>.</p>
+    <div class="pairs">
+      <div><b>Ich komme nicht, weil ich krank <u>bin</u>.</b><span>Ne dolazim jer sam bolestan/bolesna.</span></div>
+      <div><b>Ich glaube, dass er heute <u>kommt</u>.</b><span>Mislim da on danas dolazi.</span></div>
+      <div><b>Wenn ich Zeit <u>habe</u>, rufe ich dich an.</b><span>Ako imam vremena, nazvat ću te / pozvaću te.</span></div>
+      <div><b>Ich weiß nicht, ob sie zu Hause <u>ist</u>.</b><span>Ne znam je li / da li je kod kuće.</span></div>
+      <div><b>Obwohl es regnet, gehen wir spazieren.</b><span>Iako pada kiša, idemo u šetnju.</span></div>
+    </div>
+    <div class="tip"><b>Trik</b><span>If the sentence <b>starts</b> with the clause (Wenn ich Zeit habe, …), the main clause starts with the verb: „<b>rufe</b> ich dich an". Verb, comma, verb.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">4 · Reflexive Verben · povratni glagoli</span>
+    <h2>sich = se, but it changes with the person</h2>
+    <p class="lead">„Se" never changes in BKS. German „sich" does. Learn this one row and you can use every reflexive verb.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>ich</th><th>du</th><th>er / sie / es</th><th>wir</th><th>ihr</th><th>sie / Sie</th></tr></thead>
+      <tbody>
+        <tr><td>wasche <b>mich</b></td><td>wäschst <b>dich</b></td><td>wäscht <b>sich</b></td><td>waschen <b>uns</b></td><td>wascht <b>euch</b></td><td>waschen <b>sich</b></td></tr>
+        <tr><td>perem <b>se</b></td><td>pereš <b>se</b></td><td>pere <b>se</b></td><td>peremo <b>se</b></td><td>perete <b>se</b></td><td>peru <b>se</b></td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Pazi!</b><span>Not every verb matches. <b>sich unterhalten</b> = razgovarati (no „se"), <b>sich beeilen</b> = žuriti (se). And BKS „smijati se / smejati se" is just <b>lachen</b> in German.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">5 · Komparation · komparacija</span>
+    <h2>am …-sten = naj-</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Positiv</th><th>Komparativ</th><th>Superlativ</th><th>BKS</th></tr></thead>
+      <tbody>
+        <tr><td>schnell</td><td>schnell<b>er</b></td><td>am schnell<b>sten</b></td><td>brz – brži – najbrži</td></tr>
+        <tr><td>alt</td><td><b>ä</b>lter</td><td>am <b>ä</b>ltesten</td><td>star – stariji – najstariji</td></tr>
+        <tr><td>gut</td><td><b>besser</b></td><td>am <b>besten</b></td><td>dobar – bolji – najbolji</td></tr>
+        <tr><td>gern</td><td><b>lieber</b></td><td>am <b>liebsten</b></td><td>rado – radije – najradije</td></tr>
+        <tr><td>viel</td><td><b>mehr</b></td><td>am <b>meisten</b></td><td>mnogo – više – najviše</td></tr>
+      </tbody>
+    </table></div>
+    <div class="pairs">
+      <div><b>Berlin ist größer <u>als</u> Sarajevo.</b><span>Berlin je veći od Sarajeva / nego Sarajevo.</span></div>
+      <div><b>Mein Bruder ist <u>so</u> groß <u>wie</u> ich.</b><span>Moj brat je visok kao ja.</span></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">6 · Höflich sein · uljudnost</span>
+    <h2>würde, hätte, könnte = bih</h2>
+    <p class="lead">BKS has one polite helper: <b>bih / bi</b>. German has three common forms. They sound much friendlier than the plain present tense, so use them at the office, the doctor's and in the exam.</p>
+    <div class="pairs">
+      <div><b>Ich <u>hätte</u> gern einen Termin.</b><span>Htio/htjela bih termin.</span></div>
+      <div><b><u>Könnten</u> Sie mir helfen?</b><span>Biste li mi mogli pomoći?</span></div>
+      <div><b>Ich <u>würde</u> gern am Montag kommen.</b><span>Rado bih došao/došla u ponedjeljak / ponedeljak.</span></div>
+      <div><b>An deiner Stelle <u>würde</u> ich zum Arzt gehen.</b><span>Na tvom mjestu / mestu išao/išla bih liječniku / lekaru.</span></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">7 · Falsche Freunde · lažni prijatelji</span>
+    <h2>A2 words that trick BKS speakers</h2>
+    <div class="tablewrap"><table id="falseTable">
+      <thead><tr><th>German</th><th>Means</th><th>BKS look-alike</th><th>Means in BKS</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <h3>And German words that came from you</h3>
+    <div class="cardset" id="loanwords"></div>
+  </div>
+</div>
+
+<!-- ============ PRÜFUNG ============ -->
+<div class="panel" id="p-pruefung" hidden>
+  <details class="plan box" open style="padding:0">
+    <summary style="padding:16px 20px">Goethe-Zertifikat A2 · structure of the exam</summary>
+    <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:14px">
+      <div class="stats">
+        <div class="stat"><b>100</b><span>points total · ukupno bodova</span></div>
+        <div class="stat"><b>60</b><span>points to pass · za prolaz</span></div>
+        <div class="stat"><b>~105 min</b><span>written part + speaking</span></div>
+        <div class="stat"><b>4</b><span>modules · dijela</span></div>
+      </div>
+      <div class="modules">
+        <div class="module"><h3>Hören <span>~30 min</span></h3><ul><li><b>Teil 1</b>: radio and phone messages, heard twice</li><li><b>Teil 2</b>: one conversation, heard once</li><li><b>Teil 3</b>: 5 short dialogues, heard twice</li><li><b>Teil 4</b>: interview, richtig/falsch</li></ul></div>
+        <div class="module"><h3>Lesen <span>~30 min</span></h3><ul><li><b>Teil 1</b>: short newspaper article</li><li><b>Teil 2</b>: information board / store directory</li><li><b>Teil 3</b>: email</li><li><b>Teil 4</b>: match ads to people</li></ul></div>
+        <div class="module"><h3>Schreiben <span>~30 min</span></h3><ul><li><b>Teil 1</b>: informal SMS / message, 20–30 words</li><li><b>Teil 2</b>: semi-formal email, 30–40 words</li></ul></div>
+        <div class="module"><h3>Sprechen <span>~15 min</span></h3><ul><li><b>Teil 1</b>: ask and answer questions with word cards</li><li><b>Teil 2</b>: talk about your life from a card</li><li><b>Teil 3</b>: plan something together with a partner</li></ul></div>
+      </div>
+      <p class="note">Each module counts equally. Check the current format and dates with your exam centre (Goethe-Institut, VHS, or telc for the telc A2 version).</p>
+    </div>
+  </details>
+
+  <div class="score" id="examScore"><span>Your score · tvoj rezultat: <b id="scoreVal">0 / 0</b></span><span>Correct <b id="okVal">0</b></span><span>Wrong <b id="noVal">0</b></span><button class="btn" id="examReset">Reset answers</button></div>
+
+  <div class="box" id="hoeren">
+    <span class="eyebrow">Hören · slušanje</span>
+    <h2>Listening practice</h2>
+    <p class="lead">Read the question first, then press „Anhören". Your browser reads the text in German. Open „Text" only after you have answered. At A2 the speakers use the Perfekt a lot: listen for <b>habe / bin + participle</b>.</p>
+  </div>
+
+  <div class="box" id="lesen">
+    <span class="eyebrow">Lesen · čitanje</span>
+    <h2>Reading practice</h2>
+    <p class="lead">Read the question first, then look for the key words in the text. Watch for nicht, kein, nur, schon, noch and for comparatives (größer, teurer).</p>
+  </div>
+</div>
+
+<!-- ============ SCHREIBEN ============ -->
+<div class="panel" id="p-schreiben" hidden>
+  <div class="box" id="w1">
+    <span class="eyebrow">Teil 1 · SMS an eine Freundin (informell)</span>
+    <h2>Write an SMS (20–30 words)</h2>
+    <div class="text">Sie sind mit Ihrer Freundin Lea um 19 Uhr vor dem Kino verabredet. Sie kommen zu spät. Schreiben Sie Lea eine SMS:
+• Entschuldigen Sie sich.
+• Warum kommen Sie zu spät?
+• Wann sind Sie da?</div>
+  </div>
+
+  <div class="box" id="w2">
+    <span class="eyebrow">Teil 2 · E-Mail an die Kursleiterin (formell)</span>
+    <h2>Write an email (30–40 words)</h2>
+    <div class="text">Sie haben einen Deutschkurs B1 an der Volkshochschule gebucht. Sie können am ersten Kurstag nicht kommen. Schreiben Sie an die Kursleiterin, Frau Schmidt:
+• Warum können Sie nicht kommen?
+• Fragen Sie nach dem Kursbuch und den Hausaufgaben.
+• Wann kommen Sie zum ersten Mal?</div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Phrase bank · korisne fraze</span>
+    <h2>Informal or formal?</h2>
+    <div class="two">
+      <div class="pairs" id="phInf"><h3>An Freunde · du</h3></div>
+      <div class="pairs" id="phForm"><h3>Formell · Sie</h3></div>
+    </div>
+    <div class="tip"><b>Pazi!</b><span>Don't mix du and Sie in one message. Your teacher, your boss and the Ausländerbehörde get <b>Sie / Ihnen / Ihr</b> with a capital letter, like Vi / Vama. And use at least one <b>weil</b> or <b>deshalb</b>: A2 examiners look for connectors.</span></div>
+  </div>
+</div>
+
+<!-- ============ SPRECHEN ============ -->
+<div class="panel" id="p-sprechen" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · Fragen zur Person</span>
+    <h2>Ask and answer with word cards</h2>
+    <p class="lead">You draw cards with one word. Ask your partner a question with it, then answer theirs. Tap a card for a model. Tap again to listen.</p>
+    <div class="cardset" id="t1cards"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · Über sich sprechen</span>
+    <h2>Talk about your life for about one minute</h2>
+    <p class="lead">You get a card with a question and four prompts. Say 2–3 sentences for each prompt. Use the Perfekt and connectors (zuerst, dann, weil, aber).</p>
+    <div class="seg" id="t2seg"></div>
+    <div id="t2card"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 3 · Etwas gemeinsam planen</span>
+    <h2>Find a time together</h2>
+    <p class="lead"><b>Aufgabe:</b> Sie möchten am Samstag zusammen Ihre Freundin Selma im Krankenhaus besuchen. Wann haben Sie beide Zeit? Tap a time to check it.</p>
+    <div class="cal" id="cal"></div>
+    <div class="counter" id="calResult">Choose a time · odaberite vrijeme / vreme</div>
+    <div class="two">
+      <div class="pairs" id="planPhr"><h3>Vorschlagen · predložiti</h3></div>
+      <div class="model" id="planModel"></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta" style="margin-top:28px">
+  <p><strong>Ready for B1 and work in Germany?</strong>Expert Tongue coaching helps you speak with confidence in interviews, at work and in everyday life.</p>
+  <a href="https://expert-tongue.com" target="_blank" rel="noopener">expert-tongue.com</a>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Expert Tongue · Deutsch A2 für BKS-Sprecher · Free study tool</span>
+    <span class="note">Variants: BS bosanski, HR hrvatski, SR srpski (ekavian). Crnogorski speakers: the BS forms usually fit.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+const $ = s=>document.querySelector(s);
+const el = (t,a={},h='')=>{const e=document.createElement(t);for(const k in a){if(k==='class')e.className=a[k];else e.setAttribute(k,a[k]);}if(h)e.innerHTML=h;return e;};
+const store = {get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const ICON_SPK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
+const ICON_CHK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>';
+let deVoice=null,deVoices=[];
+const VPREF=[/natural|neural|online/i,/google/i,/(anna|petra|markus|yannick|helena|katja|conrad|hedda|stefan|florian|amala|seraphina|vicki|marlene|hans)/i];
+function vScore(v){let s=0;if(/^de[-_]DE/i.test(v.lang))s+=50;else if(/^de/i.test(v.lang))s+=30;VPREF.forEach((r,i)=>{if(r.test(v.name))s+=12-i*3});return s}
+function loadVoices(){let all=[];try{all=speechSynthesis.getVoices()}catch(e){}deVoices=all.filter(v=>/^de([-_]|$)/i.test(v.lang)||/deutsch|german/i.test(v.name)).sort((a,b)=>vScore(b)-vScore(a));const saved=store.get('etbks-voice',null);deVoice=deVoices.find(v=>v.name===saved)||deVoices[0]||null;renderVoiceBar()}
+function renderVoiceBar(){const sel=document.getElementById('voiceSel');if(!sel)return;sel.innerHTML='';deVoices.forEach(v=>{const o=document.createElement('option');o.value=v.name;o.textContent=v.name.replace(/Microsoft |Google /,'')+' ('+v.lang+')';if(deVoice&&v.name===deVoice.name)o.selected=true;sel.appendChild(o)});sel.hidden=!deVoices.length;document.getElementById('voiceMissing').hidden=!!deVoices.length;document.getElementById('voiceOk').hidden=!deVoices.length}
+try{speechSynthesis.onvoiceschanged=loadVoices}catch(e){}
+[0,300,1000,2500].forEach(t=>setTimeout(loadVoices,t));
+function speak(t,rate){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/…|___|\(Pl\.\)|\(PLZ\)|\+ (Akk|Dat)\.?/g,' '));if(deVoice){u.voice=deVoice;u.lang=deVoice.lang}else{u.lang='de-DE'}u.rate=rate||0.9;speechSynthesis.speak(u)}catch(e){}}
+document.getElementById('voiceSel').onchange=e=>{deVoice=deVoices.find(v=>v.name===e.target.value)||deVoice;store.set('etbks-voice',deVoice&&deVoice.name);speak('Guten Tag! Ich spreche Deutsch.')};
+document.getElementById('voiceTest').onclick=()=>speak('Guten Tag! Ich spreche Deutsch. Wie geht es Ihnen?');
+
+const V = [
+{id:'arbeit',de:'Arbeit & Beruf',bks:'Posao i zanimanje',tip:'German builds long words from short ones. <b>Arbeit + Vertrag = der Arbeitsvertrag.</b> The <b>last</b> part decides the article: der Vertrag → der Arbeitsvertrag.',w:[
+['die Stelle','job, position','HR/BS radno mjesto | SR radno mesto'],['die Bewerbung','job application','prijava za posao'],['sich bewerben','to apply','prijaviti se (za posao)'],['der Lebenslauf','CV','HR životopis | BS/SR biografija, CV'],['das Vorstellungsgespräch','job interview','razgovor za posao'],['die Erfahrung','experience','iskustvo'],['der Arbeitsvertrag','employment contract','ugovor o radu'],['das Gehalt','salary','HR plaća | BS/SR plata'],['Vollzeit / Teilzeit','full-time / part-time','HR/BS puno / skraćeno radno vrijeme | SR puno / skraćeno radno vreme'],['die Überstunden (Pl.)','overtime','prekovremeni sati'],['der Arbeitgeber','employer','poslodavac'],['die Firma','company','firma | HR tvrtka'],['die Besprechung','meeting','sastanak'],['der Urlaub','holiday (from work)','godišnji odmor'],['krankgeschrieben sein','to be on sick leave','biti na bolovanju'],['kündigen','to quit, to give notice','dati otkaz'],['die Ausbildung','vocational training','strukovno obrazovanje, zanat'],['arbeitslos','unemployed','nezaposlen'],['die Agentur für Arbeit','job centre','zavod za zapošljavanje']]},
+{id:'wohnung',de:'Wohnungssuche',bks:'Traženje stana',tip:'<b>ausziehen</b> = to move out AND to take off clothes. <b>Mülltrennung:</b> in Germany you separate rubbish into Papier, Gelber Sack (plastic), Bio and Restmüll.',w:[
+['die Anzeige','advert','oglas'],['die Kaltmiete','rent without bills','HR najamnina bez režija | BS/SR kirija bez režija'],['die Warmmiete','rent including bills','HR najamnina s režijama | BS/SR kirija sa režijama'],['die Nebenkosten (Pl.)','utility costs','režije'],['die Kaution','deposit','depozit, kaucija'],['der Vermieter','landlord','stanodavac'],['der Mietvertrag','tenancy agreement','HR ugovor o najmu | BS/SR ugovor o zakupu'],['umziehen','to move house','preseliti se'],['der Umzug','the move','selidba'],['einziehen','to move in','useliti se'],['ausziehen','to move out / undress','iseliti se / svući se'],['möbliert','furnished','HR/BS namješten | SR namešten'],['der Keller','cellar','podrum'],['der Aufzug','lift','lift | HR dizalo'],['die Heizung','heating','HR/BS grijanje | SR grejanje'],['der Nachbar','neighbour','HR/BS susjed | SR sused'],['der Müll','rubbish','HR/BS smeće | SR đubre'],['die Hausordnung','house rules','kućni red']]},
+{id:'gesundheit',de:'Gesundheit & Arzt',bks:'Zdravlje i liječnik',tip:'<b>die Überweisung</b> = referral (uputnica) and also bank transfer. And you say „Gute Besserung!" to anyone who is ill.',w:[
+['der Hausarzt','family doctor, GP','HR obiteljski liječnik | BS porodični ljekar | SR izabrani lekar'],['der Zahnarzt','dentist','zubar, stomatolog'],['die Praxis','doctor\'s surgery','ordinacija'],['die Versichertenkarte','health insurance card','kartica zdravstvenog osiguranja'],['die Überweisung','referral / bank transfer','uputnica / uplata'],['die Krankmeldung','sick note','potvrda o bolovanju'],['die Schmerzen (Pl.)','pain','bolovi'],['die Erkältung','cold','prehlada'],['der Husten','cough','kašalj'],['der Schnupfen','runny nose','curenje nosa, kijavica'],['die Tablette','tablet','tableta'],['das Medikament','medicine','HR/BS lijek | SR lek'],['sich ausruhen','to rest','odmoriti se'],['sich verletzen','to get hurt','HR ozlijediti se | BS povrijediti se | SR povrediti se'],['der Notfall','emergency','hitan slučaj'],['der Krankenwagen','ambulance','kola hitne pomoći'],['Gute Besserung!','Get well soon!','Brz oporavak!']]},
+{id:'aemter',de:'Ämter & Behörden',bks:'Uredi i ustanove',tip:'<b>das Konto</b> = bank account = račun. <b>die Rechnung</b> = bill = also račun. Two German words for one BKS word.',w:[
+['das Amt','public office','HR/BS ured | SR kancelarija, služba'],['das Bürgeramt','citizens\' office (town hall)','HR/BS općina | SR opština'],['sich anmelden','to register (your address)','prijaviti boravište'],['die Anmeldung','registration','prijava'],['das Formular','form','obrazac, formular'],['ausfüllen','to fill in','HR/BS ispuniti | SR popuniti'],['unterschreiben','to sign','potpisati'],['die Unterschrift','signature','potpis'],['der Antrag','application (form)','HR/BS zahtjev | SR zahtev'],['beantragen','to apply for','HR/BS podnijeti zahtjev | SR podneti zahtev'],['der Reisepass','passport','HR putovnica | BS/SR pasoš'],['die Aufenthaltserlaubnis','residence permit','HR boravišna dozvola | BS/SR dozvola boravka'],['die Steuer','tax','porez'],['das Konto','bank account','račun (u banci)'],['die Bescheinigung','certificate, confirmation','potvrda'],['die Wartenummer','queue number','redni broj'],['die Frist','deadline','rok']]},
+{id:'verkehr',de:'Verkehr & Reisen',bks:'Promet i putovanja',tip:'Germans say <b>Urlaub</b> for holidays from work and <b>Ferien</b> for school holidays. <b>Die Ampel</b> = semafor.',w:[
+['der Fahrplan','timetable','vozni red'],['die Verbindung','connection','veza'],['verpassen','to miss (a train)','propustiti'],['der Führerschein','driving licence','vozačka dozvola'],['die Autobahn','motorway','HR autocesta | BS/SR autoput'],['der Stau','traffic jam','HR gužva u prometu | BS/SR gužva u saobraćaju'],['die Ampel','traffic light','semafor'],['tanken','to fill up (petrol)','HR/BS natočiti gorivo | SR sipati gorivo'],['die Tankstelle','petrol station','HR benzinska postaja | BS/SR benzinska pumpa'],['parken','to park','HR parkirati | BS/SR parkirati, parkovati'],['der Parkplatz','car park, parking space','parkiralište | SR parking'],['der Flughafen','airport','HR zračna luka | BS/SR aerodrom'],['der Flug','flight','let'],['buchen','to book','HR rezervirati | BS/SR rezervisati'],['die Unterkunft','accommodation','HR/BS smještaj | SR smeštaj'],['die Grenze','border','granica'],['die Reise','trip, journey','putovanje']]},
+{id:'kleidung',de:'Einkaufen & Kleidung',bks:'Kupovina i odjeća',tip:'<b>Das steht dir gut.</b> = Dobro ti stoji. Same idea: stehen / stajati. But <b>Die Hose passt</b> means the size is right.',w:[
+['anprobieren','to try on','probati, isprobati'],['die Umkleidekabine','changing room','kabina za presvlačenje'],['passen','to fit (size)','odgovarati (veličina)'],['Das steht dir gut.','That suits you.','Dobro ti stoji.'],['der Rock','skirt','suknja'],['das Kleid','dress','haljina'],['der Pullover','jumper','pulover, džemper'],['der Mantel','coat','kaput'],['die Stiefel (Pl.)','boots','čizme'],['umtauschen','to exchange','HR/BS zamijeniti | SR zameniti'],['zurückgeben','to return (an item)','vratiti'],['der Kassenbon','receipt','račun, blok'],['im Angebot','on special offer','na akciji, sniženo'],['der Rabatt','discount','popust'],['die Garantie','guarantee','garancija | HR jamstvo'],['die Lieferung','delivery','dostava']]},
+{id:'freizeit',de:'Freizeit & Medien',bks:'Slobodno vrijeme i mediji',tip:'Germans organise hobbies in <b>Vereine</b> (clubs): Sportverein, Chor, Kulturverein. Joining one is the fastest way to practise German.',w:[
+['der Verein','club, association','HR udruga, klub | BS/SR udruženje, klub'],['das Mitglied','member','član'],['die Ausstellung','exhibition','izložba'],['das Konzert','concert','koncert'],['die Eintrittskarte','entrance ticket','ulaznica'],['spazieren gehen','to go for a walk','ići u šetnju'],['wandern','to hike','planinariti'],['fernsehen','to watch TV','gledati televiziju'],['die Nachrichten (Pl.)','the news','HR/BS vijesti | SR vesti'],['die Sendung','TV / radio programme','emisija'],['herunterladen','to download','preuzeti, skinuti'],['die App','app','aplikacija'],['sich verabreden','to arrange to meet','dogovoriti se (za susret)']]},
+{id:'feste',de:'Feste & Feiern',bks:'Praznici i proslave',tip:'<b>schenken + Dativ:</b> Ich schenke <b>meiner Mutter</b> Blumen = Poklanjam <b>majci</b> cvijeće / cveće. Same dativ as in BKS.',w:[
+['der Geburtstag','birthday','rođendan'],['Alles Gute zum Geburtstag!','Happy birthday!','HR/BS Sretan rođendan! | SR Srećan rođendan!'],['Herzlichen Glückwunsch!','Congratulations!','Čestitam!'],['die Hochzeit','wedding','HR/BS vjenčanje | SR venčanje'],['Weihnachten','Christmas','Božić'],['Frohe Weihnachten!','Merry Christmas!','HR/BS Sretan Božić! | SR Srećan Božić!'],['Ostern','Easter','Uskrs'],['das Zuckerfest','Eid al-Fitr','Ramazanski bajram'],['Silvester','New Year\'s Eve','Silvestrovo, doček Nove godine'],['das Geschenk','present','poklon | HR dar'],['schenken','to give (a present)','pokloniti'],['gratulieren','to congratulate','čestitati'],['die Einladung','invitation','pozivnica, poziv'],['der Gast','guest','gost'],['zusagen / absagen','to accept / to cancel','prihvatiti / otkazati']]},
+{id:'gefuehle',de:'Gefühle & Meinung',bks:'Osjećaji i mišljenje',tip:'<b>Ich habe Angst.</b> German <i>has</i> fear; BKS <i>is</i> afraid (bojim se). For opinions, the safest A2 start is <b>Ich finde …</b> or <b>Meiner Meinung nach …</b>',w:[
+['sich freuen','to be happy, look forward','radovati se'],['glücklich','happy','HR/BS sretan | SR srećan'],['traurig','sad','tužan'],['sauer / wütend','angry','ljut'],['nervös','nervous','nervozan'],['Angst haben','to be afraid','bojati se, plašiti se'],['sich ärgern','to be annoyed','ljutiti se, nervirati se'],['überrascht','surprised','iznenađen'],['zufrieden','satisfied','zadovoljan'],['langweilig','boring','dosadno'],['Ich finde das super.','I think that\'s great.','Mislim da je to super.'],['Meiner Meinung nach …','In my opinion …','Po mom mišljenju …'],['Ich bin dafür / dagegen.','I\'m for / against it.','Ja sam za / protiv.'],['Da hast du recht.','You\'re right.','U pravu si.']]},
+{id:'schule',de:'Schule & Lernen',bks:'Škola i učenje',tip:'German school grades go the other way: <b>1 = sehr gut</b>, 6 = ungenügend. In BKS schools <b>5</b> is the best mark!',w:[
+['die Prüfung','exam','ispit'],['bestehen','to pass (an exam)','položiti'],['durchfallen','to fail','pasti (na ispitu)'],['die Note','grade, mark','HR/BS ocjena | SR ocena'],['das Zeugnis','school report, certificate','HR svjedodžba | BS svjedočanstvo | SR svedočanstvo'],['die Hausaufgabe','homework','HR/BS zadaća | SR domaći zadatak'],['der Unterricht','lessons, teaching','nastava'],['der Kurs','course','HR tečaj | BS/SR kurs'],['die Grundschule','primary school','osnovna škola'],['die Universität','university','HR sveučilište | BS/SR univerzitet'],['studieren','to study (at university)','studirati'],['üben','to practise','HR/BS vježbati | SR vežbati'],['wiederholen','to repeat, revise','ponoviti'],['erklären','to explain','objasniti'],['die Fremdsprache','foreign language','strani jezik']]},
+{id:'kommunikation',de:'Telefon & E-Mail',bks:'Komunikacija',tip:'On the phone Germans start with their <b>name</b>: „Hodžić, guten Tag." Do the same and you sound local.',w:[
+['telefonieren','to make a phone call','telefonirati'],['die Nachricht','message','poruka'],['der Anrufbeantworter','answering machine','telefonska sekretarica'],['zurückrufen','to call back','HR nazvati natrag | BS/SR uzvratiti poziv'],['erreichen','to reach (by phone)','dobiti (nekoga telefonom)'],['besetzt','engaged, busy','zauzeto'],['Bleiben Sie bitte dran.','Please hold.','Ostanite na vezi.'],['Ich verbinde Sie.','I\'ll put you through.','HR/BS Spajam Vas. | SR Povezujem Vas.'],['der Absender','sender','HR pošiljatelj | BS/SR pošiljalac'],['der Empfänger','recipient','HR primatelj | BS/SR primalac'],['der Anhang','attachment','HR privitak | BS/SR prilog'],['Mit freundlichen Grüßen','Kind regards (formal)','S poštovanjem'],['Bis bald!','See you soon!','Vidimo se uskoro!']]},
+{id:'konnektoren',de:'Konnektoren',bks:'Veznici',tip:'After <b>weil, dass, wenn, ob, obwohl</b> the verb goes to the end: „…, weil ich krank <b>bin</b>." After <b>deshalb, trotzdem, dann</b> the verb comes straight after: „Deshalb <b>bleibe</b> ich zu Hause."',w:[
+['weil','because','jer, zato što'],['dass','that','da'],['wenn','if, when','ako, kad'],['ob','whether','HR je li, da li | BS/SR da li'],['obwohl','although','iako'],['deshalb','that\'s why','zato'],['trotzdem','nevertheless','ipak'],['als','when (once, in the past)','kad (u prošlosti)'],['zuerst','first','HR/BS najprije | SR najpre'],['dann','then','onda, zatim'],['danach','after that','nakon toga, poslije | SR posle'],['zum Schluss','finally','na kraju'],['zum Beispiel','for example','HR/BS na primjer | SR na primer']]},
+{id:'perfekt',de:'Perfekt: wichtige Partizipien',bks:'Perfekt',tip:'<b>Ich habe gearbeitet = Radio/radila sam.</b> Same structure: helper + participle. Movement and change take <b class="g-aux">ist</b>, everything else <b class="g-aux">hat</b>. BKS forms below are masculine.',w:[
+['ist gewesen (sein)','been','bio'],['hat gehabt (haben)','had','imao'],['hat gemacht (machen)','did, made','radio, napravio'],['hat gearbeitet (arbeiten)','worked','radio'],['hat gegessen (essen)','ate','jeo'],['hat getrunken (trinken)','drank','pio'],['hat geschlafen (schlafen)','slept','spavao'],['hat gesehen (sehen)','saw','HR/BS vidio | SR video'],['hat gelesen (lesen)','read','čitao'],['hat geschrieben (schreiben)','wrote','pisao'],['hat gesprochen (sprechen)','spoke','govorio'],['hat gekauft (kaufen)','bought','kupio'],['hat angerufen (anrufen)','phoned','nazvao, zvao'],['hat eingekauft (einkaufen)','did the shopping','kupovao, obavio kupovinu'],['ist gefahren (fahren)','drove, travelled','vozio se, putovao'],['ist gegangen (gehen)','went','išao, otišao'],['ist gekommen (kommen)','came','došao'],['ist geblieben (bleiben)','stayed','ostao'],['ist aufgestanden (aufstehen)','got up','ustao'],['ist passiert (passieren)','happened','HR dogodilo se | BS/SR desilo se']]},
+{id:'reflexiv',de:'Reflexive Verben',bks:'Povratni glagoli',tip:'<b>sich = se</b>, but it changes: ich wasche <b>mich</b>, du wäschst <b>dich</b>. Trap: <b>sich unterhalten</b> = razgovarati (no „se" in BKS).',w:[
+['sich waschen','to wash (yourself)','prati se'],['sich anziehen','to get dressed','obući se'],['sich duschen','to have a shower','tuširati se'],['sich beeilen','to hurry','žuriti (se)'],['sich setzen','to sit down','HR/BS sjesti | SR sesti'],['sich fühlen','to feel','HR/BS osjećati se | SR osećati se'],['sich interessieren für','to be interested in','zanimati se za'],['sich erinnern an','to remember','HR/BS sjećati se | SR sećati se'],['sich entschuldigen','to apologise','HR ispričati se | BS/SR izviniti se'],['sich kümmern um','to take care of','brinuti se o'],['sich vorstellen','to introduce yourself','predstaviti se'],['sich unterhalten','to have a conversation','razgovarati'],['sich treffen','to meet','naći se, sastati se']]},
+{id:'praeposition',de:'Verben mit Präposition',bks:'Glagoli s prijedlogom',tip:'Some match BKS: <b>denken an</b> = misliti na. Others don\'t: <b>warten auf</b> = čekati (no preposition). Learn each verb with its preposition as one unit.',w:[
+['warten auf + Akk.','to wait for','čekati (nekoga)'],['sich freuen auf + Akk.','to look forward to','radovati se (nečemu što dolazi)'],['sich freuen über + Akk.','to be happy about','radovati se (nečemu što se dogodilo)'],['denken an + Akk.','to think of','misliti na'],['sprechen über + Akk.','to talk about','govoriti o'],['Angst haben vor + Dat.','to be afraid of','bojati se (nečega)'],['fragen nach + Dat.','to ask about','pitati za'],['teilnehmen an + Dat.','to take part in','HR sudjelovati u | BS/SR učestvovati u'],['sich bewerben um + Akk.','to apply for','prijaviti se za'],['aufpassen auf + Akk.','to look after, watch out','paziti na'],['bitten um + Akk.','to ask for','moliti za'],['träumen von + Dat.','to dream of','sanjati o']]},
+{id:'vergleich',de:'Adjektive & Vergleich',bks:'Pridjevi i komparacija',tip:'<b>am …-sten = naj-.</b> am liebsten = najradije, am besten = najbolje. „größer <b>als</b>" = veći <b>od</b> / <b>nego</b>.',w:[
+['groß – größer – am größten','big – bigger – biggest','velik – veći – najveći'],['gut – besser – am besten','good – better – best','dobar – bolji – najbolji'],['viel – mehr – am meisten','much – more – most','mnogo – više – najviše'],['gern – lieber – am liebsten','gladly – rather – most of all','rado – radije – najradije'],['alt – älter – am ältesten','old – older – oldest','star – stariji – najstariji'],['teuer – teurer – am teuersten','expensive – more – most','skup – skuplji – najskuplji'],['so … wie','as … as','isto … kao'],['bequem','comfortable','udoban'],['günstig','good value','povoljan'],['ruhig','quiet, calm','miran'],['gefährlich','dangerous','opasan'],['pünktlich','punctual','HR točan | BS/SR tačan'],['schwierig','difficult','težak'],['anstrengend','tiring, exhausting','naporan']]},
+{id:'natur',de:'Natur & Umwelt',bks:'Priroda i okoliš',tip:'<b>der See</b> = lake, <b>die See</b> = sea (= das Meer). Here the article changes the meaning!',w:[
+['die Natur','nature','priroda'],['der Wald','forest','šuma'],['der Berg','mountain','planina, brdo'],['der See','lake','jezero'],['das Meer','sea','more'],['der Fluss','river','HR/BS rijeka | SR reka'],['die Jahreszeit','season','godišnje doba'],['das Gewitter','thunderstorm','grmljavina, oluja'],['der Nebel','fog','magla'],['Es ist minus fünf Grad.','It\'s minus five degrees.','HR Minus pet stupnjeva. | BS/SR Minus pet stepeni.'],['die Umwelt','environment','HR okoliš | BS okolina | SR životna sredina'],['das Tier','animal','životinja'],['die Pflanze','plant','biljka']]},
+{id:'kochen',de:'Kochen & Lebensmittel',bks:'Kuhanje i namirnice',tip:'<b>sauer</b> = sour AND (colloquial) angry. BKS „ljut" = spicy AND angry. Different word, same trick. German spicy = <b>scharf</b>.',w:[
+['das Rezept','recipe / prescription','recept'],['die Zutaten (Pl.)','ingredients','sastojci'],['schneiden','to cut','rezati'],['braten','to fry','pržiti'],['backen','to bake','peći'],['der Topf','pot','lonac'],['die Pfanne','frying pan','HR tava | BS/SR tiganj'],['das Gewürz','spice','začin'],['scharf','spicy, hot','ljut'],['süß','sweet','sladak'],['sauer','sour','kiseo'],['salzig','salty','slan'],['vegetarisch','vegetarian','vegetarijanski'],['das Hähnchen','chicken','piletina'],['das Rindfleisch','beef','govedina'],['das Schweinefleisch','pork','svinjetina']]}
+];
+
+const learned = new Set(store.get('etbks2-learned',[]));
+let state={cat:'all',show:'all',variant:store.get('etbks-variant','ALL'),flash:false,q:''};
+const total = V.reduce((n,g)=>n+g.w.length,0);
+const key=(g,i)=>g.id+':'+i;
+function parseBks(s){return s.split('|').map(p=>{p=p.trim();const m=p.match(/^((?:HR|BS|SR)(?:\/(?:HR|BS|SR))*)\s+(.*)$/);return m?{tags:m[1].split('/'),t:m[2]}:{tags:null,t:p}})}
+function bksHtml(s){let parts=parseBks(s);if(state.variant!=='ALL'){const f=parts.filter(p=>!p.tags||p.tags.includes(state.variant));if(f.length)parts=f.map(p=>({tags:null,t:p.t}));}return parts.map(p=>`<span class="var">${p.tags?`<i>${p.tags.join('/')}</i>`:''}${p.t}</span>`).join('')}
+function deHtml(d){let m=d.match(/^(der|die|das)\s(.*)$/);if(m)return `<span class="art g-${m[1]}">${m[1]}</span> ${m[2]}`;m=d.match(/^(hat|ist)\s(\S+)\s?(.*)$/);if(m)return `<span class="art g-aux">${m[1]}</span> ${m[2]} <small class="inf">${m[3]}</small>`;return d}
+function sayText(d){const m=d.match(/^(hat|ist)\s(\S+)/);return m?(m[1]==='hat'?'er hat ':'er ist ')+m[2]:d.replace(/\(.*?\)/g,'')}
+
+function renderCats(){const c=$('#cats');c.innerHTML='';const mk=(id,label,n)=>{const b=el('button',{class:'cat','aria-pressed':String(state.cat===id)},`${label}<em>${n}</em>`);b.onclick=()=>{state.cat=id;renderCats();renderVocab()};c.appendChild(b)};mk('all','Alle · sve',total);V.forEach(g=>mk(g.id,g.de,g.w.length))}
+function renderProgress(){const n=learned.size;$('#pbar').style.width=(n/total*100)+'%';$('#ptext').textContent=`${n} learned · naučeno · ${total} total · ${Math.round(n/total*100)}%`}
+function renderVocab(){
+  const box=$('#vocab');box.innerHTML='';box.className=state.flash?'flash':'';const q=state.q.toLowerCase();let any=false;
+  V.filter(g=>state.cat==='all'||g.id===state.cat).forEach(g=>{
+    const items=g.w.map((w,i)=>({w,i})).filter(({w})=>!q||w.join(' ').toLowerCase().includes(q));if(!items.length)return;any=true;
+    const left=g.w.filter((w,i)=>!learned.has(key(g,i))).length;const sec=el('section',{class:'group'});
+    sec.appendChild(el('div',{class:'group-head'},`<h2>${g.de}<small>${g.bks}</small></h2><span>${left} left · preostalo</span>`));
+    if(!q)sec.appendChild(el('div',{class:'tip'},`<b>Pazi!</b><span>${g.tip}</span>`));
+    const grid=el('div',{class:'grid'});
+    items.forEach(({w,i})=>{const k=key(g,i);const c=el('div',{class:'card'+(learned.has(k)?' learned':'')});let m='';if(state.show!=='bks')m+=`<div class="en">${w[1]}</div>`;if(state.show!=='en')m+=`<div class="bks">${bksHtml(w[2])}</div>`;
+      c.innerHTML=`<div class="de">${deHtml(w[0])}</div><div class="meaning">${m}</div><div class="acts"><button class="icon spk" aria-label="Listen">${ICON_SPK}</button><button class="icon chk" aria-pressed="${learned.has(k)}" aria-label="Mark as learned">${ICON_CHK}</button></div>`;
+      c.querySelector('.spk').onclick=e=>{e.stopPropagation();speak(sayText(w[0]))};
+      c.querySelector('.chk').onclick=e=>{e.stopPropagation();if(learned.has(k))learned.delete(k);else learned.add(k);store.set('etbks2-learned',[...learned]);c.classList.toggle('learned');e.currentTarget.setAttribute('aria-pressed',learned.has(k));renderProgress();sec.querySelector('.group-head span').textContent=g.w.filter((x,j)=>!learned.has(key(g,j))).length+' left · preostalo'};
+      if(state.flash)c.onclick=()=>c.classList.toggle('open');grid.appendChild(c)});
+    sec.appendChild(grid);box.appendChild(sec)});
+  if(!any)box.appendChild(el('div',{class:'empty'},'No words match. Nema rezultata.'));
+}
+function seg(id,prop,after){const s=$(id);s.querySelectorAll('button').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.v===state[prop]));b.onclick=()=>{state[prop]=b.dataset.v;s.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));if(after)after();renderVocab()}})}
+seg('#showSeg','show');seg('#varSeg','variant',()=>store.set('etbks-variant',state.variant));
+$('#flashBtn').onclick=e=>{state.flash=!state.flash;e.currentTarget.setAttribute('aria-pressed',state.flash);renderVocab()};
+$('#q').oninput=e=>{state.q=e.target.value.trim();renderVocab()};
+$('#resetBtn').onclick=()=>{$('#resetConfirm').hidden=false};$('#resetNo').onclick=()=>{$('#resetConfirm').hidden=true};
+$('#resetYes').onclick=()=>{learned.clear();store.set('etbks2-learned',[]);$('#resetConfirm').hidden=true;renderProgress();renderVocab()};
+renderCats();renderProgress();renderVocab();
+
+const tabs=document.querySelectorAll('.tab');
+function showTab(id){tabs.forEach(t=>t.setAttribute('aria-selected',String(t.dataset.tab===id)));document.querySelectorAll('.panel').forEach(p=>p.hidden=p.id!=='p-'+id)}
+tabs.forEach(t=>t.onclick=()=>{showTab(t.dataset.tab);try{history.replaceState(null,'','#'+t.dataset.tab)}catch(e){location.hash=t.dataset.tab}});
+const h=location.hash.slice(1);if([...tabs].some(t=>t.dataset.tab===h))showTab(h);
+window.addEventListener('hashchange',()=>{const x=location.hash.slice(1);if([...tabs].some(t=>t.dataset.tab===x))showTab(x)});
+
+// Grammatik extras
+const FALSE=[['der Rat','advice','rat','war (German: der Krieg)'],['der Dom','cathedral','dom','home, house (German: das Zuhause)'],['der Most','fruit juice, cider','most','bridge (German: die Brücke)'],['der Rock','skirt','rok','deadline (German: die Frist)'],['die Pension','guesthouse / pension','penzija','pension only (guesthouse: pansion)'],['das Lokal','pub, restaurant','lokal','pub or shop premises'],['sauer','sour (colloquial: angry)','—','BKS ljut = spicy and angry']];
+const ft=$('#falseTable tbody');FALSE.forEach(r=>ft.appendChild(el('tr',{},`<td><b>${deHtml(r[0])}</b></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td>`)));
+const LOAN=[['die Krawatte','from „Hrvat": Croatian soldiers\' neck scarves in 17th-century France'],['der Vampir','from Serbian „vampir", via 18th-century Habsburg reports'],['der Sliwowitz','from „šljivovica"'],['die Ćevapčići','on every German grill menu']];
+const lw=$('#loanwords');LOAN.forEach(l=>{const b=el('button',{class:'flip'},`<span class="front"><small>Deutsch</small>${deHtml(l[0])}</span><span class="back">${l[1]}<span>Tap again to hear it</span></span>`);b.onclick=()=>{if(b.classList.contains('open'))speak(l[0]);b.classList.add('open')};lw.appendChild(b)});
+
+// Prüfung
+let ans={};const EX=[];
+function addQ(container,q){
+  EX.push(q);const d=el('div',{class:'q'});if(q.teil)container.appendChild(el('div',{class:'teil'},q.teil));
+  if(q.audio){const L=el('div',{class:'listen'});const p=el('button',{class:'btn primary'},ICON_SPK.replace('<svg','<svg style="width:15px;height:15px"')+' Anhören');p.onclick=()=>speak(q.audio,.92);const t=el('button',{class:'btn','aria-pressed':'false'},'Text');const tx=el('div',{class:'text'},q.audio);tx.hidden=true;t.onclick=()=>{tx.hidden=!tx.hidden;t.setAttribute('aria-pressed',String(!tx.hidden))};L.append(p,t);d.append(L,tx)}
+  if(q.text)d.appendChild(el('div',{class:'text'},q.text));
+  if(q.board)d.appendChild(el('div',{class:'sign board'},q.board));
+  d.appendChild(el('div',{class:'prompt'},q.p));
+  const o=el('div',{class:'opts'});const ex=el('div',{class:'explain'},q.ex);ex.hidden=true;
+  const opts=q.rf?[['R','Richtig · točno'],['F','Falsch · netočno']]:q.o;
+  opts.forEach(([v,label])=>{const b=el('button',{class:'opt'},label);b.onclick=()=>{if(ans[q.id])return;ans[q.id]=v===q.a?'ok':'no';o.querySelectorAll('button').forEach(x=>x.disabled=true);b.classList.add(v===q.a?'right':'wrong');if(v!==q.a)o.querySelectorAll('button')[opts.findIndex(x=>x[0]===q.a)].classList.add('right');ex.hidden=false;upd()};o.appendChild(b)});
+  d.append(o,ex);container.appendChild(d)}
+function upd(){const v=Object.values(ans);const ok=v.filter(x=>x==='ok').length;$('#scoreVal').textContent=`${ok} / ${EX.length}`;$('#okVal').textContent=ok;$('#noVal').textContent=v.length-ok}
+const HQ=[
+{id:'h1',teil:'Teil 1 · Radio und Telefon (zweimal hören)',audio:'Und nun das Wetter für morgen, Samstag. Im Süden scheint den ganzen Tag die Sonne, bei achtzehn Grad. Im Norden regnet es, und es wird nur zwölf Grad warm.',p:'Wie wird das Wetter morgen im Süden?',o:[['A','A · sonnig, 18 Grad'],['B','B · Regen, 12 Grad'],['C','C · sonnig, 12 Grad']],a:'A',ex:'Süden = jug: Sonne, 18 Grad. The 12 degrees and rain are for the north (sjever / sever).'},
+{id:'h2',audio:'Hier ist die Praxis Dr. Schneider. Wir haben vom dreiundzwanzigsten Dezember bis zum zweiten Januar Urlaub. In dringenden Fällen rufen Sie bitte den ärztlichen Bereitschaftsdienst an: eins, eins, sechs, eins, eins, sieben.',p:'Wann ist die Praxis geschlossen?',o:[['A','A · nur am 23. Dezember'],['B','B · vom 23.12. bis zum 2.1.'],['C','C · ab dem 2. Januar']],a:'B',ex:'„vom … bis zum" = od … do. German says dates as ordinals: der dreiundzwanzigste.'},
+{id:'h3',teil:'Teil 2 · Gespräch (einmal hören)',audio:'Mann: Na, was hast du am Wochenende gemacht? Frau: Am Samstag bin ich nach Ulm gefahren und habe meine Schwester besucht. Am Sonntag war ich total müde. Ich bin den ganzen Tag zu Hause geblieben und habe gelesen.',p:'Was hat die Frau am Sonntag gemacht?',o:[['A','A · Sie hat ihre Schwester besucht.'],['B','B · Sie ist zu Hause geblieben.'],['C','C · Sie ist nach Ulm gefahren.']],a:'B',ex:'„Ich bin zu Hause geblieben" = ostala sam kod kuće. Ulm and the sister were on Saturday.'},
+{id:'h4',teil:'Teil 3 · Kurze Gespräche (zweimal hören)',audio:'Verkäufer: Kann ich Ihnen helfen? Frau: Ja, ich suche eine Jacke in Größe achtunddreißig. Die blaue gefällt mir sehr, aber sie ist zu teuer. Ich nehme die schwarze.',p:'Welche Jacke kauft die Frau?',o:[['A','A · die blaue'],['B','B · die schwarze'],['C','C · keine']],a:'B',ex:'„Die blaue gefällt mir, aber…" The aber is the signal: she takes the black one.'},
+{id:'h5',audio:'Mann: Wie kommst du eigentlich zur Arbeit? Frau: Früher bin ich immer mit dem Auto gefahren. Aber seit dem Sommer fahre ich mit dem Fahrrad. Das ist gesünder und billiger.',p:'Wie fährt die Frau jetzt zur Arbeit?',o:[['A','A · mit dem Auto'],['B','B · mit dem Fahrrad'],['C','C · mit dem Bus']],a:'B',ex:'„früher" = prije / pre (the car), „seit dem Sommer" = since summer (the bike).'},
+{id:'h6',teil:'Teil 4 · Interview (richtig oder falsch)',audio:'Moderator: Frau Petrović, Sie sind vor drei Jahren nach Deutschland gekommen. Frau Petrović: Ja, genau. Ich komme aus Novi Sad. Zuerst habe ich in einem Hotel gearbeitet. Jetzt mache ich eine Ausbildung als Pflegerin. Deutsch habe ich an der Volkshochschule gelernt.',p:'Frau Petrović lebt seit drei Jahren in Deutschland.',rf:1,a:'R',ex:'„vor drei Jahren gekommen" = došla je prije / pre tri godine.'},
+{id:'h7',p:'Frau Petrović arbeitet jetzt in einem Hotel.',rf:1,a:'F',ex:'„Zuerst" she worked in a hotel. „Jetzt" she is doing training as a carer (Ausbildung als Pflegerin).'}];
+const LQ=[
+{id:'l1',teil:'Teil 1 · Zeitungsartikel',text:'Neues Sprachcafé in Stuttgart-West\nJeden Donnerstag von 17 bis 19 Uhr treffen sich in der Stadtbibliothek Menschen aus vielen Ländern und sprechen zusammen Deutsch. Die Teilnahme ist kostenlos, eine Anmeldung ist nicht nötig. Am ersten Donnerstag im Monat bringen Teilnehmer Kuchen aus ihren Heimatländern mit.',p:'Das Sprachcafé findet … statt.',o:[['A','A · jeden Tag'],['B','B · einmal pro Woche'],['C','C · einmal im Monat']],a:'B',ex:'„Jeden Donnerstag" = every Thursday. The once-a-month part is only the cake.'},
+{id:'l2',p:'Wer mitmachen möchte, …',o:[['A','A · muss sich anmelden.'],['B','B · muss bezahlen.'],['C','C · kann einfach kommen.']],a:'C',ex:'kostenlos = besplatno, „Anmeldung nicht nötig" = no registration needed.'},
+{id:'l3',teil:'Teil 2 · Wegweiser im Kaufhaus',board:'<small>Kaufhaus Königsbau</small>4. Stock · Restaurant, Kundenservice<br>3. Stock · Elektro, Handys, Computer<br>2. Stock · Herrenmode, Kindermode<br>1. Stock · Damenmode, Schuhe<br>EG · Kosmetik, Schmuck, Information<br>UG · Lebensmittel, Getränke',p:'Sie brauchen ein neues Ladekabel für Ihr Handy.',o:[['A','A · 1. Stock'],['B','B · 3. Stock'],['C','C · anderes Stockwerk']],a:'B',ex:'Handys → 3. Stock. Good news: German floor numbers work like yours. EG = prizemlje, 1. Stock = 1. kat / sprat.'},
+{id:'l4',p:'Sie möchten einen Pullover für Ihren Mann kaufen.',o:[['A','A · EG'],['B','B · 2. Stock'],['C','C · anderes Stockwerk']],a:'B',ex:'Herrenmode = muška moda → 2. Stock.'},
+{id:'l5',teil:'Teil 3 · E-Mail',text:'Hallo Nina,\nseit Montag wohne ich in der neuen Wohnung! Sie ist größer als die alte und hat einen Balkon, aber die Miete ist leider auch höher. Am Samstag mache ich eine kleine Party. Kannst du kommen? Bitte bring keine Geschenke mit, aber vielleicht einen Stuhl, ich habe nämlich nur vier!\nLiebe Grüße\nDario',p:'Die neue Wohnung ist …',o:[['A','A · kleiner als die alte.'],['B','B · billiger als die alte.'],['C','C · größer als die alte.']],a:'C',ex:'„größer als" = veća od. And the rent is „höher" (higher), so not cheaper.'},
+{id:'l6',p:'Nina soll … mitbringen.',o:[['A','A · ein Geschenk'],['B','B · einen Stuhl'],['C','C · einen Kuchen']],a:'B',ex:'„keine Geschenke" = no presents. He only has four chairs.'},
+{id:'l7',teil:'Teil 4 · Anzeigen (A oder B)',p:'Sie suchen einen Job nur am Wochenende.',o:[['A','A · Café Mondschein sucht Aushilfe für Samstag und Sonntag, 10–16 Uhr.'],['B','B · Büro in Vaihingen sucht Vollzeitkraft, Mo–Fr 8–17 Uhr.']],a:'A',ex:'Aushilfe = pomoćni radnik, Samstag und Sonntag = vikend.'},
+{id:'l8',p:'Ihre Tochter ist acht und möchte schwimmen lernen.',o:[['A','A · Schwimmkurs für Erwachsene, Anfänger, dienstags 19 Uhr'],['B','B · Schwimmschule Delfin: Kurse für Kinder ab 6 Jahren']],a:'B',ex:'Erwachsene = odrasli. „ab 6 Jahren" = od 6 godina: right for an 8-year-old.'}];
+HQ.forEach(q=>addQ($('#hoeren'),q));LQ.forEach(q=>addQ($('#lesen'),q));upd();
+$('#examReset').onclick=()=>{ans={};document.querySelectorAll('.opt').forEach(b=>{b.disabled=false;b.classList.remove('right','wrong')});document.querySelectorAll('.q .explain').forEach(e=>e.hidden=true);upd()};
+
+// Schreiben
+function writer(boxId,cfg){
+  const box=$(boxId);
+  box.insertAdjacentHTML('beforeend',`<label for="${cfg.id}" class="note">Your text · vaš tekst</label><textarea id="${cfg.id}" placeholder="${cfg.ph}"></textarea><div class="controls"><span class="counter" id="${cfg.id}-wc"></span><button class="btn" id="${cfg.id}-mb">Show model answer</button></div><div class="pairs" id="${cfg.id}-cl"></div><div class="model" id="${cfg.id}-m" hidden>${cfg.model}</div>`);
+  const ta=$('#'+cfg.id);
+  function check(){const t=ta.value.trim();const w=t?t.split(/\s+/).length:0;$('#'+cfg.id+'-wc').textContent=`${w} words · riječi${w>=cfg.min&&w<=cfg.max+8?' ✓ good length':' (aim for '+cfg.min+'–'+cfg.max+')'}`;const cl=$('#'+cfg.id+'-cl');cl.innerHTML='';cfg.check.forEach(c=>{const ok=c[1].test(t);cl.appendChild(el('div',{},`<b style="color:${ok?'var(--ok)':'var(--muted)'}">${ok?'✓':'○'} ${c[0]}</b><span>${ok?'done':'missing'}</span>`))})}
+  ta.oninput=check;check();
+  $('#'+cfg.id+'-mb').onclick=e=>{const m=$('#'+cfg.id+'-m');m.hidden=!m.hidden;e.currentTarget.textContent=m.hidden?'Show model answer':'Hide model answer'};
+}
+writer('#w1',{id:'sms',ph:'Hallo Lea, …',min:20,max:30,model:'Hallo Lea,\nsorry, ich komme leider 20 Minuten später. Mein Bus hat Verspätung, deshalb schaffe ich es nicht pünktlich. Ich bin um 19:20 Uhr da. Kauf doch schon die Karten!\nBis gleich\nAmra',check:[['Anrede · pozdrav',/^(hallo|hi|liebe|lieber)/i],['Entschuldigung · isprika',/(sorry|entschuldig|tut mir leid|leider)/i],['Grund · razlog',/(weil|deshalb|bus|bahn|zug|stau|verspätung|arbeit|chef|kind)/i],['Uhrzeit · vrijeme dolaska',/(\d|uhr|minuten|halb|viertel)/i],['Gruß · pozdrav na kraju',/(grüße|gruß|bis (gleich|bald|dann)|lg)/i]]});
+writer('#w2',{id:'mail',ph:'Sehr geehrte Frau Schmidt, …',min:30,max:40,model:'Sehr geehrte Frau Schmidt,\nleider kann ich am ersten Kurstag nicht kommen, weil ich an diesem Tag lange arbeiten muss. Welches Kursbuch brauche ich? Und gibt es schon Hausaufgaben? Ich komme am Donnerstag zum ersten Mal.\nMit freundlichen Grüßen\nDario Babić',check:[['Formelle Anrede · Sehr geehrte …',/^(sehr geehrte|liebe frau|guten tag)/i],['Grund mit weil / deshalb',/(weil|deshalb|da ich)/i],['Kursbuch / Hausaufgaben',/(kursbuch|buch|hausaufgabe|material)/i],['Wann? · kada',/(montag|dienstag|mittwoch|donnerstag|freitag|samstag|nächste|woche|zum ersten mal|am \d)/i],['Formeller Gruß',/(mit freundlichen grüßen|freundliche grüße|viele grüße)/i],['Sie-Form (no du)',/^(?![\s\S]*\b(du|dich|dir|dein)\b)[\s\S]+$/i]]});
+const PI=[['Hallo Lea, / Liebe Lea,','Ćao Lea, / Draga Lea,'],['Sorry, ich komme zu spät.','Oprosti / Izvini, kasnim.'],['Mein Bus hat Verspätung.','Moj autobus kasni.'],['Ich bin in 10 Minuten da.','Stižem za 10 minuta.'],['Bis gleich! / Bis bald!','Vidimo se uskoro!'],['Liebe Grüße (LG)','Puno pozdrava']];
+const PF=[['Sehr geehrte Frau … / Sehr geehrter Herr …,','Poštovana gospođo … / Poštovani gospodine …,'],['Leider kann ich am … nicht kommen, weil …','Nažalost ne mogu doći u … jer …'],['Könnten Sie mir bitte sagen, …?','Biste li mi mogli reći …?'],['Ich hätte eine Frage zu …','Imao/imala bih pitanje o …'],['Vielen Dank im Voraus.','Unaprijed / Unapred hvala.'],['Mit freundlichen Grüßen','S poštovanjem']];
+PI.forEach(p=>$('#phInf').appendChild(el('div',{},`<b>${p[0]}</b><span>${p[1]}</span>`)));PF.forEach(p=>$('#phForm').appendChild(el('div',{},`<b>${p[0]}</b><span>${p[1]}</span>`)));
+
+// Sprechen
+function flipSet(target,items,front,back){const t=$(target);items.forEach(it=>{const b=el('button',{class:'flip'},`<span class="front">${front(it)}</span><span class="back">${back(it)}</span>`);b.onclick=()=>{if(b.classList.contains('open'))speak(it.say);else b.classList.add('open')};t.appendChild(b)})}
+const T1=[['Wohnort','Wo wohnen Sie?','Ich wohne seit zwei Jahren in Esslingen.','Gdje / Gde živite? · Živim u Esslingenu već dvije / dve godine.'],['Geburtstag','Wann haben Sie Geburtstag?','Am 14. Mai.','Kada Vam je rođendan? · Četrnaestog maja / svibnja.'],['Beruf','Was sind Sie von Beruf?','Ich bin Elektriker. Ich arbeite bei einer kleinen Firma.','Što / Šta ste po zanimanju? · Električar sam.'],['Kinder','Haben Sie Kinder?','Ja, ich habe eine Tochter. Sie ist sieben Jahre alt.','Imate li djece / dece? · Da, imam kćer / ćerku.'],['Sprachen','Welche Sprachen sprechen Sie?','Bosnisch, Englisch und jetzt auch Deutsch.','Koje jezike govorite? · Bosanski, engleski i sada njemački.'],['Lieblingsessen','Was essen Sie am liebsten?','Am liebsten esse ich Burek mit Joghurt.','Što / Šta najradije jedete? · Najradije jedem burek s jogurtom.'],['Wochenende','Was machen Sie am Wochenende?','Ich treffe Freunde oder gehe wandern.','Što / Šta radite vikendom? · Nalazim se s prijateljima ili planinarim.'],['Urlaub','Wo machen Sie gern Urlaub?','Am liebsten am Meer in Kroatien.','Gdje / Gde rado ljetujete? · Najradije na moru u Hrvatskoj.']].map(x=>({k:x[0],q:x[1],a:x[2],bks:x[3],say:x[1]+' '+x[2]}));
+flipSet('#t1cards',T1,i=>`<small>Thema: Persönliches</small>${i.k}`,i=>`<b>A:</b> ${i.q}<br><b>B:</b> ${i.a}<span>${i.bks}</span>`);
+const T2=[{k:'Wochenende',q:'Was haben Sie letztes Wochenende gemacht?',prompts:['Freunde?','Sport?','Essen?','Familie?'],model:'Letztes Wochenende war sehr schön. Am Samstag habe ich mich mit Freunden in der Stadt getroffen. Danach sind wir zusammen ins Fitnessstudio gegangen, weil wir jetzt mehr Sport machen wollen. Am Abend haben wir Pizza gegessen. Am Sonntag habe ich meine Eltern angerufen, denn sie wohnen noch in Banja Luka.',bks:'Prošli vikend je bio jako lijep / lep. U subotu sam se našao s prijateljima … U nedjelju / nedelju sam nazvao / pozvao roditelje.'},{k:'Wohnen',q:'Wie wohnen Sie?',prompts:['Wohnung / Haus?','Zimmer?','Nachbarn?','Stadt / Land?'],model:'Ich wohne mit meiner Familie in einer Wohnung in Stuttgart-Ost. Die Wohnung hat drei Zimmer und einen kleinen Balkon. Meine Nachbarn sind sehr nett, aber manchmal ist es laut. Ich wohne gern in der Stadt, weil alles in der Nähe ist. Früher habe ich in einem Haus auf dem Land gewohnt, das war ruhiger.',bks:'Živim s obitelji / porodicom u stanu … Rado živim u gradu jer je sve blizu.'},{k:'Arbeit',q:'Erzählen Sie von Ihrer Arbeit.',prompts:['Was?','Wo?','Arbeitszeit?','Kollegen?'],model:'Ich arbeite als Pflegerin in einem Altenheim in Ludwigsburg. Ich arbeite Vollzeit, manchmal auch am Wochenende. Meine Arbeit ist anstrengend, aber sie macht mir Spaß. Meine Kollegen kommen aus vielen Ländern, zwei sind auch aus Bosnien. Deshalb sprechen wir in der Pause manchmal Bosnisch, aber meistens Deutsch.',bks:'Radim kao njegovateljica u domu za starije … Posao je naporan, ali mi se sviđa.'}];
+const t2s=$('#t2seg');let t2i=0;
+function renderT2(){t2s.innerHTML='';T2.forEach((c,i)=>{const b=el('button',{'aria-pressed':String(i===t2i)},c.k);b.onclick=()=>{t2i=i;renderT2()};t2s.appendChild(b)});const c=T2[t2i];$('#t2card').innerHTML=`<div class="topic"><div class="topic-card"><small>Thema</small><b>${c.q}</b><div class="prompts">${c.prompts.map(p=>`<span>${p}</span>`).join('')}</div></div><div class="model">${c.model}<span class="note" style="display:block;margin-top:8px">${c.bks}</span></div><div class="controls"><button class="btn primary" id="t2play">${ICON_SPK.replace('<svg','<svg style="width:15px;height:15px"')} Listen to the model</button></div></div>`;$('#t2play').onclick=()=>speak(c.model,.92)}
+renderT2();
+// Teil 3 calendar
+const HOURS=['9:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00'];
+const A={'9:00':'Frühstück mit Oma','10:00':'Frühstück mit Oma','11:00':'Einkaufen','14:00':'Fußball mit den Kindern','17:00':'Kino mit Marko','18:00':'Kino mit Marko'};
+const B={'9:00':'Deutschkurs','10:00':'Deutschkurs','11:00':'Deutschkurs','12:00':'Mittagessen','13:00':'Friseur','16:00':'Wohnung putzen','17:00':'Geburtstagsparty','18:00':'Geburtstagsparty'};
+const cal=$('#cal');cal.appendChild(el('div',{class:'ch'},'Uhrzeit'));cal.appendChild(el('div',{class:'ch'},'Sie'));cal.appendChild(el('div',{class:'ch'},'Ihr Partner'));
+HOURS.forEach(hh=>{const b=el('button',{class:'hr'},hh);b.onclick=()=>{cal.querySelectorAll('.hr').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');const r=$('#calResult');if(!A[hh]&&!B[hh]){r.innerHTML=`<b style="color:var(--ok)">✓ Um ${hh} Uhr haben Sie beide Zeit.</b> Super, das passt! · Oboje imate vremena.`}else{const who=[A[hh]?`Sie: ${A[hh]}`:'',B[hh]?`Partner: ${B[hh]}`:''].filter(Boolean).join(' · ');r.innerHTML=`<b style="color:var(--bad)">✗ Um ${hh} Uhr geht es leider nicht.</b> ${who}`}};cal.appendChild(b);cal.appendChild(el('div',{class:'slot'+(A[hh]?' busy':'')},A[hh]||'frei'));cal.appendChild(el('div',{class:'slot'+(B[hh]?' busy':'')},B[hh]||'frei'))});
+[['Hast du am Samstag um … Zeit?','Imaš li vremena u subotu u …?'],['Wie wäre es um … Uhr?','Kako bi bilo u … sati?'],['Da kann ich leider nicht. Da habe ich …','Tada nažalost ne mogu. Tada imam …'],['Geht es auch um …?','Može li i u …?'],['Ja, das passt mir gut.','Da, to mi odgovara.'],['Was sollen wir mitbringen?','Što / Šta da ponesemo?']].forEach(p=>$('#planPhr').appendChild(el('div',{},`<b>${p[0]}</b><span>${p[1]}</span>`)));
+$('#planModel').textContent='A: Wann wollen wir Selma besuchen? Hast du um 10 Uhr Zeit?\nB: Nein, da kann ich leider nicht. Da habe ich Deutschkurs. Geht es um 14 Uhr?\nA: Um 14 Uhr spiele ich mit den Kindern Fußball. Wie wäre es um 15 Uhr?\nB: Ja, um 15 Uhr passt es mir gut.\nA: Super! Was bringen wir mit? Vielleicht Blumen?\nB: Lieber Obst, das isst sie gern.';
+})();
+</script>
+
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('../sw.js').catch(()=>{})})}</script>
+</body>
+</html>
