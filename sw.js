@@ -1,6 +1,6 @@
 // Deutsch für BKS: offline support.
 // When you change any page, raise the version number so phones fetch the new files.
-const VERSION = 'deutsch-bks-v1';
+const VERSION = 'deutsch-bks-v2';
 const CORE = [
   './',
   'index.html',
