@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spiele · Deutsch BKS</title>
+<meta name="theme-color" content="#0A2E4D">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="spiele.css">
+<style>
+.games{display:grid;gap:12px}
+.game{display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+.game:hover,.game:focus-visible{border-color:var(--accent);transform:translateY(-2px);outline:none}
+.tile{width:64px;height:64px;border-radius:14px;display:grid;place-items:center;font-family:var(--f-display);font-weight:600;font-size:15px;color:#fff;text-align:center;line-height:1.1}
+.t1{background:linear-gradient(135deg,#0B76C5 0 33%,#C2410C 33% 66%,#15803D 66%)}
+.t2{background:var(--navy);color:var(--sky);font-size:24px}
+.t3{background:var(--orange);color:#0A2E4D;font-size:13px}
+.game h2{font-weight:500;font-size:18px}
+.game p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.game .best{font-size:12px;color:var(--accent);font-weight:600;margin-top:4px;display:block}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="back" href="../">&larr; Start</a>
+  <h1>Spiele · igre</h1>
+  <p>Short games to train what you learn in class. Pet minuta dnevno je dovoljno.</p>
+</div></header>
+<main class="wrap">
+  <div class="bar"><div id="lvl"></div><span class="stat">Streak<b id="streak">0</b></span></div>
+  <div class="games">
+    <a class="game" href="artikel.html">
+      <span class="tile t1">der<br>die<br>das</span>
+      <span><h2>Der-Die-Das Blitz</h2><p>Tap the right article, in training mode or against the clock.</p><span class="best" id="b1"></span></span>
+    </a>
+    <a class="game" href="memory.html">
+      <span class="tile t2">⇄</span>
+      <span><h2>Wort-Memory</h2><p>Match German words with their BKS meaning, by topic.</p><span class="best" id="b2"></span></span>
+    </a>
+    <a class="game" href="satzbau.html">
+      <span class="tile t3">Ich<br>habe<br>…</span>
+      <span><h2>Satzbau-Puzzle</h2><p>Put the words in the right order. Verb 2nd, verb at the end.</p><span class="best" id="b3"></span></span>
+    </a>
+  </div>
+  <p class="note">Your scores are saved only on this phone. Play a little every day to keep your streak going.</p>
+</main>
+<script src="words.js"></script>
+<script src="spiele.js"></script>
+<script>
+(function(){
+  const S=window.Spiele,$=id=>document.getElementById(id);
+  function show(){
+    const l=S.level();
+    const a=S.store.get('artikel-best-blitz-'+l,null),t=S.store.get('artikel-best-train-'+l,null),m=S.store.get('memory-best-'+l+'-6',null),z=S.store.get('satzbau-best-'+l,null);
+    $('b1').textContent=(a!==null||t!==null)?`Best: ${t!==null?t+'/20 training':''}${a!==null&&t!==null?' · ':''}${a!==null?a+' in Blitz':''}`:'';
+    $('b2').textContent=m!==null?`Best: ${m} moves (6 pairs)`:'';
+    $('b3').textContent=z!==null?`Best: ${z}/10`:'';
+    $('streak').textContent=S.currentStreak()+' 🔥';
+  }
+  S.levelSeg($('lvl'),show);show();
+})();
+</script>
+</body>
+</html>

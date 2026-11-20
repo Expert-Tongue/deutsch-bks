@@ -43,6 +43,8 @@ main{padding-block:24px 40px;display:flex;flex-direction:column;gap:16px}
 .level:hover,.level:focus-visible{border-color:var(--accent);transform:translateY(-2px);outline:none}
 .badge{align-self:flex-start;font-family:var(--f-display);font-weight:600;font-size:22px;padding:2px 12px;border-radius:10px;background:var(--chip);color:var(--accent)}
 .level.a2 .badge{background:var(--orange);color:#0A2E4D}
+.level.games .badge{background:var(--navy);color:var(--sky);font-size:18px}
+@media (prefers-color-scheme: dark){.level.games .badge{background:var(--sky);color:#0A2E4D}}
 .level h2{font-family:var(--f-display);font-weight:500;font-size:18px;margin:4px 0 0}
 .level p{margin:0;color:var(--muted);font-size:14px}
 .level .go{margin-top:auto;padding-top:8px;font-weight:600;color:var(--accent);font-size:14px}
@@ -78,6 +80,12 @@ footer a{color:var(--accent)}
       <h2>Sljedeći korak · Next step</h2>
       <p>280 words for work and life in Germany, Perfekt, prepositions and connectors, and Goethe A2 practice.</p>
       <span class="go">Start A2 &rarr;</span>
+    </a>
+    <a class="level games" href="spiele/">
+      <span class="badge">Spiele</span>
+      <h2>Igre · Games</h2>
+      <p>Der-Die-Das Blitz, Wort-Memory and Satzbau-Puzzle. Five minutes a day keeps the words fresh.</p>
+      <span class="go">Play &rarr;</span>
     </a>
   </div>
 

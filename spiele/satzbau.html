@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Satzbau-Puzzle · Deutsch BKS</title>
+<meta name="theme-color" content="#0A2E4D">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="spiele.css">
+<style>
+.prompt{font-size:16px}
+.prompt small{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:2px}
+.answer{min-height:64px;border:2px dashed var(--line);border-radius:14px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.answer.right{border-style:solid;border-color:var(--ok);background:var(--ok-bg)}
+.answer.wrong{border-style:solid;border-color:var(--bad);background:var(--bad-bg)}
+.answer .end{font-family:var(--f-display);font-weight:600;font-size:18px;color:var(--muted)}
+.answer:empty::before{content:"Tap the words in the right order · dodirnite riječi redom";color:var(--muted);font-size:13px}
+.bank:empty{display:none}
+.bank{display:flex;flex-wrap:wrap;gap:8px;min-height:48px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 13px;font-family:var(--f-display);font-weight:500;font-size:17px;box-shadow:0 1px 0 var(--line)}
+.chip:active{transform:scale(.96)}
+.answer .chip{background:var(--chip);border-color:transparent}
+.chip.verb{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.solution{font-family:var(--f-display);font-size:18px;font-weight:500}
+.solution .verb{color:var(--accent);text-decoration:underline;text-underline-offset:4px}
+.rule{background:var(--chip);border-radius:12px;padding:10px 14px;font-size:14px}
+.rule b{font-family:var(--f-display)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.progress{height:8px;border-radius:99px;background:var(--chip);overflow:hidden;flex:1;min-width:120px}
+.progress i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="back" href="./">&larr; Spiele</a>
+  <h1>Satzbau-Puzzle</h1>
+  <p>Put the words in order. U njemačkom glagol ima stalno mjesto (mesto).</p>
+</div></header>
+
+<main class="wrap">
+  <div class="bar">
+    <div id="lvl"></div>
+    <button class="icon-btn" id="snd" type="button"></button>
+  </div>
+
+  <section class="panel" id="play">
+    <div class="row"><div class="progress"><i id="prog"></i></div><span class="stat">Correct<b id="score">0/10</b></span></div>
+    <div class="prompt" id="prompt"></div>
+    <div class="answer" id="answer" aria-live="polite"></div>
+    <div class="bank" id="bank"></div>
+    <div id="feedback" hidden></div>
+    <div class="actions" style="justify-content:flex-start">
+      <button class="btn primary" id="check" type="button">Check · provjeri</button>
+      <button class="btn" id="clear" type="button">Clear</button>
+      <button class="btn" id="hint" type="button">Hint</button>
+      <button class="btn primary" id="next" type="button" hidden>Next &rarr;</button>
+    </div>
+  </section>
+
+  <section class="panel center result" id="result" hidden>
+    <h2 id="resTitle">Super!</h2>
+    <div class="big" id="resScore">0/10</div>
+    <p class="note" id="resText"></p>
+    <div class="review" id="review"></div>
+    <div class="actions"><button class="btn primary" id="again" type="button">Play again</button><a class="btn" href="./" style="text-decoration:none">All games</a></div>
+  </section>
+</main>
+
+<script src="words.js"></script>
+<script src="spiele.js"></script>
+<script>
+(function(){
+  const S=window.Spiele,$=id=>document.getElementById(id);
+  // Rules: short explanation in English + BKS
+  const RULES={
+    v2:['Verb in position 2','Glagol je uvijek na 2. mjestu (uvek na 2. mestu).'],
+    inv:['Time or place first → verb still 2nd','Kad počinjete vremenom ili mjestom, glagol ostaje 2., a subjekt ide iza njega.'],
+    w:['W-question: question word, then verb','Upitna riječ, pa glagol.'],
+    yn:['Yes/no question: verb first','Pitanje da/ne: glagol je prvi.'],
+    modal:['Modal verb 2nd, infinitive at the end','Modalni glagol na 2. mjestu, infinitiv na kraju.'],
+    sep:['Separable verb: prefix goes to the end','Razdvojni glagol: prefiks (auf, an, ab, ein…) ide na kraj.'],
+    perf:['Perfekt: haben/sein 2nd, participle at the end','Kao „radio sam": pomoćni glagol na 2. mjestu, particip na kraju.'],
+    weil:['After weil / dass / ob: verb at the end','Nakon weil (jer), dass (da), ob (je li / da li) glagol ide na kraj.'],
+    wenn:['Sentence starts with wenn: verb, comma, verb','Ako rečenica počinje s wenn-dijelom, glavna rečenica počinje glagolom.'],
+    desh:['After deshalb: verb comes straight after','Nakon deshalb (zato) odmah dolazi glagol.'],
+    refl:['Reflexive: mich/dich/sich right after the verb','Povratna zamjenica ide odmah iza glagola, kao „se".'],
+    akk:['Wohin? → Akkusativ (den/die/das)','Kamo / kuda? → akuzativ, kao „na stol".'],
+    dat:['Wo? → Dativ (dem/der/dem)','Gdje / gde? → dativ, kao „na stolu".'],
+    komp:['Comparative + als','veći od / nego = größer als.'],
+    polite:['Polite request: Könnten Sie …?','Könnten Sie …? = Biste li …?']
+  };
+  // *word = verb (highlighted in the solution). Final . or ? is added automatically.
+  const SENT={
+    a1:[
+      {s:'Ich *wohne in Stuttgart .',alt:['In Stuttgart *wohne ich .'],b:'Živim u Stuttgartu.',r:'v2'},
+      {s:'Heute *arbeite ich bis 17 Uhr .',alt:['Ich *arbeite heute bis 17 Uhr .'],b:'Danas radim do 17 sati.',r:'inv'},
+      {s:'Am Montag *habe ich einen Deutschkurs .',alt:['Ich *habe am Montag einen Deutschkurs .'],b:'U ponedjeljak (ponedeljak) imam kurs njemačkog.',r:'inv'},
+      {s:'Woher *kommen Sie ?',b:'Odakle ste?',r:'w'},
+      {s:'Wie *heißt du ?',b:'Kako se zoveš?',r:'w'},
+      {s:'*Kommen Sie aus Bosnien ?',b:'Jeste li iz Bosne?',r:'yn'},
+      {s:'Ich *muss heute lange *arbeiten .',alt:['Heute *muss ich lange *arbeiten .'],b:'Moram danas dugo raditi.',r:'modal'},
+      {s:'*Kannst du mir bitte *helfen ?',b:'Možeš li mi, molim te, pomoći?',r:'modal'},
+      {s:'Ich *möchte einen Kaffee *trinken .',b:'Htio / htjela bih popiti kavu (kafu).',r:'modal'},
+      {s:'Ich *stehe um 6 Uhr *auf .',alt:['Um 6 Uhr *stehe ich *auf .'],b:'Ustajem u 6 sati.',r:'sep'},
+      {s:'Der Zug *fährt um 8 Uhr *ab .',alt:['Um 8 Uhr *fährt der Zug *ab .'],b:'Vlak (voz) polazi u 8 sati.',r:'sep'},
+      {s:'Wir *kaufen am Samstag *ein .',alt:['Am Samstag *kaufen wir *ein .'],b:'Kupujemo u subotu.',r:'sep'},
+      {s:'Ich *rufe dich später *an .',alt:['Später *rufe ich dich *an .'],b:'Nazvat ću te kasnije. / Pozvaću te kasnije.',r:'sep'},
+      {s:'Morgen *fahre ich nach Sarajevo .',alt:['Ich *fahre morgen nach Sarajevo .'],b:'Sutra putujem u Sarajevo.',r:'inv'},
+      {s:'Mein Bruder *wohnt in Zagreb .',alt:['In Zagreb *wohnt mein Bruder .'],b:'Moj brat živi u Zagrebu.',r:'v2'}
+    ],
+    a2:[
+      {s:'Ich *habe gestern lange *gearbeitet .',alt:['Gestern *habe ich lange *gearbeitet .'],b:'Jučer (juče) sam dugo radio / radila.',r:'perf'},
+      {s:'Am Wochenende *bin ich nach München *gefahren .',alt:['Ich *bin am Wochenende nach München *gefahren .'],b:'Za vikend sam putovao / putovala u München.',r:'perf'},
+      {s:'Wir *haben zusammen Pizza *gegessen .',alt:['Wir *haben Pizza zusammen *gegessen .','Zusammen *haben wir Pizza *gegessen .'],b:'Zajedno smo jeli pizzu.',r:'perf'},
+      {s:'Sie *ist zu Hause *geblieben .',b:'Ostala je kod kuće.',r:'perf'},
+      {s:'Ich *musste gestern *arbeiten .',alt:['Gestern *musste ich *arbeiten .'],b:'Jučer (juče) sam morao / morala raditi.',r:'modal'},
+      {s:'Ich *komme nicht , weil ich krank *bin .',alt:['weil ich krank *bin , *komme ich nicht .'],b:'Ne dolazim jer sam bolestan / bolesna.',r:'weil'},
+      {s:'Ich *glaube , dass er heute *kommt .',b:'Mislim da on danas dolazi.',r:'weil'},
+      {s:'Ich *weiß nicht , ob sie zu Hause *ist .',b:'Ne znam je li (da li) je kod kuće.',r:'weil'},
+      {s:'Wenn ich Zeit *habe , *rufe ich dich *an .',alt:['Ich *rufe dich *an , wenn ich Zeit *habe .'],b:'Ako imam vremena, nazvat ću te / pozvaću te.',r:'wenn'},
+      {s:'Ich *bin müde , deshalb *bleibe ich heute zu Hause .',b:'Umoran / umorna sam, zato danas ostajem kod kuće.',r:'desh'},
+      {s:'Ich *freue mich auf das Wochenende .',b:'Radujem se vikendu.',r:'refl'},
+      {s:'Er *interessiert sich für Fußball .',b:'On se zanima za nogomet (fudbal).',r:'refl'},
+      {s:'Ich *lege das Buch auf den Tisch .',b:'Stavljam knjigu na stol (sto).',r:'akk'},
+      {s:'Das Buch *liegt auf dem Tisch .',b:'Knjiga je na stolu.',r:'dat'},
+      {s:'*Könnten Sie mir bitte *helfen ?',b:'Biste li mi mogli pomoći?',r:'polite'},
+      {s:'Berlin *ist größer als Sarajevo .',b:'Berlin je veći od Sarajeva.',r:'komp'}
+    ]
+  };
+  const ROUND=10;
+  let round=[],idx=0,score=0,picked=[],bank=[],done=false,wrongList=[];
+
+  function parse(str){const toks=str.trim().split(/\s+/);const end=toks.pop();return {toks:toks.map(t=>({w:t.replace(/^\*/,''),v:t.startsWith('*')})),end}}
+  function norm(arr){return arr.map(t=>t.toLowerCase()).join(' ')}
+  function pool(){const l=S.level();return l==='both'?[...SENT.a1,...SENT.a2]:SENT[l]}
+  function start(){
+    round=S.shuffle(pool()).slice(0,ROUND);idx=0;score=0;wrongList=[];
+    $('result').hidden=true;$('play').hidden=false;load();
+  }
+  function load(){
+    const it=round[idx];const p=parse(it.s);done=false;picked=[];
+    bank=S.shuffle(p.toks.map((t,i)=>({...t,id:i})));
+    // avoid giving the solution away by chance
+    if(bank.map(t=>t.w).join(' ')===p.toks.map(t=>t.w).join(' ')&&bank.length>1)bank.reverse();
+    $('prompt').innerHTML=`<small>Satz ${idx+1} von ${round.length} · BKS</small>${it.b}`;
+    $('feedback').hidden=true;$('check').hidden=false;$('clear').hidden=false;$('hint').hidden=false;$('next').hidden=true;
+    $('answer').className='answer';$('score').textContent=`${score}/${round.length}`;$('prog').style.width=(idx/round.length*100)+'%';
+    draw();
+  }
+  function draw(){
+    const it=round[idx];const end=parse(it.s).end;
+    const a=$('answer');a.innerHTML='';picked.forEach((t,i)=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=t.w;b.onclick=()=>{if(done)return;picked.splice(i,1);bank.push(t);draw()};a.appendChild(b)});
+    if(picked.length&&!bank.length){const e=document.createElement('span');e.className='end';e.textContent=end;a.appendChild(e)}
+    const k=$('bank');k.innerHTML='';bank.forEach((t,i)=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=t.w;b.onclick=()=>{if(done)return;bank.splice(i,1);picked.push(t);draw()};k.appendChild(b)});
+    $('check').disabled=bank.length>0;
+  }
+  function check(){
+    const it=round[idx];const p=parse(it.s);
+    const answers=[it.s,...(it.alt||[])].map(x=>norm(parse(x).toks.map(t=>t.w)));
+    const ok=answers.includes(norm(picked.map(t=>t.w)));
+    done=true;S.tone(ok);
+    const sentence=p.toks.map(t=>t.w).join(' ').replace(/ ,/g,',')+p.end;
+    S.speak(sentence.replace(/^./,c=>c.toUpperCase()));
+    if(ok)score++;else wrongList.push(it);
+    $('answer').className='answer '+(ok?'right pop':'wrong shake');
+    const sol=p.toks.map(t=>t.v?`<span class="verb">${t.w}</span>`:t.w).join(' ').replace(/ ,/g,',')+p.end;
+    const r=RULES[it.r];
+    $('feedback').innerHTML=`<p style="margin:0 0 8px"><b style="color:var(${ok?'--ok':'--bad'})">${ok?'Richtig! Točno!':'Noch nicht. Ovako je točno (tačno):'}</b></p>${ok?'':`<p class="solution" style="margin:0 0 10px">${sol}</p>`}<div class="rule"><b>${r[0]}</b><br>${r[1]}</div>`;
+    $('feedback').hidden=false;$('check').hidden=true;$('clear').hidden=true;$('hint').hidden=true;$('next').hidden=false;$('next').focus();
+    $('score').textContent=`${score}/${round.length}`;
+  }
+  function hint(){ // places the next correct word
+    const it=round[idx];const p=parse(it.s);
+    for(let i=0;i<p.toks.length;i++){
+      if(picked[i]&&picked[i].w.toLowerCase()===p.toks[i].w.toLowerCase())continue;
+      while(picked.length>i)bank.push(picked.pop());
+      const j=bank.findIndex(t=>t.w.toLowerCase()===p.toks[i].w.toLowerCase());
+      if(j>=0){picked.push(bank.splice(j,1)[0])}
+      break;
+    }
+    draw();
+  }
+  function next(){idx++;if(idx>=round.length)finish();else load()}
+  function finish(){
+    $('play').hidden=true;$('result').hidden=false;$('prog').style.width='100%';
+    const key='satzbau-best-'+S.level();const prev=S.store.get(key,null);const isBest=prev===null||score>prev;if(isBest)S.store.set(key,score);
+    const days=S.streak();
+    $('resScore').textContent=`${score}/${round.length}`;
+    $('resTitle').textContent=isBest&&prev!==null?'New best! Novi rekord!':(score>=8?'Super!':'Gut gemacht!');
+    $('resText').textContent=`Streak: ${days} day${days===1?'':'s'} 🔥`;
+    $('review').innerHTML=wrongList.length?'<p class="note" style="text-align:left">Look at these again · pogledajte ponovno:</p>'+wrongList.map(it=>{const p=parse(it.s);return `<div><b>${p.toks.map(t=>t.w).join(' ').replace(/ ,/g,',')+p.end}</b><span>${RULES[it.r][0]}</span></div>`}).join(''):'<p class="note">All correct. Sve točno!</p>';
+  }
+  S.levelSeg($('lvl'),start);S.soundToggle($('snd'));
+  $('check').onclick=check;$('next').onclick=next;$('hint').onclick=hint;$('again').onclick=start;
+  $('clear').onclick=()=>{if(done)return;bank=bank.concat(picked);picked=[];draw()};
+  start();
+})();
+</script>
+</body>
+</html>

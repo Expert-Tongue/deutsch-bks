@@ -18,6 +18,7 @@
   ],
   "shortcuts": [
     { "name": "Deutsch A1", "short_name": "A1", "url": "a1/", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
-    { "name": "Deutsch A2", "short_name": "A2", "url": "a2/", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+    { "name": "Deutsch A2", "short_name": "A2", "url": "a2/", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Spiele", "short_name": "Spiele", "url": "spiele/", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
   ]
 }

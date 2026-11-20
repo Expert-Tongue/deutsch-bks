@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Der-Die-Das Blitz · Deutsch BKS</title>
+<meta name="theme-color" content="#0A2E4D">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="spiele.css">
+<style>
+.card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:28px 12px 22px;border-radius:16px;background:var(--chip);text-align:center;min-height:150px;justify-content:center}
+.card .noun{font-family:var(--f-display);font-weight:600;font-size:clamp(28px,8vw,44px);line-height:1.15;overflow-wrap:anywhere}
+.card .noun .art{font-weight:600}
+.card .hint{font-size:15px;color:var(--muted);min-height:1.5em}
+.card.right{background:var(--ok-bg)} .card.wrong{background:var(--bad-bg)}
+.choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.choice{border:0;border-radius:14px;padding:18px 6px;font-family:var(--f-display);font-weight:600;font-size:clamp(20px,6vw,28px);color:#fff}
+.choice[data-a="der"]{background:#0B76C5}.choice[data-a="die"]{background:#C2410C}.choice[data-a="das"]{background:#15803D}
+.choice small{display:block;font-family:var(--f-body);font-weight:500;font-size:11px;opacity:.9;letter-spacing:.04em}
+.choice:disabled{opacity:.55;cursor:default}
+.choice:active{transform:scale(.97)}
+.timer{height:8px;border-radius:99px;background:var(--chip);overflow:hidden}
+.timer i{display:block;height:100%;background:var(--accent);width:100%;transition:width .2s linear}
+.feedback{min-height:44px;font-size:14px;text-align:center}
+.feedback b{font-family:var(--f-display)}
+.tips{display:grid;gap:4px;font-size:13px;color:var(--muted);margin:0;padding-left:18px}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="back" href="./">&larr; Spiele</a>
+  <h1>Der-Die-Das Blitz</h1>
+  <p>Tap the right article. Člana nema u vašem jeziku, zato je ovo vaš glavni trening.</p>
+</div></header>
+
+<main class="wrap">
+  <div class="bar">
+    <div id="lvl"></div>
+    <button class="icon-btn" id="snd" type="button"></button>
+  </div>
+
+  <!-- start -->
+  <section class="panel" id="start">
+    <h2 style="font-size:19px;font-weight:500">Choose a mode · odaberite način</h2>
+    <div class="seg" id="modeSeg" role="group" aria-label="Mode">
+      <button type="button" data-m="train" aria-pressed="true">Training · 20 words</button>
+      <button type="button" data-m="blitz" aria-pressed="false">Blitz · 60 seconds</button>
+    </div>
+    <label class="note"><input type="checkbox" id="showBks" checked> Show the BKS meaning as a hint</label>
+    <div class="stats" id="bests"></div>
+    <ul class="tips">
+      <li><b class="g-die">-ung, -heit, -keit, -schaft</b> → always <b class="g-die">die</b></li>
+      <li><b class="g-das">-chen, -lein</b> → always <b class="g-das">das</b></li>
+      <li>Don't trust the BKS gender: <i>sunce</i> is neuter, <b class="g-die">die</b> Sonne is feminine.</li>
+    </ul>
+    <button class="btn primary" id="go" type="button">Start</button>
+    <p class="note">Keys on a computer: 1 = der, 2 = die, 3 = das.</p>
+  </section>
+
+  <!-- play -->
+  <section class="panel" id="play" hidden>
+    <div class="stats"><span class="stat">Score<b id="score">0</b></span><span class="stat">Combo<b id="combo">0</b></span><span class="stat" id="leftWrap">Left<b id="left">20</b></span></div>
+    <div class="timer" id="timerWrap" hidden><i id="timer"></i></div>
+    <div class="card" id="card" aria-live="polite"><div class="noun" id="noun"></div><div class="hint" id="hint"></div></div>
+    <div class="choices">
+      <button class="choice" type="button" data-a="der">der<small>muški</small></button>
+      <button class="choice" type="button" data-a="die">die<small>ženski</small></button>
+      <button class="choice" type="button" data-a="das">das<small>srednji</small></button>
+    </div>
+    <div class="feedback" id="fb"></div>
+  </section>
+
+  <!-- result -->
+  <section class="panel center result" id="result" hidden>
+    <h2 id="resTitle">Super!</h2>
+    <div class="big" id="resScore">0</div>
+    <p class="note" id="resText"></p>
+    <div class="review" id="review"></div>
+    <div class="actions">
+      <button class="btn primary" id="again" type="button">Play again</button>
+      <button class="btn" id="practise" type="button" hidden>Practise my mistakes</button>
+      <a class="btn" href="./" style="text-decoration:none">All games</a>
+    </div>
+  </section>
+</main>
+
+<script src="words.js"></script>
+<script src="spiele.js"></script>
+<script>
+(function(){
+  const S=window.Spiele, $=id=>document.getElementById(id);
+  let mode='train', pool=[], queue=[], cur=null, score=0, combo=0, best=0, mistakes=[], practicing=false, locked=false, endAt=0, tick=null, total=0;
+
+  function nouns(){
+    const out=[];S.groups().forEach(g=>g.w.forEach(w=>{
+      const m=w[0].match(/^(der|die|das)\s([^/()…+]+)$/);
+      if(m&&!/\(Pl\.\)/.test(w[0]))out.push({art:m[1],noun:m[2].trim(),bks:w[2]});
+    }));
+    const seen=new Set();return out.filter(n=>!seen.has(n.noun)&&seen.add(n.noun));
+  }
+  function bestKey(){return 'artikel-best-'+mode+'-'+S.level()}
+  function showBests(){
+    const t=S.store.get('artikel-best-train-'+S.level(),null), b=S.store.get('artikel-best-blitz-'+S.level(),null);
+    $('bests').innerHTML=`<span class="stat">${nouns().length} nouns</span><span class="stat">Best training<b>${t===null?'–':t+'/20'}</b></span><span class="stat">Best Blitz<b>${b===null?'–':b}</b></span><span class="stat">Streak<b>${S.currentStreak()} 🔥</b></span>`;
+  }
+  S.levelSeg($('lvl'),showBests);S.soundToggle($('snd'));showBests();
+  $('modeSeg').querySelectorAll('button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;$('modeSeg').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)))});
+
+  function start(list){
+    pool=nouns();if(!pool.length)return;
+    queue=S.shuffle(list||pool);if(mode==='train'&&!list)queue=queue.slice(0,20);
+    practicing=!!list;total=queue.length;score=0;combo=0;best=0;mistakes=[];
+    $('start').hidden=true;$('result').hidden=true;$('play').hidden=false;
+    $('timerWrap').hidden=mode!=='blitz'||!!list;$('leftWrap').hidden=mode==='blitz'&&!list;
+    if(mode==='blitz'&&!list){endAt=Date.now()+60000;clearInterval(tick);tick=setInterval(()=>{const r=Math.max(0,endAt-Date.now());$('timer').style.width=(r/600)+'%';if(r<=0)finish()},200)}
+    next();
+  }
+  function next(){
+    if(!queue.length){if(mode==='blitz'&&!practicing){queue=S.shuffle(pool)}else{finish();return}}
+    cur=queue.shift();locked=false;
+    $('card').className='card';$('noun').textContent=cur.noun;
+    $('hint').textContent=$('showBks').checked?S.bks(cur.bks):'';
+    $('fb').innerHTML='';document.querySelectorAll('.choice').forEach(b=>b.disabled=false);
+    $('score').textContent=score;$('combo').textContent=combo;$('left').textContent=queue.length+1;
+  }
+  function answer(a){
+    if(locked||!cur)return;locked=true;
+    const ok=a===cur.art;document.querySelectorAll('.choice').forEach(b=>b.disabled=true);
+    $('noun').innerHTML=`<span class="art g-${cur.art}">${cur.art}</span> ${cur.noun}`;
+    S.speak(cur.art+' '+cur.noun);S.tone(ok);
+    if(ok){score++;combo++;best=Math.max(best,combo);$('card').className='card right pop';$('fb').innerHTML='<b style="color:var(--ok)">Richtig!</b> Točno!'}
+    else{combo=0;mistakes.push(cur);$('card').className='card wrong shake';$('fb').innerHTML=`<b style="color:var(--bad)">${cur.art}</b> ${cur.noun} · not ${a}`}
+    $('score').textContent=score;$('combo').textContent=combo;
+    setTimeout(next,ok?700:1600);
+  }
+  document.querySelectorAll('.choice').forEach(b=>b.onclick=()=>answer(b.dataset.a));
+  document.addEventListener('keydown',e=>{if($('play').hidden)return;const k={'1':'der','2':'die','3':'das'}[e.key];if(k)answer(k)});
+
+  function finish(){
+    clearInterval(tick);cur=null;locked=true;
+    $('play').hidden=true;$('result').hidden=false;
+    const practice=practicing;
+    const key=bestKey();const prev=S.store.get(key,null);const isBest=prev===null||score>prev;
+    if(isBest&&total&&!practice)S.store.set(key,score);
+    const days=S.streak();
+    $('resScore').textContent=mode==='blitz'&&!practice?score:`${score}/${total}`;
+    $('resTitle').textContent=isBest&&!practice?'New best! Novi rekord!':(score>=total*0.8?'Super!':'Gut gemacht!');
+    $('resText').textContent=`Longest combo: ${best} · Streak: ${days} day${days===1?'':'s'} 🔥`;
+    const uniq=[...new Map(mistakes.map(m=>[m.noun,m])).values()];
+    $('review').innerHTML=uniq.length?'<p class="note" style="text-align:left">Review these · ponovite ove riječi:</p>'+uniq.map(m=>`<div><b><span class="g-${m.art}">${m.art}</span> ${m.noun}</b><span>${S.bks(m.bks)}</span></div>`).join(''):'<p class="note">No mistakes. Bez greške!</p>';
+    $('practise').hidden=!uniq.length;$('practise').onclick=()=>start(uniq.concat(uniq));
+  }
+  $('go').onclick=()=>start();$('again').onclick=()=>{$('result').hidden=true;$('start').hidden=false;showBests()};
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wort-Memory · Deutsch BKS</title>
+<meta name="theme-color" content="#0A2E4D">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="spiele.css">
+<style>
+.board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (min-width:560px){.board{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.tile{position:relative;aspect-ratio:4/3;max-width:100%;border:0;padding:0;background:none;perspective:800px}
+.tile .in{position:absolute;inset:0;transition:transform .35s;transform-style:preserve-3d}
+.tile.open .in,.tile.done .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:6px;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;font-size:clamp(12px,3.4vw,15px);line-height:1.25;overflow-wrap:anywhere}
+.front{background:var(--navy);color:var(--sky)}
+.front svg{width:28%;height:auto;opacity:.9}
+.rear{transform:rotateY(180deg);background:var(--surface);border:2px solid var(--line);color:var(--fg)}
+.rear.de{font-family:var(--f-display);font-weight:600}
+.rear.bk{font-style:normal}
+.rear small{display:block;font-family:var(--f-body);font-weight:500;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.tile.done .rear{border-color:var(--ok);background:var(--ok-bg)}
+.tile.miss .rear{border-color:var(--bad)}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="back" href="./">&larr; Spiele</a>
+  <h1>Wort-Memory</h1>
+  <p>Find the pairs: German word and its BKS meaning. Pronađite parove.</p>
+</div></header>
+
+<main class="wrap">
+  <div class="bar">
+    <div id="lvl"></div>
+    <button class="icon-btn" id="snd" type="button"></button>
+  </div>
+  <div class="controls">
+    <label class="lbl" for="topic">Thema</label>
+    <select id="topic"></select>
+    <div class="seg" id="sizeSeg" role="group" aria-label="Pairs">
+      <button type="button" data-n="6" aria-pressed="true">6 pairs</button>
+      <button type="button" data-n="8" aria-pressed="false">8 pairs</button>
+    </div>
+    <button class="btn primary" id="new" type="button">New game</button>
+  </div>
+
+  <section class="panel">
+    <div class="stats"><span class="stat">Pairs<b id="pairs">0/6</b></span><span class="stat">Moves<b id="moves">0</b></span><span class="stat">Time<b id="time">0:00</b></span><span class="stat" id="bestStat">Best<b id="best">–</b></span></div>
+    <div class="board" id="board" aria-label="Memory cards"></div>
+    <p class="note">Tip: say each German word out loud when you turn it over. Speaking it strengthens the memory.</p>
+  </section>
+
+  <section class="panel center result" id="result" hidden>
+    <h2 id="resTitle">Super!</h2>
+    <div class="big" id="resMoves">0</div>
+    <p class="note" id="resText"></p>
+    <div class="review" id="review"></div>
+    <div class="actions"><button class="btn primary" id="again" type="button">Play again</button><a class="btn" href="./" style="text-decoration:none">All games</a></div>
+  </section>
+</main>
+
+<script src="words.js"></script>
+<script src="spiele.js"></script>
+<script>
+(function(){
+  const S=window.Spiele,$=id=>document.getElementById(id);
+  const LOCK='<svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5.5 11V5.5a4.5 4.5 0 0 1 9 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.3" stroke-linecap="round"/><rect x="1" y="10.5" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16.8" r="1.7" fill="#fff"/><circle cx="13" cy="16.8" r="1.7" fill="#fff"/></svg>';
+  let n=6,first=null,lock=false,moves=0,found=0,t0=0,timer=null,pairs=[];
+
+  function fillTopics(){
+    const sel=$('topic');const keep=sel.value;sel.innerHTML='<option value="mix">Mix · sve teme</option>';
+    S.groups().forEach(g=>{const o=document.createElement('option');o.value=g.id;o.textContent=g.de;sel.appendChild(o)});
+    if([...sel.options].some(o=>o.value===keep))sel.value=keep;
+  }
+  function clean(de){return de.replace(/\s*\(Pl\.\)|\s*\+ (Akk|Dat)\.?/g,'').trim()}
+  function candidates(){
+    const gs=S.groups().filter(g=>$('topic').value==='mix'||g.id===$('topic').value);
+    const out=[];gs.forEach(g=>g.w.forEach(w=>{const de=clean(w[0]),bk=S.bks(w[2]);if(de.length<=26&&bk.length<=34&&!/…/.test(de))out.push({de,bk})}));
+    const seen=new Set();return out.filter(x=>!seen.has(x.de)&&seen.add(x.de)&&!seen.has('b:'+x.bk)&&seen.add('b:'+x.bk));
+  }
+  function bestKey(){return `memory-best-${S.level()}-${n}`}
+  function fmt(s){return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
+  function newGame(){
+    clearInterval(timer);timer=null;first=null;lock=false;moves=0;found=0;
+    $('result').hidden=true;
+    const c=candidates();let take=Math.min(n,c.length);
+    if(take<n&&$('topic').value!=='mix'){$('topic').value='mix';return newGame()}
+    pairs=S.shuffle(c).slice(0,take);
+    const cards=S.shuffle(pairs.flatMap((p,i)=>[{i,side:'de',text:p.de},{i,side:'bk',text:p.bk}]));
+    const b=$('board');b.innerHTML='';
+    cards.forEach(cd=>{
+      const t=document.createElement('button');t.type='button';t.className='tile';t.dataset.i=cd.i;t.dataset.side=cd.side;
+      t.setAttribute('aria-label','Hidden card');
+      t.innerHTML=`<span class="in"><span class="face front">${LOCK}</span><span class="face rear ${cd.side}"><span><small>${cd.side==='de'?'Deutsch':'BKS'}</small>${cd.text}</span></span></span>`;
+      t.onclick=()=>flip(t,cd);b.appendChild(t);
+    });
+    $('pairs').textContent=`0/${take}`;$('moves').textContent='0';$('time').textContent='0:00';
+    const best=S.store.get(bestKey(),null);$('best').textContent=best?best+' moves':'–';
+  }
+  function flip(t,cd){
+    if(lock||t.classList.contains('open')||t.classList.contains('done'))return;
+    if(!timer){t0=Date.now();timer=setInterval(()=>$('time').textContent=fmt(Math.floor((Date.now()-t0)/1000)),500)}
+    t.classList.add('open');t.setAttribute('aria-label',cd.text);
+    if(cd.side==='de')S.speak(cd.text);
+    if(!first){first={t,cd};return}
+    moves++;$('moves').textContent=moves;
+    const a=first;first=null;
+    if(a.cd.i===cd.i&&a.cd.side!==cd.side){
+      S.tone(true);
+      setTimeout(()=>{a.t.classList.add('done');t.classList.add('done');a.t.classList.add('pop');t.classList.add('pop')},250);
+      found++;$('pairs').textContent=`${found}/${pairs.length}`;
+      if(found===pairs.length)setTimeout(win,700);
+    }else{
+      lock=true;S.tone(false);a.t.classList.add('miss');t.classList.add('miss');
+      setTimeout(()=>{[a.t,t].forEach(x=>{x.classList.remove('open','miss');x.setAttribute('aria-label','Hidden card')});lock=false},1100);
+    }
+  }
+  function win(){
+    clearInterval(timer);const secs=Math.floor((Date.now()-t0)/1000);
+    const key=bestKey();const prev=S.store.get(key,null);const isBest=prev===null||moves<prev;if(isBest)S.store.set(key,moves);
+    const days=S.streak();
+    $('resTitle').textContent=isBest?'New best! Novi rekord!':'Super!';
+    $('resMoves').textContent=moves+' moves';
+    $('resText').textContent=`Time ${fmt(secs)} · perfect would be ${pairs.length} moves · Streak: ${days} day${days===1?'':'s'} 🔥`;
+    $('review').innerHTML='<p class="note" style="text-align:left">Say each pair out loud once more:</p>'+pairs.map(p=>`<div><b>${p.de}</b><span>${p.bk}</span></div>`).join('');
+    $('result').hidden=false;$('result').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  S.levelSeg($('lvl'),()=>{fillTopics();newGame()});S.soundToggle($('snd'));
+  $('sizeSeg').querySelectorAll('button').forEach(b=>b.onclick=()=>{n=+b.dataset.n;$('sizeSeg').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));newGame()});
+  $('topic').onchange=newGame;$('new').onclick=newGame;$('again').onclick=()=>{newGame();scrollTo({top:0,behavior:'smooth'})};
+  fillTopics();newGame();
+})();
+</script>
+</body>
+</html>
