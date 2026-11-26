@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A2E4D">
+<meta name="description" content="German A1 for speakers of Arabic: vocabulary, grammar bridge and Goethe A1 practice.">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Deutsch AR">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}
+.fa{font-family:"Noto Sans Arabic",Tahoma,"Segoe UI",sans-serif;direction:rtl;unicode-bidi:isolate;font-size:1.06em;line-height:1.75}
+.card .bks.fa{justify-content:flex-start;text-align:right;font-size:16px}
+.card .bks.fa .var{direction:rtl}
+td.fa,tr.fa td{text-align:right}
+.pairs span.fa{text-align:right}
+.tab small.fa{font-size:11px;line-height:1.4}
+</style>
+<title>Deutsch A1 für Arabischsprachige</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../core/a1.css">
+</head>
+<body>
+
+
+<header class="band">
+  <div class="wrap">
+    <div class="hero">
+      <a class="home" href="../">&larr; Alle Kurse · <span class="fa">كل الدورات</span></a>
+      <div class="brand">
+        <div class="wordmark"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5.5 11V5.5a4.5 4.5 0 0 1 9 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.3" stroke-linecap="round"/><rect x="1" y="10.5" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16.8" r="1.7" fill="#fff"/><circle cx="13" cy="16.8" r="1.7" fill="#fff"/><circle cx="7" cy="17" r=".75" fill="#0A2E4D"/><circle cx="13" cy="17" r=".75" fill="#0A2E4D"/></svg>Expert Tongue</div>
+        <div class="tagline">unlock your communication</div>
+      </div>
+      <h1>Deutsch A1 <span class="arrow">für</span> Arabischsprachige</h1>
+      <p>German A1 vocabulary and Goethe Start Deutsch 1 practice for speakers of Arabic. <span class="fa">الألمانية للمبتدئين، مع ترجمة عربية.</span></p>
+    </div>
+    <div class="pair" aria-label="Languages"><span>DE</span><span>EN</span><span>AR</span></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" data-tab="wortschatz" aria-selected="true">Wortschatz<small class="fa">المفردات</small></button>
+    <button class="tab" role="tab" data-tab="bruecke" aria-selected="false">Die Brücke<small class="fa">الجسر · ميزتك</small></button>
+    <button class="tab" role="tab" data-tab="pruefung" aria-selected="false">Prüfung<small class="fa">الامتحان · استماع وقراءة</small></button>
+    <button class="tab" role="tab" data-tab="schreiben" aria-selected="false">Schreiben<small class="fa">الكتابة</small></button>
+    <button class="tab" role="tab" data-tab="sprechen" aria-selected="false">Sprechen<small class="fa">المحادثة</small></button>
+  </div>
+</nav>
+<div class="voicebar"><div class="wrap">
+  <span class="lbl">Stimme · الصوت</span>
+  <select id="voiceSel" aria-label="German voice"></select>
+  <button class="btn" id="voiceTest">Test the voice</button>
+  <span class="note" id="voiceOk">If it still sounds English, pick another German voice from the list.</span>
+  <details id="voiceMissing" hidden><summary><b>No German voice found on this device.</b> The audio will sound English. Here's how to add one (2 minutes):</summary>
+    <ul>
+      <li><b>Windows:</b> Settings → Time &amp; language → Speech → Add voices → Deutsch (Deutschland). Then restart the browser.</li>
+      <li><b>Mac:</b> System Settings → Accessibility → Spoken Content → System voice → Manage Voices → German (e.g. Anna). Then reload the page.</li>
+      <li><b>iPhone / iPad:</b> Settings → Accessibility → Spoken Content → Voices → German → download a voice.</li>
+      <li><b>Android:</b> Settings → System → Languages → Text-to-speech → Google speech engine → Install voice data → Deutsch.</li>
+      <li><b>Easiest option:</b> open this page in Google Chrome or Microsoft Edge. Both include good German voices.</li>
+    </ul>
+  </details>
+</div></div>
+
+<main class="wrap">
+
+<!-- ============ WORTSCHATZ ============ -->
+<div class="panel" id="p-wortschatz">
+  <div class="toolbar">
+    <div class="progress"><div class="bar"><i id="pbar"></i></div><span id="ptext">0 learned</span></div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search · بحث…" aria-label="Search words">
+      <button class="btn" id="flashBtn" aria-pressed="false">Flashcards</button>
+      <button class="btn" id="resetBtn">Reset</button>
+    </div>
+  </div>
+  <div class="controls">
+    <span class="lbl">Show</span>
+    <div class="seg" id="showSeg">
+      <button data-v="all" aria-pressed="true">DE + EN + AR</button>
+      <button data-v="bks" aria-pressed="false">DE + AR</button>
+      <button data-v="en" aria-pressed="false">DE + EN</button>
+    </div>
+    <div class="seg" id="varSeg" hidden><button data-v="ALL" aria-pressed="true">ALL</button></div>
+  </div>
+  <div id="resetConfirm" class="tip" hidden><span>Reset all learned words? This clears your progress on this device.</span> <button class="btn" id="resetYes">Yes, reset</button> <button class="btn" id="resetNo">Cancel</button></div>
+
+  <details class="plan">
+    <summary>1-hour study plan · <span class="fa">خطة دراسة لمدة ساعة</span></summary>
+    <ol>
+      <li><b>0–10 min</b><span>Begrüßung: say every phrase out loud, especially „Ich weiß das Wort auf Deutsch nicht."</span></li>
+      <li><b>10–20 min</b><span>Familie & Vorstellung: practise Ich heiße …, ich komme aus Syrien, ich bin … Jahre alt, von Beruf bin ich …</span></li>
+      <li><b>20–30 min</b><span>Zahlen & Zeit: 1–100, weekdays, and „halb drei" (2:30, not 3:30).</span></li>
+      <li><b>30–40 min</b><span>Verben & Modalverben: müssen, können, dürfen, sollen, wollen, möchten. Watch gehen vs. fahren.</span></li>
+      <li><b>40–50 min</b><span>Wohnen & Gegenstände: Sprechen Teil 3 cards come from these words.</span></li>
+      <li><b>50–60 min</b><span>Reisen, Essen, Einkaufen: learn every noun with its article (der/die/das). German has three genders, Arabic has two, and they often don't match. This is your main job.</span></li>
+    </ol>
+  </details>
+
+  <div class="cats" id="cats"></div>
+  <div class="legend">
+    <span>Article colours:</span><span><b class="g-der">der</b> masculine · <span class="fa">مذكر</span></span><span><b class="g-die">die</b> feminine / plural · <span class="fa">مؤنث / جمع</span></span><span><b class="g-das">das</b> neuter · <span class="fa">محايد</span></span>
+  </div>
+  <div id="vocab"></div>
+</div>
+
+<!-- ============ BRÜCKE ============ -->
+<div class="panel" id="p-bruecke" hidden>
+  <div class="box">
+    <span class="eyebrow">Warum Arabischsprachige Vorteile haben</span>
+    <h2>You already know more German than you think</h2>
+    <p class="lead">Arabic already has the German sounds that English speakers find hardest: <b>ch</b> (<span class="fa">خ</span>) and the throaty <b>r</b> (<span class="fa">غ</span>). Standard Arabic has grammatical gender, cases (<span class="fa">مرفوع، منصوب، مجرور</span>), "the ones come first" numbers (<span class="fa">واحد وعشرون</span> = einundzwanzig) and the same "my head hurts" structure. German also took many words from Arabic: Zucker, Kaffee, Sofa, Matratze. Tap any <svg style="width:13px;height:13px;vertical-align:-2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg> to hear the German.</p>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">1 · Aussprache · <span class="fa">النطق</span></span>
+    <h2>German sounds, written in Arabic letters</h2>
+    <p class="lead">German writes from left to right and writes every vowel. Read the right-hand column as Arabic and you will be close.</p>
+    <div class="tablewrap"><table id="pronTable">
+      <thead><tr><th>German</th><th>Sounds like</th><th>Example</th><th>Read it as</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div class="tip"><b>p ≠ b</b><span>Arabic has no <b>p</b>, so <b>Paar</b> (pair) and <b>Bar</b> (bar), <b>packen</b> and <b>backen</b> sound the same to many Arabic speakers. For p, blow a puff of air: hold a paper in front of your mouth and make it move. The same for <b>v/f</b> and <b>w</b>: German <b>w</b> = <span class="fa">ڤ</span> (Wasser), not <span class="fa">و</span>.</span></div>
+    <div class="tip"><b>e, o, ü, ö</b><span>Arabic has three vowels (a, i, u); German has many more. <b>e</b> as in <b>Tee</b> and <b>o</b> as in <b>rot</b> are long and clear. <b>ü</b> = say <span class="fa">ي</span> with rounded lips, <b>ö</b> = say e with rounded lips. <b>Bett</b> (bed) and <b>Bitte</b> (please) must sound different.</span></div>
+    <div class="tip"><b>No extra vowel</b><span>German words can start with two or three consonants: <b>Straße, Sprache, Stuhl</b>. Don't add a vowel before or between them: it is „Schtraße", not „Isschtraße" or „Sitraße".</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">2 · Satzbau · <span class="fa">ترتيب الجملة</span></span>
+    <h2>Arabic often starts with the verb. German puts it 2nd</h2>
+    <p class="lead">Arabic can start with the verb (<span class="fa">ذهب الولد</span>) or the noun (<span class="fa">الولد ذهب</span>). In a German main clause the conjugated verb is always in <b>position 2</b>. A second verb, a participle or a separable prefix goes to the <b>end</b>.</p>
+    <div class="pairs">
+      <div><b>Ich <u>arbeite</u> heute.</b><span><span class="fa">أعمل اليوم.</span></span></div>
+      <div><b>Heute <u>arbeite</u> ich.</b><span>Time first? The verb stays in position 2 and the subject moves behind it.</span></div>
+      <div><b>Ich <u>muss</u> heute <u>arbeiten</u>.</b><span><span class="fa">يجب أن أعمل اليوم.</span> (the infinitive goes to the end)</span></div>
+      <div><b>Ich <u>stehe</u> um 7 Uhr <u>auf</u>.</b><span><span class="fa">أستيقظ الساعة السابعة.</span> The prefix auf- jumps to the end.</span></div>
+      <div><b><u>Kommen</u> Sie aus Syrien?</b><span><span class="fa">هل حضرتك من سوريا؟</span> German has no <span class="fa">هل</span>: the verb comes first.</span></div>
+    </div>
+    <div class="tip"><b>The verb "sein"</b><span>Arabic needs no verb in <span class="fa">أنا متعب</span>. German always does: <b>Ich bin müde.</b> <b>Das ist gut.</b> And it always needs a subject: <b>Es regnet</b> (<span class="fa">تمطر</span>).</span></div>
+    <div class="tip"><b>Sie and du</b><span><b>Sie</b> = <span class="fa">حضرتك</span>, always with a capital S and the "they" verb (<b>Sie sind</b>). <b>du</b> = <span class="fa">أنتَ</span> and <span class="fa">أنتِ</span>: German doesn't change the word or the verb for a man or a woman.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">3 · Artikel & Genus · <span class="fa">المذكر والمؤنث</span></span>
+    <h2>Arabic has two genders. German has three</h2>
+    <p class="lead">You already know that nouns have gender. German adds a third, neuter (<b class="g-das">das</b>), and shows the gender with an article: <b class="g-der">der</b>, <b class="g-die">die</b>, <b class="g-das">das</b>. Arabic <span class="fa">ـة</span> often means feminine; German endings like <b>-ung</b> or <b>-heit</b> do the same.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>German</th><th>Gender in German</th><th>Arabic</th><th>Gender in Arabic</th></tr></thead>
+      <tbody>
+        <tr><td><span class="g-die"><b>die</b></span> Sonne</td><td>feminine</td><td class="fa">الشمس</td><td>feminine ✓</td></tr>
+        <tr><td><span class="g-der"><b>der</b></span> Mond</td><td>masculine</td><td class="fa">القمر</td><td>masculine ✓</td></tr>
+        <tr><td><span class="g-der"><b>der</b></span> Tisch</td><td>masculine</td><td class="fa">الطاولة</td><td>feminine</td></tr>
+        <tr><td><span class="g-das"><b>das</b></span> Buch</td><td>neuter</td><td class="fa">الكتاب</td><td>masculine</td></tr>
+        <tr><td><span class="g-das"><b>das</b></span> Mädchen</td><td>neuter (!)</td><td class="fa">البنت</td><td>feminine</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>der = ال</b><span>German <b>der / die / das</b> works like <span class="fa">ال</span> ("the"), and <b>ein / eine</b> like tanwīn ("a"): <span class="fa">كتابٌ</span> = ein Buch, <span class="fa">الكتاب</span> = das Buch. <b>-ung, -heit, -keit</b> = always <span class="g-die"><b>die</b></span>, <b>-chen</b> = always <span class="g-das"><b>das</b></span>.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">4 · Fälle · <span class="fa">الإعراب</span></span>
+    <h2>Your <span class="fa">إعراب</span> helps: German has cases too</h2>
+    <p class="lead">Standard Arabic marks case on the noun ending (<span class="fa">ـُ ـَ ـِ</span>). German marks it mostly on the <b>article</b>. Three German cases match your three; the Dativ is new and often matches <span class="fa">لِـ</span>.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Fall</th><th>German</th><th>Arabic</th><th>Your clue</th></tr></thead>
+      <tbody>
+        <tr><td><b>Nominativ</b></td><td><span class="g-der">der</span> Mann ist hier.</td><td class="fa">الرجلُ هنا.</td><td><span class="fa">مرفوع</span> · who does it</td></tr>
+        <tr><td><b>Akkusativ</b></td><td>Ich sehe <span class="g-der">den</span> Mann.</td><td class="fa">أرى الرجلَ.</td><td><span class="fa">منصوب</span> · object → den</td></tr>
+        <tr><td><b>Dativ</b></td><td>Ich gebe <span class="g-der">dem</span> Mann das Buch.</td><td class="fa">أعطي الكتابَ للرجلِ.</td><td><span class="fa">لِـ</span> · receiver → dem</td></tr>
+        <tr><td><b>Genitiv</b></td><td>das Auto <span class="g-der">des</span> Mannes</td><td class="fa">سيارةُ الرجلِ</td><td><span class="fa">مجرور، إضافة</span> → des</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Same as Arabic</b><span>German has "to me" sentences: <b>Mir ist kalt</b> = <span class="fa">أشعر بالبرد</span>, <b>Das gefällt mir</b> = <span class="fa">هذا يعجبني</span>, <b>Mir geht es gut</b> = <span class="fa">أنا بخير</span>. <b>mir</b> = <span class="fa">لي، ـني</span>.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">5 · Wörter aus dem Arabischen · <span class="fa">كلمات من العربية</span></span>
+    <h2>German words that came from Arabic</h2>
+    <p class="lead">Through trade, science and Al-Andalus, German took many words from Arabic. Tap a card to see the Arabic word, then tap again to hear the German.</p>
+    <div class="cardset" id="loanwords"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">6 · Falsche Freunde · <span class="fa">كلمات مخادعة</span></span>
+    <h2>Sounds familiar, means something else</h2>
+    <div class="tablewrap"><table id="falseTable">
+      <thead><tr><th>German</th><th>Means</th><th>Sounds like</th><th>Which means</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ============ PRÜFUNG ============ -->
+<div class="panel" id="p-pruefung" hidden>
+  <details class="plan box" open style="padding:0">
+    <summary style="padding:16px 20px">Goethe-Zertifikat A1: Start Deutsch 1 · structure of the exam</summary>
+    <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:14px">
+      <div class="stats">
+        <div class="stat"><b>60</b><span>points total · <span class="fa">مجموع النقاط</span></span></div>
+        <div class="stat"><b>60 %</b><span>to pass · <span class="fa">للنجاح</span></span></div>
+        <div class="stat"><b>~80 min</b><span>written part + speaking</span></div>
+        <div class="stat"><b>4</b><span>modules · <span class="fa">أقسام</span></span></div>
+      </div>
+      <div class="modules">
+        <div class="module"><h3>Hören <span>~20 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: 6 short dialogues, heard twice, A/B/C</li><li><b>Teil 2</b>: 4 announcements, heard <b>once</b>, richtig/falsch</li><li><b>Teil 3</b>: 5 phone messages, heard twice, A/B/C</li></ul></div>
+        <div class="module"><h3>Lesen <span>~25 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: 2 short emails, 5 × richtig/falsch</li><li><b>Teil 2</b>: 5 situations, choose website A or B</li><li><b>Teil 3</b>: 5 signs/notices, richtig/falsch</li></ul></div>
+        <div class="module"><h3>Schreiben <span>~20 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: fill in a form, 5 gaps</li><li><b>Teil 2</b>: short message, about 30 words, 3 points</li></ul></div>
+        <div class="module"><h3>Sprechen <span>~15 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: introduce yourself, spell, say a number</li><li><b>Teil 2</b>: ask and answer questions on a theme</li><li><b>Teil 3</b>: make and react to requests</li></ul></div>
+      </div>
+      <p class="note">Check the current format and dates with your exam centre (Goethe-Institut, VHS, or telc for the telc A1 version).</p>
+    </div>
+  </details>
+
+  <div class="score" id="examScore"><span>Your score · <span class="fa">نتيجتك</span>: <b id="scoreVal">0 / 0</b></span><span>Correct <b id="okVal">0</b></span><span>Wrong <b id="noVal">0</b></span><button class="btn" id="examReset">Reset answers</button></div>
+
+  <div class="box" id="hoeren">
+    <span class="eyebrow">Hören · <span class="fa">استماع</span></span>
+    <h2>Listening practice</h2>
+    <p class="lead">Read the question first, then press „Anhören". Your browser reads the text in German. Use „Text" only after you have answered. In Teil 2 you hear the text only once in the real exam: focus on numbers and on nicht / kein.</p>
+  </div>
+
+  <div class="box" id="lesen">
+    <span class="eyebrow">Lesen · <span class="fa">قراءة</span></span>
+    <h2>Reading practice</h2>
+    <p class="lead">Scan for key words before you read the statement. Negations (nicht, kein, nur, geschlossen, verboten) are the most common traps.</p>
+  </div>
+</div>
+
+<!-- ============ SCHREIBEN ============ -->
+<div class="panel" id="p-schreiben" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · Formular</span>
+    <h2>Fill in the form for your friend</h2>
+    <div class="text">Ihr Freund Omar Haddad ist 32 Jahre alt und kommt aus Aleppo in Syrien. Er wohnt jetzt in der Königstraße 12, 70173 Stuttgart. Er ist Elektriker von Beruf. Er arbeitet tagsüber und möchte einen Deutschkurs am Abend machen.</div>
+    <p class="lead">Omar wants to register at the Volkshochschule. Write the 5 missing details. <span class="fa">صديقك عمر يريد التسجيل في دورة ألمانية. اكتب المعلومات الخمس الناقصة.</span></p>
+    <div class="form" id="formFields"></div>
+    <div class="controls"><button class="btn primary" id="formCheck">Check · <span class="fa">تحقّق</span></button><button class="btn" id="formShow">Show answers</button><span class="counter" id="formResult"></span></div>
+    <div class="tip"><b>Achtung!</b><span>German forms use <b>Vorname</b> (<span class="fa">الاسم الأول</span>) and <b>Familienname / Nachname</b> (<span class="fa">اسم العائلة</span>). The postcode (<b>PLZ</b>) comes <b>before</b> the city: 70173 Stuttgart. Country names usually have no article: „aus Syrien", „aus Ägypten". Exceptions: „aus dem Irak", „aus dem Libanon", „aus dem Jemen".</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · kurze Nachricht</span>
+    <h2>Write a message (about 30 words)</h2>
+    <div class="text">Sie haben am Freitag einen Termin bei Ihrer Deutschlehrerin, Frau Weber. Sie können nicht kommen. Schreiben Sie Frau Weber eine E-Mail:
+• Warum können Sie nicht kommen?
+• Fragen Sie nach einem neuen Termin.
+• Bitten Sie um eine Antwort.</div>
+    <label for="mail" class="note">Your text · <span class="fa">نصّك</span></label>
+    <textarea id="mail" placeholder="Liebe Frau Weber, …"></textarea>
+    <div class="controls"><span class="counter" id="wc">0 words</span><button class="btn" id="modelBtn">Show model answer</button></div>
+    <div id="checklist" class="pairs"></div>
+    <div class="model" id="model" hidden>Liebe Frau Weber,
+
+leider kann ich am Freitag nicht zum Termin kommen. Ich bin krank und muss zum Arzt. Haben Sie nächste Woche Zeit, vielleicht am Dienstag? Bitte antworten Sie mir.
+
+Viele Grüße
+Layla Nasser</div>
+    <h3>Phrase bank · <span class="fa">عبارات مفيدة</span></h3>
+    <div class="pairs" id="phrases"></div>
+    <div class="tip"><b>Achtung!</b><span>After „Liebe Frau Weber," the next line starts with a <b>small letter</b> (leider…). And <b>Sie, Ihnen, Ihr</b> are always capitalised when you write formally, like <span class="fa">حضرتك</span> in a formal letter.</span></div>
+  </div>
+</div>
+
+<!-- ============ SPRECHEN ============ -->
+<div class="panel" id="p-sprechen" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · sich vorstellen</span>
+    <h2>Introduce yourself</h2>
+    <p class="lead">In the exam you get keyword cards. Say one full sentence for each. Tap a card to see a model answer.</p>
+    <div class="cardset" id="intro"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 1 · buchstabieren</span>
+    <h2>Spell your name the German way</h2>
+    <p class="lead">You will be asked to spell your name. Orange letters are traps if you learned the English alphabet: <b>A</b> is „a", <b>E</b> is „e", <b>I</b> is „i", <b>H</b> is „ha", <b>J</b> is „jot", <b>R</b> is „er", <b>V</b> is „fau", <b>W</b> is „ve", <b>Y</b> is „üpsilon", <b>Z</b> is „tset". And keep <b>P</b> and <b>B</b> apart! Tap a letter to hear it.</p>
+    <div class="alpha" id="alpha"></div>
+    <div class="pairs">
+      <h3>Your name in Latin letters · <span class="fa">اسمك بالحروف اللاتينية</span></h3>
+      <div><b>Use your passport spelling</b><span>Arabic names have many Latin spellings (Mohammed, Muhammad, Mohamad). Germans copy exactly what you spell, so always use the spelling in your passport.</span></div>
+      <div><b>Al- / El-</b><span>Say whether it is part of the surname: „Al-Hassan, mit Bindestrich" (with a hyphen).</span></div>
+      <div><b>Kh, Gh, Sh</b><span>Spell them letter by letter: Khalil = K – H – A – L – I – L.</span></div>
+      
+      <div><b>Mein Name ist Haddad.</b><span>H – A – D – D – A – D (or „H – A – Doppel-D – A – D")</span></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · Fragen stellen</span>
+    <h2>Theme: Essen und Trinken</h2>
+    <p class="lead">You draw a card with a word. Make a W-question for your partner. Your partner answers. Tap for a model.</p>
+    <div class="cardset" id="themeCards"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 3 · Bitten</span>
+    <h2>Polite requests</h2>
+    <p class="lead">You see a picture card. Make a polite request. Your partner says yes or no. Tap for a model.</p>
+    <div class="cardset" id="requestCards"></div>
+    <div class="tip"><b>Trick</b><span><b>Können Sie bitte …?</b> = <span class="fa">هل يمكنك من فضلك …؟</span> &nbsp;·&nbsp; <b>Ich hätte gern …</b> = <span class="fa">أودّ …</span> &nbsp;·&nbsp; Answer: <b>Ja, gern.</b> / <b>Nein, tut mir leid.</b></span></div>
+  </div>
+</div>
+
+<div class="cta" style="margin-top:28px">
+  <p><strong>Learning German for life and work in Germany?</strong>Expert Tongue coaching helps you speak with confidence, from A1 to C2.</p>
+  <a href="https://expert-tongue.com" target="_blank" rel="noopener">expert-tongue.com</a>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Expert Tongue · Deutsch A1 für Arabischsprachige · Free study tool</span>
+    <span class="note">Arabic translations use Modern Standard Arabic (<span class="fa">الفصحى</span>), understood in every Arabic-speaking country.</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="../../core/a1.js"></script>
+
+<script>try{localStorage.setItem('et-lang','ar')}catch(e){}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('../../sw.js').catch(()=>{})})}</script>
+</body>
+</html>

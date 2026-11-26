@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A2E4D">
+<meta name="description" content="German A1 for speakers of Bengali: vocabulary, grammar bridge and Goethe A1 practice.">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Deutsch BN">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Deutsch A1 für Bengalischsprachige</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600&family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../core/a1.css">
+<style>:root{--f-display:"Poppins", "Noto Sans Bengali", "Segoe UI", system-ui, sans-serif; --f-body:"Inter", "Noto Sans Bengali", "Segoe UI", system-ui, -apple-system, sans-serif;}</style>
+</head>
+<body>
+
+
+<header class="band">
+  <div class="wrap">
+    <div class="hero">
+      <a class="home" href="../">&larr; Alle Kurse · সব কোর্স</a>
+      <div class="brand">
+        <div class="wordmark"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5.5 11V5.5a4.5 4.5 0 0 1 9 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.3" stroke-linecap="round"/><rect x="1" y="10.5" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16.8" r="1.7" fill="#fff"/><circle cx="13" cy="16.8" r="1.7" fill="#fff"/><circle cx="7" cy="17" r=".75" fill="#0A2E4D"/><circle cx="13" cy="17" r=".75" fill="#0A2E4D"/></svg>Expert Tongue</div>
+        <div class="tagline">unlock your communication</div>
+      </div>
+      <h1>Deutsch A1 <span class="arrow">für</span> Bengalischsprachige</h1>
+      <p>German A1 vocabulary and Goethe Start Deutsch 1 practice for speakers of Bengali. বাংলা অনুবাদসহ নতুনদের জন্য জার্মান।</p>
+    </div>
+    <div class="pair" aria-label="Languages"><span>DE</span><span>EN</span><span>BN</span></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" data-tab="wortschatz" aria-selected="true">Wortschatz<small>শব্দভান্ডার</small></button>
+    <button class="tab" role="tab" data-tab="bruecke" aria-selected="false">Die Brücke<small>সেতু · আপনার সুবিধা</small></button>
+    <button class="tab" role="tab" data-tab="pruefung" aria-selected="false">Prüfung<small>পরীক্ষা · শোনা ও পড়া</small></button>
+    <button class="tab" role="tab" data-tab="schreiben" aria-selected="false">Schreiben<small>লেখা</small></button>
+    <button class="tab" role="tab" data-tab="sprechen" aria-selected="false">Sprechen<small>বলা</small></button>
+  </div>
+</nav>
+<div class="voicebar"><div class="wrap">
+  <span class="lbl">Stimme · কণ্ঠ</span>
+  <select id="voiceSel" aria-label="German voice"></select>
+  <button class="btn" id="voiceTest">Test the voice</button>
+  <span class="note" id="voiceOk">If it still sounds English, pick another German voice from the list.</span>
+  <details id="voiceMissing" hidden><summary><b>No German voice found on this device.</b> The audio will sound English. Here's how to add one (2 minutes):</summary>
+    <ul>
+      <li><b>Windows:</b> Settings → Time &amp; language → Speech → Add voices → Deutsch (Deutschland). Then restart the browser.</li>
+      <li><b>Mac:</b> System Settings → Accessibility → Spoken Content → System voice → Manage Voices → German (e.g. Anna). Then reload the page.</li>
+      <li><b>iPhone / iPad:</b> Settings → Accessibility → Spoken Content → Voices → German → download a voice.</li>
+      <li><b>Android:</b> Settings → System → Languages → Text-to-speech → Google speech engine → Install voice data → Deutsch.</li>
+      <li><b>Easiest option:</b> open this page in Google Chrome or Microsoft Edge. Both include good German voices.</li>
+    </ul>
+  </details>
+</div></div>
+
+<main class="wrap">
+
+<!-- ============ WORTSCHATZ ============ -->
+<div class="panel" id="p-wortschatz">
+  <div class="toolbar">
+    <div class="progress"><div class="bar"><i id="pbar"></i></div><span id="ptext">0 learned</span></div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search · খুঁজুন…" aria-label="Search words">
+      <button class="btn" id="flashBtn" aria-pressed="false">Flashcards</button>
+      <button class="btn" id="resetBtn">Reset</button>
+    </div>
+  </div>
+  <div class="controls">
+    <span class="lbl">Show</span>
+    <div class="seg" id="showSeg">
+      <button data-v="all" aria-pressed="true">DE + EN + BN</button>
+      <button data-v="bks" aria-pressed="false">DE + BN</button>
+      <button data-v="en" aria-pressed="false">DE + EN</button>
+    </div>
+    <div class="seg" id="varSeg" hidden><button data-v="ALL" aria-pressed="true">ALL</button></div>
+  </div>
+  <div id="resetConfirm" class="tip" hidden><span>Reset all learned words? This clears your progress on this device.</span> <button class="btn" id="resetYes">Yes, reset</button> <button class="btn" id="resetNo">Cancel</button></div>
+
+  <details class="plan">
+    <summary>1-hour study plan · ৬০ মিনিটের পড়ার পরিকল্পনা</summary>
+    <ol>
+      <li><b>0–10 min</b><span>Begrüßung: say every phrase out loud, especially „Ich weiß das Wort auf Deutsch nicht."</span></li>
+      <li><b>10–20 min</b><span>Familie & Vorstellung: practise Ich heiße …, ich komme aus Bangladesch, ich bin … Jahre alt, von Beruf bin ich …</span></li>
+      <li><b>20–30 min</b><span>Zahlen & Zeit: 1–100, weekdays, and „halb drei" (2:30, not 3:30).</span></li>
+      <li><b>30–40 min</b><span>Verben & Modalverben: müssen, können, dürfen, sollen, wollen, möchten. Watch gehen vs. fahren.</span></li>
+      <li><b>40–50 min</b><span>Wohnen & Gegenstände: Sprechen Teil 3 cards come from these words.</span></li>
+      <li><b>50–60 min</b><span>Reisen, Essen, Einkaufen: learn every noun with its article (der/die/das). Bengali has no grammatical gender, so this is your main job: learn every noun with der, die or das, as one word.</span></li>
+    </ol>
+  </details>
+
+  <div class="cats" id="cats"></div>
+  <div class="legend">
+    <span>Article colours:</span><span><b class="g-der">der</b> masculine · পুংলিঙ্গ</span><span><b class="g-die">die</b> feminine / plural · স্ত্রীলিঙ্গ / বহুবচন</span><span><b class="g-das">das</b> neuter · ক্লীবলিঙ্গ</span>
+  </div>
+  <div id="vocab"></div>
+</div>
+
+<!-- ============ BRÜCKE ============ -->
+<div class="panel" id="p-bruecke" hidden>
+  <div class="box">
+    <span class="eyebrow">Was Bengalischsprachige schon können</span>
+    <h2>Your head start: an Indo-European cousin with the verb at the end</h2>
+    <p class="lead">Bengali and German are distant cousins in the Indo-European family: <b>নাম</b> = Name, <b>নব</b> = neu, <b>দাঁত</b> = Zahn, <b>তিন</b> = drei. Your verbs already change for each person (আমি করি, তুমি করো, সে করে), you already have a polite „you" (<b>আপনি</b> = Sie), you already mark objects (মা<b>কে</b>, বাবা<b>র</b>) and you already put the verb at the <b>end</b> (আমি আজ কাজ <b>করি</b>). What is new: <b>der, die, das</b> and the verb in <b>position 2</b>. Tap any <svg style="width:13px;height:13px;vertical-align:-2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg> to hear the German.</p>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">1 · Aussprache · উচ্চারণ</span>
+    <h2>German sounds, written in Bengali letters</h2>
+    <p class="lead">Read the right-hand column as Bengali. German stresses the <b>first syllable</b> of most words: <b>Ar</b>-beit, <b>Fa</b>-mi-lie is an exception (Fa-<b>mi</b>-lie).</p>
+    <div class="tablewrap"><table id="pronTable">
+      <thead><tr><th>German</th><th>Sounds like</th><th>Example</th><th>Read it as</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div class="tip"><b>Achtung!</b><span><b>z, f, v, w do not exist in Bengali.</b> Bengali often says জ for z, ফ (ph) for f, ভ (bh) for v and w. In German they are four separate sounds: <b>Z</b>ug = „ৎসুক", <b>F</b>isch with the upper teeth on the lip, <b>W</b>asser = „ভ়াসার" with the teeth on the lip too, but voiced. And German <b>s</b> at the start sounds like English z.</span></div>
+    <div class="tip"><b>The vowel at the end</b><span>Bengali অ is often said like a short o (কলম = kolom). German <b>a</b> is always open, like আ: <b>Ma</b>nn, not „মন". And a final <b>-e</b> is always pronounced, short and soft: bitt<b>e</b>, Schul<b>e</b>.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">2 · Satzbau · বাক্যগঠন</span>
+    <h2>Bengali: verb at the end. German: verb 2nd, the rest at the end</h2>
+    <p class="lead">Bengali puts the verb last: আমি আজ কাজ <b>করি</b>. In a German main clause the conjugated verb stands in <b>position 2</b>. But every second verb, participle or prefix goes to the <b>end</b>, exactly where Bengali puts it.</p>
+    <div class="pairs">
+      <div><b>Ich <u>arbeite</u> heute.</b><span>আমি আজ কাজ করি।</span></div>
+      <div><b>Heute <u>arbeite</u> ich.</b><span>আজ আমি কাজ করি। If something else comes first, the verb stays 2nd and „ich" moves behind it: never „Heute ich arbeite".</span></div>
+      <div><b>Ich <u>muss</u> heute <u>arbeiten</u>.</b><span>আজ আমাকে কাজ করতে হবে। The second verb goes to the end.</span></div>
+      <div><b>Ich <u>stehe</u> um 7 Uhr <u>auf</u>.</b><span>আমি সাতটায় ঘুম থেকে উঠি। „auf" jumps to the end.</span></div>
+      <div><b><u>Kommen</u> Sie aus Bangladesch?</b><span>আপনি কি বাংলাদেশ থেকে এসেছেন? No কি: the verb goes first.</span></div>
+    </div>
+    <div class="tip"><b>Verb endings</b><span>You know this already: আমি কর<b>ি</b>, তুমি কর<b>ো</b>, সে কর<b>ে</b>, আপনি কর<b>েন</b>. German: ich komm<b>e</b>, du komm<b>st</b>, er komm<b>t</b>, wir komm<b>en</b>. Even the polite form ends in -n in both: আপনি কর<b>েন</b>, Sie komm<b>en</b>!</span></div>
+    <div class="tip"><b>Sie, du, ihr</b><span>German has <b>du</b> (তুমি), <b>ihr</b> (তোমরা) and <b>Sie</b> (আপনি, always with a capital S). There is no তুই: use du with friends and Sie with everyone you would call আপনি.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">3 · Artikel & Genus · লিঙ্গ</span>
+    <h2>der, die, das: the one thing Bengali doesn't have</h2>
+    <p class="lead">Bengali nouns have no gender (সে = he and she!), and the classifier -টা / -টি is the same for every noun. German has three genders and shows them with an article in front: <b class="g-der">der</b> Tisch, <b class="g-die">die</b> Katze, <b class="g-das">das</b> Buch. Learn every noun with its article, as one word. Nouns are always written with a <b>capital letter</b>.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>German</th><th>Gender</th><th>বাংলা</th><th>Memory trick</th></tr></thead>
+      <tbody>
+        <tr><td><span class="g-der"><b>der</b></span> Mann</td><td>masculine</td><td>পুরুষ</td><td>logical ✓</td></tr>
+        <tr><td><span class="g-die"><b>die</b></span> Frau</td><td>feminine</td><td>নারী</td><td>logical ✓</td></tr>
+        <tr><td><span class="g-das"><b>das</b></span> Mädchen</td><td>neuter</td><td>মেয়ে</td><td>-chen is always das</td></tr>
+        <tr><td><span class="g-der"><b>der</b></span> Tisch</td><td>masculine</td><td>টেবিল</td><td>just learn it</td></tr>
+        <tr><td><span class="g-die"><b>die</b></span> Lampe</td><td>feminine</td><td>বাতি</td><td>just learn it</td></tr>
+        <tr><td><span class="g-die"><b>die</b></span> Kinder</td><td>plural</td><td>শিশুরা</td><td>every plural is die</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Plural</b><span>Bengali adds -রা, -গুলো or -দের; German has several plural endings: das Kind → die Kind<b>er</b>, der Tisch → die Tisch<b>e</b>, die Frau → die Frau<b>en</b>, das Auto → die Auto<b>s</b>. Learn the plural with the noun: der Tisch, die Tische.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">4 · Fälle · কারক</span>
+    <h2>You already know cases: -কে and -র</h2>
+    <p class="lead">Bengali adds an ending <b>after</b> the noun: লোকটা<b>কে</b> দেখি, লোকটা<b>র</b> গাড়ি. German changes the article <b>before</b> the noun: <b>den</b> Mann, <b>des</b> Mannes. Same idea, other side. At A1, focus on Nominativ and Akkusativ: only <b class="g-der">der</b> changes, der → <b>den</b>.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Fall</th><th>German</th><th>বাংলা</th><th>Clue</th></tr></thead>
+      <tbody>
+        <tr><td><b>Nominativ</b></td><td><span class="g-der">der</span> Mann ist hier.</td><td>লোকটা এখানে আছে।</td><td>no ending</td></tr>
+        <tr><td><b>Akkusativ</b></td><td>Ich sehe <span class="g-der">den</span> Mann.</td><td>আমি লোকটা<b>কে</b> দেখি।</td><td>-কে (whom) → den</td></tr>
+        <tr><td><b>Dativ</b></td><td>Ich gebe <span class="g-der">dem</span> Mann das Buch.</td><td>আমি লোকটা<b>কে</b> বইটা দিই।</td><td>-কে (to whom) → dem</td></tr>
+        <tr><td><b>Genitiv</b></td><td>das Auto <span class="g-der">des</span> Mannes</td><td>লোকটা<b>র</b> গাড়ি</td><td>-র → des</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Your clue</b><span>Bengali uses <b>-কে</b> for both „whom" and „to whom". German splits it: the thing you give is Akkusativ, the person who receives it is Dativ: Ich gebe <b>dem</b> Mann (Dativ) <b>das</b> Buch (Akkusativ). For -র, everyday German simply says „von": das Auto <b>von</b> Arif = আরিফের গাড়ি.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">5 · Bekannte Wörter · চেনা শব্দ</span>
+    <h2>Words you already know</h2>
+    <p class="lead">International words that Bengali uses too, and old Indo-European cousins that Bengali and German share. Tap a card to see the Bengali word, then tap again to hear the German.</p>
+    <div class="cardset" id="loanwords"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">6 · Falsche Freunde · ভুল বন্ধু</span>
+    <h2>Looks familiar, means something else</h2>
+    <div class="tablewrap"><table id="falseTable">
+      <thead><tr><th>German</th><th>Means</th><th>Looks like</th><th>Which is</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ============ PRÜFUNG ============ -->
+<div class="panel" id="p-pruefung" hidden>
+  <details class="plan box" open style="padding:0">
+    <summary style="padding:16px 20px">Goethe-Zertifikat A1: Start Deutsch 1 · structure of the exam</summary>
+    <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:14px">
+      <div class="stats">
+        <div class="stat"><b>60</b><span>points total · মোট পয়েন্ট</span></div>
+        <div class="stat"><b>60 %</b><span>to pass · পাস করার জন্য</span></div>
+        <div class="stat"><b>~80 min</b><span>written part + speaking</span></div>
+        <div class="stat"><b>4</b><span>modules · অংশ</span></div>
+      </div>
+      <div class="modules">
+        <div class="module"><h3>Hören <span>~20 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: 6 short dialogues, heard twice, A/B/C</li><li><b>Teil 2</b>: 4 announcements, heard <b>once</b>, richtig/falsch</li><li><b>Teil 3</b>: 5 phone messages, heard twice, A/B/C</li></ul></div>
+        <div class="module"><h3>Lesen <span>~25 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: 2 short emails, 5 × richtig/falsch</li><li><b>Teil 2</b>: 5 situations, choose website A or B</li><li><b>Teil 3</b>: 5 signs/notices, richtig/falsch</li></ul></div>
+        <div class="module"><h3>Schreiben <span>~20 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: fill in a form, 5 gaps</li><li><b>Teil 2</b>: short message, about 30 words, 3 points</li></ul></div>
+        <div class="module"><h3>Sprechen <span>~15 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: introduce yourself, spell, say a number</li><li><b>Teil 2</b>: ask and answer questions on a theme</li><li><b>Teil 3</b>: make and react to requests</li></ul></div>
+      </div>
+      <p class="note">Check the current format and dates with your exam centre (Goethe-Institut, VHS, or telc for the telc A1 version).</p>
+    </div>
+  </details>
+
+  <div class="score" id="examScore"><span>Your score · আপনার স্কোর: <b id="scoreVal">0 / 0</b></span><span>Correct <b id="okVal">0</b></span><span>Wrong <b id="noVal">0</b></span><button class="btn" id="examReset">Reset answers</button></div>
+
+  <div class="box" id="hoeren">
+    <span class="eyebrow">Hören · শোনা</span>
+    <h2>Listening practice</h2>
+    <p class="lead">Read the question first, then press „Anhören". Your browser reads the text in German. Use „Text" only after you have answered. In Teil 2 you hear the text only once in the real exam: focus on numbers and on nicht / kein.</p>
+  </div>
+
+  <div class="box" id="lesen">
+    <span class="eyebrow">Lesen · পড়া</span>
+    <h2>Reading practice</h2>
+    <p class="lead">Scan for key words before you read the statement. Negations (nicht, kein, nur, geschlossen, verboten) are the most common traps.</p>
+  </div>
+</div>
+
+<!-- ============ SCHREIBEN ============ -->
+<div class="panel" id="p-schreiben" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · Formular</span>
+    <h2>Fill in the form for your friend</h2>
+    <div class="text">Ihr Freund Arif Hossain ist 32 Jahre alt und kommt aus Dhaka in Bangladesch. Er wohnt jetzt in der Königstraße 12, 70173 Stuttgart. Er ist Elektriker von Beruf. Er arbeitet tagsüber und möchte einen Deutschkurs am Abend machen.</div>
+    <p class="lead">Arif wants to register at the Volkshochschule. Write the 5 missing details. আপনার বন্ধু আরিফ জার্মান কোর্সে ভর্তি হতে চায়। বাদ পড়া ৫টি তথ্য লিখুন।</p>
+    <div class="form" id="formFields"></div>
+    <div class="controls"><button class="btn primary" id="formCheck">Check · যাচাই করুন</button><button class="btn" id="formShow">Show answers</button><span class="counter" id="formResult"></span></div>
+    <div class="tip"><b>Achtung!</b><span>German forms use <b>Vorname</b> (নাম) and <b>Familienname / Nachname</b> (পদবি). The postcode (<b>PLZ</b>) comes <b>before</b> the city: 70173 Stuttgart. Country: „aus Bangladesch", „aus Indien", with no article. Write your name exactly as in your passport, even if it has only one name or „Md.". Dates are written day.month.year, as at home.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · kurze Nachricht</span>
+    <h2>Write a message (about 30 words)</h2>
+    <div class="text">Sie haben am Freitag einen Termin bei Ihrer Deutschlehrerin, Frau Weber. Sie können nicht kommen. Schreiben Sie Frau Weber eine E-Mail:
+• Warum können Sie nicht kommen?
+• Fragen Sie nach einem neuen Termin.
+• Bitten Sie um eine Antwort.</div>
+    <label for="mail" class="note">Your text · আপনার লেখা</label>
+    <textarea id="mail" placeholder="Liebe Frau Weber, …"></textarea>
+    <div class="controls"><span class="counter" id="wc">0 words</span><button class="btn" id="modelBtn">Show model answer</button></div>
+    <div id="checklist" class="pairs"></div>
+    <div class="model" id="model" hidden>Liebe Frau Weber,
+
+leider kann ich am Freitag nicht zum Termin kommen. Ich bin krank und muss zum Arzt. Haben Sie nächste Woche Zeit, vielleicht am Dienstag? Bitte antworten Sie mir.
+
+Viele Grüße
+Nusrat Rahman</div>
+    <h3>Phrase bank · কাজের বাক্য</h3>
+    <div class="pairs" id="phrases"></div>
+    <div class="tip"><b>Achtung!</b><span>After „Liebe Frau Weber," the next line starts with a <b>small letter</b> (leider…). And <b>Sie, Ihnen, Ihr</b> are always capitalised when you write formally, to show respect, like আপনি.</span></div>
+  </div>
+</div>
+
+<!-- ============ SPRECHEN ============ -->
+<div class="panel" id="p-sprechen" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · sich vorstellen</span>
+    <h2>Introduce yourself</h2>
+    <p class="lead">In the exam you get keyword cards. Say one full sentence for each. Tap a card to see a model answer.</p>
+    <div class="cardset" id="intro"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 1 · buchstabieren</span>
+    <h2>Spell your name the German way</h2>
+    <p class="lead">You will be asked to spell your name. Orange letters are traps for Bengali speakers, who know the English letter names: <b>A</b> is „আ" (not „এ"), <b>E</b> is „এ" (not „ই"), <b>I</b> is „ঈ" (not „আই"), <b>C</b> is „ৎসে", <b>G</b> is „গে" (not „জি"), <b>H</b> is „হা" (not „এইচ"), <b>J</b> is „ইয়ট" (not „জে"), <b>R</b> is „এর" from the throat, <b>U</b> is „উ" (not „ইউ"), <b>V</b> is „ফাউ", <b>W</b> is „ভে", <b>Y</b> is „ইউপসিলন" and <b>Z</b> is „ৎসেট". Tap a letter to hear it.</p>
+    <div class="alpha" id="alpha"></div>
+    <div class="pairs">
+      <h3>Bengali names · বাংলা নাম</h3>
+      <div><b>Md. and one-word names</b><span>If your passport says „Md." or „Mohammad", write it exactly so. If you have only one name, German forms may show it as the Familienname: ask the office how they want it.</span></div>
+      <div><b>Spelling letters</b><span>Spell your name as in your passport: Hossain, Hussain and Hosen are three different names for a German office. Say „Doppel-" for double letters: Hossain = H – O – Doppel-S – A – I – N.</span></div>
+      
+      
+      <div><b>Mein Name ist Rahman.</b><span>R – A – H – M – A – N: „এর – আ – হা – এম – আ – এন" (careful: A = „আ", H = „হা")</span></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · Fragen stellen</span>
+    <h2>Theme: Essen und Trinken</h2>
+    <p class="lead">You draw a card with a word. Make a W-question for your partner. Your partner answers. Tap for a model.</p>
+    <div class="cardset" id="themeCards"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 3 · Bitten</span>
+    <h2>Polite requests</h2>
+    <p class="lead">You see a picture card. Make a polite request. Your partner says yes or no. Tap for a model.</p>
+    <div class="cardset" id="requestCards"></div>
+    <div class="tip"><b>Trick</b><span><b>Können Sie bitte …?</b> = আপনি কি দয়া করে … করবেন? &nbsp;·&nbsp; <b>Ich hätte gern …</b> = আমি … চাই &nbsp;·&nbsp; Answer: <b>Ja, gern.</b> / <b>Nein, tut mir leid.</b></span></div>
+  </div>
+</div>
+
+<div class="cta" style="margin-top:28px">
+  <p><strong>Learning German for life and work in Germany?</strong>Expert Tongue coaching helps you speak with confidence, from A1 to C2.</p>
+  <a href="https://expert-tongue.com" target="_blank" rel="noopener">expert-tongue.com</a>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Expert Tongue · Deutsch A1 für Bengalischsprachige · Free study tool</span>
+    <span class="note">Bengali translations use standard Bengali. Where Bangladesh and West Bengal use different words (পানি / জল, গোসল / স্নান), both are correct.</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="../../core/a1.js"></script>
+
+<script>try{localStorage.setItem('et-lang','bn')}catch(e){}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('../../sw.js').catch(()=>{})})}</script>
+</body>
+</html>

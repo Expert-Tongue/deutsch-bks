@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A2E4D">
+<meta name="description" content="German A1 for English speakers: vocabulary, grammar bridge and Goethe A1 practice.">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Deutsch EN">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Deutsch A1 für Englischsprachige</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../core/a1.css">
+</head>
+<body>
+
+
+<header class="band">
+  <div class="wrap">
+    <div class="hero">
+      <a class="home" href="../">&larr; Alle Kurse · all courses</a>
+      <div class="brand">
+        <div class="wordmark"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5.5 11V5.5a4.5 4.5 0 0 1 9 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.3" stroke-linecap="round"/><rect x="1" y="10.5" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16.8" r="1.7" fill="#fff"/><circle cx="13" cy="16.8" r="1.7" fill="#fff"/><circle cx="7" cy="17" r=".75" fill="#0A2E4D"/><circle cx="13" cy="17" r=".75" fill="#0A2E4D"/></svg>Expert Tongue</div>
+        <div class="tagline">unlock your communication</div>
+      </div>
+      <h1>Deutsch A1 <span class="arrow">für</span> Englischsprachige</h1>
+      <p>German A1 vocabulary and Goethe Start Deutsch 1 practice for English speakers, in British and American English.</p>
+    </div>
+    <div class="pair" aria-label="Languages"><span>DE</span><span>EN</span></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" data-tab="wortschatz" aria-selected="true">Wortschatz<small>vocabulary</small></button>
+    <button class="tab" role="tab" data-tab="bruecke" aria-selected="false">Die Brücke<small>the bridge · your head start</small></button>
+    <button class="tab" role="tab" data-tab="pruefung" aria-selected="false">Prüfung<small>exam · listening & reading</small></button>
+    <button class="tab" role="tab" data-tab="schreiben" aria-selected="false">Schreiben<small>writing</small></button>
+    <button class="tab" role="tab" data-tab="sprechen" aria-selected="false">Sprechen<small>speaking</small></button>
+  </div>
+</nav>
+<div class="voicebar"><div class="wrap">
+  <span class="lbl">Stimme · voice</span>
+  <select id="voiceSel" aria-label="German voice"></select>
+  <button class="btn" id="voiceTest">Test the voice</button>
+  <span class="note" id="voiceOk">If it still sounds English, pick another German voice from the list.</span>
+  <details id="voiceMissing" hidden><summary><b>No German voice found on this device.</b> The audio will sound English. Here's how to add one (2 minutes):</summary>
+    <ul>
+      <li><b>Windows:</b> Settings → Time &amp; language → Speech → Add voices → Deutsch (Deutschland). Then restart the browser.</li>
+      <li><b>Mac:</b> System Settings → Accessibility → Spoken Content → System voice → Manage Voices → German (e.g. Anna). Then reload the page.</li>
+      <li><b>iPhone / iPad:</b> Settings → Accessibility → Spoken Content → Voices → German → download a voice.</li>
+      <li><b>Android:</b> Settings → System → Languages → Text-to-speech → Google speech engine → Install voice data → Deutsch.</li>
+      <li><b>Easiest option:</b> open this page in Google Chrome or Microsoft Edge. Both include good German voices.</li>
+    </ul>
+  </details>
+</div></div>
+
+<main class="wrap">
+
+<!-- ============ WORTSCHATZ ============ -->
+<div class="panel" id="p-wortschatz">
+  <div class="toolbar">
+    <div class="progress"><div class="bar"><i id="pbar"></i></div><span id="ptext">0 learned</span></div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search…" aria-label="Search words">
+      <button class="btn" id="flashBtn" aria-pressed="false">Flashcards</button>
+      <button class="btn" id="resetBtn">Reset</button>
+    </div>
+  </div>
+  <div class="controls">
+    <span class="lbl">English</span>
+    <div class="seg" id="showSeg" hidden>
+      <button data-v="all" aria-pressed="true">DE + EN + RO</button>
+      <button data-v="bks" aria-pressed="false">DE + RO</button>
+      <button data-v="en" aria-pressed="false">DE + EN</button>
+    </div>
+    <div class="seg" id="varSeg"><button data-v="ALL" aria-pressed="true">UK + US</button><button data-v="UK" aria-pressed="false">British</button><button data-v="US" aria-pressed="false">American</button></div>
+  </div>
+  <div id="resetConfirm" class="tip" hidden><span>Reset all learned words? This clears your progress on this device.</span> <button class="btn" id="resetYes">Yes, reset</button> <button class="btn" id="resetNo">Cancel</button></div>
+
+  <details class="plan">
+    <summary>1-hour study plan</summary>
+    <ol>
+      <li><b>0–10 min</b><span>Begrüßung: say every phrase out loud, especially „Ich weiß das Wort auf Deutsch nicht."</span></li>
+      <li><b>10–20 min</b><span>Familie & Vorstellung: practise Ich heiße …, ich komme aus England, ich bin … Jahre alt, von Beruf bin ich …</span></li>
+      <li><b>20–30 min</b><span>Zahlen & Zeit: 1–100, weekdays, and „halb drei" (2:30, not 3:30).</span></li>
+      <li><b>30–40 min</b><span>Verben & Modalverben: müssen, können, dürfen, sollen, wollen, möchten. Watch gehen vs. fahren.</span></li>
+      <li><b>40–50 min</b><span>Wohnen & Gegenstände: Sprechen Teil 3 cards come from these words.</span></li>
+      <li><b>50–60 min</b><span>Reisen, Essen, Einkaufen: learn every noun with its article (der/die/das). English has no grammatical gender, so this is your main job.</span></li>
+    </ol>
+  </details>
+
+  <div class="cats" id="cats"></div>
+  <div class="legend">
+    <span>Article colours:</span><span><b class="g-der">der</b> masculine</span><span><b class="g-die">die</b> feminine / plural</span><span><b class="g-das">das</b> neuter</span>
+  </div>
+  <div id="vocab"></div>
+</div>
+
+<!-- ============ BRÜCKE ============ -->
+<div class="panel" id="p-bruecke" hidden>
+  <div class="box">
+    <span class="eyebrow">Warum Englischsprachige Vorteile haben</span>
+    <h2>English and German are sisters</h2>
+    <p class="lead">English and German both come from the same West Germanic family, so thousands of everyday words are cousins: <b>Haus</b> (house), <b>Wasser</b> (water), <b>Buch</b> (book), <b>trinken</b> (drink), <b>gut</b> (good). Once you know the sound shifts below, you can guess many new words. What English lost over the centuries, German kept: <b>genders</b>, <b>cases</b> and a strict <b>word order</b>. That is where your work lies. Tap any <svg style="width:13px;height:13px;vertical-align:-2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg> to hear the German.</p>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">1 · Aussprache · pronunciation</span>
+    <h2>German is spelled the way it sounds</h2>
+    <p class="lead">Good news: unlike English, German spelling is regular. Learn these rules once and you can read any word aloud. Three new vowels: <b>ä</b> (like e in "bed"), <b>ö</b> (say "ay" with rounded lips) and <b>ü</b> (say "ee" with rounded lips).</p>
+    <div class="tablewrap"><table id="pronTable">
+      <thead><tr><th>German</th><th>Sounds like</th><th>Example</th><th>Read it as</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div class="tip"><b>Achtung!</b><span><b>w is "v", v is "f", z is "ts".</b> These three cause most English-speaker accents: Wasser = „vasser", Vater = „fahter", Zeit = „tsite". Get them right and you instantly sound more German.</span></div>
+    <div class="tip"><b>Pure vowels</b><span>English vowels glide (no = „noh-oo", day = „day-ee"). German vowels stay still: <b>so</b> is a pure „oh", <b>See</b> a pure „ay". Long vowels are written with a double vowel, <b>ie</b> or an <b>h</b>: Staat, Liebe, Sohn.</span></div>
+    <div class="tip"><b>Say every letter</b><span>German has almost no silent letters: the <b>k</b> in Knie, the <b>p</b> in Psychologie and the final <b>e</b> in bitte („bittuh") are all spoken.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">2 · Satzbau · word order</span>
+    <h2>English: subject, then verb. German: the verb is always 2nd</h2>
+    <p class="lead">In a German main clause the conjugated verb is in <b>position 2</b>, whatever comes first. A second verb, a participle or a separable prefix goes to the <b>end</b>.</p>
+    <div class="pairs">
+      <div><b>Ich <u>arbeite</u> heute.</b><span>I work today.</span></div>
+      <div><b>Heute <u>arbeite</u> ich.</b><span>"Today I work" is wrong in German: the verb stays in position 2, so the subject moves behind it. Never „Heute ich arbeite".</span></div>
+      <div><b>Ich <u>muss</u> heute <u>arbeiten</u>.</b><span>I must work today. The infinitive goes to the very end.</span></div>
+      <div><b>Ich <u>stehe</u> um 7 Uhr <u>auf</u>.</b><span>I get up at 7. Like a phrasal verb, but „auf" jumps to the end.</span></div>
+      <div><b><u>Kommen</u> Sie aus England?</b><span>Do you come from England? No "do" in German: the verb simply goes first.</span></div>
+    </div>
+    <div class="tip"><b>No "do", no "-ing"</b><span>German never uses "do" for questions or negatives: <b>Sprechen Sie Deutsch?</b> (Do you speak German?), <b>Ich spreche nicht Deutsch</b> (I don't speak German). And there is no continuous form: <b>ich lerne</b> = I learn <i>and</i> I'm learning.</span></div>
+    <div class="tip"><b>Sie, du, ihr</b><span>English "you" is three words: <b>du</b> (one friend), <b>ihr</b> (several friends) and <b>Sie</b> (polite, one or many, always with a capital S). Sie takes the "they" verb: <b>Sie sind</b>.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">3 · Artikel & Genus · gender</span>
+    <h2>English has one "the". German has three</h2>
+    <p class="lead">Every German noun is masculine, feminine or neuter: <b class="g-der">der</b> Tisch, <b class="g-die">die</b> Lampe, <b class="g-das">das</b> Buch. The gender rarely follows logic (<b class="g-das">das</b> Mädchen, the girl, is neuter), so learn every noun with its article, like a surname. Nouns are always written with a <b>capital letter</b>.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>German</th><th>Gender</th><th>English</th><th>Memory trick</th></tr></thead>
+      <tbody>
+        <tr><td><span class="g-der"><b>der</b></span> Mann</td><td>masculine</td><td>the man</td><td>logical ✓</td></tr>
+        <tr><td><span class="g-die"><b>die</b></span> Frau</td><td>feminine</td><td>the woman</td><td>logical ✓</td></tr>
+        <tr><td><span class="g-das"><b>das</b></span> Mädchen</td><td>neuter</td><td>the girl</td><td>-chen is always das</td></tr>
+        <tr><td><span class="g-die"><b>die</b></span> Sonne</td><td>feminine</td><td>the sun</td><td>just learn it</td></tr>
+        <tr><td><span class="g-der"><b>der</b></span> Mond</td><td>masculine</td><td>the moon</td><td>just learn it</td></tr>
+        <tr><td><span class="g-die"><b>die</b></span> Kinder</td><td>plural</td><td>the children</td><td>every plural is die</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Shortcuts</b><span>Words ending in <b>-ung, -heit, -keit, -tät, -tion</b> are always <span class="g-die"><b>die</b></span>: die Zeitung, die Universität, die Information. <b>-chen</b> and <b>-lein</b> are always <span class="g-das"><b>das</b></span>. And every plural takes <span class="g-die"><b>die</b></span>.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">4 · Fälle · cases</span>
+    <h2>You already use cases: he, him, his</h2>
+    <p class="lead">English kept cases only in pronouns: <b>he</b> sees, I see <b>him</b>, I give it to <b>him</b>, <b>his</b> car. German does the same with the <b>article</b> in front of every noun.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Fall</th><th>German</th><th>English</th><th>Your clue</th></tr></thead>
+      <tbody>
+        <tr><td><b>Nominativ</b></td><td><span class="g-der">der</span> Mann ist hier.</td><td>The man is here.</td><td><b>he</b> · who does it</td></tr>
+        <tr><td><b>Akkusativ</b></td><td>Ich sehe <span class="g-der">den</span> Mann.</td><td>I see the man.</td><td><b>him</b> → den</td></tr>
+        <tr><td><b>Dativ</b></td><td>Ich gebe <span class="g-der">dem</span> Mann das Buch.</td><td>I give the man the book.</td><td>to <b>him</b> → dem</td></tr>
+        <tr><td><b>Genitiv</b></td><td>das Auto <span class="g-der">des</span> Mannes</td><td>the man's car</td><td><b>his</b>, -'s → des</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Look: -m and -n</b><span>Compare <b>whom</b> (Old English "hwām") with German <b>wem</b>, and <b>him</b> with German <b>ihm</b>. The <b>-m</b> ending you still hear in "whom" and "him" is the German Dativ: d<b>em</b>, ein<b>em</b>, ihm. At A1, focus on Nominativ and Akkusativ: only <b class="g-der">der</b> changes, to <b>den</b>.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">5 · Verwandte Wörter · word cousins</span>
+    <h2>Crack the code: German words you can guess</h2>
+    <p class="lead">Over 1,500 years, some consonants shifted in German but not in English: <b>t → z / ss</b>, <b>p → pf / f</b>, <b>k → ch</b>, <b>d → t</b>. Tap a card to see the English cousin, then tap again to hear the German.</p>
+    <div class="cardset" id="loanwords"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">6 · Falsche Freunde · false friends</span>
+    <h2>Looks English, means something else</h2>
+    <div class="tablewrap"><table id="falseTable">
+      <thead><tr><th>German</th><th>Means</th><th>Looks like</th><th>Which is</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ============ PRÜFUNG ============ -->
+<div class="panel" id="p-pruefung" hidden>
+  <details class="plan box" open style="padding:0">
+    <summary style="padding:16px 20px">Goethe-Zertifikat A1: Start Deutsch 1 · structure of the exam</summary>
+    <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:14px">
+      <div class="stats">
+        <div class="stat"><b>60</b><span>points total</span></div>
+        <div class="stat"><b>60 %</b><span>to pass</span></div>
+        <div class="stat"><b>~80 min</b><span>written part + speaking</span></div>
+        <div class="stat"><b>4</b><span>modules</span></div>
+      </div>
+      <div class="modules">
+        <div class="module"><h3>Hören <span>~20 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: 6 short dialogues, heard twice, A/B/C</li><li><b>Teil 2</b>: 4 announcements, heard <b>once</b>, richtig/falsch</li><li><b>Teil 3</b>: 5 phone messages, heard twice, A/B/C</li></ul></div>
+        <div class="module"><h3>Lesen <span>~25 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: 2 short emails, 5 × richtig/falsch</li><li><b>Teil 2</b>: 5 situations, choose website A or B</li><li><b>Teil 3</b>: 5 signs/notices, richtig/falsch</li></ul></div>
+        <div class="module"><h3>Schreiben <span>~20 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: fill in a form, 5 gaps</li><li><b>Teil 2</b>: short message, about 30 words, 3 points</li></ul></div>
+        <div class="module"><h3>Sprechen <span>~15 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: introduce yourself, spell, say a number</li><li><b>Teil 2</b>: ask and answer questions on a theme</li><li><b>Teil 3</b>: make and react to requests</li></ul></div>
+      </div>
+      <p class="note">Check the current format and dates with your exam centre (Goethe-Institut, VHS, or telc for the telc A1 version).</p>
+    </div>
+  </details>
+
+  <div class="score" id="examScore"><span>Your score: <b id="scoreVal">0 / 0</b></span><span>Correct <b id="okVal">0</b></span><span>Wrong <b id="noVal">0</b></span><button class="btn" id="examReset">Reset answers</button></div>
+
+  <div class="box" id="hoeren">
+    <span class="eyebrow">Hören · listening</span>
+    <h2>Listening practice</h2>
+    <p class="lead">Read the question first, then press „Anhören". Your browser reads the text in German. Use „Text" only after you have answered. In Teil 2 you hear the text only once in the real exam: focus on numbers and on nicht / kein.</p>
+  </div>
+
+  <div class="box" id="lesen">
+    <span class="eyebrow">Lesen · reading</span>
+    <h2>Reading practice</h2>
+    <p class="lead">Scan for key words before you read the statement. Negations (nicht, kein, nur, geschlossen, verboten) are the most common traps.</p>
+  </div>
+</div>
+
+<!-- ============ SCHREIBEN ============ -->
+<div class="panel" id="p-schreiben" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · Formular</span>
+    <h2>Fill in the form for your friend</h2>
+    <div class="text">Ihr Freund James Walker ist 32 Jahre alt und kommt aus Manchester in England. Er wohnt jetzt in der Königstraße 12, 70173 Stuttgart. Er ist Elektriker von Beruf. Er arbeitet tagsüber und möchte einen Deutschkurs am Abend machen.</div>
+    <p class="lead">James wants to register at the Volkshochschule (the local adult education centre). Write the 5 missing details.</p>
+    <div class="form" id="formFields"></div>
+    <div class="controls"><button class="btn primary" id="formCheck">Check</button><button class="btn" id="formShow">Show answers</button><span class="counter" id="formResult"></span></div>
+    <div class="tip"><b>Achtung!</b><span>German forms use <b>Vorname</b> (first name) and <b>Familienname / Nachname</b> (surname / last name). The postcode (<b>PLZ</b>) comes <b>before</b> the city: 70173 Stuttgart. Country: „aus England" or „aus Großbritannien", with no article, but „aus <b>den</b> USA" and „aus <b>der</b> Schweiz" take one. Dates are written day.month.year: 03.04.1990 is 3 April, not March 4.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · kurze Nachricht</span>
+    <h2>Write a message (about 30 words)</h2>
+    <div class="text">Sie haben am Freitag einen Termin bei Ihrer Deutschlehrerin, Frau Weber. Sie können nicht kommen. Schreiben Sie Frau Weber eine E-Mail:
+• Warum können Sie nicht kommen?
+• Fragen Sie nach einem neuen Termin.
+• Bitten Sie um eine Antwort.</div>
+    <label for="mail" class="note">Your text</label>
+    <textarea id="mail" placeholder="Liebe Frau Weber, …"></textarea>
+    <div class="controls"><span class="counter" id="wc">0 words</span><button class="btn" id="modelBtn">Show model answer</button></div>
+    <div id="checklist" class="pairs"></div>
+    <div class="model" id="model" hidden>Liebe Frau Weber,
+
+leider kann ich am Freitag nicht zum Termin kommen. Ich bin krank und muss zum Arzt. Haben Sie nächste Woche Zeit, vielleicht am Dienstag? Bitte antworten Sie mir.
+
+Viele Grüße
+Emma Taylor</div>
+    <h3>Phrase bank</h3>
+    <div class="pairs" id="phrases"></div>
+    <div class="tip"><b>Achtung!</b><span>After „Liebe Frau Weber," the next line starts with a <b>small letter</b> (leider…). And <b>Sie, Ihnen, Ihr</b> are always capitalised when you write formally, just as English always capitalises "I".</span></div>
+  </div>
+</div>
+
+<!-- ============ SPRECHEN ============ -->
+<div class="panel" id="p-sprechen" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · sich vorstellen</span>
+    <h2>Introduce yourself</h2>
+    <p class="lead">In the exam you get keyword cards. Say one full sentence for each. Tap a card to see a model answer.</p>
+    <div class="cardset" id="intro"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 1 · buchstabieren</span>
+    <h2>Spell your name the German way</h2>
+    <p class="lead">You will be asked to spell your name. Orange letters are traps for English speakers: <b>A</b> is „ah" (not „ay"), <b>E</b> is „ay" (not „ee"), <b>I</b> is „ee" (not „eye"), <b>G</b> is a hard „gay" (not „jee"), <b>H</b> is „hah" (not „aitch"), <b>J</b> is „yot" (not „jay"), <b>R</b> is „air", <b>U</b> is „oo" (not „you"), <b>V</b> is „fow" (not „vee"), <b>W</b> is „vay" (not „double-u"), <b>Y</b> is „üpsilon" (not „why") and <b>Z</b> is „tset" (not „zed" or „zee"). The E / I swap is the classic one. Tap a letter to hear it.</p>
+    <div class="alpha" id="alpha"></div>
+    <div class="pairs">
+      <h3>Spelling tips</h3>
+      <div><b>Double letters</b><span>Say „Doppel-": Williams = W – I – Doppel-L – I – A – M – S</span></div>
+      <div><b>ä ö ü ß</b><span>No umlauts on your keyboard? Write ae, oe, ue and ss: Müller = Mueller, Straße = Strasse.</span></div>
+      
+      
+      <div><b>Mein Name ist Walker.</b><span>W – A – L – K – E – R: „vay – ah – ell – kah – ay – air" (careful: W = „vay", E = „ay")</span></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · Fragen stellen</span>
+    <h2>Theme: Essen und Trinken</h2>
+    <p class="lead">You draw a card with a word. Make a W-question for your partner. Your partner answers. Tap for a model.</p>
+    <div class="cardset" id="themeCards"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 3 · Bitten</span>
+    <h2>Polite requests</h2>
+    <p class="lead">You see a picture card. Make a polite request. Your partner says yes or no. Tap for a model.</p>
+    <div class="cardset" id="requestCards"></div>
+    <div class="tip"><b>Trick</b><span><b>Können Sie bitte …?</b> = Could you … please? &nbsp;·&nbsp; <b>Ich hätte gern …</b> = I'd like … &nbsp;·&nbsp; Answer: <b>Ja, gern.</b> / <b>Nein, tut mir leid.</b></span></div>
+  </div>
+</div>
+
+<div class="cta" style="margin-top:28px">
+  <p><strong>Learning German for life and work in Germany?</strong>Expert Tongue coaching helps you speak with confidence, from A1 to C2.</p>
+  <a href="https://expert-tongue.com" target="_blank" rel="noopener">expert-tongue.com</a>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Expert Tongue · Deutsch A1 für Englischsprachige · Free study tool</span>
+    <span class="note">Translations use British English; where American English differs, both are shown (UK / US). Use the switch on the Wortschatz tab to see only one.</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="../../core/a1.js"></script>
+
+<script>try{localStorage.setItem('et-lang','en')}catch(e){}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('../../sw.js').catch(()=>{})})}</script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A2E4D">
+<meta name="description" content="German A2 for speakers of Hungarian: vocabulary, grammar bridge and Goethe A2 practice.">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Deutsch HU">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Deutsch A2 für Ungarischsprachige</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../core/a2.css">
+</head>
+<body>
+
+
+<header class="band">
+  <div class="wrap">
+    <div class="hero">
+      <a class="home" href="../">&larr; Alle Kurse · minden tanfolyam</a>
+      <div class="brand">
+        <div class="wordmark"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5.5 11V5.5a4.5 4.5 0 0 1 9 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.3" stroke-linecap="round"/><rect x="1" y="10.5" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16.8" r="1.7" fill="#fff"/><circle cx="13" cy="16.8" r="1.7" fill="#fff"/><circle cx="7" cy="17" r=".75" fill="#0A2E4D"/><circle cx="13" cy="17" r=".75" fill="#0A2E4D"/></svg>Expert Tongue</div>
+        <div class="tagline">unlock your communication</div>
+      </div>
+      <h1>Deutsch A2 <span class="arrow">für</span> Ungarischsprachige</h1>
+      <p>German A2 vocabulary, grammar shortcuts and Goethe-Zertifikat A2 practice for speakers of Hungarian. A következő lépés az A1 után.</p>
+    </div>
+    <div class="pair" aria-label="Level and languages"><span class="lvl">A2</span><span>DE</span><span>EN</span><span>HU</span></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" data-tab="wortschatz" aria-selected="true">Wortschatz<small>szókincs</small></button>
+    <button class="tab" role="tab" data-tab="grammatik" aria-selected="false">Grammatik-Brücke<small>nyelvtan · az előnyöd</small></button>
+    <button class="tab" role="tab" data-tab="pruefung" aria-selected="false">Prüfung<small>vizsga · hallás és olvasás</small></button>
+    <button class="tab" role="tab" data-tab="schreiben" aria-selected="false">Schreiben<small>írás</small></button>
+    <button class="tab" role="tab" data-tab="sprechen" aria-selected="false">Sprechen<small>beszéd</small></button>
+  </div>
+</nav>
+<div class="voicebar"><div class="wrap">
+  <span class="lbl">Stimme · hang</span>
+  <select id="voiceSel" aria-label="German voice"></select>
+  <button class="btn" id="voiceTest">Test the voice</button>
+  <span class="note" id="voiceOk">If it still sounds English, pick another German voice from the list.</span>
+  <details id="voiceMissing" hidden><summary><b>No German voice found on this device.</b> The audio will sound English. Here's how to add one (2 minutes):</summary>
+    <ul>
+      <li><b>Windows:</b> Settings → Time &amp; language → Speech → Add voices → Deutsch (Deutschland). Then restart the browser.</li>
+      <li><b>Mac:</b> System Settings → Accessibility → Spoken Content → System voice → Manage Voices → German (e.g. Anna). Then reload the page.</li>
+      <li><b>iPhone / iPad:</b> Settings → Accessibility → Spoken Content → Voices → German → download a voice.</li>
+      <li><b>Android:</b> Settings → System → Languages → Text-to-speech → Google speech engine → Install voice data → Deutsch.</li>
+      <li><b>Easiest option:</b> open this page in Google Chrome or Microsoft Edge. Both include good German voices.</li>
+    </ul>
+  </details>
+</div></div>
+
+<main class="wrap">
+
+<!-- ============ WORTSCHATZ ============ -->
+<div class="panel" id="p-wortschatz">
+  <div class="toolbar">
+    <div class="progress"><div class="bar"><i id="pbar"></i></div><span id="ptext">0 learned</span></div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search · keresés…" aria-label="Search words">
+      <button class="btn" id="flashBtn" aria-pressed="false">Flashcards</button>
+      <button class="btn" id="resetBtn">Reset</button>
+    </div>
+  </div>
+  <div class="controls">
+    <span class="lbl">Show</span>
+    <div class="seg" id="showSeg">
+      <button data-v="all" aria-pressed="true">DE + EN + HU</button>
+      <button data-v="bks" aria-pressed="false">DE + HU</button>
+      <button data-v="en" aria-pressed="false">DE + EN</button>
+    </div>
+    <div class="seg" id="varSeg" hidden><button data-v="ALL" aria-pressed="true">ALL</button></div>
+  </div>
+  <div id="resetConfirm" class="tip" hidden><span>Reset all learned words? This clears your progress on this device.</span> <button class="btn" id="resetYes">Yes, reset</button> <button class="btn" id="resetNo">Cancel</button></div>
+
+  <details class="plan">
+    <summary>A2 study plan: 6 weeks · 6 hetes tanulási terv</summary>
+    <ol>
+      <li><b>Week 1</b><span>Arbeit, Wohnungssuche, Ämter: the words you need for life in Germany. Practise the Perfekt list every day.</span></li>
+      <li><b>Week 2</b><span>Gesundheit, Kommunikation, Einkaufen. Write one SMS per day (Schreiben Teil 1).</span></li>
+      <li><b>Week 3</b><span>Konnektoren: weil, dass, wenn, obwohl. Verb to the end: the biggest change from Hungarian!</span></li>
+      <li><b>Week 4</b><span>Reflexive verbs and verbs with prepositions (warten auf, sich freuen auf/über).</span></li>
+      <li><b>Week 5</b><span>Freizeit, Feste, Gefühle, Vergleich. Talk about your weekend for 1 minute (Sprechen Teil 2).</span></li>
+      <li><b>Week 6</b><span>Full exam practice: Hören, Lesen, both Schreiben tasks, and plan a meeting with a partner (Sprechen Teil 3).</span></li>
+    </ol>
+  </details>
+
+  <div class="cats" id="cats"></div>
+  <div class="legend">
+    <span>Colours:</span><span><b class="g-der">der</b> hímnem</span><span><b class="g-die">die</b> nőnem / többes sz.</span><span><b class="g-das">das</b> semlegesnem</span><span><b class="g-aux">hat / ist</b> helper verb in the Perfekt</span>
+  </div>
+  <div id="vocab"></div>
+</div>
+
+<!-- ============ GRAMMATIK ============ -->
+<div class="panel" id="p-grammatik" hidden>
+  <div class="box">
+    <span class="eyebrow">A2 für Ungarischsprachige</span>
+    <h2>A2: the past, the verb at the end, and polite forms</h2>
+    <p class="lead">A2 brings the spoken past (Perfekt), two-way prepositions, subordinate clauses with the verb at the end, reflexive verbs, comparisons and polite forms. Two are easy for you: comparisons work like <b>nagyobb, mint</b>, and two-way prepositions work like your <b>-ba / -ban</b> endings. Learn the patterns below and A2 becomes much easier.</p>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">1 · Perfekt · múlt idő</span>
+    <h2>Ich habe gearbeitet = Dolgoztam</h2>
+    <p class="lead">Where Hungarian adds <b>-t</b> to the verb (dolgozom → dolgoz<b>t</b>am), German uses a helper verb, <b class="g-aux">haben</b> or <b class="g-aux">sein</b>, in <b>position 2</b>, and the participle at the <b>end</b>. Most verbs use haben; verbs of movement or change use sein.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>German</th><th>Magyar</th><th>Helper</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Ich <b class="g-aux">habe</b> Kaffee <u>getrunken</u>.</td><td>Kávét ittam.</td><td>haben</td><td>most verbs</td></tr>
+        <tr><td>Wir <b class="g-aux">haben</b> Deutsch <u>gelernt</u>.</td><td>Németül tanultunk.</td><td>haben</td><td>most verbs</td></tr>
+        <tr><td>Ich <b class="g-aux">bin</b> nach Hamburg <u>gefahren</u>.</td><td>Hamburgba utaztam.</td><td>sein</td><td>movement A → B</td></tr>
+        <tr><td>Er <b class="g-aux">ist</b> spät <u>aufgestanden</u>.</td><td>Későn kelt fel.</td><td>sein</td><td>change of state</td></tr>
+        <tr><td>Sie <b class="g-aux">ist</b> zu Hause <u>geblieben</u>.</td><td>Otthon maradt.</td><td>sein</td><td>exception: bleiben, sein</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Shape</b><span>Most participles have <b>ge-</b> at the front and <b>-t</b> or <b>-en</b> at the end: ge-mach-t, ge-trunk-en. With separable verbs, ge- goes inside, just as Hungarian keeps fel- in front: <b>auf</b>ge<b>standen</b> (fel-kelt).</span></div>
+    <div class="two">
+      <div class="pairs">
+        <h3>Präteritum for the most common verbs</h3>
+        <div><b>Ich war in Debrecen.</b><span>Debrecenben voltam.</span></div>
+        <div><b>Ich hatte keine Zeit.</b><span>Nem volt időm.</span></div>
+        <div><b>Ich musste arbeiten.</b><span>Dolgoznom kellett.</span></div>
+        <div><b>Ich konnte nicht kommen.</b><span>Nem tudtam jönni.</span></div>
+      </div>
+      <div class="pairs">
+        <h3>Use Präteritum, not Perfekt, for</h3>
+        <div><b>sein, haben</b><span>war, hatte</span></div>
+        <div><b>Modalverben</b><span>musste, konnte, wollte, durfte, sollte</span></div>
+        <div><b>es gibt</b><span>es gab (volt)</span></div>
+        <div><b>All other verbs</b><span>use the Perfekt when you speak</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">2 · Wechselpräpositionen · hová? hol?</span>
+    <h2>Akkusativ = -ba / -be, Dativ = -ban / -ben</h2>
+    <p class="lead">You already make this difference with endings: a város<b>ba</b> megyek (hová?) and a város<b>ban</b> vagyok (hol?). German uses the same preposition and changes the <b>article</b>: <b>Wohin?</b> (hová?) → Akkusativ, <b>Wo?</b> (hol?) → Dativ.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Wohin? → Akkusativ</th><th>hová?</th><th>Wo? → Dativ</th><th>hol?</th></tr></thead>
+      <tbody>
+        <tr><td>Ich gehe <b>in die</b> Stadt.</td><td>Bemegyek a városba.</td><td>Ich bin <b>in der</b> Stadt.</td><td>A városban vagyok.</td></tr>
+        <tr><td>Ich lege das Buch <b>auf den</b> Tisch.</td><td>Az asztalra teszem a könyvet.</td><td>Das Buch liegt <b>auf dem</b> Tisch.</td><td>A könyv az asztalon van.</td></tr>
+        <tr><td>Wir fahren <b>an den</b> See.</td><td>A tóhoz megyünk.</td><td>Wir sind <b>am</b> See.</td><td>A tónál vagyunk.</td></tr>
+        <tr><td>Die Katze läuft <b>unter das</b> Bett.</td><td>A macska az ágy alá fut.</td><td>Die Katze schläft <b>unter dem</b> Bett.</td><td>A macska az ágy alatt alszik.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Your clue</b><span>Hungarian -ba / -ra / -hoz / alá (hová?) → German <b>Akkusativ</b>. Hungarian -ban / -on / -nál / alatt (hol?) → German <b>Dativ</b>. „Ich gehe <b>ins</b> Kino" = moziba megyek; „Ich bin <b>im</b> Kino" = moziban vagyok.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">3 · Nebensätze · mellékmondatok</span>
+    <h2>After weil, dass, wenn: the verb goes to the end</h2>
+    <p class="lead">After <b>mert</b>, <b>hogy</b> or <b>ha</b>, Hungarian word order stays free. In a German subordinate clause the conjugated verb jumps to the <b>last position</b>. This is the biggest new habit at A2.</p>
+    <div class="pairs">
+      <div><b>Ich komme nicht, weil ich krank <u>bin</u>.</b><span>Nem jövök, mert beteg vagyok.</span></div>
+      <div><b>Ich glaube, dass er heute <u>kommt</u>.</b><span>Azt hiszem, hogy ma jön.</span></div>
+      <div><b>Wenn ich Zeit <u>habe</u>, rufe ich dich an.</b><span>Ha lesz időm, felhívlak.</span></div>
+      <div><b>Ich weiß nicht, ob sie zu Hause <u>ist</u>.</b><span>Nem tudom, hogy otthon van-e.</span></div>
+      <div><b>Obwohl es regnet, gehen wir spazieren.</b><span>Bár esik, sétálni megyünk.</span></div>
+    </div>
+    <div class="tip"><b>Verb, comma, verb</b><span>If the sentence <b>starts</b> with the clause, the main clause starts with its verb: „Wenn ich Zeit <b>habe</b>, <b>rufe</b> ich dich an." Two verbs meet at the comma.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">4 · Reflexive Verben · visszaható igék</span>
+    <h2>mich, dich, sich = magam, magad, maga</h2>
+    <p class="lead">Hungarian shows „myself" in the verb (mosakszik, öltözik) or with <b>magam / magad / maga</b>. German uses a reflexive pronoun that changes with the person, and many everyday verbs need it.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>ich</th><th>du</th><th>er / sie / es</th><th>wir</th><th>ihr</th><th>sie / Sie</th></tr></thead>
+      <tbody>
+        <tr><td>wasche <b>mich</b></td><td>wäschst <b>dich</b></td><td>wäscht <b>sich</b></td><td>waschen <b>uns</b></td><td>wascht <b>euch</b></td><td>waschen <b>sich</b></td></tr>
+        <tr><td>mosakszom</td><td>mosakszol</td><td>mosakszik</td><td>mosakszunk</td><td>mosakszotok</td><td>mosakszanak / mosakszik (Ön)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Achtung!</b><span>Learn these with sich: <b>sich setzen</b> (leül), <b>sich beeilen</b> (siet), <b>sich freuen</b> (örül), <b>sich erinnern</b> (emlékszik), <b>sich fühlen</b> (érzi magát). „Ich fühle mich gut" = Jól érzem magam: here even Hungarian says „magam"!</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">5 · Komparation · fokozás</span>
+    <h2>-er = -bb, am -sten = leg-…-bb</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Positiv</th><th>Komparativ</th><th>Superlativ</th><th>Magyar</th></tr></thead>
+      <tbody>
+        <tr><td>schnell</td><td>schnell<b>er</b></td><td>am schnell<b>sten</b></td><td>gyors – gyors<b>abb</b> – <b>leg</b>gyors<b>abb</b></td></tr>
+        <tr><td>alt</td><td><b>ä</b>lter</td><td>am <b>ä</b>ltesten</td><td>öreg – öreg<b>ebb</b> – <b>leg</b>öreg<b>ebb</b></td></tr>
+        <tr><td>gut</td><td><b>besser</b></td><td>am <b>besten</b></td><td>jó – <b>jobb</b> – <b>legjobb</b></td></tr>
+        <tr><td>gern</td><td><b>lieber</b></td><td>am <b>liebsten</b></td><td>szívesen – szívesebben – legszívesebben</td></tr>
+        <tr><td>viel</td><td><b>mehr</b></td><td>am <b>meisten</b></td><td>sok – <b>több</b> – <b>legtöbb</b></td></tr>
+      </tbody>
+    </table></div>
+    <div class="pairs">
+      <div><b>Ungarn ist kleiner <u>als</u> Deutschland.</b><span>Magyarország kisebb, mint Németország. als = mint</span></div>
+      <div><b>Mein Bruder ist <u>so</u> groß <u>wie</u> ich.</b><span>A bátyám olyan magas, mint én. so … wie = olyan … mint</span></div>
+    </div>
+    <div class="tip"><b>Like Hungarian</b><span>The order is the same, and both languages use an ending: kisebb = klein<b>er</b>. Both even have the same irregular words: jó → <b>jobb</b>, gut → <b>besser</b>; sok → <b>több</b>, viel → <b>mehr</b>.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">6 · Höflich sein · udvariasság</span>
+    <h2>würde, hätte, könnte = -na / -ne</h2>
+    <p class="lead">Hungarian is polite with <b>Ön</b> and the conditional ending <b>-na / -ne</b>: szeretné<b>k</b>, tud<b>na</b>…? German does exactly the same with its own conditional forms. They sound much friendlier than the plain present, so use them at offices, at the doctor's and in the exam.</p>
+    <div class="pairs">
+      <div><b>Ich <u>hätte</u> gern einen Termin.</b><span>Szeretnék egy időpontot.</span></div>
+      <div><b><u>Könnten</u> Sie mir helfen?</b><span>Tudna segíteni?</span></div>
+      <div><b>Ich <u>würde</u> gern am Montag kommen.</b><span>Hétfőn szeretnék jönni.</span></div>
+      <div><b>An deiner Stelle <u>würde</u> ich zum Arzt gehen.</b><span>A helyedben orvoshoz mennék.</span></div>
+    </div>
+    <div class="tip"><b>Cultural tip</b><span>Germans and Hungarians share a lot, like punctuality and Sunday lunch with the family. One big difference is name order: in Germany your business card and email signature should say <b>Vorname Nachname</b>: Anna Nagy, not Nagy Anna. Being on time matters: 5 minutes late is already late.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">7 · Falsche Freunde · hamis barátok</span>
+    <h2>A2 words that trick learners who know English</h2>
+    <div class="tablewrap"><table id="falseTable">
+      <thead><tr><th>German</th><th>Means</th><th>Looks like</th><th>Which is</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <h3>More German words that live in Hungarian</h3>
+    <div class="cardset" id="loanwords"></div>
+  </div>
+</div>
+
+<!-- ============ PRÜFUNG ============ -->
+<div class="panel" id="p-pruefung" hidden>
+  <details class="plan box" open style="padding:0">
+    <summary style="padding:16px 20px">Goethe-Zertifikat A2 · structure of the exam</summary>
+    <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:14px">
+      <div class="stats">
+        <div class="stat"><b>100</b><span>points total · összes pont</span></div>
+        <div class="stat"><b>60</b><span>points to pass · a sikeres vizsgához</span></div>
+        <div class="stat"><b>~105 min</b><span>written part + speaking</span></div>
+        <div class="stat"><b>4</b><span>modules · részek</span></div>
+      </div>
+      <div class="modules">
+        <div class="module"><h3>Hören <span>~30 min</span></h3><ul><li><b>Teil 1</b>: radio and phone messages, heard twice</li><li><b>Teil 2</b>: one conversation, heard once</li><li><b>Teil 3</b>: 5 short dialogues, heard twice</li><li><b>Teil 4</b>: interview, richtig/falsch</li></ul></div>
+        <div class="module"><h3>Lesen <span>~30 min</span></h3><ul><li><b>Teil 1</b>: short newspaper article</li><li><b>Teil 2</b>: information board / store directory</li><li><b>Teil 3</b>: email</li><li><b>Teil 4</b>: match ads to people</li></ul></div>
+        <div class="module"><h3>Schreiben <span>~30 min</span></h3><ul><li><b>Teil 1</b>: informal SMS / message, 20–30 words</li><li><b>Teil 2</b>: semi-formal email, 30–40 words</li></ul></div>
+        <div class="module"><h3>Sprechen <span>~15 min</span></h3><ul><li><b>Teil 1</b>: ask and answer questions with word cards</li><li><b>Teil 2</b>: talk about your life from a card</li><li><b>Teil 3</b>: plan something together with a partner</li></ul></div>
+      </div>
+      <p class="note">Each module counts equally. Check the current format and dates with your exam centre (Goethe-Institut, VHS, or telc for the telc A2 version).</p>
+    </div>
+  </details>
+
+  <div class="score" id="examScore"><span>Your score · az eredményed: <b id="scoreVal">0 / 0</b></span><span>Correct <b id="okVal">0</b></span><span>Wrong <b id="noVal">0</b></span><button class="btn" id="examReset">Reset answers</button></div>
+
+  <div class="box" id="hoeren">
+    <span class="eyebrow">Hören · hallás utáni értés</span>
+    <h2>Listening practice</h2>
+    <p class="lead">Read the question first, then press „Anhören". Your browser reads the text in German. Open „Text" only after you have answered. At A2 the speakers use the Perfekt a lot: listen for <b>habe / bin + participle</b>.</p>
+  </div>
+
+  <div class="box" id="lesen">
+    <span class="eyebrow">Lesen · olvasás</span>
+    <h2>Reading practice</h2>
+    <p class="lead">Read the question first, then look for the key words in the text. Watch for nicht, kein, nur, schon, noch and for comparatives (größer, teurer).</p>
+  </div>
+</div>
+
+<!-- ============ SCHREIBEN ============ -->
+<div class="panel" id="p-schreiben" hidden>
+  <div class="box" id="w1">
+    <span class="eyebrow">Teil 1 · SMS an eine Freundin (informell)</span>
+    <h2>Write an SMS (20–30 words)</h2>
+    <div class="text">Sie sind mit Ihrer Freundin Lea um 19 Uhr vor dem Kino verabredet. Sie kommen zu spät. Schreiben Sie Lea eine SMS:
+• Entschuldigen Sie sich.
+• Warum kommen Sie zu spät?
+• Wann sind Sie da?</div>
+  </div>
+
+  <div class="box" id="w2">
+    <span class="eyebrow">Teil 2 · E-Mail an die Kursleiterin (formell)</span>
+    <h2>Write an email (30–40 words)</h2>
+    <div class="text">Sie haben einen Deutschkurs B1 an der Volkshochschule gebucht. Sie können am ersten Kurstag nicht kommen. Schreiben Sie an die Kursleiterin, Frau Schmidt:
+• Warum können Sie nicht kommen?
+• Fragen Sie nach dem Kursbuch und den Hausaufgaben.
+• Wann kommen Sie zum ersten Mal?</div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Phrase bank · hasznos kifejezések</span>
+    <h2>Informal or formal?</h2>
+    <div class="two">
+      <div class="pairs" id="phInf"><h3>An Freunde · du · barátoknak</h3></div>
+      <div class="pairs" id="phForm"><h3>Formell · Sie · hivatalos</h3></div>
+    </div>
+    <div class="tip"><b>Achtung!</b><span>Don't mix du and Sie in one message. Your teacher, your boss and the Ausländerbehörde get <b>Sie / Ihnen / Ihr</b> with a capital letter, to show respect, like Ön. And use at least one <b>weil</b> or <b>deshalb</b>: A2 examiners look for connectors.</span></div>
+  </div>
+</div>
+
+<!-- ============ SPRECHEN ============ -->
+<div class="panel" id="p-sprechen" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · Fragen zur Person</span>
+    <h2>Ask and answer with word cards</h2>
+    <p class="lead">You draw cards with one word. Ask your partner a question with it, then answer theirs. Tap a card for a model. Tap again to listen.</p>
+    <div class="cardset" id="t1cards"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · Über sich sprechen</span>
+    <h2>Talk about your life for about one minute</h2>
+    <p class="lead">You get a card with a question and four prompts. Say 2–3 sentences for each prompt. Use the Perfekt and connectors (zuerst, dann, weil, aber).</p>
+    <div class="seg" id="t2seg"></div>
+    <div id="t2card"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 3 · Etwas gemeinsam planen</span>
+    <h2>Find a time together</h2>
+    <p class="lead"><b>Aufgabe:</b> Sie möchten am Samstag zusammen Ihre Freundin Eszter im Krankenhaus besuchen. Wann haben Sie beide Zeit? Tap a time to check it.</p>
+    <div class="cal" id="cal"></div>
+    <div class="counter" id="calResult">Choose a time · válassz időpontot</div>
+    <div class="two">
+      <div class="pairs" id="planPhr"><h3>Vorschlagen · javasolni</h3></div>
+      <div class="model" id="planModel"></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta" style="margin-top:28px">
+  <p><strong>Ready for B1 and work in Germany?</strong>Expert Tongue coaching helps you speak with confidence in interviews, at work and in everyday life.</p>
+  <a href="https://expert-tongue.com" target="_blank" rel="noopener">expert-tongue.com</a>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Expert Tongue · Deutsch A2 für Ungarischsprachige · Free study tool</span>
+    <span class="note">Hungarian translations use standard Hungarian.</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="../../core/a2.js"></script>
+
+<script>try{localStorage.setItem('et-lang','hu')}catch(e){}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('../../sw.js').catch(()=>{})})}</script>
+</body>
+</html>

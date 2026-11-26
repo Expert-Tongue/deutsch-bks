@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A2E4D">
+<meta name="description" content="German A2 for speakers of Spanish (Spain and Latin America): vocabulary, grammar bridge and Goethe A2 practice.">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Deutsch ES">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Deutsch A2 für Spanischsprachige</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../core/a2.css">
+</head>
+<body>
+
+
+<header class="band">
+  <div class="wrap">
+    <div class="hero">
+      <a class="home" href="../">&larr; Alle Kurse · todos los cursos</a>
+      <div class="brand">
+        <div class="wordmark"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5.5 11V5.5a4.5 4.5 0 0 1 9 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.3" stroke-linecap="round"/><rect x="1" y="10.5" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16.8" r="1.7" fill="#fff"/><circle cx="13" cy="16.8" r="1.7" fill="#fff"/><circle cx="7" cy="17" r=".75" fill="#0A2E4D"/><circle cx="13" cy="17" r=".75" fill="#0A2E4D"/></svg>Expert Tongue</div>
+        <div class="tagline">unlock your communication</div>
+      </div>
+      <h1>Deutsch A2 <span class="arrow">für</span> Spanischsprachige</h1>
+      <p>German A2 vocabulary, grammar shortcuts and Goethe-Zertifikat A2 practice for speakers of Spanish. El siguiente paso después del A1.</p>
+    </div>
+    <div class="pair" aria-label="Level and languages"><span class="lvl">A2</span><span>DE</span><span>EN</span><span>ES</span></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" data-tab="wortschatz" aria-selected="true">Wortschatz<small>vocabulario</small></button>
+    <button class="tab" role="tab" data-tab="grammatik" aria-selected="false">Grammatik-Brücke<small>gramática · tu ventaja</small></button>
+    <button class="tab" role="tab" data-tab="pruefung" aria-selected="false">Prüfung<small>examen · escuchar y leer</small></button>
+    <button class="tab" role="tab" data-tab="schreiben" aria-selected="false">Schreiben<small>escribir</small></button>
+    <button class="tab" role="tab" data-tab="sprechen" aria-selected="false">Sprechen<small>hablar</small></button>
+  </div>
+</nav>
+<div class="voicebar"><div class="wrap">
+  <span class="lbl">Stimme · voz</span>
+  <select id="voiceSel" aria-label="German voice"></select>
+  <button class="btn" id="voiceTest">Test the voice</button>
+  <span class="note" id="voiceOk">If it still sounds English, pick another German voice from the list.</span>
+  <details id="voiceMissing" hidden><summary><b>No German voice found on this device.</b> The audio will sound English. Here's how to add one (2 minutes):</summary>
+    <ul>
+      <li><b>Windows:</b> Settings → Time &amp; language → Speech → Add voices → Deutsch (Deutschland). Then restart the browser.</li>
+      <li><b>Mac:</b> System Settings → Accessibility → Spoken Content → System voice → Manage Voices → German (e.g. Anna). Then reload the page.</li>
+      <li><b>iPhone / iPad:</b> Settings → Accessibility → Spoken Content → Voices → German → download a voice.</li>
+      <li><b>Android:</b> Settings → System → Languages → Text-to-speech → Google speech engine → Install voice data → Deutsch.</li>
+      <li><b>Easiest option:</b> open this page in Google Chrome or Microsoft Edge. Both include good German voices.</li>
+    </ul>
+  </details>
+</div></div>
+
+<main class="wrap">
+
+<!-- ============ WORTSCHATZ ============ -->
+<div class="panel" id="p-wortschatz">
+  <div class="toolbar">
+    <div class="progress"><div class="bar"><i id="pbar"></i></div><span id="ptext">0 learned</span></div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search · buscar…" aria-label="Search words">
+      <button class="btn" id="flashBtn" aria-pressed="false">Flashcards</button>
+      <button class="btn" id="resetBtn">Reset</button>
+    </div>
+  </div>
+  <div class="controls">
+    <span class="lbl">Show</span>
+    <div class="seg" id="showSeg">
+      <button data-v="all" aria-pressed="true">DE + EN + ES</button>
+      <button data-v="bks" aria-pressed="false">DE + ES</button>
+      <button data-v="en" aria-pressed="false">DE + EN</button>
+    </div>
+    <span class="lbl">Variante</span>
+    <div class="seg" id="varSeg"><button data-v="ALL" aria-pressed="true">ambos</button><button data-v="ES" aria-pressed="false">España</button><button data-v="LA" aria-pressed="false">Latinoamérica</button></div>
+  </div>
+  <div id="resetConfirm" class="tip" hidden><span>Reset all learned words? This clears your progress on this device.</span> <button class="btn" id="resetYes">Yes, reset</button> <button class="btn" id="resetNo">Cancel</button></div>
+
+  <details class="plan">
+    <summary>A2 study plan: 6 weeks · plan de estudio de 6 semanas</summary>
+    <ol>
+      <li><b>Week 1</b><span>Arbeit, Wohnungssuche, Ämter: the words you need for life in Germany. Practise the Perfekt list every day.</span></li>
+      <li><b>Week 2</b><span>Gesundheit, Kommunikation, Einkaufen. Write one SMS per day (Schreiben Teil 1).</span></li>
+      <li><b>Week 3</b><span>Konnektoren: weil, dass, wenn, obwohl. Verb to the end: the biggest change from Spanish!</span></li>
+      <li><b>Week 4</b><span>Reflexive verbs and verbs with prepositions (warten auf, sich freuen auf/über).</span></li>
+      <li><b>Week 5</b><span>Freizeit, Feste, Gefühle, Vergleich. Talk about your weekend for 1 minute (Sprechen Teil 2).</span></li>
+      <li><b>Week 6</b><span>Full exam practice: Hören, Lesen, both Schreiben tasks, and plan a meeting with a partner (Sprechen Teil 3).</span></li>
+    </ol>
+  </details>
+
+  <div class="cats" id="cats"></div>
+  <div class="legend">
+    <span>Colours:</span><span><b class="g-der">der</b> masculino</span><span><b class="g-die">die</b> femenino / plural</span><span><b class="g-das">das</b> neutro</span><span><b class="g-aux">hat / ist</b> helper verb in the Perfekt</span>
+  </div>
+  <div id="vocab"></div>
+</div>
+
+<!-- ============ GRAMMATIK ============ -->
+<div class="panel" id="p-grammatik" hidden>
+  <div class="box">
+    <span class="eyebrow">Warum A2 für Spanischsprachige leichter ist</span>
+    <h2>A lot of A2 grammar already exists in Spanish</h2>
+    <p class="lead">A2 is the level where German grammar opens up: the past tense, two-way prepositions, subordinate clauses, reflexive verbs, comparisons and polite forms. Spanish already has a past with a helper (he trabajado), reflexive verbs (me lavo) and a conditional for politeness (podría, quisiera). The new part is word order.</p>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">1 · Perfekt · pretérito perfecto</span>
+    <h2>Ich habe gearbeitet = he trabajado</h2>
+    <p class="lead">Both languages build this past with a <b>helper + participle</b>. Spanish always uses haber; German uses <b class="g-aux">haben</b> for most verbs and <b class="g-aux">sein</b> for movement or change. The helper stands in <b>position 2</b>, the participle at the <b>end</b>.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>German</th><th>Spanish</th><th>Helper</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Ich <b class="g-aux">habe</b> Kaffee <u>getrunken</u>.</td><td>He tomado café.</td><td>haben</td><td>most verbs</td></tr>
+        <tr><td>Wir <b class="g-aux">haben</b> Deutsch <u>gelernt</u>.</td><td>Hemos aprendido alemán.</td><td>haben</td><td>most verbs</td></tr>
+        <tr><td>Ich <b class="g-aux">bin</b> nach Hamburg <u>gefahren</u>.</td><td>He ido a Hamburgo.</td><td>sein</td><td>movement A → B</td></tr>
+        <tr><td>Er <b class="g-aux">ist</b> spät <u>aufgestanden</u>.</td><td>Se ha levantado tarde.</td><td>sein</td><td>change of state</td></tr>
+        <tr><td>Sie <b class="g-aux">ist</b> zu Hause <u>geblieben</u>.</td><td>Se ha quedado en casa.</td><td>sein</td><td>exception: bleiben, sein</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Perfekt or Präteritum?</b><span>Spoken German uses the Perfekt for almost every past event: „Gestern <b>habe</b> ich <b>gearbeitet</b>", even where Spanish (and especially Latin American Spanish) says "ayer trabajé". Think of the Perfekt as your everyday past tense.</span></div>
+    <div class="two">
+      <div class="pairs">
+        <h3>Präteritum for the most common verbs</h3>
+        <div><b>Ich war in Madrid.</b><span>Estuve / estaba en Madrid.</span></div>
+        <div><b>Ich hatte keine Zeit.</b><span>No tenía tiempo.</span></div>
+        <div><b>Ich musste arbeiten.</b><span>Tuve que trabajar.</span></div>
+        <div><b>Ich konnte nicht kommen.</b><span>No pude venir.</span></div>
+      </div>
+      <div class="pairs">
+        <h3>Use Präteritum, not Perfekt, for</h3>
+        <div><b>sein, haben</b><span>war, hatte</span></div>
+        <div><b>Modalverben</b><span>musste, konnte, wollte, durfte, sollte</span></div>
+        <div><b>es gibt</b><span>es gab (había, hubo)</span></div>
+        <div><b>All other verbs</b><span>use the Perfekt when you speak</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">2 · Wechselpräpositionen · ¿adónde o dónde?</span>
+    <h2>Akkusativ = adónde, Dativ = dónde</h2>
+    <p class="lead">Spanish already separates the questions: <b>¿adónde vas?</b> (movement) and <b>¿dónde estás?</b> (place). German uses the same idea with nine prepositions: <b>Wohin?</b> → Akkusativ, <b>Wo?</b> → Dativ. Spanish often uses "en" for both; German changes the article.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Wohin? → Akkusativ</th><th>¿adónde?</th><th>Wo? → Dativ</th><th>¿dónde?</th></tr></thead>
+      <tbody>
+        <tr><td>Ich gehe <b>in die</b> Stadt.</td><td>Voy a la ciudad.</td><td>Ich bin <b>in der</b> Stadt.</td><td>Estoy en la ciudad.</td></tr>
+        <tr><td>Ich lege das Buch <b>auf den</b> Tisch.</td><td>Pongo el libro en la mesa.</td><td>Das Buch liegt <b>auf dem</b> Tisch.</td><td>El libro está en la mesa.</td></tr>
+        <tr><td>Wir fahren <b>an den</b> See.</td><td>Vamos al lago.</td><td>Wir sind <b>am</b> See.</td><td>Estamos en el lago.</td></tr>
+        <tr><td>Die Katze läuft <b>unter das</b> Bett.</td><td>El gato corre debajo de la cama.</td><td>Die Katze schläft <b>unter dem</b> Bett.</td><td>El gato duerme debajo de la cama.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Nine words</b><span><b>in, an, auf, unter, über, vor, hinter, neben, zwischen.</b> „Pongo el libro <b>en</b> la mesa" and „el libro está <b>en</b> la mesa" use the same word in Spanish. In German, ask: is there movement (wohin?) or not (wo?)?</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">3 · Nebensätze · oraciones subordinadas</span>
+    <h2>After weil, dass, wenn: the verb goes to the end</h2>
+    <p class="lead">This is the biggest change for Spanish speakers. After porque or que, Spanish keeps the normal order. In a German subordinate clause the conjugated verb goes to the <b>last position</b>.</p>
+    <div class="pairs">
+      <div><b>Ich komme nicht, weil ich krank <u>bin</u>.</b><span>No vengo porque <u>estoy</u> enfermo.</span></div>
+      <div><b>Ich glaube, dass er heute <u>kommt</u>.</b><span>Creo que <u>viene</u> hoy.</span></div>
+      <div><b>Wenn ich Zeit <u>habe</u>, rufe ich dich an.</b><span>Si <u>tengo</u> tiempo, te llamo.</span></div>
+      <div><b>Ich weiß nicht, ob sie zu Hause <u>ist</u>.</b><span>No sé si <u>está</u> en casa.</span></div>
+      <div><b>Obwohl es regnet, gehen wir spazieren.</b><span>Aunque llueve, vamos a pasear.</span></div>
+    </div>
+    <div class="tip"><b>Verb, comma, verb</b><span>If the sentence <b>starts</b> with the clause (Wenn ich Zeit habe, …), the main clause starts with the verb: „<b>rufe</b> ich dich an". Spanish says "si tengo tiempo, te llamo"; German says „wenn ich Zeit <b>habe</b>, <b>rufe</b> ich dich an".</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">4 · Reflexive Verben · verbos reflexivos</span>
+    <h2>mich, dich, sich = me, te, se</h2>
+    <p class="lead">Good news: this works almost exactly like Spanish. Only the position differs: Spanish puts me / te / se before the verb, German puts mich / dich / sich after it.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>ich</th><th>du</th><th>er / sie / es</th><th>wir</th><th>ihr</th><th>sie / Sie</th></tr></thead>
+      <tbody>
+        <tr><td>wasche <b>mich</b></td><td>wäschst <b>dich</b></td><td>wäscht <b>sich</b></td><td>waschen <b>uns</b></td><td>wascht <b>euch</b></td><td>waschen <b>sich</b></td></tr>
+        <tr><td><b>me</b> lavo</td><td><b>te</b> lavas</td><td><b>se</b> lava</td><td><b>nos</b> lavamos</td><td><b>os</b> laváis / <b>se</b> lavan</td><td><b>se</b> lavan</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Achtung!</b><span>Not every verb matches: <b>sich beeilen</b> = darse prisa / apurarse, <b>sich freuen</b> = alegrarse ✓, but <b>aufstehen</b> = levantarse has no sich in German. Learn each verb with or without sich.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">5 · Komparation · comparación</span>
+    <h2>-er = más, am -sten = el más</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Positiv</th><th>Komparativ</th><th>Superlativ</th><th>Spanish</th></tr></thead>
+      <tbody>
+        <tr><td>schnell</td><td>schnell<b>er</b></td><td>am schnell<b>sten</b></td><td>rápido – más rápido – el más rápido</td></tr>
+        <tr><td>alt</td><td><b>ä</b>lter</td><td>am <b>ä</b>ltesten</td><td>viejo – mayor – el mayor</td></tr>
+        <tr><td>gut</td><td><b>besser</b></td><td>am <b>besten</b></td><td>bueno – mejor – el mejor</td></tr>
+        <tr><td>gern</td><td><b>lieber</b></td><td>am <b>liebsten</b></td><td>me gusta – prefiero – lo que más me gusta</td></tr>
+        <tr><td>viel</td><td><b>mehr</b></td><td>am <b>meisten</b></td><td>mucho – más – lo más</td></tr>
+      </tbody>
+    </table></div>
+    <div class="pairs">
+      <div><b>Mexiko-Stadt ist größer <u>als</u> Berlin.</b><span>Ciudad de México es más grande <b>que</b> Berlín. als = que</span></div>
+      <div><b>Mein Bruder ist <u>so</u> groß <u>wie</u> ich.</b><span>Mi hermano es <b>tan</b> alto <b>como</b> yo.</span></div>
+    </div>
+    <div class="tip"><b>Like mejor</b><span>Spanish has a few irregular ones (mejor, peor, mayor); German has a few too: gut → <b>besser</b>, viel → <b>mehr</b>, gern → <b>lieber</b>. Short words often add an umlaut: alt → <b>ä</b>lter, groß → gr<b>ö</b>ßer, jung → j<b>ü</b>nger.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">6 · Höflich sein · cortesía</span>
+    <h2>würde, hätte, könnte = el condicional</h2>
+    <p class="lead">Spanish is polite with the conditional: <b>¿podría…?</b>, <b>quisiera…</b>, <b>me gustaría…</b>. German does exactly the same with three short verbs. They sound much friendlier than the present tense, so use them at offices, at the doctor's and in the exam.</p>
+    <div class="pairs">
+      <div><b>Ich <u>hätte</u> gern einen Termin.</b><span>Quisiera una cita.</span></div>
+      <div><b><u>Könnten</u> Sie mir helfen?</b><span>¿Podría ayudarme?</span></div>
+      <div><b>Ich <u>würde</u> gern am Montag kommen.</b><span>Me gustaría venir el lunes.</span></div>
+      <div><b>An deiner Stelle <u>würde</u> ich zum Arzt gehen.</b><span>Yo en tu lugar iría al médico.</span></div>
+    </div>
+    <div class="tip"><b>Cultural tip</b><span>German communication is direct: „Nein" is not rude, and Germans say clearly what they think. Small talk is shorter, people keep more physical distance, and greetings are a handshake rather than a kiss. Be on time: 5 minutes late is already late.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">7 · Falsche Freunde · falsos amigos</span>
+    <h2>A2 words that trick Spanish speakers</h2>
+    <div class="tablewrap"><table id="falseTable">
+      <thead><tr><th>German</th><th>Means</th><th>Looks like</th><th>Which means</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <h3>German words that came from Spanish</h3>
+    <div class="cardset" id="loanwords"></div>
+  </div>
+</div>
+
+<!-- ============ PRÜFUNG ============ -->
+<div class="panel" id="p-pruefung" hidden>
+  <details class="plan box" open style="padding:0">
+    <summary style="padding:16px 20px">Goethe-Zertifikat A2 · structure of the exam</summary>
+    <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:14px">
+      <div class="stats">
+        <div class="stat"><b>100</b><span>points total · puntos en total</span></div>
+        <div class="stat"><b>60</b><span>points to pass · para aprobar</span></div>
+        <div class="stat"><b>~105 min</b><span>written part + speaking</span></div>
+        <div class="stat"><b>4</b><span>modules · partes</span></div>
+      </div>
+      <div class="modules">
+        <div class="module"><h3>Hören <span>~30 min</span></h3><ul><li><b>Teil 1</b>: radio and phone messages, heard twice</li><li><b>Teil 2</b>: one conversation, heard once</li><li><b>Teil 3</b>: 5 short dialogues, heard twice</li><li><b>Teil 4</b>: interview, richtig/falsch</li></ul></div>
+        <div class="module"><h3>Lesen <span>~30 min</span></h3><ul><li><b>Teil 1</b>: short newspaper article</li><li><b>Teil 2</b>: information board / store directory</li><li><b>Teil 3</b>: email</li><li><b>Teil 4</b>: match ads to people</li></ul></div>
+        <div class="module"><h3>Schreiben <span>~30 min</span></h3><ul><li><b>Teil 1</b>: informal SMS / message, 20–30 words</li><li><b>Teil 2</b>: semi-formal email, 30–40 words</li></ul></div>
+        <div class="module"><h3>Sprechen <span>~15 min</span></h3><ul><li><b>Teil 1</b>: ask and answer questions with word cards</li><li><b>Teil 2</b>: talk about your life from a card</li><li><b>Teil 3</b>: plan something together with a partner</li></ul></div>
+      </div>
+      <p class="note">Each module counts equally. Check the current format and dates with your exam centre (Goethe-Institut, VHS, or telc for the telc A2 version).</p>
+    </div>
+  </details>
+
+  <div class="score" id="examScore"><span>Your score · tu puntuación: <b id="scoreVal">0 / 0</b></span><span>Correct <b id="okVal">0</b></span><span>Wrong <b id="noVal">0</b></span><button class="btn" id="examReset">Reset answers</button></div>
+
+  <div class="box" id="hoeren">
+    <span class="eyebrow">Hören · escuchar</span>
+    <h2>Listening practice</h2>
+    <p class="lead">Read the question first, then press „Anhören". Your browser reads the text in German. Open „Text" only after you have answered. At A2 the speakers use the Perfekt a lot: listen for <b>habe / bin + participle</b>.</p>
+  </div>
+
+  <div class="box" id="lesen">
+    <span class="eyebrow">Lesen · leer</span>
+    <h2>Reading practice</h2>
+    <p class="lead">Read the question first, then look for the key words in the text. Watch for nicht, kein, nur, schon, noch and for comparatives (größer, teurer).</p>
+  </div>
+</div>
+
+<!-- ============ SCHREIBEN ============ -->
+<div class="panel" id="p-schreiben" hidden>
+  <div class="box" id="w1">
+    <span class="eyebrow">Teil 1 · SMS an eine Freundin (informell)</span>
+    <h2>Write an SMS (20–30 words)</h2>
+    <div class="text">Sie sind mit Ihrer Freundin Lea um 19 Uhr vor dem Kino verabredet. Sie kommen zu spät. Schreiben Sie Lea eine SMS:
+• Entschuldigen Sie sich.
+• Warum kommen Sie zu spät?
+• Wann sind Sie da?</div>
+  </div>
+
+  <div class="box" id="w2">
+    <span class="eyebrow">Teil 2 · E-Mail an die Kursleiterin (formell)</span>
+    <h2>Write an email (30–40 words)</h2>
+    <div class="text">Sie haben einen Deutschkurs B1 an der Volkshochschule gebucht. Sie können am ersten Kurstag nicht kommen. Schreiben Sie an die Kursleiterin, Frau Schmidt:
+• Warum können Sie nicht kommen?
+• Fragen Sie nach dem Kursbuch und den Hausaufgaben.
+• Wann kommen Sie zum ersten Mal?</div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Phrase bank · frases útiles</span>
+    <h2>Informal or formal?</h2>
+    <div class="two">
+      <div class="pairs" id="phInf"><h3>An Freunde · du · tú</h3></div>
+      <div class="pairs" id="phForm"><h3>Formell · Sie · usted</h3></div>
+    </div>
+    <div class="tip"><b>Achtung!</b><span>Don't mix du and Sie in one message. Your teacher, your boss and the Ausländerbehörde get <b>Sie / Ihnen / Ihr</b> with a capital letter, like <b>Usted</b> in a formal letter. And use at least one <b>weil</b> or <b>deshalb</b>: A2 examiners look for connectors.</span></div>
+  </div>
+</div>
+
+<!-- ============ SPRECHEN ============ -->
+<div class="panel" id="p-sprechen" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · Fragen zur Person</span>
+    <h2>Ask and answer with word cards</h2>
+    <p class="lead">You draw cards with one word. Ask your partner a question with it, then answer theirs. Tap a card for a model. Tap again to listen.</p>
+    <div class="cardset" id="t1cards"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · Über sich sprechen</span>
+    <h2>Talk about your life for about one minute</h2>
+    <p class="lead">You get a card with a question and four prompts. Say 2–3 sentences for each prompt. Use the Perfekt and connectors (zuerst, dann, weil, aber).</p>
+    <div class="seg" id="t2seg"></div>
+    <div id="t2card"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 3 · Etwas gemeinsam planen</span>
+    <h2>Find a time together</h2>
+    <p class="lead"><b>Aufgabe:</b> Sie möchten am Samstag zusammen Ihre Freundin Valentina im Krankenhaus besuchen. Wann haben Sie beide Zeit? Tap a time to check it.</p>
+    <div class="cal" id="cal"></div>
+    <div class="counter" id="calResult">Choose a time · elige una hora</div>
+    <div class="two">
+      <div class="pairs" id="planPhr"><h3>Vorschlagen · proponer</h3></div>
+      <div class="model" id="planModel"></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta" style="margin-top:28px">
+  <p><strong>Ready for B1 and work in Germany?</strong>Expert Tongue coaching helps you speak with confidence in interviews, at work and in everyday life.</p>
+  <a href="https://expert-tongue.com" target="_blank" rel="noopener">expert-tongue.com</a>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Expert Tongue · Deutsch A2 für Spanischsprachige · Free study tool</span>
+    <span class="note">Where Spain and Latin America use different words, both are shown (ES / LA). Use the switch above to see only one.</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="../../core/a2.js"></script>
+
+<script>try{localStorage.setItem('et-lang','es')}catch(e){}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('../../sw.js').catch(()=>{})})}</script>
+</body>
+</html>

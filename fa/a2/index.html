@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A2E4D">
+<meta name="description" content="German A2 for speakers of Farsi and Dari: vocabulary, grammar shortcuts and Goethe A2 practice.">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Deutsch FA">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}
+.fa{font-family:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;direction:rtl;unicode-bidi:isolate;font-size:1.04em;line-height:1.7}
+.card .bks.fa{justify-content:flex-start;text-align:right;font-size:15px}
+.card .bks.fa .var{direction:rtl}
+td.fa,tr.fa td{text-align:right}
+.pairs span.fa{text-align:right}
+.tab small.fa{font-size:11px;line-height:1.4}
+</style>
+<title>Deutsch A2 für Persischsprachige</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500;600&family=Vazirmatn:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../core/a2.css">
+</head>
+<body>
+
+
+<header class="band">
+  <div class="wrap">
+    <div class="hero">
+      <a class="home" href="../">&larr; Alle Kurse · <span class="fa">همه دوره‌ها</span></a>
+      <div class="brand">
+        <div class="wordmark"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5.5 11V5.5a4.5 4.5 0 0 1 9 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.3" stroke-linecap="round"/><rect x="1" y="10.5" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16.8" r="1.7" fill="#fff"/><circle cx="13" cy="16.8" r="1.7" fill="#fff"/><circle cx="7" cy="17" r=".75" fill="#0A2E4D"/><circle cx="13" cy="17" r=".75" fill="#0A2E4D"/></svg>Expert Tongue</div>
+        <div class="tagline">unlock your communication</div>
+      </div>
+      <h1>Deutsch A2 <span class="arrow">für</span> Persischsprachige</h1>
+      <p>German A2 vocabulary, grammar shortcuts and Goethe-Zertifikat A2 practice for speakers of Farsi and Dari. <span class="fa">قدم بعدی پس از A1.</span></p>
+    </div>
+    <div class="pair" aria-label="Level and languages"><span class="lvl">A2</span><span>DE</span><span>EN</span><span class="fa">فارسی · دری</span></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" data-tab="wortschatz" aria-selected="true">Wortschatz<small class="fa">واژگان</small></button>
+    <button class="tab" role="tab" data-tab="grammatik" aria-selected="false">Grammatik-Brücke<small class="fa">دستور زبان · مزیت شما</small></button>
+    <button class="tab" role="tab" data-tab="pruefung" aria-selected="false">Prüfung<small class="fa">امتحان · شنیدن و خواندن</small></button>
+    <button class="tab" role="tab" data-tab="schreiben" aria-selected="false">Schreiben<small class="fa">نوشتن</small></button>
+    <button class="tab" role="tab" data-tab="sprechen" aria-selected="false">Sprechen<small class="fa">صحبت کردن</small></button>
+  </div>
+</nav>
+<div class="voicebar"><div class="wrap">
+  <span class="lbl">Stimme · صدا</span>
+  <select id="voiceSel" aria-label="German voice"></select>
+  <button class="btn" id="voiceTest">Test the voice</button>
+  <span class="note" id="voiceOk">If it still sounds English, pick another German voice from the list.</span>
+  <details id="voiceMissing" hidden><summary><b>No German voice found on this device.</b> The audio will sound English. Here's how to add one (2 minutes):</summary>
+    <ul>
+      <li><b>Windows:</b> Settings → Time &amp; language → Speech → Add voices → Deutsch (Deutschland). Then restart the browser.</li>
+      <li><b>Mac:</b> System Settings → Accessibility → Spoken Content → System voice → Manage Voices → German (e.g. Anna). Then reload the page.</li>
+      <li><b>iPhone / iPad:</b> Settings → Accessibility → Spoken Content → Voices → German → download a voice.</li>
+      <li><b>Android:</b> Settings → System → Languages → Text-to-speech → Google speech engine → Install voice data → Deutsch.</li>
+      <li><b>Easiest option:</b> open this page in Google Chrome or Microsoft Edge. Both include good German voices.</li>
+    </ul>
+  </details>
+</div></div>
+
+<main class="wrap">
+
+<!-- ============ WORTSCHATZ ============ -->
+<div class="panel" id="p-wortschatz">
+  <div class="toolbar">
+    <div class="progress"><div class="bar"><i id="pbar"></i></div><span id="ptext">0 learned</span></div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search · جستجو…" aria-label="Search words">
+      <button class="btn" id="flashBtn" aria-pressed="false">Flashcards</button>
+      <button class="btn" id="resetBtn">Reset</button>
+    </div>
+  </div>
+  <div class="controls">
+    <span class="lbl">Show</span>
+    <div class="seg" id="showSeg">
+      <button data-v="all" aria-pressed="true">DE + EN + FA</button>
+      <button data-v="bks" aria-pressed="false">DE + FA</button>
+      <button data-v="en" aria-pressed="false">DE + EN</button>
+    </div>
+    <span class="lbl">Variante</span>
+    <div class="seg" id="varSeg">
+      <button data-v="ALL" aria-pressed="true"><span class="fa">هر دو</span></button>
+      <button data-v="IR" aria-pressed="false"><span class="fa">فارسی (ایران)</span></button>
+      <button data-v="AF" aria-pressed="false"><span class="fa">دری (افغانستان)</span></button>
+    </div>
+  </div>
+  <div id="resetConfirm" class="tip" hidden><span>Reset all learned words? This clears your progress on this device.</span> <button class="btn" id="resetYes">Yes, reset</button> <button class="btn" id="resetNo">Cancel</button></div>
+
+  <details class="plan">
+    <summary>A2 study plan: 6 weeks · <span class="fa">برنامه مطالعه ۶ هفته‌ای</span></summary>
+    <ol>
+      <li><b>Week 1</b><span>Arbeit, Wohnungssuche, Ämter: the words you need for life in Germany. Practise the Perfekt list every day.</span></li>
+      <li><b>Week 2</b><span>Gesundheit, Kommunikation, Einkaufen. Write one SMS per day (Schreiben Teil 1).</span></li>
+      <li><b>Week 3</b><span>Konnektoren: weil, dass, wenn, obwohl. Verb to the end, which you already know from Persian!</span></li>
+      <li><b>Week 4</b><span>Reflexive verbs and verbs with prepositions (warten auf, sich freuen auf/über).</span></li>
+      <li><b>Week 5</b><span>Freizeit, Feste, Gefühle, Vergleich. Talk about your weekend for 1 minute (Sprechen Teil 2).</span></li>
+      <li><b>Week 6</b><span>Full exam practice: Hören, Lesen, both Schreiben tasks, and plan a meeting with a partner (Sprechen Teil 3).</span></li>
+    </ol>
+  </details>
+
+  <div class="cats" id="cats"></div>
+  <div class="legend">
+    <span>Colours:</span><span><b class="g-der">der</b> <span class="fa">مذکر</span></span><span><b class="g-die">die</b> <span class="fa">مؤنث / جمع</span></span><span><b class="g-das">das</b> <span class="fa">خنثی</span></span><span><b class="g-aux">hat / ist</b> helper verb in the Perfekt</span>
+  </div>
+  <div id="vocab"></div>
+</div>
+
+<!-- ============ GRAMMATIK ============ -->
+<div class="panel" id="p-grammatik" hidden>
+  <div class="box">
+    <span class="eyebrow">Warum A2 für Persischsprachige leichter ist</span>
+    <h2>Half of A2 grammar already works like Persian</h2>
+    <p class="lead">A2 is the level where German grammar opens up: the past tense, two-way prepositions, subordinate clauses, reflexive verbs, comparisons and polite forms. Persian already builds its past with a participle, puts the verb at the end of a clause, and has <span class="fa">به</span> and <span class="fa">در</span> for "where to" and "where". Use that.</p>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">1 · Perfekt · <span class="fa">ماضی نقلی</span></span>
+    <h2>Ich habe gearbeitet = <span class="fa">کار کرده‌ام</span></h2>
+    <p class="lead">Both languages build this past with <b>participle + helper</b>. In German the helper stands in position 2 and the participle goes to the end. German has two helpers: most verbs use <b class="g-aux">haben</b>, verbs of movement or change use <b class="g-aux">sein</b>.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>German</th><th>Persian</th><th>Helper</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Ich <b class="g-aux">habe</b> Tee <u>getrunken</u>.</td><td class="fa">چای نوشیده‌ام.</td><td>haben</td><td>most verbs</td></tr>
+        <tr><td>Wir <b class="g-aux">haben</b> Deutsch <u>gelernt</u>.</td><td class="fa">آلمانی یاد گرفته‌ایم.</td><td>haben</td><td>most verbs</td></tr>
+        <tr><td>Ich <b class="g-aux">bin</b> nach Hamburg <u>gefahren</u>.</td><td class="fa">به هامبورگ رفته‌ام.</td><td>sein</td><td>movement A → B</td></tr>
+        <tr><td>Er <b class="g-aux">ist</b> spät <u>aufgestanden</u>.</td><td class="fa">دیر بیدار شده است.</td><td>sein</td><td>change of state</td></tr>
+        <tr><td>Sie <b class="g-aux">ist</b> zu Hause <u>geblieben</u>.</td><td class="fa">در خانه مانده است.</td><td>sein</td><td>exception: bleiben, sein</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Achtung!</b><span>German uses the Perfekt for almost every spoken past, also where Persian uses the simple past (<span class="fa">دیروز کار کردم</span> → <b>Gestern habe ich gearbeitet</b>). Don't look for a separate German form for <span class="fa">کردم</span> in speech.</span></div>
+    <div class="two">
+      <div class="pairs">
+        <h3>Präteritum for the most common verbs</h3>
+        <div><b>Ich war in Teheran.</b><span class="fa">در تهران بودم.</span></div>
+        <div><b>Ich hatte keine Zeit.</b><span class="fa">وقت نداشتم.</span></div>
+        <div><b>Ich musste arbeiten.</b><span class="fa">مجبور بودم کار کنم.</span></div>
+        <div><b>Ich konnte nicht kommen.</b><span class="fa">نتوانستم بیایم.</span></div>
+      </div>
+      <div class="pairs">
+        <h3>Use Präteritum, not Perfekt, for</h3>
+        <div><b>sein, haben</b><span>war, hatte</span></div>
+        <div><b>Modalverben</b><span>musste, konnte, wollte, durfte, sollte</span></div>
+        <div><b>es gibt</b><span>es gab (<span class="fa">وجود داشت</span>)</span></div>
+        <div><b>All other verbs</b><span>use the Perfekt when you speak</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">2 · Wechselpräpositionen · <span class="fa">به یا در؟</span></span>
+    <h2>Akkusativ = <span class="fa">به</span> (wohin), Dativ = <span class="fa">در</span> (wo)</h2>
+    <p class="lead">Persian already separates movement and location: <span class="fa">به شهر می‌روم</span> (where to) and <span class="fa">در شهر هستم</span> (where). German does the same with nine prepositions: <b>Wohin?</b> → Akkusativ, <b>Wo?</b> → Dativ.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Wohin? → Akkusativ</th><th><span class="fa">به کجا؟</span></th><th>Wo? → Dativ</th><th><span class="fa">کجا؟</span></th></tr></thead>
+      <tbody>
+        <tr><td>Ich gehe <b>in die</b> Stadt.</td><td class="fa"><b>به</b> شهر می‌روم.</td><td>Ich bin <b>in der</b> Stadt.</td><td class="fa"><b>در</b> شهر هستم.</td></tr>
+        <tr><td>Ich lege das Buch <b>auf den</b> Tisch.</td><td class="fa">کتاب را <b>روی</b> میز می‌گذارم.</td><td>Das Buch liegt <b>auf dem</b> Tisch.</td><td class="fa">کتاب <b>روی</b> میز است.</td></tr>
+        <tr><td>Wir fahren <b>an den</b> See.</td><td class="fa"><b>به</b> کنار دریاچه می‌رویم.</td><td>Wir sind <b>am</b> See.</td><td class="fa"><b>کنار</b> دریاچه هستیم.</td></tr>
+        <tr><td>Die Katze läuft <b>unter das</b> Bett.</td><td class="fa">گربه <b>زیر</b> تخت می‌دود.</td><td>Die Katze schläft <b>unter dem</b> Bett.</td><td class="fa">گربه <b>زیر</b> تخت می‌خوابد.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Nine words</b><span><b>in, an, auf, unter, über, vor, hinter, neben, zwischen.</b> Ask yourself: would I say <span class="fa">به</span> (movement) or <span class="fa">در</span> (place)? Then choose Akkusativ or Dativ.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">3 · Nebensätze · <span class="fa">جمله‌های وابسته</span></span>
+    <h2>After weil, dass, wenn: the verb goes to the end, like in Persian</h2>
+    <p class="lead">This is the rule English speakers find hardest. For you it feels natural: in a German subordinate clause the conjugated verb goes to the <b>last position</b>, exactly as in every Persian sentence.</p>
+    <div class="pairs">
+      <div><b>Ich komme nicht, weil ich krank <u>bin</u>.</b><span class="fa">نمی‌آیم، چون مریض <u>هستم</u>.</span></div>
+      <div><b>Ich glaube, dass er heute <u>kommt</u>.</b><span class="fa">فکر می‌کنم که او امروز <u>می‌آید</u>.</span></div>
+      <div><b>Wenn ich Zeit <u>habe</u>, rufe ich dich an.</b><span class="fa">اگر وقت <u>داشته باشم</u>، به تو زنگ می‌زنم.</span></div>
+      <div><b>Ich weiß nicht, ob sie zu Hause <u>ist</u>.</b><span class="fa">نمی‌دانم که آیا در خانه <u>است</u>.</span></div>
+      <div><b>Obwohl es regnet, gehen wir spazieren.</b><span class="fa">با اینکه باران می‌بارد، قدم می‌زنیم.</span></div>
+    </div>
+    <div class="tip"><b>The new part</b><span>If the sentence <b>starts</b> with the clause (Wenn ich Zeit habe, …), the main clause starts with the verb: „<b>rufe</b> ich dich an". Verb, comma, verb.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">4 · Reflexive Verben · <span class="fa">افعال انعکاسی</span></span>
+    <h2>sich = <span class="fa">خود</span>, and it changes with the person</h2>
+    <p class="lead">Persian <span class="fa">خودم، خودت، خودش</span> changes with the person, and German does the same. Learn this one row and you can use every reflexive verb.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>ich</th><th>du</th><th>er / sie / es</th><th>wir</th><th>ihr</th><th>sie / Sie</th></tr></thead>
+      <tbody>
+        <tr><td>wasche <b>mich</b></td><td>wäschst <b>dich</b></td><td>wäscht <b>sich</b></td><td>waschen <b>uns</b></td><td>wascht <b>euch</b></td><td>waschen <b>sich</b></td></tr>
+        <tr class="fa"><td><b>خودم</b> را می‌شویم</td><td><b>خودت</b> را می‌شویی</td><td><b>خودش</b> را می‌شوید</td><td><b>خودمان</b> را می‌شوییم</td><td><b>خودتان</b> را می‌شویید</td><td><b>خودشان</b> را می‌شویند</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Achtung!</b><span>Many German reflexive verbs have no <span class="fa">خود</span> in Persian: <b>sich freuen</b> = <span class="fa">خوشحال شدن</span>, <b>sich beeilen</b> = <span class="fa">عجله کردن</span>, <b>sich setzen</b> = <span class="fa">نشستن</span>. Learn them with sich.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">5 · Komparation · <span class="fa">مقایسه</span></span>
+    <h2>-er = <span class="fa">تر</span>, am -sten = <span class="fa">ترین</span></h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Positiv</th><th>Komparativ</th><th>Superlativ</th><th>Persian</th></tr></thead>
+      <tbody>
+        <tr><td>schnell</td><td>schnell<b>er</b></td><td>am schnell<b>sten</b></td><td class="fa">سریع – سریع‌تر – سریع‌ترین</td></tr>
+        <tr><td>alt</td><td><b>ä</b>lter</td><td>am <b>ä</b>ltesten</td><td class="fa">پیر – پیرتر – پیرترین</td></tr>
+        <tr><td>gut</td><td><b>besser</b></td><td>am <b>besten</b></td><td class="fa">خوب – بهتر – بهترین</td></tr>
+        <tr><td>gern</td><td><b>lieber</b></td><td>am <b>liebsten</b></td><td class="fa">با علاقه – ترجیحاً – بیش از همه</td></tr>
+        <tr><td>viel</td><td><b>mehr</b></td><td>am <b>meisten</b></td><td class="fa">زیاد – بیشتر – بیشترین</td></tr>
+      </tbody>
+    </table></div>
+    <div class="pairs">
+      <div><b>Teheran ist größer <u>als</u> Berlin.</b><span class="fa">تهران <b>از</b> برلین بزرگ‌تر است.</span></div>
+      <div><b>Mein Bruder ist <u>so</u> groß <u>wie</u> ich.</b><span class="fa">برادرم به اندازه من قد دارد.</span></div>
+    </div>
+    <div class="tip"><b>Word order</b><span>Persian: <span class="fa">تهران <b>از</b> برلین بزرگ‌تر است</span> (comparison word first). German: <b>größer als</b> Berlin (adjective first, then als).</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">6 · Höflich sein · <span class="fa">مؤدبانه صحبت کردن</span></span>
+    <h2>würde, hätte, könnte: your <span class="fa">ممکن است … ؟</span></h2>
+    <p class="lead">Persian has many polite forms (<span class="fa">می‌شود …؟، ممکن است …؟، می‌خواستم …</span>). German uses three short verbs. They sound much friendlier than the plain present tense, so use them at the office, at the doctor's and in the exam.</p>
+    <div class="pairs">
+      <div><b>Ich <u>hätte</u> gern einen Termin.</b><span class="fa">یک وقت می‌خواستم.</span></div>
+      <div><b><u>Könnten</u> Sie mir helfen?</b><span class="fa">ممکن است به من کمک کنید؟</span></div>
+      <div><b>Ich <u>würde</u> gern am Montag kommen.</b><span class="fa">دوست دارم دوشنبه بیایم.</span></div>
+      <div><b>An deiner Stelle <u>würde</u> ich zum Arzt gehen.</b><span class="fa">اگر جای تو بودم، پیش دکتر می‌رفتم.</span></div>
+    </div>
+    <div class="tip"><b>Cultural tip</b><span>German politeness is short and direct. Persian <i>taarof</i> (<span class="fa">تعارف</span>) does not translate: if a German offers you tea and you say „Nein, danke" to be polite, you will not get any. Say „<b>Ja, gern</b>" if you want it.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">7 · Falsche Freunde · <span class="fa">دوستان دروغین</span></span>
+    <h2>A2 words that trick Persian speakers (often through English)</h2>
+    <div class="tablewrap"><table id="falseTable">
+      <thead><tr><th>German</th><th>Means</th><th>Looks like</th><th>Which means</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <h3>German words with Persian roots</h3>
+    <div class="cardset" id="loanwords"></div>
+  </div>
+</div>
+
+<!-- ============ PRÜFUNG ============ -->
+<div class="panel" id="p-pruefung" hidden>
+  <details class="plan box" open style="padding:0">
+    <summary style="padding:16px 20px">Goethe-Zertifikat A2 · structure of the exam</summary>
+    <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:14px">
+      <div class="stats">
+        <div class="stat"><b>100</b><span>points total · <span class="fa">مجموع امتیاز</span></span></div>
+        <div class="stat"><b>60</b><span>points to pass · <span class="fa">برای قبولی</span></span></div>
+        <div class="stat"><b>~105 min</b><span>written part + speaking</span></div>
+        <div class="stat"><b>4</b><span>modules · <span class="fa">بخش</span></span></div>
+      </div>
+      <div class="modules">
+        <div class="module"><h3>Hören <span>~30 min</span></h3><ul><li><b>Teil 1</b>: radio and phone messages, heard twice</li><li><b>Teil 2</b>: one conversation, heard once</li><li><b>Teil 3</b>: 5 short dialogues, heard twice</li><li><b>Teil 4</b>: interview, richtig/falsch</li></ul></div>
+        <div class="module"><h3>Lesen <span>~30 min</span></h3><ul><li><b>Teil 1</b>: short newspaper article</li><li><b>Teil 2</b>: information board / store directory</li><li><b>Teil 3</b>: email</li><li><b>Teil 4</b>: match ads to people</li></ul></div>
+        <div class="module"><h3>Schreiben <span>~30 min</span></h3><ul><li><b>Teil 1</b>: informal SMS / message, 20–30 words</li><li><b>Teil 2</b>: semi-formal email, 30–40 words</li></ul></div>
+        <div class="module"><h3>Sprechen <span>~15 min</span></h3><ul><li><b>Teil 1</b>: ask and answer questions with word cards</li><li><b>Teil 2</b>: talk about your life from a card</li><li><b>Teil 3</b>: plan something together with a partner</li></ul></div>
+      </div>
+      <p class="note">Each module counts equally. Check the current format and dates with your exam centre (Goethe-Institut, VHS, or telc for the telc A2 version).</p>
+    </div>
+  </details>
+
+  <div class="score" id="examScore"><span>Your score · <span class="fa">امتیاز شما</span>: <b id="scoreVal">0 / 0</b></span><span>Correct <b id="okVal">0</b></span><span>Wrong <b id="noVal">0</b></span><button class="btn" id="examReset">Reset answers</button></div>
+
+  <div class="box" id="hoeren">
+    <span class="eyebrow">Hören · <span class="fa">شنیدن</span></span>
+    <h2>Listening practice</h2>
+    <p class="lead">Read the question first, then press „Anhören". Your browser reads the text in German. Open „Text" only after you have answered. At A2 the speakers use the Perfekt a lot: listen for <b>habe / bin + participle</b>.</p>
+  </div>
+
+  <div class="box" id="lesen">
+    <span class="eyebrow">Lesen · <span class="fa">خواندن</span></span>
+    <h2>Reading practice</h2>
+    <p class="lead">Read the question first, then look for the key words in the text. Watch for nicht, kein, nur, schon, noch and for comparatives (größer, teurer).</p>
+  </div>
+</div>
+
+<!-- ============ SCHREIBEN ============ -->
+<div class="panel" id="p-schreiben" hidden>
+  <div class="box" id="w1">
+    <span class="eyebrow">Teil 1 · SMS an eine Freundin (informell)</span>
+    <h2>Write an SMS (20–30 words)</h2>
+    <div class="text">Sie sind mit Ihrer Freundin Lea um 19 Uhr vor dem Kino verabredet. Sie kommen zu spät. Schreiben Sie Lea eine SMS:
+• Entschuldigen Sie sich.
+• Warum kommen Sie zu spät?
+• Wann sind Sie da?</div>
+  </div>
+
+  <div class="box" id="w2">
+    <span class="eyebrow">Teil 2 · E-Mail an die Kursleiterin (formell)</span>
+    <h2>Write an email (30–40 words)</h2>
+    <div class="text">Sie haben einen Deutschkurs B1 an der Volkshochschule gebucht. Sie können am ersten Kurstag nicht kommen. Schreiben Sie an die Kursleiterin, Frau Schmidt:
+• Warum können Sie nicht kommen?
+• Fragen Sie nach dem Kursbuch und den Hausaufgaben.
+• Wann kommen Sie zum ersten Mal?</div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Phrase bank · <span class="fa">عبارات مفید</span></span>
+    <h2>Informal or formal?</h2>
+    <div class="two">
+      <div class="pairs" id="phInf"><h3>An Freunde · du · <span class="fa">تو</span></h3></div>
+      <div class="pairs" id="phForm"><h3>Formell · Sie · <span class="fa">شما</span></h3></div>
+    </div>
+    <div class="tip"><b>Achtung!</b><span>Don't mix du and Sie in one message. Your teacher, your boss and the Ausländerbehörde get <b>Sie / Ihnen / Ihr</b> with a capital letter, like <span class="fa">شما</span>. And use at least one <b>weil</b> or <b>deshalb</b>: A2 examiners look for connectors.</span></div>
+  </div>
+</div>
+
+<!-- ============ SPRECHEN ============ -->
+<div class="panel" id="p-sprechen" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · Fragen zur Person</span>
+    <h2>Ask and answer with word cards</h2>
+    <p class="lead">You draw cards with one word. Ask your partner a question with it, then answer theirs. Tap a card for a model. Tap again to listen.</p>
+    <div class="cardset" id="t1cards"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · Über sich sprechen</span>
+    <h2>Talk about your life for about one minute</h2>
+    <p class="lead">You get a card with a question and four prompts. Say 2–3 sentences for each prompt. Use the Perfekt and connectors (zuerst, dann, weil, aber).</p>
+    <div class="seg" id="t2seg"></div>
+    <div id="t2card"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 3 · Etwas gemeinsam planen</span>
+    <h2>Find a time together</h2>
+    <p class="lead"><b>Aufgabe:</b> Sie möchten am Samstag zusammen Ihre Freundin Leyla im Krankenhaus besuchen. Wann haben Sie beide Zeit? Tap a time to check it.</p>
+    <div class="cal" id="cal"></div>
+    <div class="counter" id="calResult">Choose a time · <span class="fa">یک زمان انتخاب کنید</span></div>
+    <div class="two">
+      <div class="pairs" id="planPhr"><h3>Vorschlagen · <span class="fa">پیشنهاد دادن</span></h3></div>
+      <div class="model" id="planModel"></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta" style="margin-top:28px">
+  <p><strong>Ready for B1 and work in Germany?</strong>Expert Tongue coaching helps you speak with confidence in interviews, at work and in everyday life.</p>
+  <a href="https://expert-tongue.com" target="_blank" rel="noopener">expert-tongue.com</a>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Expert Tongue · Deutsch A2 für Persischsprachige · Free study tool</span>
+    <span class="note">Variants: IR = Farsi (Iran), AF = Dari (Afghanistan). Where only one word is shown, it is used in both.</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="../../core/a2.js"></script>
+
+<script>try{localStorage.setItem('et-lang','fa')}catch(e){}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('../../sw.js').catch(()=>{})})}</script>
+</body>
+</html>
