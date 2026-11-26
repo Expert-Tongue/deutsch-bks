@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A2E4D">
+<meta name="description" content="German A1 for speakers of Vietnamese: vocabulary, grammar bridge and Goethe A1 practice.">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Deutsch VI">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Deutsch A1 für Vietnamesischsprachige</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../core/a1.css">
+</head>
+<body>
+
+
+<header class="band">
+  <div class="wrap">
+    <div class="hero">
+      <a class="home" href="../">&larr; Alle Kurse · tất cả khóa học</a>
+      <div class="brand">
+        <div class="wordmark"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5.5 11V5.5a4.5 4.5 0 0 1 9 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.3" stroke-linecap="round"/><rect x="1" y="10.5" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16.8" r="1.7" fill="#fff"/><circle cx="13" cy="16.8" r="1.7" fill="#fff"/><circle cx="7" cy="17" r=".75" fill="#0A2E4D"/><circle cx="13" cy="17" r=".75" fill="#0A2E4D"/></svg>Expert Tongue</div>
+        <div class="tagline">unlock your communication</div>
+      </div>
+      <h1>Deutsch A1 <span class="arrow">für</span> Vietnamesischsprachige</h1>
+      <p>German A1 vocabulary and Goethe Start Deutsch 1 practice for speakers of Vietnamese. Tiếng Đức cho người mới bắt đầu, có dịch sang tiếng Việt.</p>
+    </div>
+    <div class="pair" aria-label="Languages"><span>DE</span><span>EN</span><span>VI</span></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" data-tab="wortschatz" aria-selected="true">Wortschatz<small>từ vựng</small></button>
+    <button class="tab" role="tab" data-tab="bruecke" aria-selected="false">Die Brücke<small>cây cầu · lợi thế của bạn</small></button>
+    <button class="tab" role="tab" data-tab="pruefung" aria-selected="false">Prüfung<small>kỳ thi · nghe và đọc</small></button>
+    <button class="tab" role="tab" data-tab="schreiben" aria-selected="false">Schreiben<small>viết</small></button>
+    <button class="tab" role="tab" data-tab="sprechen" aria-selected="false">Sprechen<small>nói</small></button>
+  </div>
+</nav>
+<div class="voicebar"><div class="wrap">
+  <span class="lbl">Stimme · giọng đọc</span>
+  <select id="voiceSel" aria-label="German voice"></select>
+  <button class="btn" id="voiceTest">Test the voice</button>
+  <span class="note" id="voiceOk">If it still sounds English, pick another German voice from the list.</span>
+  <details id="voiceMissing" hidden><summary><b>No German voice found on this device.</b> The audio will sound English. Here's how to add one (2 minutes):</summary>
+    <ul>
+      <li><b>Windows:</b> Settings → Time &amp; language → Speech → Add voices → Deutsch (Deutschland). Then restart the browser.</li>
+      <li><b>Mac:</b> System Settings → Accessibility → Spoken Content → System voice → Manage Voices → German (e.g. Anna). Then reload the page.</li>
+      <li><b>iPhone / iPad:</b> Settings → Accessibility → Spoken Content → Voices → German → download a voice.</li>
+      <li><b>Android:</b> Settings → System → Languages → Text-to-speech → Google speech engine → Install voice data → Deutsch.</li>
+      <li><b>Easiest option:</b> open this page in Google Chrome or Microsoft Edge. Both include good German voices.</li>
+    </ul>
+  </details>
+</div></div>
+
+<main class="wrap">
+
+<!-- ============ WORTSCHATZ ============ -->
+<div class="panel" id="p-wortschatz">
+  <div class="toolbar">
+    <div class="progress"><div class="bar"><i id="pbar"></i></div><span id="ptext">0 learned</span></div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search · tìm…" aria-label="Search words">
+      <button class="btn" id="flashBtn" aria-pressed="false">Flashcards</button>
+      <button class="btn" id="resetBtn">Reset</button>
+    </div>
+  </div>
+  <div class="controls">
+    <span class="lbl">Show</span>
+    <div class="seg" id="showSeg">
+      <button data-v="all" aria-pressed="true">DE + EN + VI</button>
+      <button data-v="bks" aria-pressed="false">DE + VI</button>
+      <button data-v="en" aria-pressed="false">DE + EN</button>
+    </div>
+    <div class="seg" id="varSeg"><button data-v="ALL" aria-pressed="true">Cả hai</button><button data-v="HN" aria-pressed="false">Miền Bắc</button><button data-v="SG" aria-pressed="false">Miền Nam</button></div>
+  </div>
+  <div id="resetConfirm" class="tip" hidden><span>Reset all learned words? This clears your progress on this device.</span> <button class="btn" id="resetYes">Yes, reset</button> <button class="btn" id="resetNo">Cancel</button></div>
+
+  <details class="plan">
+    <summary>1-hour study plan · kế hoạch học 60 phút</summary>
+    <ol>
+      <li><b>0–10 min</b><span>Begrüßung: say every phrase out loud, especially „Ich weiß das Wort auf Deutsch nicht."</span></li>
+      <li><b>10–20 min</b><span>Familie & Vorstellung: practise Ich heiße …, ich komme aus Vietnam, ich bin … Jahre alt, von Beruf bin ich …</span></li>
+      <li><b>20–30 min</b><span>Zahlen & Zeit: 1–100, weekdays, and „halb drei" (2:30, not 3:30).</span></li>
+      <li><b>30–40 min</b><span>Verben & Modalverben: müssen, können, dürfen, sollen, wollen, möchten. Watch gehen vs. fahren.</span></li>
+      <li><b>40–50 min</b><span>Wohnen & Gegenstände: Sprechen Teil 3 cards come from these words.</span></li>
+      <li><b>50–60 min</b><span>Reisen, Essen, Einkaufen: learn every noun with its article (der/die/das). Vietnamese has no grammatical gender, so this is your main job: learn every noun with der, die or das, like a classifier.</span></li>
+    </ol>
+  </details>
+
+  <div class="cats" id="cats"></div>
+  <div class="legend">
+    <span>Article colours:</span><span><b class="g-der">der</b> masculine · giống đực</span><span><b class="g-die">die</b> feminine / plural · giống cái / số nhiều</span><span><b class="g-das">das</b> neuter · giống trung</span>
+  </div>
+  <div id="vocab"></div>
+</div>
+
+<!-- ============ BRÜCKE ============ -->
+<div class="panel" id="p-bruecke" hidden>
+  <div class="box">
+    <span class="eyebrow">Was Vietnamesischsprachige schon können</span>
+    <h2>Your head start: the Latin alphabet</h2>
+    <p class="lead">You already read the Latin alphabet, so German letters look familiar: only <b>ä, ö, ü</b> and <b>ß</b> are new. German has <b>no tones</b>: the melody of a word never changes its meaning. Instead, German has things Vietnamese doesn't: <b>verb endings</b>, <b>articles</b> (der, die, das), <b>plural endings</b> and <b>cases</b>. The good news: the basic word order (I – work – today) is the same as in Vietnamese. Tap any <svg style="width:13px;height:13px;vertical-align:-2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg> to hear the German.</p>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">1 · Aussprache · phát âm</span>
+    <h2>German sounds, written the Vietnamese way</h2>
+    <p class="lead">Read the right-hand column as Vietnamese, without tones. German stresses the <b>first syllable</b> of most words: <b>Ar</b>-beit, <b>Fa</b>-mi-lie is an exception (Fa-<b>mi</b>-lie).</p>
+    <div class="tablewrap"><table id="pronTable">
+      <thead><tr><th>German</th><th>Sounds like</th><th>Example</th><th>Read it as</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div class="tip"><b>Achtung!</b><span><b>Say the last consonant.</b> In Vietnamese, final sounds are short and unreleased (học, mát). In German you must hear them: Hun<b>d</b> = „hun-t", Ber<b>g</b> = „béc-k". Many words end in two or three consonants: Herb<b>st</b>, Obs<b>t</b>, Wur<b>st</b>. Say every one.</span></div>
+    <div class="tip"><b>No tones</b><span>German uses melody only for feeling and for questions: the voice goes up at the end of a yes/no question. Don't worry about „wrong tones": a German word means the same at any pitch.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">2 · Satzbau · trật tự câu</span>
+    <h2>Same start as Vietnamese, but the verb is always 2nd</h2>
+    <p class="lead">Vietnamese and German both say <b>Ich arbeite heute</b> = Tôi làm việc hôm nay. But in German the conjugated verb must stay in <b>position 2</b>, and a second verb goes to the <b>end</b>.</p>
+    <div class="pairs">
+      <div><b>Ich <u>arbeite</u> heute.</b><span>Tôi làm việc hôm nay.</span></div>
+      <div><b>Heute <u>arbeite</u> ich.</b><span>Hôm nay tôi làm việc. Vietnamese keeps „tôi" before the verb; German swaps: never „Heute ich arbeite".</span></div>
+      <div><b>Ich <u>muss</u> heute <u>arbeiten</u>.</b><span>Hôm nay tôi phải làm việc. The second verb goes to the end.</span></div>
+      <div><b>Ich <u>stehe</u> um 7 Uhr <u>auf</u>.</b><span>Tôi thức dậy lúc 7 giờ. „auf" jumps to the end.</span></div>
+      <div><b><u>Kommen</u> Sie aus Vietnam?</b><span>Anh / Chị đến từ Việt Nam phải không? No „không?" at the end: the verb goes first.</span></div>
+    </div>
+    <div class="tip"><b>Verbs change</b><span>Vietnamese verbs never change (tôi đi, anh đi, họ đi). German verbs take endings: ich geh<b>e</b>, du geh<b>st</b>, er geh<b>t</b>, wir geh<b>en</b>. Learn these four endings first: they work for most verbs.</span></div>
+    <div class="tip"><b>Sie, du, ihr</b><span>Instead of ông, bà, anh, chị, em…, German has <b>du</b> (one friend), <b>ihr</b> (several friends) and <b>Sie</b> (polite, always with a capital S). Use Sie with everyone you would call ông, bà, anh or chị at work or at an office.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">3 · Artikel & Genus · giống</span>
+    <h2>der, die, das: think of them as classifiers</h2>
+    <p class="lead">Vietnamese puts a classifier before the noun: <b>cái</b> bàn, <b>con</b> mèo, <b>quyển</b> sách. German puts an article before every noun: <b class="g-der">der</b> Tisch, <b class="g-die">die</b> Katze, <b class="g-das">das</b> Buch. Just like a classifier, you must learn it with each noun. There are three: masculine, feminine and neuter, and they rarely follow logic. Nouns are always written with a <b>capital letter</b>.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>German</th><th>Gender</th><th>Vietnamese</th><th>Memory trick</th></tr></thead>
+      <tbody>
+        <tr><td><span class="g-der"><b>der</b></span> Mann</td><td>masculine</td><td>người đàn ông</td><td>logical ✓</td></tr>
+        <tr><td><span class="g-die"><b>die</b></span> Frau</td><td>feminine</td><td>người phụ nữ</td><td>logical ✓</td></tr>
+        <tr><td><span class="g-das"><b>das</b></span> Mädchen</td><td>neuter</td><td>cô bé</td><td>-chen is always das</td></tr>
+        <tr><td><span class="g-der"><b>der</b></span> Tisch</td><td>masculine</td><td>cái bàn</td><td>just learn it</td></tr>
+        <tr><td><span class="g-die"><b>die</b></span> Lampe</td><td>feminine</td><td>cái đèn</td><td>just learn it</td></tr>
+        <tr><td><span class="g-die"><b>die</b></span> Kinder</td><td>plural</td><td>những đứa trẻ</td><td>every plural is die</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Plural</b><span>Vietnamese adds <b>các / những</b>; German changes the noun itself: das Kind → die Kind<b>er</b>, der Tisch → die Tisch<b>e</b>, die Frau → die Frau<b>en</b>, das Auto → die Auto<b>s</b>. Learn the plural with the noun: der Tisch, die Tische.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">4 · Fälle · cách</span>
+    <h2>Who does what? German shows it with the article</h2>
+    <p class="lead">Vietnamese shows roles through word order alone. German also changes the <b>article</b>. At A1, focus on two cases: Nominativ (who does it) and Akkusativ (what or whom). Only <b class="g-der">der</b> changes: der → <b>den</b>.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Fall</th><th>German</th><th>Vietnamese</th><th>Clue</th></tr></thead>
+      <tbody>
+        <tr><td><b>Nominativ</b></td><td><span class="g-der">der</span> Mann ist hier.</td><td>Người đàn ông ở đây.</td><td>who does it</td></tr>
+        <tr><td><b>Akkusativ</b></td><td>Ich sehe <span class="g-der">den</span> Mann.</td><td>Tôi thấy người đàn ông.</td><td>what / whom → den</td></tr>
+        <tr><td><b>Dativ</b></td><td>Ich gebe <span class="g-der">dem</span> Mann das Buch.</td><td>Tôi đưa cuốn sách <b>cho</b> người đàn ông.</td><td>„cho" → dem</td></tr>
+        <tr><td><b>Genitiv</b></td><td>das Auto <span class="g-der">des</span> Mannes</td><td>xe <b>của</b> người đàn ông</td><td>„của" → des</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Your clue</b><span>Where Vietnamese uses <b>cho</b> (to someone), German uses the Dativ: dem, der, einem, mir, dir. Where Vietnamese uses <b>của</b>, German uses the Genitiv, or simply „von": das Auto <b>von</b> Minh = xe của Minh.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">5 · Bekannte Wörter · từ quen thuộc</span>
+    <h2>Words you already know</h2>
+    <p class="lead">Vietnamese took many words from French, and German has the same words from French or English. Tap a card to see the Vietnamese word, then tap again to hear the German.</p>
+    <div class="cardset" id="loanwords"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">6 · Falsche Freunde · từ dễ nhầm</span>
+    <h2>Looks familiar, means something else</h2>
+    <div class="tablewrap"><table id="falseTable">
+      <thead><tr><th>German</th><th>Means</th><th>Looks like</th><th>Which is</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ============ PRÜFUNG ============ -->
+<div class="panel" id="p-pruefung" hidden>
+  <details class="plan box" open style="padding:0">
+    <summary style="padding:16px 20px">Goethe-Zertifikat A1: Start Deutsch 1 · structure of the exam</summary>
+    <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:14px">
+      <div class="stats">
+        <div class="stat"><b>60</b><span>points total · tổng điểm</span></div>
+        <div class="stat"><b>60 %</b><span>to pass · để đỗ</span></div>
+        <div class="stat"><b>~80 min</b><span>written part + speaking</span></div>
+        <div class="stat"><b>4</b><span>modules · phần</span></div>
+      </div>
+      <div class="modules">
+        <div class="module"><h3>Hören <span>~20 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: 6 short dialogues, heard twice, A/B/C</li><li><b>Teil 2</b>: 4 announcements, heard <b>once</b>, richtig/falsch</li><li><b>Teil 3</b>: 5 phone messages, heard twice, A/B/C</li></ul></div>
+        <div class="module"><h3>Lesen <span>~25 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: 2 short emails, 5 × richtig/falsch</li><li><b>Teil 2</b>: 5 situations, choose website A or B</li><li><b>Teil 3</b>: 5 signs/notices, richtig/falsch</li></ul></div>
+        <div class="module"><h3>Schreiben <span>~20 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: fill in a form, 5 gaps</li><li><b>Teil 2</b>: short message, about 30 words, 3 points</li></ul></div>
+        <div class="module"><h3>Sprechen <span>~15 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: introduce yourself, spell, say a number</li><li><b>Teil 2</b>: ask and answer questions on a theme</li><li><b>Teil 3</b>: make and react to requests</li></ul></div>
+      </div>
+      <p class="note">Check the current format and dates with your exam centre (Goethe-Institut, VHS, or telc for the telc A1 version).</p>
+    </div>
+  </details>
+
+  <div class="score" id="examScore"><span>Your score · điểm của bạn: <b id="scoreVal">0 / 0</b></span><span>Correct <b id="okVal">0</b></span><span>Wrong <b id="noVal">0</b></span><button class="btn" id="examReset">Reset answers</button></div>
+
+  <div class="box" id="hoeren">
+    <span class="eyebrow">Hören · nghe</span>
+    <h2>Listening practice</h2>
+    <p class="lead">Read the question first, then press „Anhören". Your browser reads the text in German. Use „Text" only after you have answered. In Teil 2 you hear the text only once in the real exam: focus on numbers and on nicht / kein.</p>
+  </div>
+
+  <div class="box" id="lesen">
+    <span class="eyebrow">Lesen · đọc</span>
+    <h2>Reading practice</h2>
+    <p class="lead">Scan for key words before you read the statement. Negations (nicht, kein, nur, geschlossen, verboten) are the most common traps.</p>
+  </div>
+</div>
+
+<!-- ============ SCHREIBEN ============ -->
+<div class="panel" id="p-schreiben" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · Formular</span>
+    <h2>Fill in the form for your friend</h2>
+    <div class="text">Ihr Freund Minh Tran ist 32 Jahre alt und kommt aus Hanoi in Vietnam. Er wohnt jetzt in der Königstraße 12, 70173 Stuttgart. Er ist Elektriker von Beruf. Er arbeitet tagsüber und möchte einen Deutschkurs am Abend machen.</div>
+    <p class="lead">Minh wants to register at the Volkshochschule. Write the 5 missing details. Bạn của bạn là Minh muốn đăng ký khóa học tiếng Đức. Hãy điền 5 thông tin còn thiếu.</p>
+    <div class="form" id="formFields"></div>
+    <div class="controls"><button class="btn primary" id="formCheck">Check · kiểm tra</button><button class="btn" id="formShow">Show answers</button><span class="counter" id="formResult"></span></div>
+    <div class="tip"><b>Achtung!</b><span>German forms use <b>Vorname</b> (tên) and <b>Familienname / Nachname</b> (họ). The postcode (<b>PLZ</b>) comes <b>before</b> the city: 70173 Stuttgart. Country: „aus Vietnam", with no article. Germans write Hanoi and Ho-Chi-Minh-Stadt, without Vietnamese marks. Dates are written day.month.year, as in Vietnam.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · kurze Nachricht</span>
+    <h2>Write a message (about 30 words)</h2>
+    <div class="text">Sie haben am Freitag einen Termin bei Ihrer Deutschlehrerin, Frau Weber. Sie können nicht kommen. Schreiben Sie Frau Weber eine E-Mail:
+• Warum können Sie nicht kommen?
+• Fragen Sie nach einem neuen Termin.
+• Bitten Sie um eine Antwort.</div>
+    <label for="mail" class="note">Your text · bài viết của bạn</label>
+    <textarea id="mail" placeholder="Liebe Frau Weber, …"></textarea>
+    <div class="controls"><span class="counter" id="wc">0 words</span><button class="btn" id="modelBtn">Show model answer</button></div>
+    <div id="checklist" class="pairs"></div>
+    <div class="model" id="model" hidden>Liebe Frau Weber,
+
+leider kann ich am Freitag nicht zum Termin kommen. Ich bin krank und muss zum Arzt. Haben Sie nächste Woche Zeit, vielleicht am Dienstag? Bitte antworten Sie mir.
+
+Viele Grüße
+Lan Nguyen</div>
+    <h3>Phrase bank · mẫu câu</h3>
+    <div class="pairs" id="phrases"></div>
+    <div class="tip"><b>Achtung!</b><span>After „Liebe Frau Weber," the next line starts with a <b>small letter</b> (leider…). And <b>Sie, Ihnen, Ihr</b> are always capitalised when you write formally, to show respect, like writing Ông, Bà with a capital letter.</span></div>
+  </div>
+</div>
+
+<!-- ============ SPRECHEN ============ -->
+<div class="panel" id="p-sprechen" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · sich vorstellen</span>
+    <h2>Introduce yourself</h2>
+    <p class="lead">In the exam you get keyword cards. Say one full sentence for each. Tap a card to see a model answer.</p>
+    <div class="cardset" id="intro"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 1 · buchstabieren</span>
+    <h2>Spell your name the German way</h2>
+    <p class="lead">You will be asked to spell your name. Orange letters are traps for Vietnamese speakers: <b>C</b> is „txê" (not „xê"), <b>G</b> is „ghê" (not „giê"), <b>H</b> is „ha" (not „hát"), <b>J</b> is „giót" (not „gi"), <b>R</b> is „e-rờ" from the throat, <b>V</b> is „phau" (not „vê"), <b>W</b> is „vê" (not „vê kép"), <b>Y</b> is „uyp-xi-lon" (not „i dài") and <b>Z</b> is „txét" (not „dét"). Tap a letter to hear it.</p>
+    <div class="alpha" id="alpha"></div>
+    <div class="pairs">
+      <h3>Vietnamese names · tên tiếng Việt</h3>
+      <div><b>Đ đ</b><span>„D mit Strich": in German documents it usually becomes a plain D. Đặng = Dang.</span></div>
+      <div><b>Dấu (tone marks)</b><span>German forms have no Vietnamese marks: write your name as in the machine line of your passport. Nguyễn Thị Lan = Nguyen Thi Lan.</span></div>
+      
+      
+      <div><b>Mein Name ist Nguyen.</b><span>N – G – U – Y – E – N (careful: G = „ghê", Y = „uyp-xi-lon")</span></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · Fragen stellen</span>
+    <h2>Theme: Essen und Trinken</h2>
+    <p class="lead">You draw a card with a word. Make a W-question for your partner. Your partner answers. Tap for a model.</p>
+    <div class="cardset" id="themeCards"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 3 · Bitten</span>
+    <h2>Polite requests</h2>
+    <p class="lead">You see a picture card. Make a polite request. Your partner says yes or no. Tap for a model.</p>
+    <div class="cardset" id="requestCards"></div>
+    <div class="tip"><b>Trick</b><span><b>Können Sie bitte …?</b> = Anh / Chị có thể … được không? &nbsp;·&nbsp; <b>Ich hätte gern …</b> = Tôi muốn … &nbsp;·&nbsp; Answer: <b>Ja, gern.</b> / <b>Nein, tut mir leid.</b></span></div>
+  </div>
+</div>
+
+<div class="cta" style="margin-top:28px">
+  <p><strong>Learning German for life and work in Germany?</strong>Expert Tongue coaching helps you speak with confidence, from A1 to C2.</p>
+  <a href="https://expert-tongue.com" target="_blank" rel="noopener">expert-tongue.com</a>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Expert Tongue · Deutsch A1 für Vietnamesischsprachige · Free study tool</span>
+    <span class="note">Vietnamese translations use standard Vietnamese; where northern and southern words differ, both are shown (HN / SG). Use the switch on the Wortschatz tab to see only one.</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="../../core/a1.js"></script>
+
+<script>try{localStorage.setItem('et-lang','vi')}catch(e){}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('../../sw.js').catch(()=>{})})}</script>
+</body>
+</html>

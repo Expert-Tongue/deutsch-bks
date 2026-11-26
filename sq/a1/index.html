@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A2E4D">
+<meta name="description" content="German A1 for speakers of Albanian: vocabulary, grammar bridge and Goethe A1 practice.">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Deutsch SQ">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Deutsch A1 für Albanischsprachige</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../core/a1.css">
+</head>
+<body>
+
+
+<header class="band">
+  <div class="wrap">
+    <div class="hero">
+      <a class="home" href="../">&larr; Alle Kurse · të gjitha kurset</a>
+      <div class="brand">
+        <div class="wordmark"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5.5 11V5.5a4.5 4.5 0 0 1 9 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.3" stroke-linecap="round"/><rect x="1" y="10.5" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16.8" r="1.7" fill="#fff"/><circle cx="13" cy="16.8" r="1.7" fill="#fff"/><circle cx="7" cy="17" r=".75" fill="#0A2E4D"/><circle cx="13" cy="17" r=".75" fill="#0A2E4D"/></svg>Expert Tongue</div>
+        <div class="tagline">unlock your communication</div>
+      </div>
+      <h1>Deutsch A1 <span class="arrow">für</span> Albanischsprachige</h1>
+      <p>German A1 vocabulary and Goethe Start Deutsch 1 practice for speakers of Albanian. Gjermanisht për fillestarë, me përkthim shqip.</p>
+    </div>
+    <div class="pair" aria-label="Languages"><span>DE</span><span>EN</span><span>SQ</span></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" data-tab="wortschatz" aria-selected="true">Wortschatz<small>fjalori</small></button>
+    <button class="tab" role="tab" data-tab="bruecke" aria-selected="false">Die Brücke<small>ura · avantazhi yt</small></button>
+    <button class="tab" role="tab" data-tab="pruefung" aria-selected="false">Prüfung<small>provimi · dëgjim dhe lexim</small></button>
+    <button class="tab" role="tab" data-tab="schreiben" aria-selected="false">Schreiben<small>shkrimi</small></button>
+    <button class="tab" role="tab" data-tab="sprechen" aria-selected="false">Sprechen<small>të folurit</small></button>
+  </div>
+</nav>
+<div class="voicebar"><div class="wrap">
+  <span class="lbl">Stimme · zëri</span>
+  <select id="voiceSel" aria-label="German voice"></select>
+  <button class="btn" id="voiceTest">Test the voice</button>
+  <span class="note" id="voiceOk">If it still sounds English, pick another German voice from the list.</span>
+  <details id="voiceMissing" hidden><summary><b>No German voice found on this device.</b> The audio will sound English. Here's how to add one (2 minutes):</summary>
+    <ul>
+      <li><b>Windows:</b> Settings → Time &amp; language → Speech → Add voices → Deutsch (Deutschland). Then restart the browser.</li>
+      <li><b>Mac:</b> System Settings → Accessibility → Spoken Content → System voice → Manage Voices → German (e.g. Anna). Then reload the page.</li>
+      <li><b>iPhone / iPad:</b> Settings → Accessibility → Spoken Content → Voices → German → download a voice.</li>
+      <li><b>Android:</b> Settings → System → Languages → Text-to-speech → Google speech engine → Install voice data → Deutsch.</li>
+      <li><b>Easiest option:</b> open this page in Google Chrome or Microsoft Edge. Both include good German voices.</li>
+    </ul>
+  </details>
+</div></div>
+
+<main class="wrap">
+
+<!-- ============ WORTSCHATZ ============ -->
+<div class="panel" id="p-wortschatz">
+  <div class="toolbar">
+    <div class="progress"><div class="bar"><i id="pbar"></i></div><span id="ptext">0 learned</span></div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search · kërko…" aria-label="Search words">
+      <button class="btn" id="flashBtn" aria-pressed="false">Flashcards</button>
+      <button class="btn" id="resetBtn">Reset</button>
+    </div>
+  </div>
+  <div class="controls">
+    <span class="lbl">Show</span>
+    <div class="seg" id="showSeg">
+      <button data-v="all" aria-pressed="true">DE + EN + SQ</button>
+      <button data-v="bks" aria-pressed="false">DE + SQ</button>
+      <button data-v="en" aria-pressed="false">DE + EN</button>
+    </div>
+    <div class="seg" id="varSeg" hidden><button data-v="ALL" aria-pressed="true">ALL</button></div>
+  </div>
+  <div id="resetConfirm" class="tip" hidden><span>Reset all learned words? This clears your progress on this device.</span> <button class="btn" id="resetYes">Yes, reset</button> <button class="btn" id="resetNo">Cancel</button></div>
+
+  <details class="plan">
+    <summary>1-hour study plan · plani i mësimit 60 minuta</summary>
+    <ol>
+      <li><b>0–10 min</b><span>Begrüßung: say every phrase out loud, especially „Ich weiß das Wort auf Deutsch nicht."</span></li>
+      <li><b>10–20 min</b><span>Familie & Vorstellung: practise Ich heiße …, ich komme aus dem Kosovo, ich bin … Jahre alt, von Beruf bin ich …</span></li>
+      <li><b>20–30 min</b><span>Zahlen & Zeit: 1–100, weekdays, and „halb drei" (2:30, not 3:30).</span></li>
+      <li><b>30–40 min</b><span>Verben & Modalverben: müssen, können, dürfen, sollen, wollen, möchten. Watch gehen vs. fahren.</span></li>
+      <li><b>40–50 min</b><span>Wohnen & Gegenstände: Sprechen Teil 3 cards come from these words.</span></li>
+      <li><b>50–60 min</b><span>Reisen, Essen, Einkaufen: learn every noun with its article (der/die/das). Albanian has two genders, German has three, and they often don't match: this is your main job. Learn every noun with der, die or das.</span></li>
+    </ol>
+  </details>
+
+  <div class="cats" id="cats"></div>
+  <div class="legend">
+    <span>Article colours:</span><span><b class="g-der">der</b> masculine · gjinia mashkullore</span><span><b class="g-die">die</b> feminine / plural · femërore / shumës</span><span><b class="g-das">das</b> neuter · asnjanëse</span>
+  </div>
+  <div id="vocab"></div>
+</div>
+
+<!-- ============ BRÜCKE ============ -->
+<div class="panel" id="p-bruecke" hidden>
+  <div class="box">
+    <span class="eyebrow">Was Albanischsprachige schon können</span>
+    <h2>Your head start: cases, genders and „kam punuar"</h2>
+    <p class="lead">Albanian already gives you a lot: <b>genders</b> (djali / vajza), <b>cases</b> (nëna → nënës), verbs that change for each person (punoj, punon, punojmë), a polite <b>Ju</b> (= Sie) and a past built with „to have": <b>kam punuar</b> = ich <b>habe</b> gearbeitet. Many letters even sound the same: Albanian <b>j</b>, <b>y</b>, <b>sh</b>, <b>ç</b> and <b>ë</b> help you read German. What is new: the article goes in <b>front</b> (das Haus, not shtëpi<b>a</b>), a third gender, and the verb in <b>position 2</b>. Tap any <svg style="width:13px;height:13px;vertical-align:-2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg> to hear the German.</p>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">1 · Aussprache · shqiptimi</span>
+    <h2>German sounds, written in Albanian letters</h2>
+    <p class="lead">Read the right-hand column as Albanian. German stresses the <b>first syllable</b> of most words: <b>Ar</b>-beit, <b>Fa</b>-mi-lie is an exception (Fa-<b>mi</b>-lie).</p>
+    <div class="tablewrap"><table id="pronTable">
+      <thead><tr><th>German</th><th>Sounds like</th><th>Example</th><th>Read it as</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div class="tip"><b>Achtung!</b><span><b>Same letters, different sounds.</b> German <b>z</b> = Albanian c (Zeit = „cajt"), German <b>s</b> before a vowel = Albanian z (Sonne = „zone"), German <b>w</b> = Albanian v, German <b>v</b> = Albanian f. And German <b>c</b> appears only in ch, ck and loanwords: never read it as Albanian c.</span></div>
+    <div class="tip"><b>Your bonus</b><span>Albanian <b>y</b> is exactly German <b>ü</b> (müde = „myde"), Albanian <b>j</b> is German <b>j</b> (ja), Albanian <b>sh</b> is German <b>sch</b>, and the weak Albanian <b>ë</b> is the German final -e (bitte = „bitë"). Only <b>ö</b> is new: say e and round your lips. The German <b>r</b> comes from the throat, not rolled like rr.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">2 · Satzbau · rendi i fjalëve</span>
+    <h2>Verb 2nd, and the second verb at the end</h2>
+    <p class="lead">Albanian and German both often say <b>Ich arbeite heute</b> = Unë punoj sot. But in German the conjugated verb must stay in <b>position 2</b>, and every second verb, participle or prefix goes to the <b>end</b>.</p>
+    <div class="pairs">
+      <div><b>Ich <u>arbeite</u> heute.</b><span>Unë punoj sot.</span></div>
+      <div><b>Heute <u>arbeite</u> ich.</b><span>Sot punoj. If something else comes first, the verb stays 2nd and „ich" moves behind it: never „Heute ich arbeite".</span></div>
+      <div><b>Ich <u>muss</u> heute <u>arbeiten</u>.</b><span>Duhet të punoj sot. The second verb goes to the end, not right after „muss".</span></div>
+      <div><b>Ich <u>stehe</u> um 7 Uhr <u>auf</u>.</b><span>Ngrihem në orën 7. „auf" jumps to the end.</span></div>
+      <div><b><u>Kommen</u> Sie aus dem Kosovo?</b><span>A jeni nga Kosova? No „a": the verb goes first.</span></div>
+    </div>
+    <div class="tip"><b>Say „ich"</b><span>Albanian often drops the subject (Punoj sot), because the verb ending shows the person. German almost never does: <b>Ich</b> arbeite heute. Every German sentence needs a subject, even „<b>es</b>": Es regnet = Bie shi.</span></div>
+    <div class="tip"><b>Sie, du, ihr</b><span>German <b>du</b> = ti, <b>ihr</b> = ju (several friends), <b>Sie</b> = Ju (polite, always with a capital S). Use Sie wherever you would say Ju out of respect.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">3 · Artikel & Genus · gjinia</span>
+    <h2>der, die, das: the article moves to the front</h2>
+    <p class="lead">Albanian glues the article to the <b>end</b> of the noun: djal<b>i</b>, vajz<b>a</b>, libr<b>i</b>. German puts it in <b>front</b>: <b class="g-der">der</b> Junge, <b class="g-die">die</b> Frau, <b class="g-das">das</b> Buch. Albanian has two genders, German has three, and they often differ: libri is masculine, but <b>das</b> Buch is neuter. Learn every noun with its article. Nouns are always written with a <b>capital letter</b>.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>German</th><th>Gender</th><th>Shqip</th><th>Memory trick</th></tr></thead>
+      <tbody>
+        <tr><td><span class="g-der"><b>der</b></span> Mann</td><td>masculine</td><td>burri (m)</td><td>same ✓</td></tr>
+        <tr><td><span class="g-die"><b>die</b></span> Frau</td><td>feminine</td><td>gruaja (f)</td><td>same ✓</td></tr>
+        <tr><td><span class="g-das"><b>das</b></span> Mädchen</td><td>neuter</td><td>vajza (f)</td><td>-chen is always das</td></tr>
+        <tr><td><span class="g-das"><b>das</b></span> Haus</td><td>neuter</td><td>shtëpia (f)</td><td>different from Albanian!</td></tr>
+        <tr><td><span class="g-der"><b>der</b></span> Tisch</td><td>masculine</td><td>tavolina (f)</td><td>different from Albanian!</td></tr>
+        <tr><td><span class="g-die"><b>die</b></span> Kinder</td><td>plural</td><td>fëmijët</td><td>every plural is die</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Plural</b><span>Like Albanian (djalë → djem, motër → motra), German has several plural forms: das Kind → die Kind<b>er</b>, der Tisch → die Tisch<b>e</b>, die Frau → die Frau<b>en</b>, das Auto → die Auto<b>s</b>. Learn the plural with the noun: der Tisch, die Tische.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">4 · Fälle · rasat</span>
+    <h2>You already know cases: Albanian has five</h2>
+    <p class="lead">Albanian changes the ending: burr<b>i</b>, burr<b>in</b>, burr<b>it</b>. German changes the <b>article</b>: <b>der</b> Mann, <b>den</b> Mann, <b>dem</b> Mann. Same idea, other side of the noun. At A1, focus on Nominativ and Akkusativ: only <b class="g-der">der</b> changes, der → <b>den</b>.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Fall</th><th>German</th><th>Shqip</th><th>Clue</th></tr></thead>
+      <tbody>
+        <tr><td><b>Nominativ</b></td><td><span class="g-der">der</span> Mann ist hier.</td><td>Burr<b>i</b> është këtu.</td><td>emërore</td></tr>
+        <tr><td><b>Akkusativ</b></td><td>Ich sehe <span class="g-der">den</span> Mann.</td><td>E shoh burr<b>in</b>.</td><td>kallëzore → den</td></tr>
+        <tr><td><b>Dativ</b></td><td>Ich gebe <span class="g-der">dem</span> Mann das Buch.</td><td>I jap burr<b>it</b> librin.</td><td>dhanore → dem</td></tr>
+        <tr><td><b>Genitiv</b></td><td>das Auto <span class="g-der">des</span> Mannes</td><td>makina <b>e</b> burr<b>it</b></td><td>gjinore → des</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Your clue</b><span>Where Albanian uses the <b>kallëzore</b> (burrin), German uses the Akkusativ; where Albanian uses the <b>dhanore</b> (burrit, nënës), German uses the Dativ. Everyday German often replaces the Genitiv with „von": das Auto <b>von</b> Arben = makina e Arbenit.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">5 · Bekannte Wörter · fjalë të njohura</span>
+    <h2>Words you already know</h2>
+    <p class="lead">International words, and Latin words that came into both German and Albanian. Tap a card to see the Albanian word, then tap again to hear the German.</p>
+    <div class="cardset" id="loanwords"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">6 · Falsche Freunde · miq të rremë</span>
+    <h2>Looks familiar, means something else</h2>
+    <div class="tablewrap"><table id="falseTable">
+      <thead><tr><th>German</th><th>Means</th><th>Looks like</th><th>Which is</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ============ PRÜFUNG ============ -->
+<div class="panel" id="p-pruefung" hidden>
+  <details class="plan box" open style="padding:0">
+    <summary style="padding:16px 20px">Goethe-Zertifikat A1: Start Deutsch 1 · structure of the exam</summary>
+    <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:14px">
+      <div class="stats">
+        <div class="stat"><b>60</b><span>points total · pikë gjithsej</span></div>
+        <div class="stat"><b>60 %</b><span>to pass · për të kaluar</span></div>
+        <div class="stat"><b>~80 min</b><span>written part + speaking</span></div>
+        <div class="stat"><b>4</b><span>modules · pjesë</span></div>
+      </div>
+      <div class="modules">
+        <div class="module"><h3>Hören <span>~20 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: 6 short dialogues, heard twice, A/B/C</li><li><b>Teil 2</b>: 4 announcements, heard <b>once</b>, richtig/falsch</li><li><b>Teil 3</b>: 5 phone messages, heard twice, A/B/C</li></ul></div>
+        <div class="module"><h3>Lesen <span>~25 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: 2 short emails, 5 × richtig/falsch</li><li><b>Teil 2</b>: 5 situations, choose website A or B</li><li><b>Teil 3</b>: 5 signs/notices, richtig/falsch</li></ul></div>
+        <div class="module"><h3>Schreiben <span>~20 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: fill in a form, 5 gaps</li><li><b>Teil 2</b>: short message, about 30 words, 3 points</li></ul></div>
+        <div class="module"><h3>Sprechen <span>~15 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: introduce yourself, spell, say a number</li><li><b>Teil 2</b>: ask and answer questions on a theme</li><li><b>Teil 3</b>: make and react to requests</li></ul></div>
+      </div>
+      <p class="note">Check the current format and dates with your exam centre (Goethe-Institut, VHS, or telc for the telc A1 version).</p>
+    </div>
+  </details>
+
+  <div class="score" id="examScore"><span>Your score · rezultati yt: <b id="scoreVal">0 / 0</b></span><span>Correct <b id="okVal">0</b></span><span>Wrong <b id="noVal">0</b></span><button class="btn" id="examReset">Reset answers</button></div>
+
+  <div class="box" id="hoeren">
+    <span class="eyebrow">Hören · dëgjimi</span>
+    <h2>Listening practice</h2>
+    <p class="lead">Read the question first, then press „Anhören". Your browser reads the text in German. Use „Text" only after you have answered. In Teil 2 you hear the text only once in the real exam: focus on numbers and on nicht / kein.</p>
+  </div>
+
+  <div class="box" id="lesen">
+    <span class="eyebrow">Lesen · leximi</span>
+    <h2>Reading practice</h2>
+    <p class="lead">Scan for key words before you read the statement. Negations (nicht, kein, nur, geschlossen, verboten) are the most common traps.</p>
+  </div>
+</div>
+
+<!-- ============ SCHREIBEN ============ -->
+<div class="panel" id="p-schreiben" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · Formular</span>
+    <h2>Fill in the form for your friend</h2>
+    <div class="text">Ihr Freund Arben Gashi ist 32 Jahre alt und kommt aus Prishtina im Kosovo. Er wohnt jetzt in der Königstraße 12, 70173 Stuttgart. Er ist Elektriker von Beruf. Er arbeitet tagsüber und möchte einen Deutschkurs am Abend machen.</div>
+    <p class="lead">Arben wants to register at the Volkshochschule. Write the 5 missing details. Shoku yt Arben dëshiron të regjistrohet në kursin e gjermanishtes. Shkruaj 5 të dhënat që mungojnë.</p>
+    <div class="form" id="formFields"></div>
+    <div class="controls"><button class="btn primary" id="formCheck">Check · kontrollo</button><button class="btn" id="formShow">Show answers</button><span class="counter" id="formResult"></span></div>
+    <div class="tip"><b>Achtung!</b><span>German forms use <b>Vorname</b> (emri) and <b>Familienname / Nachname</b> (mbiemri). The postcode (<b>PLZ</b>) comes <b>before</b> the city: 70173 Stuttgart. Country: „aus dem Kosovo" (with article!), but „aus Albanien" and „aus Nordmazedonien" with no article. Write names as in your passport. Dates are written day.month.year, as at home.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · kurze Nachricht</span>
+    <h2>Write a message (about 30 words)</h2>
+    <div class="text">Sie haben am Freitag einen Termin bei Ihrer Deutschlehrerin, Frau Weber. Sie können nicht kommen. Schreiben Sie Frau Weber eine E-Mail:
+• Warum können Sie nicht kommen?
+• Fragen Sie nach einem neuen Termin.
+• Bitten Sie um eine Antwort.</div>
+    <label for="mail" class="note">Your text · teksti yt</label>
+    <textarea id="mail" placeholder="Liebe Frau Weber, …"></textarea>
+    <div class="controls"><span class="counter" id="wc">0 words</span><button class="btn" id="modelBtn">Show model answer</button></div>
+    <div id="checklist" class="pairs"></div>
+    <div class="model" id="model" hidden>Liebe Frau Weber,
+
+leider kann ich am Freitag nicht zum Termin kommen. Ich bin krank und muss zum Arzt. Haben Sie nächste Woche Zeit, vielleicht am Dienstag? Bitte antworten Sie mir.
+
+Viele Grüße
+Arta Krasniqi</div>
+    <h3>Phrase bank · fjali të dobishme</h3>
+    <div class="pairs" id="phrases"></div>
+    <div class="tip"><b>Achtung!</b><span>After „Liebe Frau Weber," the next line starts with a <b>small letter</b> (leider…). And <b>Sie, Ihnen, Ihr</b> are always capitalised when you write formally, to show respect, like Ju.</span></div>
+  </div>
+</div>
+
+<!-- ============ SPRECHEN ============ -->
+<div class="panel" id="p-sprechen" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · sich vorstellen</span>
+    <h2>Introduce yourself</h2>
+    <p class="lead">In the exam you get keyword cards. Say one full sentence for each. Tap a card to see a model answer.</p>
+    <div class="cardset" id="intro"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 1 · buchstabieren</span>
+    <h2>Spell your name the German way</h2>
+    <p class="lead">You will be asked to spell your name. Orange letters are traps for Albanian speakers, because the German letter name sounds different: <b>H</b> is „ha", <b>J</b> is „jot", <b>Q</b> is „ku" (not Albanian q), <b>R</b> is „er" from the throat, <b>V</b> is „fau", <b>W</b> is „ve", <b>X</b> is „iks" (not Albanian x) and <b>Z</b> is „cet" (not Albanian z). Good news: <b>C</b> is „ce", just like Albanian c! Tap a letter to hear it.</p>
+    <div class="alpha" id="alpha"></div>
+    <div class="pairs">
+      <h3>Albanian names · emrat shqip</h3>
+      <div><b>ë and ç</b><span>German keyboards often have no ë or ç. Offices may write Hoxhë as „Hoxhe" or Çeku as „Ceku". Use the spelling in your passport.</span></div>
+      <div><b>Spelling letters</b><span>Albanian letters like xh, gj or q need care: say each letter by its German name. Berisha = B – E – R – I – S – H – A. Say „Doppel-" for double letters.</span></div>
+      
+      
+      <div><b>Mein Name ist Gashi.</b><span>G – A – S – H – I: „ge – a – es – ha – i" (careful: H = „ha", not „hë")</span></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · Fragen stellen</span>
+    <h2>Theme: Essen und Trinken</h2>
+    <p class="lead">You draw a card with a word. Make a W-question for your partner. Your partner answers. Tap for a model.</p>
+    <div class="cardset" id="themeCards"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 3 · Bitten</span>
+    <h2>Polite requests</h2>
+    <p class="lead">You see a picture card. Make a polite request. Your partner says yes or no. Tap for a model.</p>
+    <div class="cardset" id="requestCards"></div>
+    <div class="tip"><b>Trick</b><span><b>Können Sie bitte …?</b> = A mund të …, ju lutem? &nbsp;·&nbsp; <b>Ich hätte gern …</b> = Do të doja … &nbsp;·&nbsp; Answer: <b>Ja, gern.</b> / <b>Nein, tut mir leid.</b></span></div>
+  </div>
+</div>
+
+<div class="cta" style="margin-top:28px">
+  <p><strong>Learning German for life and work in Germany?</strong>Expert Tongue coaching helps you speak with confidence, from A1 to C2.</p>
+  <a href="https://expert-tongue.com" target="_blank" rel="noopener">expert-tongue.com</a>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Expert Tongue · Deutsch A1 für Albanischsprachige · Free study tool</span>
+    <span class="note">Albanian translations use standard Albanian. Speakers from Kosovo and Albania sometimes use different words (e.g. patate / kompir): both are correct.</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="../../core/a1.js"></script>
+
+<script>try{localStorage.setItem('et-lang','sq')}catch(e){}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('../../sw.js').catch(()=>{})})}</script>
+</body>
+</html>

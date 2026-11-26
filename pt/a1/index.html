@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A2E4D">
+<meta name="description" content="German A1 for speakers of Portuguese (Brazil and Portugal): vocabulary, grammar bridge and Goethe A1 practice.">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Deutsch PT">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Deutsch A1 für Portugiesischsprachige</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../core/a1.css">
+</head>
+<body>
+
+
+<header class="band">
+  <div class="wrap">
+    <div class="hero">
+      <a class="home" href="../">&larr; Alle Kurse · todos os cursos</a>
+      <div class="brand">
+        <div class="wordmark"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5.5 11V5.5a4.5 4.5 0 0 1 9 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.3" stroke-linecap="round"/><rect x="1" y="10.5" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16.8" r="1.7" fill="#fff"/><circle cx="13" cy="16.8" r="1.7" fill="#fff"/><circle cx="7" cy="17" r=".75" fill="#0A2E4D"/><circle cx="13" cy="17" r=".75" fill="#0A2E4D"/></svg>Expert Tongue</div>
+        <div class="tagline">unlock your communication</div>
+      </div>
+      <h1>Deutsch A1 <span class="arrow">für</span> Portugiesischsprachige</h1>
+      <p>German A1 vocabulary and Goethe Start Deutsch 1 practice for speakers of Portuguese. Alemão para principiantes, com tradução em português do Brasil e de Portugal.</p>
+    </div>
+    <div class="pair" aria-label="Languages"><span>DE</span><span>EN</span><span>PT</span></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" data-tab="wortschatz" aria-selected="true">Wortschatz<small>vocabulário</small></button>
+    <button class="tab" role="tab" data-tab="bruecke" aria-selected="false">Die Brücke<small>a ponte · a tua vantagem</small></button>
+    <button class="tab" role="tab" data-tab="pruefung" aria-selected="false">Prüfung<small>exame · ouvir e ler</small></button>
+    <button class="tab" role="tab" data-tab="schreiben" aria-selected="false">Schreiben<small>escrever</small></button>
+    <button class="tab" role="tab" data-tab="sprechen" aria-selected="false">Sprechen<small>falar</small></button>
+  </div>
+</nav>
+<div class="voicebar"><div class="wrap">
+  <span class="lbl">Stimme · voz</span>
+  <select id="voiceSel" aria-label="German voice"></select>
+  <button class="btn" id="voiceTest">Test the voice</button>
+  <span class="note" id="voiceOk">If it still sounds English, pick another German voice from the list.</span>
+  <details id="voiceMissing" hidden><summary><b>No German voice found on this device.</b> The audio will sound English. Here's how to add one (2 minutes):</summary>
+    <ul>
+      <li><b>Windows:</b> Settings → Time &amp; language → Speech → Add voices → Deutsch (Deutschland). Then restart the browser.</li>
+      <li><b>Mac:</b> System Settings → Accessibility → Spoken Content → System voice → Manage Voices → German (e.g. Anna). Then reload the page.</li>
+      <li><b>iPhone / iPad:</b> Settings → Accessibility → Spoken Content → Voices → German → download a voice.</li>
+      <li><b>Android:</b> Settings → System → Languages → Text-to-speech → Google speech engine → Install voice data → Deutsch.</li>
+      <li><b>Easiest option:</b> open this page in Google Chrome or Microsoft Edge. Both include good German voices.</li>
+    </ul>
+  </details>
+</div></div>
+
+<main class="wrap">
+
+<!-- ============ WORTSCHATZ ============ -->
+<div class="panel" id="p-wortschatz">
+  <div class="toolbar">
+    <div class="progress"><div class="bar"><i id="pbar"></i></div><span id="ptext">0 learned</span></div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search · pesquisar…" aria-label="Search words">
+      <button class="btn" id="flashBtn" aria-pressed="false">Flashcards</button>
+      <button class="btn" id="resetBtn">Reset</button>
+    </div>
+  </div>
+  <div class="controls">
+    <span class="lbl">Show</span>
+    <div class="seg" id="showSeg">
+      <button data-v="all" aria-pressed="true">DE + EN + PT</button>
+      <button data-v="bks" aria-pressed="false">DE + PT</button>
+      <button data-v="en" aria-pressed="false">DE + EN</button>
+    </div>
+    <span class="lbl">Variante</span>
+    <div class="seg" id="varSeg"><button data-v="ALL" aria-pressed="true">ambos</button><button data-v="BR" aria-pressed="false">Brasil</button><button data-v="PT" aria-pressed="false">Portugal</button></div>
+  </div>
+  <div id="resetConfirm" class="tip" hidden><span>Reset all learned words? This clears your progress on this device.</span> <button class="btn" id="resetYes">Yes, reset</button> <button class="btn" id="resetNo">Cancel</button></div>
+
+  <details class="plan">
+    <summary>1-hour study plan · plano de estudo de 60 minutos</summary>
+    <ol>
+      <li><b>0–10 min</b><span>Begrüßung: say every phrase out loud, especially „Ich weiß das Wort auf Deutsch nicht."</span></li>
+      <li><b>10–20 min</b><span>Familie & Vorstellung: practise Ich heiße …, ich komme aus Brasilien, ich bin … Jahre alt, von Beruf bin ich …</span></li>
+      <li><b>20–30 min</b><span>Zahlen & Zeit: 1–100, weekdays, and „halb drei" (2:30, not 3:30).</span></li>
+      <li><b>30–40 min</b><span>Verben & Modalverben: müssen, können, dürfen, sollen, wollen, möchten. Watch gehen vs. fahren.</span></li>
+      <li><b>40–50 min</b><span>Wohnen & Gegenstände: Sprechen Teil 3 cards come from these words.</span></li>
+      <li><b>50–60 min</b><span>Reisen, Essen, Einkaufen: learn every noun with its article (der/die/das). German has three genders and they often differ from Portuguese, so this is your main job.</span></li>
+    </ol>
+  </details>
+
+  <div class="cats" id="cats"></div>
+  <div class="legend">
+    <span>Article colours:</span><span><b class="g-der">der</b> masculine · masculino</span><span><b class="g-die">die</b> feminine / plural · feminino / plural</span><span><b class="g-das">das</b> neuter · neutro</span>
+  </div>
+  <div id="vocab"></div>
+</div>
+
+<!-- ============ BRÜCKE ============ -->
+<div class="panel" id="p-bruecke" hidden>
+  <div class="box">
+    <span class="eyebrow">Warum Portugiesischsprachige Vorteile haben</span>
+    <h2>You already know more German than you think</h2>
+    <p class="lead">Portuguese and German are both Indo-European, and German has borrowed thousands of words from Latin, the mother of Portuguese: Universität, Familie, Information, Kultur. You already know grammatical gender, formal address (o senhor = Sie), reflexive verbs (lavo-me = ich wasche mich) and "tenho fome" (ich habe Hunger). Tap any <svg style="width:13px;height:13px;vertical-align:-2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg> to hear the German.</p>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">1 · Aussprache · pronúncia</span>
+    <h2>German sounds, written the Portuguese way</h2>
+    <p class="lead">Good news: Portuguese already has many German sounds, such as the v in vaca (German w), the ch in chá (German sch) and the throaty r. Read the right-hand column as Portuguese and you will be close.</p>
+    <div class="tablewrap"><table id="pronTable">
+      <thead><tr><th>German</th><th>Sounds like</th><th>Example</th><th>Read it as</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div class="tip"><b>Achtung!</b><span><b>German h is pronounced</b> at the start of a word: Haus, Hallo, heute (like a soft Brazilian rr in carro). Portuguese h is silent, so this is the most common mistake. After a vowel, h is silent and makes the vowel long: Uhr, Zahl.</span></div>
+    <div class="tip"><b>Brazil</b><span><b>German t and d never turn into "tchi" and "dji".</b> Dienstag is „dínstak", not „djínstak"; Termin is „termín", not „tchermín". Keep t and d hard before i and before a final e: Tante, Ende.</span></div>
+    <div class="tip"><b>Portugal</b><span><b>German pronounces every vowel clearly.</b> European Portuguese swallows unstressed vowels (telefone → „tlfon"); German doesn't: Te-le-fon, ge-ra-de-aus. And final -e is always heard: Schule = „shú-le".</span></div>
+    <div class="tip"><b>Two new vowels</b><span><b>ü</b> (say i with rounded lips) and <b>ö</b> (say e with rounded lips), plus long and short vowels: <b>Staat</b> (state) vs. <b>Stadt</b> (city). A double vowel, ie or h means long; a double consonant means short.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">2 · Satzbau · ordem da frase</span>
+    <h2>Portuguese: free order. German: the verb is always 2nd</h2>
+    <p class="lead">Portuguese word order is flexible. German is strict: in a main clause the conjugated verb is in <b>position 2</b>, whatever comes first. A second verb, a participle or a separable prefix goes to the <b>end</b>.</p>
+    <div class="pairs">
+      <div><b>Ich <u>arbeite</u> heute.</b><span>Trabalho hoje.</span></div>
+      <div><b>Heute <u>arbeite</u> ich.</b><span>Time first? The verb stays in position 2 and the subject moves behind it. Never „Heute ich arbeite".</span></div>
+      <div><b>Ich <u>muss</u> heute <u>arbeiten</u>.</b><span>Tenho que / tenho de trabalhar hoje. (the infinitive goes to the end)</span></div>
+      <div><b>Ich <u>stehe</u> um 7 Uhr <u>auf</u>.</b><span>Eu me levanto / levanto-me às 7. The prefix auf- jumps to the end.</span></div>
+      <div><b><u>Kommen</u> Sie aus Brasilien?</b><span>O senhor é do Brasil? Yes/no question: verb first.</span></div>
+    </div>
+    <div class="tip"><b>Always a subject</b><span>Portuguese drops the subject: <b>trabalho</b> = I work. German never does: <b>ich</b> arbeite, <b>es</b> regnet (chove), <b>es</b> ist kalt (está frio). Every German sentence needs ich, du, er, es…</span></div>
+    <div class="tip"><b>Sie, du, ihr</b><span><b>Sie</b> = o senhor / a senhora, with a capital S and the "they" verb (<b>Sie sind</b>). <b>du</b> = tu, or the everyday Brazilian você. <b>ihr</b> = vocês (talking to friends): ihr <b>seid</b> = vocês são.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">3 · Artikel & Genus · o género</span>
+    <h2>Portuguese has two genders. German has three, and they often don't match.</h2>
+    <p class="lead">You already know that nouns have gender: o livro, a mesa. German adds a third, neuter (<b class="g-das">das</b>), and the genders often differ from Portuguese. Learn every noun with its article.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>German</th><th>Gender in German</th><th>Portuguese</th><th>Gender in Portuguese</th></tr></thead>
+      <tbody>
+        <tr><td><span class="g-die"><b>die</b></span> Sonne</td><td>feminine</td><td>o sol</td><td>masculine</td></tr>
+        <tr><td><span class="g-der"><b>der</b></span> Mond</td><td>masculine</td><td>a lua</td><td>feminine</td></tr>
+        <tr><td><span class="g-der"><b>der</b></span> Tisch</td><td>masculine</td><td>a mesa</td><td>feminine</td></tr>
+        <tr><td><span class="g-das"><b>das</b></span> Buch</td><td>neuter</td><td>o livro</td><td>masculine</td></tr>
+        <tr><td><span class="g-das"><b>das</b></span> Mädchen</td><td>neuter (!)</td><td>a menina</td><td>feminine</td></tr>
+        <tr><td><span class="g-die"><b>die</b></span> Familie</td><td>feminine</td><td>a família</td><td>feminine ✓</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Shortcuts</b><span>Words ending in <b>-ung, -heit, -keit, -tät, -tion</b> are always <span class="g-die"><b>die</b></span>, just like Portuguese -dade and -ção: die Universität (a universidade), die Information (a informação). <b>-chen</b> is always <span class="g-das"><b>das</b></span>.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">4 · Fälle · os casos</span>
+    <h2>Your o, lhe and de, in German</h2>
+    <p class="lead">Portuguese shows roles with word order, prepositions (a, de) and pronouns (o, lhe). German changes the <b>article</b> before the noun.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Fall</th><th>German</th><th>Portuguese</th><th>Your clue</th></tr></thead>
+      <tbody>
+        <tr><td><b>Nominativ</b></td><td><span class="g-der">der</span> Mann ist hier.</td><td>O homem está aqui.</td><td>who does it</td></tr>
+        <tr><td><b>Akkusativ</b></td><td>Ich sehe <span class="g-der">den</span> Mann.</td><td>Vejo o homem. (vejo-<b>o</b>)</td><td>direct object: o → den</td></tr>
+        <tr><td><b>Dativ</b></td><td>Ich gebe <span class="g-der">dem</span> Mann das Buch.</td><td>Dou o livro <b>ao</b> homem. (dou-<b>lhe</b>)</td><td>indirect object: lhe → dem</td></tr>
+        <tr><td><b>Genitiv</b></td><td>das Auto <span class="g-der">des</span> Mannes</td><td>o carro <b>do</b> homem</td><td>do → des</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>Like Portuguese</b><span>German has "me agrada" sentences: <b>Das gefällt mir</b> = isso me agrada / agrada-me, <b>Mir ist kalt</b> = estou com frio, <b>Mir geht es gut</b> = estou bem. <b>mir</b> = me / a mim, <b>dir</b> = te / a ti.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">5 · Verwandte Wörter · palavras parecidas</span>
+    <h2>German words you can read thanks to Portuguese</h2>
+    <p class="lead">Learn the endings and you get hundreds of words for free: <b>-tät = -dade</b>, <b>-tion = -ção</b>, <b>-ie = -ia</b>, <b>-ur = -ura</b>, <b>-ieren = -ar</b>. Tap a card to see the Portuguese word, then tap again to hear the German.</p>
+    <div class="cardset" id="loanwords"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">6 · Falsche Freunde · falsos amigos</span>
+    <h2>Looks familiar, means something else</h2>
+    <div class="tablewrap"><table id="falseTable">
+      <thead><tr><th>German</th><th>Means</th><th>Looks like</th><th>Which means</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ============ PRÜFUNG ============ -->
+<div class="panel" id="p-pruefung" hidden>
+  <details class="plan box" open style="padding:0">
+    <summary style="padding:16px 20px">Goethe-Zertifikat A1: Start Deutsch 1 · structure of the exam</summary>
+    <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:14px">
+      <div class="stats">
+        <div class="stat"><b>60</b><span>points total · pontos no total</span></div>
+        <div class="stat"><b>60 %</b><span>to pass · para passar</span></div>
+        <div class="stat"><b>~80 min</b><span>written part + speaking</span></div>
+        <div class="stat"><b>4</b><span>modules · partes</span></div>
+      </div>
+      <div class="modules">
+        <div class="module"><h3>Hören <span>~20 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: 6 short dialogues, heard twice, A/B/C</li><li><b>Teil 2</b>: 4 announcements, heard <b>once</b>, richtig/falsch</li><li><b>Teil 3</b>: 5 phone messages, heard twice, A/B/C</li></ul></div>
+        <div class="module"><h3>Lesen <span>~25 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: 2 short emails, 5 × richtig/falsch</li><li><b>Teil 2</b>: 5 situations, choose website A or B</li><li><b>Teil 3</b>: 5 signs/notices, richtig/falsch</li></ul></div>
+        <div class="module"><h3>Schreiben <span>~20 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: fill in a form, 5 gaps</li><li><b>Teil 2</b>: short message, about 30 words, 3 points</li></ul></div>
+        <div class="module"><h3>Sprechen <span>~15 min · 15 P.</span></h3><ul><li><b>Teil 1</b>: introduce yourself, spell, say a number</li><li><b>Teil 2</b>: ask and answer questions on a theme</li><li><b>Teil 3</b>: make and react to requests</li></ul></div>
+      </div>
+      <p class="note">Check the current format and dates with your exam centre (Goethe-Institut, VHS, or telc for the telc A1 version).</p>
+    </div>
+  </details>
+
+  <div class="score" id="examScore"><span>Your score · a tua / sua pontuação: <b id="scoreVal">0 / 0</b></span><span>Correct <b id="okVal">0</b></span><span>Wrong <b id="noVal">0</b></span><button class="btn" id="examReset">Reset answers</button></div>
+
+  <div class="box" id="hoeren">
+    <span class="eyebrow">Hören · ouvir</span>
+    <h2>Listening practice</h2>
+    <p class="lead">Read the question first, then press „Anhören". Your browser reads the text in German. Use „Text" only after you have answered. In Teil 2 you hear the text only once in the real exam: focus on numbers and on nicht / kein.</p>
+  </div>
+
+  <div class="box" id="lesen">
+    <span class="eyebrow">Lesen · ler</span>
+    <h2>Reading practice</h2>
+    <p class="lead">Scan for key words before you read the statement. Negations (nicht, kein, nur, geschlossen, verboten) are the most common traps.</p>
+  </div>
+</div>
+
+<!-- ============ SCHREIBEN ============ -->
+<div class="panel" id="p-schreiben" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · Formular</span>
+    <h2>Fill in the form for your friend</h2>
+    <div class="text">Ihr Freund João Santos ist 32 Jahre alt und kommt aus Recife in Brasilien. Er wohnt jetzt in der Königstraße 12, 70173 Stuttgart. Er ist Elektriker von Beruf. Er arbeitet tagsüber und möchte einen Deutschkurs am Abend machen.</div>
+    <p class="lead">João wants to register at the Volkshochschule. Write the 5 missing details. O teu / seu amigo João quer inscrever-se num curso de alemão. Escreve / escreva os 5 dados que faltam.</p>
+    <div class="form" id="formFields"></div>
+    <div class="controls"><button class="btn primary" id="formCheck">Check · verificar</button><button class="btn" id="formShow">Show answers</button><span class="counter" id="formResult"></span></div>
+    <div class="tip"><b>Achtung!</b><span>German forms use <b>Vorname</b> (nome) and <b>Familienname / Nachname</b> (sobrenome / apelido). The postcode (<b>PLZ</b>) comes <b>before</b> the city: 70173 Stuttgart. Country names usually have no article: „aus Brasilien", „aus Portugal". Write all surnames exactly as in the passport.</span></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · kurze Nachricht</span>
+    <h2>Write a message (about 30 words)</h2>
+    <div class="text">Sie haben am Freitag einen Termin bei Ihrer Deutschlehrerin, Frau Weber. Sie können nicht kommen. Schreiben Sie Frau Weber eine E-Mail:
+• Warum können Sie nicht kommen?
+• Fragen Sie nach einem neuen Termin.
+• Bitten Sie um eine Antwort.</div>
+    <label for="mail" class="note">Your text · o teu / seu texto</label>
+    <textarea id="mail" placeholder="Liebe Frau Weber, …"></textarea>
+    <div class="controls"><span class="counter" id="wc">0 words</span><button class="btn" id="modelBtn">Show model answer</button></div>
+    <div id="checklist" class="pairs"></div>
+    <div class="model" id="model" hidden>Liebe Frau Weber,
+
+leider kann ich am Freitag nicht zum Termin kommen. Ich bin krank und muss zum Arzt. Haben Sie nächste Woche Zeit, vielleicht am Dienstag? Bitte antworten Sie mir.
+
+Viele Grüße
+Ana Costa</div>
+    <h3>Phrase bank · frases úteis</h3>
+    <div class="pairs" id="phrases"></div>
+    <div class="tip"><b>Achtung!</b><span>After „Liebe Frau Weber," the next line starts with a <b>small letter</b> (leider…). And <b>Sie, Ihnen, Ihr</b> are always capitalised when you write formally, like <b>o senhor / a senhora</b> in a formal letter.</span></div>
+  </div>
+</div>
+
+<!-- ============ SPRECHEN ============ -->
+<div class="panel" id="p-sprechen" hidden>
+  <div class="box">
+    <span class="eyebrow">Teil 1 · sich vorstellen</span>
+    <h2>Introduce yourself</h2>
+    <p class="lead">In the exam you get keyword cards. Say one full sentence for each. Tap a card to see a model answer.</p>
+    <div class="cardset" id="intro"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 1 · buchstabieren</span>
+    <h2>Spell your name the German way</h2>
+    <p class="lead">You will be asked to spell your name. Orange letters are traps for Portuguese speakers: <b>E</b> is „e" (long), <b>H</b> is „ha" (not agá), <b>J</b> is „jot" (not jota), <b>R</b> is „er", <b>V</b> is „fau" (not vê), <b>W</b> is „ve" (not dáblio), <b>Y</b> is „üpsilon", <b>Z</b> is „tset" (not zê). Tap a letter to hear it.</p>
+    <div class="alpha" id="alpha"></div>
+    <div class="pairs">
+      <h3>Portuguese letters · letras do português</h3>
+      <div><b>Ç</b><span>„C mit Häkchen" (cedilha). Gonçalves = G – O – N – C mit Häkchen – A – L – V – E – S</span></div>
+      <div><b>ã õ</b><span>„A mit Tilde", „O mit Tilde". Germans don't have them, so say it after the letter</span></div>
+      <div><b>á é ê ó ô</b><span>„E mit Akzent" … German has no accents, so add „mit Akzent"</span></div>
+      <div><b>Several surnames</b><span>Germans will ask which one is the Familienname. Usually the last one: Ana Ribeiro <b>Costa</b>.</span></div>
+      <div><b>Mein Name ist Simões.</b><span>S – I – M – O mit Tilde – E – S</span></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 2 · Fragen stellen</span>
+    <h2>Theme: Essen und Trinken</h2>
+    <p class="lead">You draw a card with a word. Make a W-question for your partner. Your partner answers. Tap for a model.</p>
+    <div class="cardset" id="themeCards"></div>
+  </div>
+
+  <div class="box">
+    <span class="eyebrow">Teil 3 · Bitten</span>
+    <h2>Polite requests</h2>
+    <p class="lead">You see a picture card. Make a polite request. Your partner says yes or no. Tap for a model.</p>
+    <div class="cardset" id="requestCards"></div>
+    <div class="tip"><b>Trick</b><span><b>Können Sie bitte …?</b> = Pode …, por favor? &nbsp;·&nbsp; <b>Ich hätte gern …</b> = Queria … / Gostaria de … &nbsp;·&nbsp; Answer: <b>Ja, gern.</b> / <b>Nein, tut mir leid.</b></span></div>
+  </div>
+</div>
+
+<div class="cta" style="margin-top:28px">
+  <p><strong>Learning German for life and work in Germany?</strong>Expert Tongue coaching helps you speak with confidence, from A1 to C2.</p>
+  <a href="https://expert-tongue.com" target="_blank" rel="noopener">expert-tongue.com</a>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Expert Tongue · Deutsch A1 für Portugiesischsprachige · Free study tool</span>
+    <span class="note">Where Brazil and Portugal use different words, both are shown (BR / PT). Use the switch above to see only one.</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="../../core/a1.js"></script>
+
+<script>try{localStorage.setItem('et-lang','pt')}catch(e){}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('../../sw.js').catch(()=>{})})}</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{
+  "name": "Türkçe konuşanlar için Almanca · Expert Tongue",
+  "short_name": "Deutsch TR",
+  "description": "German A1 and A2 for speakers of Turkish.",
+  "lang": "tr",
+  "id": "./",
+  "start_url": "./",
+  "scope": "../",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0A2E4D",
+  "theme_color": "#0A2E4D",
+  "categories": [
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "../icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "../icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "../icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Deutsch A1",
+      "short_name": "A1",
+      "url": "a1/"
+    },
+    {
+      "name": "Deutsch A2",
+      "short_name": "A2",
+      "url": "a2/"
+    },
+    {
+      "name": "Spiele",
+      "short_name": "Spiele",
+      "url": "../spiele/?lang=tr"
+    }
+  ]
+}
