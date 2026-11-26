@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Spiele · Deutsch BKS</title>
+<title>Spiele · Deutsch</title>
 <meta name="theme-color" content="#0A2E4D">
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="icon" type="image/png" href="../icons/favicon-64.png">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&family=Noto+Sans+Malayalam:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;500;600&family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&family=Vazirmatn:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="spiele.css">
 <style>
 .games{display:grid;gap:12px}
@@ -28,11 +28,11 @@
 <body>
 <header class="top"><div class="wrap">
   <a class="back" href="../">&larr; Start</a>
-  <h1>Spiele · igre</h1>
-  <p>Short games to train what you learn in class. Pet minuta dnevno je dovoljno.</p>
+  <h1>Spiele · <span data-l="bks">igre</span><span data-l="fa" class="fa">بازی‌ها</span><span data-l="tr">oyunlar</span><span data-l="hi">खेल</span><span data-l="ur" class="fa">کھیل</span><span data-l="es">juegos</span><span data-l="pt">jogos</span><span data-l="pl">gry</span><span data-l="ar" class="fa">ألعاب</span><span data-l="ru">игры</span><span data-l="fr">jeux</span><span data-l="it">giochi</span><span data-l="uk">ігри</span><span data-l="ro">jocuri</span><span data-l="hu">játékok</span><span data-l="el">παιχνίδια</span><span data-l="bg">игри</span><span data-l="sq">lojëra</span><span data-l="bn">খেলা</span><span data-l="ko">게임</span><span data-l="th">เกม</span><span data-l="ku">lîstik</span><span data-l="ml">കളികൾ</span><span data-l="tl">mga laro</span><span data-l="zh">游戏</span><span data-l="vi">trò chơi</span><span data-l="en">games</span></h1>
+  <p>Short games to train what you learn in class. <span data-l="bks">Pet minuta dnevno je dovoljno.</span><span data-l="fa" class="fa">روزی پنج دقیقه کافی است.</span><span data-l="tr">Günde beş dakika yeterli.</span><span data-l="hi">रोज़ पाँच मिनट काफ़ी हैं।</span><span data-l="ur" class="fa">روزانہ پانچ منٹ کافی ہیں۔</span><span data-l="es">Cinco minutos al día son suficientes.</span><span data-l="pt">Cinco minutos por dia chegam.</span><span data-l="pl">Pięć minut dziennie wystarczy.</span><span data-l="ar" class="fa">خمس دقائق يوميًا تكفي.</span><span data-l="ru">Пяти минут в день достаточно.</span><span data-l="fr">Cinq minutes par jour suffisent.</span><span data-l="it">Bastano cinque minuti al giorno.</span><span data-l="uk">П'яти хвилин на день достатньо.</span><span data-l="ro">Cinci minute pe zi sunt de ajuns.</span><span data-l="hu">Napi öt perc elég.</span><span data-l="el">Πέντε λεπτά τη μέρα αρκούν.</span><span data-l="bg">Пет минути на ден стигат.</span><span data-l="sq">Pesë minuta në ditë mjaftojnë.</span><span data-l="bn">দিনে পাঁচ মিনিটই যথেষ্ট।</span><span data-l="ko">하루 5분이면 충분해요.</span><span data-l="th">วันละห้านาทีก็พอ</span><span data-l="ku">Rojê pênc deqîqe bes e.</span><span data-l="ml">ദിവസവും അഞ്ച് മിനിറ്റ് മതി.</span><span data-l="tl">Sapat na ang limang minuto bawat araw.</span><span data-l="zh">每天五分钟就够了。</span><span data-l="vi">Mỗi ngày năm phút là đủ.</span><span data-l="en">Five minutes a day is enough.</span></p>
 </div></header>
 <main class="wrap">
-  <div class="bar"><div id="lvl"></div><span class="stat">Streak<b id="streak">0</b></span></div>
+  <div class="bar"><div id="lvl"></div><div id="lang"></div><span class="stat">Streak<b id="streak">0</b></span></div>
   <div class="games">
     <a class="game" href="artikel.html">
       <span class="tile t1">der<br>die<br>das</span>
@@ -40,7 +40,7 @@
     </a>
     <a class="game" href="memory.html">
       <span class="tile t2">⇄</span>
-      <span><h2>Wort-Memory</h2><p>Match German words with their BKS meaning, by topic.</p><span class="best" id="b2"></span></span>
+      <span><h2>Wort-Memory</h2><p>Match German words with their meaning, by topic.</p><span class="best" id="b2"></span></span>
     </a>
     <a class="game" href="satzbau.html">
       <span class="tile t3">Ich<br>habe<br>…</span>
@@ -50,6 +50,10 @@
   <p class="note">Your scores are saved only on this phone. Play a little every day to keep your streak going.</p>
 </main>
 <script src="words.js"></script>
+<script src="../languages.js"></script>
+<script>// Load only the word list for the chosen language
+(function(){var l;try{l=new URLSearchParams(location.search).get('lang')||JSON.parse(localStorage.getItem('spiele-lang')||'null')}catch(e){}
+if(l&&l!=='bks'&&self.LANGS.some(function(x){return x.code===l}))document.write('<script src="words-'+l+'.js"><\/script>')})();</script>
 <script src="spiele.js"></script>
 <script>
 (function(){
@@ -62,7 +66,7 @@
     $('b3').textContent=z!==null?`Best: ${z}/10`:'';
     $('streak').textContent=S.currentStreak()+' 🔥';
   }
-  S.levelSeg($('lvl'),show);show();
+  S.levelSeg($('lvl'),show);S.langSeg($('lang'),show);show();
 })();
 </script>
 </body>

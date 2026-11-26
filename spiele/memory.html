@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Wort-Memory · Deutsch BKS</title>
+<title>Wort-Memory · Deutsch</title>
 <meta name="theme-color" content="#0A2E4D">
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="icon" type="image/png" href="../icons/favicon-64.png">
 <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&family=Noto+Sans+Malayalam:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;500;600&family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&family=Vazirmatn:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="spiele.css">
 <style>
 .board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
@@ -34,7 +34,7 @@
 <header class="top"><div class="wrap">
   <a class="back" href="./">&larr; Spiele</a>
   <h1>Wort-Memory</h1>
-  <p>Find the pairs: German word and its BKS meaning. Pronađite parove.</p>
+  <p>Find the pairs: German word and its translation. <span data-l="bks">Pronađite parove.</span><span data-l="fa" class="fa">جفت‌ها را پیدا کنید.</span><span data-l="tr">Eşleri bulun.</span><span data-l="hi">जोड़ियाँ ढूँढ़ें।</span><span data-l="ur" class="fa">جوڑیاں ڈھونڈیں۔</span><span data-l="es">Encuentra las parejas.</span><span data-l="pt">Encontra / encontre os pares.</span><span data-l="pl">Znajdź pary.</span><span data-l="ar" class="fa">اعثر على الأزواج.</span><span data-l="ru">Найди пары.</span><span data-l="fr">Trouve les paires.</span><span data-l="it">Trova le coppie.</span><span data-l="uk">Знайди пари.</span><span data-l="ro">Găsește perechile.</span><span data-l="hu">Keresd meg a párokat.</span><span data-l="el">Βρες τα ζευγάρια.</span><span data-l="bg">Намери двойките.</span><span data-l="sq">Gjej çiftet.</span><span data-l="bn">জোড়া খুঁজুন।</span><span data-l="ko">짝을 찾으세요.</span><span data-l="th">หาคู่ให้ตรงกัน</span><span data-l="ku">Cotan bibîne.</span><span data-l="ml">ജോഡികൾ കണ്ടെത്തുക.</span><span data-l="tl">Hanapin ang mga pares.</span><span data-l="zh">找出配对。</span><span data-l="vi">Tìm các cặp từ.</span></p>
 </div></header>
 
 <main class="wrap">
@@ -68,6 +68,10 @@
 </main>
 
 <script src="words.js"></script>
+<script src="../languages.js"></script>
+<script>// Load only the word list for the chosen language
+(function(){var l;try{l=new URLSearchParams(location.search).get('lang')||JSON.parse(localStorage.getItem('spiele-lang')||'null')}catch(e){}
+if(l&&l!=='bks'&&self.LANGS.some(function(x){return x.code===l}))document.write('<script src="words-'+l+'.js"><\/script>')})();</script>
 <script src="spiele.js"></script>
 <script>
 (function(){
@@ -76,7 +80,7 @@
   let n=6,first=null,lock=false,moves=0,found=0,t0=0,timer=null,pairs=[];
 
   function fillTopics(){
-    const sel=$('topic');const keep=sel.value;sel.innerHTML='<option value="mix">Mix · sve teme</option>';
+    const sel=$('topic');const keep=sel.value;sel.innerHTML='<option value="mix">'+S.T('mix')+'</option>';
     S.groups().forEach(g=>{const o=document.createElement('option');o.value=g.id;o.textContent=g.de;sel.appendChild(o)});
     if([...sel.options].some(o=>o.value===keep))sel.value=keep;
   }
@@ -99,7 +103,7 @@
     cards.forEach(cd=>{
       const t=document.createElement('button');t.type='button';t.className='tile';t.dataset.i=cd.i;t.dataset.side=cd.side;
       t.setAttribute('aria-label','Hidden card');
-      t.innerHTML=`<span class="in"><span class="face front">${LOCK}</span><span class="face rear ${cd.side}"><span><small>${cd.side==='de'?'Deutsch':'BKS'}</small>${cd.text}</span></span></span>`;
+      t.innerHTML=`<span class="in"><span class="face front">${LOCK}</span><span class="face rear ${cd.side}"><span${cd.side==='bk'&&(S.lang()==='fa'||S.lang()==='ar'||S.lang()==='ur')?' class="fa"':''}><small>${cd.side==='de'?'Deutsch':S.T('name')}</small>${cd.text}</span></span></span>`;
       t.onclick=()=>flip(t,cd);b.appendChild(t);
     });
     $('pairs').textContent=`0/${take}`;$('moves').textContent='0';$('time').textContent='0:00';
@@ -127,10 +131,10 @@
     clearInterval(timer);const secs=Math.floor((Date.now()-t0)/1000);
     const key=bestKey();const prev=S.store.get(key,null);const isBest=prev===null||moves<prev;if(isBest)S.store.set(key,moves);
     const days=S.streak();
-    $('resTitle').textContent=isBest?'New best! Novi rekord!':'Super!';
+    $('resTitle').textContent=isBest?S.T('best'):'Super!';
     $('resMoves').textContent=moves+' moves';
     $('resText').textContent=`Time ${fmt(secs)} · perfect would be ${pairs.length} moves · Streak: ${days} day${days===1?'':'s'} 🔥`;
-    $('review').innerHTML='<p class="note" style="text-align:left">Say each pair out loud once more:</p>'+pairs.map(p=>`<div><b>${p.de}</b><span>${p.bk}</span></div>`).join('');
+    $('review').innerHTML='<p class="note" style="text-align:left">Say each pair out loud once more:</p>'+pairs.map(p=>`<div><b>${p.de}</b><span${(S.lang()==='fa'||S.lang()==='ar'||S.lang()==='ur')?' class="fa"':''}>${p.bk}</span></div>`).join('');
     $('result').hidden=false;$('result').scrollIntoView({behavior:'smooth',block:'start'});
   }
   S.levelSeg($('lvl'),()=>{fillTopics();newGame()});S.soundToggle($('snd'));
