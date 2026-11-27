@@ -206,3 +206,4 @@ footer a{color:var(--accent)}
 
 .home{display:inline-flex;align-items:center;gap:6px;color:var(--band-sub);text-decoration:none;font-size:13px;margin-bottom:14px}
 .home:hover{color:var(--band-fg)}
+.ainote bdi{white-space:nowrap}

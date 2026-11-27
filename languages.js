@@ -11,7 +11,7 @@ self.LANGS=[
   {code:'bg', short:'Български', native:'Български', de:'Deutsch für Bulgarischsprachige', open:'Отвори', en:'Bulgarian', match:['bg']},
   {code:'zh', short:'中文', native:'中文（简体）', de:'Deutsch für Chinesischsprachige', open:'打开', en:'Chinese', match:['zh']},
   {code:'en', short:'English', native:'English', de:'Deutsch für Englischsprachige', open:'Open', en:'English', match:['en']},
-  {code:'fa', short:'فارسی', native:'فارسی · دری', rtl:'fa', de:'Deutsch für Persischsprachige', open:'باز کنید', en:'Farsi, Dari', match:['fa','prs']},
+  {code:'fa', short:'فارسی', native:'فارسی · دری', rtl:'fa', de:'Deutsch für Persischsprachige', open:'باز کنید', en:'Farsi, Dari', match:['fa','prs'], reviewed:true},
   {code:'fr', short:'Français', native:'Français', de:'Deutsch für Französischsprachige', open:'Ouvrir', en:'French', match:['fr']},
   {code:'el', short:'Ελληνικά', native:'Ελληνικά', de:'Deutsch für Griechischsprachige', open:'Άνοιγμα', en:'Greek', match:['el']},
   {code:'hi', short:'हिंदी', native:'हिंदी', de:'Deutsch für Hindisprachige', open:'खोलें', en:'Hindi', match:['hi']},

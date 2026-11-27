@@ -1,22 +1,24 @@
 // Deutsch · Expert Tongue: offline support.
 // When you change any page, raise the version number so phones fetch the new files.
-const VERSION = 'deutsch-bks-v30';
+const VERSION = 'deutsch-bks-v32';
 importScripts('languages.js');
 
 // The shell every learner needs. Each language's own pages are added when that language is opened.
 const CORE = [
-  './', 'index.html', 'manifest.webmanifest', 'languages.js', 'a1/', 'a1/index.html', 'a2/', 'a2/index.html',
+  './', 'index.html', 'about.html', 'manifest.webmanifest', 'languages.js', 'a1/', 'a1/index.html', 'a2/', 'a2/index.html',
   'core/a1.js', 'core/a1.css', 'core/a2.js', 'core/a2.css', 'core/home.js',
   'spiele/', 'spiele/index.html', 'spiele/artikel.html', 'spiele/memory.html', 'spiele/satzbau.html',
   'spiele/spiele.css', 'spiele/spiele.js', 'spiele/words.js',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png', 'icons/apple-touch-icon.png', 'icons/favicon-64.png'
 ];
 const CODES = self.LANGS.map(x => x.code);
+// Extra pages that belong to one language only (BKS: Debs's class)
+const EXTRA = { bks: ['bks/kurs/', 'bks/kurs/index.html', 'bks/kurs/kurs.css', 'bks/kurs/lektion-1-weil.html', 'bks/kurs/lektion-1-wo-wohin.html', 'bks/kurs/lektion-1-bildkarten.html'] };
 const langFiles = l => [
   `${l}/`, `${l}/index.html`, `${l}/manifest.webmanifest`,
   `${l}/a1/`, `${l}/a1/index.html`, `${l}/a1/data.js`,
   `${l}/a2/`, `${l}/a2/index.html`, `${l}/a2/data.js`,
-  `spiele/words-${l}.js`
+  `spiele/words-${l}.js`, ...(EXTRA[l] || [])
 ];
 // Which language does this address belong to? ('bks/a1/' -> 'bks')
 function langOf(url) {

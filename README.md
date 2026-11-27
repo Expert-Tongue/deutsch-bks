@@ -20,3 +20,6 @@ Free German A1 and A2 study app (PWA) with explanations in the learner's own lan
 1. Add one line to `languages.js`.
 2. Upload the new `xx/` folder and `spiele/words-xx.js`. Also upload the updated shared game files (`spiele.js`, `spiele.css`, `satzbau.html`), which hold the game labels and sentence translations.
 3. Raise the version in `sw.js`.
+
+## Moj kurs · Mein Kurs (BKS only)
+`bks/kurs/` holds the revision pages for Debs's A2 class: `index.html` (lesson list), `lektion-1-weil.html`, `lektion-1-wo-wohin.html`, `lektion-1-bildkarten.html` and the shared `kurs.css`. They are linked only from the BKS home page and are saved for offline use together with the BKS pages (see `EXTRA` in `sw.js`). To add a lesson: add the page, link it in `bks/kurs/index.html`, add it to `EXTRA` and raise `VERSION`.

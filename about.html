@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About this app · Über diese App · Expert Tongue</title>
+<meta name="description" content="Deutsch A1/A2 is a free, AI-assisted German learning resource published by Expert Tongue.">
+<meta name="theme-color" content="#0A2E4D">
+<link rel="icon" type="image/png" href="icons/favicon-64.png">
+<script src="languages.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@600&text=%D8%A7%D8%B1%D8%AF%D9%88%DA%A9%DA%BE%D9%88%D9%84%DB%8C%DA%BA&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500;600&family=Vazirmatn:wght@500&family=Noto+Sans+Devanagari:wght@600&family=Noto+Sans+Arabic:wght@400;500&display=swap">
+<style>
+/* Layout: navy band with the brand, then one card per language track; neutral, no single language leads */
+:root{
+  --navy:#0A2E4D; --blue:#0B76C5; --sky:#A9D3F0; --orange:#F2A33A;
+  --bg:#F4F8FB; --surface:#FFFFFF; --fg:#0A2E4D; --muted:#52657A; --line:#D6E4EF; --chip:#EAF4FB; --accent:#0B76C5;
+  --band:#0A2E4D; --band-fg:#FFFFFF; --band-sub:#A9D3F0;
+  --f-display:"Poppins","Noto Sans Devanagari","Segoe UI",system-ui,sans-serif; --f-body:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root{--bg:#06192B;--surface:#0C2740;--fg:#E4EEF7;--muted:#9FB4C8;--line:#1C3D5C;--chip:#123352;--accent:#4FA8EC;--band:#04121F;color-scheme:dark}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{background:var(--band)}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 var(--f-body);min-height:100vh}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{background:var(--band);color:var(--band-fg)}
+header .wrap{padding-block:28px 34px}
+.wordmark{font-family:var(--f-display);font-weight:300;font-size:22px;display:flex;align-items:center;gap:8px}
+.wordmark svg{width:20px;height:24px}
+.tagline{font-family:var(--f-display);font-size:12px;color:var(--band-sub);letter-spacing:.06em}
+h1{font-family:var(--f-display);font-weight:500;font-size:clamp(28px,6vw,40px);line-height:1.15;margin:22px 0 0;text-wrap:balance}
+h1 span{color:var(--sky);font-weight:300}
+header p{margin:8px 0 0;color:var(--band-sub);max-width:56ch}
+main{padding-block:24px 40px;display:flex;flex-direction:column;gap:16px}
+.langs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.lang{display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+.lang:hover,.lang:focus-visible{border-color:var(--accent);transform:translateY(-2px);outline:none}
+.lang .native{font-family:var(--f-display);font-weight:600;font-size:22px;line-height:1.2}
+.lang .native.fa{font-family:"Vazirmatn",Tahoma,sans-serif;direction:rtl;text-align:right}
+.lang .native.ur{font-family:"Noto Nastaliq Urdu","Noto Naskh Arabic",Tahoma,serif;direction:rtl;text-align:right;line-height:1.9;font-weight:600}
+.lang .native.ar{font-family:"Noto Sans Arabic",Tahoma,sans-serif;direction:rtl;text-align:right}
+.lang .de{font-size:14px;color:var(--muted)}
+.lang .levels{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.lang .levels span{font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--chip);color:var(--accent)}
+.lang .levels span.a2{background:var(--orange);color:#0A2E4D}
+.lang .go{margin-top:auto;padding-top:8px;font-weight:600;color:var(--accent);font-size:14px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.box h3{font-family:var(--f-display);font-weight:500;font-size:16px;margin:0}
+.box p{font-size:14px;color:var(--muted);margin:0}
+footer{color:var(--muted);font-size:13px;padding-block:8px 32px}
+footer a{color:var(--accent)}
+.find{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:0 14px;min-height:48px}
+.find:focus-within{border-color:var(--accent)}
+.find svg{width:18px;height:18px;flex:none;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round}
+.find input{flex:1;min-width:0;border:0;background:transparent;font:inherit;color:var(--fg);padding:12px 0;outline:none}
+.lang.mine{border-color:var(--accent);border-width:2px}
+.lang .yours{align-self:flex-start;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.none{margin:0;color:var(--muted)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+.prose{max-width:68ch;display:flex;flex-direction:column;gap:10px}
+.prose p{margin:0;color:var(--fg);font-size:15px}
+.prose h2{font-family:var(--f-display);font-weight:500;font-size:20px;margin:6px 0 0}
+.status{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin:0;padding:0;list-style:none}
+.status li{display:flex;justify-content:space-between;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:14px}
+.status .ok{color:#1E8E5A;font-weight:600;white-space:nowrap}
+.status .no{color:var(--muted);white-space:nowrap}
+.mail{font-weight:600;color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="wordmark"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5.5 11V5.5a4.5 4.5 0 0 1 9 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.3" stroke-linecap="round"/><rect x="1" y="10.5" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16.8" r="1.7" fill="#fff"/><circle cx="13" cy="16.8" r="1.7" fill="#fff"/><circle cx="7" cy="17" r=".75" fill="#0A2E4D"/><circle cx="13" cy="17" r=".75" fill="#0A2E4D"/></svg>Expert Tongue</div>
+    <h1>About this app <span>· Über diese App</span></h1>
+  </div>
+</header>
+<main class="wrap">
+  <section class="box prose" lang="en">
+    <h2>About this app</h2>
+    <p>Deutsch A1 / A2 is a free, AI-assisted German learning resource published by Expert Tongue. It was developed with the help of artificial intelligence.</p>
+    <p>The German content is checked by a qualified teacher of German as a foreign language. The translations and explanations in the other languages were created with AI help. Native speakers are reviewing them one language at a time, and until then they may contain errors. The table below shows which languages have been checked.</p>
+    <p>Found a mistake? Please write to <bdi class="mail">hello@expert-tongue.com</bdi>. Every correction helps other learners.</p>
+    <p>Your progress is stored only on your own device. The app has no accounts, no tracking and collects no personal data.</p>
+  </section>
+  <section class="box prose" lang="de">
+    <h2>Über diese App</h2>
+    <p>Deutsch A1 / A2 ist eine kostenlose, KI-gestützte Lernressource für Deutsch, herausgegeben von Expert Tongue. Sie wurde mit Hilfe künstlicher Intelligenz entwickelt.</p>
+    <p>Die deutschen Inhalte werden von einer qualifizierten DaF-Lehrkraft geprüft. Die Übersetzungen und Erklärungen in den anderen Sprachen wurden mit KI-Unterstützung erstellt. Muttersprachlerinnen und Muttersprachler prüfen sie nach und nach; bis dahin können sie Fehler enthalten. Die Tabelle unten zeigt, welche Sprachen schon geprüft sind.</p>
+    <p>Sie haben einen Fehler gefunden? Schreiben Sie gern an <bdi class="mail">hello@expert-tongue.com</bdi>. Jede Korrektur hilft anderen Lernenden.</p>
+    <p>Ihr Lernfortschritt wird nur auf Ihrem eigenen Gerät gespeichert. Die App hat keine Konten, kein Tracking und erhebt keine personenbezogenen Daten.</p>
+  </section>
+  <section class="box prose">
+    <h2>Review status · Prüfstatus</h2>
+    <p>Translations checked by a native speaker · Übersetzungen von Muttersprachlern geprüft</p>
+    <ul class="status" id="status"></ul>
+  </section>
+</main>
+<footer class="wrap">
+  Expert Tongue · <a href="https://expert-tongue.com" target="_blank" rel="noopener">expert-tongue.com</a> · <a href="./?choose">Sprache wählen · Choose a language</a>
+</footer>
+<script>
+(function(){
+  var ul=document.getElementById('status');
+  self.LANGS.forEach(function(x){
+    var li=document.createElement('li');
+    var a=document.createElement('span'); a.textContent=x.en+' · '+x.short;
+    var b=document.createElement('span');
+    b.className=x.reviewed?'ok':'no'; b.textContent=x.reviewed?'✓ checked · geprüft':'not yet · noch nicht';
+    li.appendChild(a); li.appendChild(b); ul.appendChild(li);
+  });
+})();
+</script>
+</body>
+</html>
