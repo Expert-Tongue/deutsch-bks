@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lektion 1 · Bildkarten · Zu Hause · Deutsch BKS</title>
+<meta name="theme-color" content="#0A2E4D">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+
+*{box-sizing:border-box;min-width:0}
+html{color-scheme:light}
+body{margin:0;font-family:var(--f-body);background:var(--bg);color:var(--ink);font-size:17px;line-height:1.45;overflow-x:clip}
+header{background:var(--ink);color:#fff;padding:18px 20px 14px}
+.wrap{max-width:720px;margin:0 auto}
+h1{margin:0;font-size:26px}
+header p{margin:2px 0 12px;color:var(--band-sub);font-size:15px}
+.flag{display:inline-flex;vertical-align:middle;margin-right:10px;border-radius:3px;overflow:hidden}.flag i{display:block;width:7px;height:20px}
+.seg{display:flex;gap:4px;flex-wrap:wrap}
+.seg button{font:inherit;font-size:15px;border:0;border-radius:99px;padding:8px 14px;cursor:pointer;background:#ffffff1f;color:#dfe3ea;min-height:40px}
+.seg button.on{background:var(--surface);color:var(--ink);font-weight:700}
+.topics{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 6px}
+.topics button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:7px 13px;cursor:pointer;min-height:38px}
+.topics button.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+main{padding:12px 20px 40px}
+.bar{height:8px;background:#e3e6ee;border-radius:99px;overflow:hidden;margin:8px 0 4px}
+.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--soft);font-size:14px}
+/* flip card */
+.stage{perspective:1200px;margin:14px auto 16px;max-width:440px}
+.fc{position:relative;width:100%;aspect-ratio:1/1;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.3,.7,.2,1);cursor:pointer}
+.fc.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:0 8px 24px #0A2E4D14;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center}
+.back{transform:rotateY(180deg)}
+.pic{width:62%;aspect-ratio:1/1;display:grid;place-items:center;font-size:clamp(110px,30vw,170px);line-height:1}
+.pic svg{width:100%;height:100%}
+.back .pic{width:34%;font-size:clamp(56px,15vw,84px)}
+.word{font-size:clamp(30px,8vw,42px);font-weight:800;margin-top:10px}
+.pl{color:var(--soft);font-size:17px;margin-top:4px}
+.hint{position:absolute;bottom:14px;color:var(--soft);font-size:14px}
+.der{color:var(--der)}.die{color:var(--die)}.das{color:var(--das)}
+.btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{font:inherit;font-size:17px;font-weight:700;border:0;border-radius:12px;padding:12px 20px;cursor:pointer;background:var(--teal);color:#fff;min-height:48px;min-width:140px}
+.btn.again{background:var(--coral)}
+.btn.ghost{background:var(--surface);color:var(--teal);border:2px solid var(--teal)}
+.btn:disabled{opacity:.4;cursor:default}
+.speak{font:inherit;font-size:15px;border:0;background:var(--teal-l);color:var(--teal);border-radius:99px;padding:6px 14px;margin-top:12px;cursor:pointer;font-weight:600}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:520px;margin:0 auto}
+.opts button{font:inherit;font-size:19px;font-weight:700;border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 8px;cursor:pointer;min-height:56px}
+.opts button.ok{border-color:var(--green);background:var(--green-l);color:var(--green)}
+.opts button.bad{border-color:var(--coral);background:var(--coral-l);color:var(--bad)}
+.art button{font-size:26px}
+.art button[data-a=der]{color:var(--der)}.art button[data-a=die]{color:var(--die)}.art button[data-a=das]{color:var(--das)}
+.single{max-width:440px;margin:14px auto 16px}
+.single .face{position:relative;aspect-ratio:1/1}
+.fb{min-height:30px;text-align:center;font-weight:700;margin:10px 0}
+.fb.ok{color:var(--green)}.fb.bad{color:var(--coral)}
+.done{text-align:center;padding:30px 10px}
+.done .big{font-size:64px}
+.score{display:flex;justify-content:center;gap:18px;font-size:15px;color:var(--soft);margin-top:6px}
+.score b{color:var(--ink)}
+kbd{font:inherit;font-size:12px;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+.keys{text-align:center;color:var(--soft);font-size:13px;margin-top:14px}
+@media (hover:none){.keys{display:none}}
+</style>
+<link rel="stylesheet" href="kurs.css">
+</head>
+<body>
+<header class="k">
+  <div class="wrap">
+    <div class="top"><a class="wordmark" href="../"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5.5 11V5.5a4.5 4.5 0 0 1 9 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.3" stroke-linecap="round"/><rect x="1" y="10.5" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16.8" r="1.7" fill="#fff"/><circle cx="13" cy="16.8" r="1.7" fill="#fff"/><circle cx="7" cy="17" r=".75" fill="#0A2E4D"/><circle cx="13" cy="17" r=".75" fill="#0A2E4D"/></svg>Expert Tongue</a><a class="backlink" href="./">&larr; Moj kurs · Mein Kurs</a></div>
+    <span class="eyebrow">Wiederholung von Lektion 1</span>
+    <h1>Bildkarten · Zu Hause</h1>
+    <p>Schau das Bild an. Wie heißt das auf Deutsch – mit Artikel?</p>
+    <div class="seg" style="padding-bottom:16px" id="modes"><button class="on" data-m="cards">Karteikarten</button><button data-m="quiz">Quiz</button><button data-m="art">der, die oder das?</button></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="topics" id="topics"></div>
+  <div class="bar"><i id="prog"></i></div>
+  <div class="meta"><span id="count"></span><span id="stat"></span></div>
+  <div id="app"></div>
+  <div class="keys" id="keys"></div>
+</main>
+
+<script>
+{
+const $=s=>document.querySelector(s);
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+
+/* drawn pictures for words without an emoji */
+const S={
+tisch:'<rect x="10" y="38" width="80" height="9" rx="3" fill="#7a5233"/><rect x="16" y="47" width="7" height="38" fill="#5b3c24"/><rect x="77" y="47" width="7" height="38" fill="#5b3c24"/><rect x="38" y="28" width="12" height="10" rx="2" fill="#fff" stroke="#cfd5df"/><rect x="56" y="22" width="6" height="16" rx="2" fill="#2b6cb0"/>',
+schrank:'<rect x="22" y="8" width="56" height="84" rx="3" fill="#9c6b45"/><rect x="27" y="13" width="22" height="74" rx="2" fill="#b9875b"/><rect x="51" y="13" width="22" height="74" rx="2" fill="#b9875b"/><circle cx="46" cy="50" r="2.5" fill="#f2c94c"/><circle cx="54" cy="50" r="2.5" fill="#f2c94c"/>',
+regal:'<rect x="20" y="8" width="60" height="86" fill="#b9875b"/><rect x="25" y="12" width="50" height="78" fill="#8f6440"/><rect x="20" y="36" width="60" height="4" fill="#b9875b"/><rect x="20" y="62" width="60" height="4" fill="#b9875b"/><rect x="28" y="16" width="6" height="20" fill="#c53030"/><rect x="35" y="18" width="5" height="18" fill="#2b6cb0"/><rect x="41" y="15" width="7" height="21" fill="#e0a526"/><rect x="28" y="44" width="6" height="18" fill="#2f8f4e"/><rect x="35" y="42" width="7" height="20" fill="#6b46c1"/><rect x="58" y="70" width="12" height="16" rx="2" fill="#3f8f52"/>',
+sessel:'<rect x="20" y="22" width="60" height="44" rx="12" fill="#2b6c8f"/><rect x="12" y="44" width="16" height="34" rx="7" fill="#235a78"/><rect x="72" y="44" width="16" height="34" rx="7" fill="#235a78"/><rect x="26" y="52" width="48" height="22" rx="6" fill="#3480a8"/><rect x="24" y="76" width="5" height="10" fill="#5b4636"/><rect x="71" y="76" width="5" height="10" fill="#5b4636"/>',
+lampe:'<path d="M30 30 L70 30 L62 6 L38 6Z" fill="#f2c94c"/><rect x="48" y="30" width="4" height="56" fill="#3b3f4a"/><ellipse cx="50" cy="88" rx="16" ry="5" fill="#3b3f4a"/>',
+teppich:'<path d="M18 30 L82 30 L92 74 L8 74Z" fill="#6b8f71"/><path d="M26 36 L74 36 L82 68 L18 68Z" fill="none" stroke="#e8d9a8" stroke-width="2.5" stroke-dasharray="5 4"/><path d="M50 42 L60 52 L50 62 L40 52Z" fill="#e8d9a8"/><g stroke="#e8d9a8" stroke-width="2">'+Array.from({length:12},(_,i)=>`<line x1="${12+i*7}" y1="74" x2="${12+i*7}" y2="80"/>`).join('')+'</g>',
+kissen:'<path d="M18 22 Q50 14 82 22 Q90 50 82 78 Q50 86 18 78 Q10 50 18 22Z" fill="#f2c94c"/><path d="M26 30 Q50 25 74 30" stroke="#e0a526" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="4" fill="#e0a526"/>',
+kommode:'<rect x="12" y="26" width="76" height="56" rx="3" fill="#9c6b45"/><rect x="17" y="31" width="66" height="14" rx="2" fill="#b9875b"/><rect x="17" y="48" width="66" height="14" rx="2" fill="#b9875b"/><rect x="17" y="65" width="66" height="13" rx="2" fill="#b9875b"/><rect x="44" y="36" width="12" height="4" rx="2" fill="#5b3c24"/><rect x="44" y="53" width="12" height="4" rx="2" fill="#5b3c24"/><rect x="44" y="70" width="12" height="4" rx="2" fill="#5b3c24"/><rect x="18" y="82" width="5" height="8" fill="#5b3c24"/><rect x="77" y="82" width="5" height="8" fill="#5b3c24"/>',
+kuehlschrank:'<rect x="26" y="6" width="48" height="88" rx="6" fill="#eef2f7" stroke="#9aa5b8" stroke-width="2.5"/><line x1="26" y1="36" x2="74" y2="36" stroke="#9aa5b8" stroke-width="2.5"/><rect x="64" y="16" width="4" height="14" rx="2" fill="#9aa5b8"/><rect x="64" y="44" width="4" height="22" rx="2" fill="#9aa5b8"/><path d="M38 20 l4 -4 l4 4 l-4 4z" fill="#7fb3d5"/>',
+herd:'<rect x="16" y="18" width="68" height="74" rx="4" fill="#eef2f7" stroke="#9aa5b8" stroke-width="2.5"/><rect x="16" y="18" width="68" height="16" fill="#3b3f4a"/><circle cx="28" cy="26" r="3" fill="#cfd5df"/><circle cx="40" cy="26" r="3" fill="#cfd5df"/><circle cx="60" cy="26" r="3" fill="#cfd5df"/><circle cx="72" cy="26" r="3" fill="#cfd5df"/><rect x="24" y="44" width="52" height="38" rx="3" fill="#3b3f4a"/><rect x="29" y="50" width="42" height="24" rx="2" fill="#e8742a" opacity=".55"/><rect x="34" y="40" width="32" height="3" rx="1.5" fill="#9aa5b8"/>',
+waschmaschine:'<rect x="18" y="10" width="64" height="82" rx="5" fill="#eef2f7" stroke="#9aa5b8" stroke-width="2.5"/><line x1="18" y1="26" x2="82" y2="26" stroke="#9aa5b8" stroke-width="2"/><circle cx="68" cy="18" r="4" fill="#9aa5b8"/><rect x="24" y="15" width="18" height="6" rx="2" fill="#cfd5df"/><circle cx="50" cy="58" r="24" fill="#cfd5df"/><circle cx="50" cy="58" r="18" fill="#7fb3d5"/><path d="M36 62 Q43 54 50 62 T64 62" stroke="#fff" stroke-width="3" fill="none"/>',
+treppe:'<path d="M10 88 L10 72 L28 72 L28 56 L46 56 L46 40 L64 40 L64 24 L82 24 L82 88Z" fill="#c99d72"/><path d="M10 72 L28 72 M28 56 L46 56 M46 40 L64 40 M64 24 L82 24" stroke="#7a5233" stroke-width="3"/><path d="M18 60 L76 12" stroke="#3b3f4a" stroke-width="3"/>'
+};
+const svg=k=>`<svg viewBox="0 0 100 100" aria-hidden="true">${S[k]}</svg>`;
+
+/* [article, word, plural, picture (emoji or svg key), topic] */
+const W=[
+ ["der","Tisch","die Tische","@tisch","Möbel"],["der","Stuhl","die Stühle","🪑","Möbel"],["das","Sofa","die Sofas","🛋️","Möbel"],
+ ["der","Sessel","die Sessel","@sessel","Möbel"],["das","Bett","die Betten","🛏️","Möbel"],["der","Schrank","die Schränke","@schrank","Möbel"],
+ ["das","Regal","die Regale","@regal","Möbel"],["die","Kommode","die Kommoden","@kommode","Möbel"],["die","Lampe","die Lampen","@lampe","Möbel"],
+ ["der","Teppich","die Teppiche","@teppich","Möbel"],["das","Kissen","die Kissen","@kissen","Möbel"],["der","Spiegel","die Spiegel","🪞","Möbel"],
+ ["das","Bild","die Bilder","🖼️","Möbel"],["die","Uhr","die Uhren","🕰️","Möbel"],["die","Pflanze","die Pflanzen","🪴","Möbel"],["die","Kerze","die Kerzen","🕯️","Möbel"],
+ ["der","Kühlschrank","die Kühlschränke","@kuehlschrank","Küche"],["der","Herd","die Herde","@herd","Küche"],["die","Waschmaschine","die Waschmaschinen","@waschmaschine","Küche"],
+ ["die","Tasse","die Tassen","☕","Küche"],["der","Teller","die Teller","🍽️","Küche"],["die","Flasche","die Flaschen","🍾","Küche"],
+ ["der","Topf","die Töpfe","🍲","Küche"],["die","Pfanne","die Pfannen","🍳","Küche"],
+ ["die","Dusche","die Duschen","🚿","Bad"],["die","Badewanne","die Badewannen","🛁","Bad"],["die","Toilette","die Toiletten","🚽","Bad"],
+ ["die","Seife","die Seifen","🧼","Bad"],["die","Zahnbürste","die Zahnbürsten","🪥","Bad"],
+ ["die","Tür","die Türen","🚪","Im Haus"],["das","Fenster","die Fenster","🪟","Im Haus"],["der","Schlüssel","die Schlüssel","🔑","Im Haus"],
+ ["die","Treppe","die Treppen","@treppe","Im Haus"],["der","Aufzug","die Aufzüge","🛗","Im Haus"],["der","Briefkasten","die Briefkästen","📫","Im Haus"],
+ ["der","Mülleimer","die Mülleimer","🗑️","Im Haus"],["der","Besen","die Besen","🧹","Im Haus"],["das","Fahrrad","die Fahrräder","🚲","Im Haus"],
+ ["das","Paket","die Pakete","📦","Im Haus"],["der","Fernseher","die Fernseher","📺","Im Haus"],["das","Handy","die Handys","📱","Im Haus"]
+];
+const pic=w=>w[3][0]==='@'?svg(w[3].slice(1)):w[3];
+const TOPICS=["Alle","Möbel","Küche","Bad","Im Haus"];
+let mode='cards',topic='Alle',deck=[],idx=0,known=0,again=0,total=0,qRight=0,qDone=0,locked=false;
+
+$('#topics').innerHTML=TOPICS.map(t=>`<button data-t="${t}" class="${t===topic?'on':''}">${t} <span style="opacity:.6">(${t==='Alle'?W.length:W.filter(w=>w[4]===t).length})</span></button>`).join('');
+document.querySelectorAll('#topics button').forEach(b=>b.onclick=()=>{topic=b.dataset.t;document.querySelectorAll('#topics button').forEach(x=>x.classList.toggle('on',x===b));start()});
+document.querySelectorAll('#modes button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;document.querySelectorAll('#modes button').forEach(x=>x.classList.toggle('on',x===b));start()});
+
+let voice=null;
+function pickVoice(){try{const v=speechSynthesis.getVoices();voice=v.find(x=>/^de/i.test(x.lang))||null}catch(e){}}
+try{pickVoice();speechSynthesis.onvoiceschanged=pickVoice}catch(e){}
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='de-DE';if(voice)u.voice=voice;u.rate=.9;speechSynthesis.speak(u)}catch(e){}}
+const speakBtn=w=>`<button class="speak" data-say="${w[0]} ${w[1]}">🔊 Anhören</button>`;
+const wordHTML=w=>`<div class="word"><span class="${w[0]}">${w[0]}</span> ${w[1]}</div><div class="pl">Plural: ${w[2]}</div>`;
+
+function pool(){return W.filter(w=>topic==='Alle'||w[4]===topic)}
+function start(){deck=shuffle(pool());idx=0;known=0;again=0;qRight=0;qDone=0;total=deck.length;render()}
+function progress(){
+  const done=mode==='cards'?known:qDone;
+  $('#prog').style.width=(total?done/total*100:0)+'%';
+  $('#count').textContent=mode==='cards'?`${known} / ${total} gewusst`:`${qDone} / ${total}`;
+  $('#stat').textContent=mode==='cards'?(again?`Nochmal: ${again}×`:''):`Richtig: ${qRight}`;
+}
+function finish(){
+  const msg=mode==='cards'?`Super! Du kennst alle ${total} Wörter.`:`${qRight} von ${total} richtig!`;
+  $('#app').innerHTML=`<div class="done"><div class="big">🎉</div><h2>${msg}</h2><div class="btns"><button class="btn" id="restart">Noch einmal</button></div></div>`;
+  $('#restart').onclick=start;progress();
+}
+function bindSpeak(){document.querySelectorAll('[data-say]').forEach(b=>b.onclick=e=>{e.stopPropagation();say(b.dataset.say)})}
+
+function render(){
+  locked=false;progress();
+  if(mode==='cards'){
+    if(!deck.length)return finish();
+    const w=deck[0];
+    $('#app').innerHTML=`<div class="stage"><div class="fc" id="fc" role="button" tabindex="0" aria-label="Karte umdrehen">
+      <div class="face front"><div class="pic">${pic(w)}</div><div class="hint">Antippen zum Umdrehen</div></div>
+      <div class="face back"><div class="pic">${pic(w)}</div>${wordHTML(w)}${speakBtn(w)}</div></div></div>
+      <div class="btns"><button class="btn again" id="bAgain" disabled>↺ Nochmal</button><button class="btn" id="bKnow" disabled>✓ Gewusst</button></div>`;
+    const fc=$('#fc');
+    const flip=()=>{fc.classList.toggle('flip');const on=fc.classList.contains('flip');$('#bAgain').disabled=!on;$('#bKnow').disabled=!on;if(on)say(w[0]+' '+w[1])};
+    fc.onclick=flip;fc.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();flip()}};
+    $('#bKnow').onclick=()=>{deck.shift();known++;render()};
+    $('#bAgain').onclick=()=>{const c=deck.shift();deck.splice(Math.min(3,deck.length),0,c);again++;render()};
+    $('#keys').innerHTML='<kbd>Leertaste</kbd> umdrehen · <kbd>→</kbd> gewusst · <kbd>←</kbd> nochmal';
+    bindSpeak();return;
+  }
+  if(idx>=deck.length)return finish();
+  const w=deck[idx];
+  if(mode==='quiz'){
+    const others=shuffle(W.filter(x=>x!==w&&(topic==='Alle'||x[4]===w[4]))).slice(0,3);
+    const opts=shuffle([w,...others]);
+    $('#app').innerHTML=`<div class="single"><div class="face"><div class="pic">${pic(w)}</div></div></div>
+      <div class="opts" id="opts">${opts.map(o=>`<button data-k="${o[1]}"><span class="${o[0]}">${o[0]}</span> ${o[1]}</button>`).join('')}</div>
+      <div class="fb" id="fb"></div><div class="btns"><button class="btn" id="bNext" style="visibility:hidden">Weiter →</button></div>`;
+    document.querySelectorAll('#opts button').forEach(b=>b.onclick=()=>{if(locked)return;locked=true;qDone++;
+      const ok=b.dataset.k===w[1];if(ok)qRight++;b.classList.add(ok?'ok':'bad');
+      document.querySelectorAll('#opts button').forEach(x=>{if(x.dataset.k===w[1])x.classList.add('ok')});
+      $('#fb').className='fb '+(ok?'ok':'bad');$('#fb').innerHTML=(ok?'✔ Richtig! ':'✘ Das ist ')+`<span class="${w[0]}">${w[0]}</span> ${w[1]} · ${w[2]}`;
+      say(w[0]+' '+w[1]);$('#bNext').style.visibility='visible';progress()});
+    $('#bNext').onclick=()=>{idx++;render()};
+    $('#keys').innerHTML='<kbd>1</kbd>–<kbd>4</kbd> antworten · <kbd>Enter</kbd> weiter';
+    return;
+  }
+  // article mode
+  $('#app').innerHTML=`<div class="single"><div class="face" id="aface"><div class="pic">${pic(w)}</div><div id="aw"></div></div></div>
+    <div class="opts art" id="opts" style="grid-template-columns:repeat(3,1fr)"><button data-a="der">der</button><button data-a="die">die</button><button data-a="das">das</button></div>
+    <div class="fb" id="fb"></div><div class="btns"><button class="btn" id="bNext" style="visibility:hidden">Weiter →</button></div>`;
+  document.querySelectorAll('#opts button').forEach(b=>b.onclick=()=>{if(locked)return;locked=true;qDone++;
+    const ok=b.dataset.a===w[0];if(ok)qRight++;b.classList.add(ok?'ok':'bad');
+    document.querySelectorAll('#opts button').forEach(x=>{if(x.dataset.a===w[0])x.classList.add('ok')});
+    $('#aface .pic').style.width='40%';$('#aw').innerHTML=wordHTML(w)+speakBtn(w);bindSpeak();
+    $('#fb').className='fb '+(ok?'ok':'bad');$('#fb').textContent=ok?'✔ Richtig!':'✘ Leider falsch.';
+    say(w[0]+' '+w[1]);$('#bNext').style.visibility='visible';progress()});
+  $('#bNext').onclick=()=>{idx++;render()};
+  $('#keys').innerHTML='<kbd>1</kbd> der · <kbd>2</kbd> die · <kbd>3</kbd> das · <kbd>Enter</kbd> weiter';
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT')return;
+  if(mode==='cards'){const fc=$('#fc');if(!fc)return;
+    if(e.key===' '){e.preventDefault();fc.click()}
+    else if(e.key==='ArrowRight'&&!$('#bKnow').disabled)$('#bKnow').click();
+    else if(e.key==='ArrowLeft'&&!$('#bAgain').disabled)$('#bAgain').click();return}
+  const btns=[...document.querySelectorAll('#opts button')];
+  if(/^[1-4]$/.test(e.key)&&btns[+e.key-1])btns[+e.key-1].click();
+  else if(e.key==='Enter'&&$('#bNext')&&$('#bNext').style.visibility==='visible'){e.preventDefault();$('#bNext').click()}
+});
+start();
+}
+</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('../../sw.js').catch(()=>{})}</script>
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lektion 1 · Warum? Weil …! · Deutsch BKS</title>
+<meta name="theme-color" content="#0A2E4D">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;font-family:var(--f-body);background:var(--bg);color:var(--ink);font-size:18px;line-height:1.5}
+header{background:var(--ink);color:#fff;padding:22px 24px 0}
+.wrap{max-width:1040px;margin:0 auto}
+header h1{margin:0;font-size:30px;letter-spacing:-.01em}
+header p{margin:4px 0 16px;color:var(--band-sub);font-size:16px}
+.flag{display:inline-flex;gap:0;vertical-align:middle;margin-right:10px;border-radius:3px;overflow:hidden}
+.flag i{display:block;width:8px;height:22px}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+.next{margin-top:26px;text-align:right}
+nav button{flex:0 0 auto;border:0;background:transparent;color:var(--band-sub);font:inherit;font-size:15px;padding:10px 14px;border-radius:10px 10px 0 0;cursor:pointer;white-space:nowrap}
+nav button b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#ffffff22;font-size:12px;margin-right:6px}
+nav button[aria-selected="true"]{background:var(--bg);color:var(--ink)}
+nav button[aria-selected="true"] b{background:var(--teal);color:#fff}
+main{padding:28px 24px 60px}
+section[hidden]{display:none!important}
+h2{font-size:30px;margin:0 0 4px;letter-spacing:-.01em}
+.time{display:inline-block;background:var(--gold-l);color:var(--warn-fg);font-size:14px;font-weight:600;padding:3px 10px;border-radius:99px;margin-bottom:14px}
+.lead{font-size:20px;color:var(--soft);margin:0 0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin-bottom:18px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+h3{margin:0 0 10px;font-size:21px}
+.btn{font:inherit;font-size:16px;font-weight:600;border:0;border-radius:10px;padding:10px 18px;cursor:pointer;background:var(--teal);color:#fff}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--teal);border:2px solid var(--teal)}
+.btn.coral{background:var(--coral)}
+.btn.small{font-size:14px;padding:6px 12px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.big{font-size:30px;font-weight:700;line-height:1.3;text-align:center;padding:28px 16px;min-height:120px;display:grid;place-items:center}
+.pill{display:inline-block;background:var(--teal-l);color:var(--teal);border-radius:99px;padding:4px 12px;margin:3px;font-weight:600;font-size:16px}
+.v{color:var(--coral);font-weight:700}
+.w{color:var(--teal);font-weight:700}
+.bks{background:var(--gold-l);border-left:5px solid var(--gold);border-radius:10px;padding:14px 18px;margin:14px 0}
+.bks b:first-child{display:block;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--warn-fg);margin-bottom:4px}
+.note{background:var(--teal-l);border-radius:10px;padding:12px 16px}
+ol.agenda{margin:0;padding-left:22px}
+ol.agenda li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:17px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:14px;text-transform:uppercase;letter-spacing:.05em;color:var(--soft)}
+
+/* timer */
+.timer{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border-radius:12px;padding:6px 8px 6px 14px}
+.timer span{font-variant-numeric:tabular-nums;font-size:22px;font-weight:700;min-width:62px}
+.timer button{font:inherit;font-size:14px;border:0;border-radius:8px;padding:6px 10px;cursor:pointer;background:#ffffff22;color:#fff}
+.timer.done{background:var(--coral);animation:pulse .6s 3}
+@keyframes pulse{50%{transform:scale(1.06)}}
+
+/* verb demo */
+.demo{display:flex;flex-wrap:wrap;gap:8px;min-height:64px;align-items:center;justify-content:center;padding:18px 8px}
+.chip{display:inline-block;padding:8px 14px;border-radius:10px;background:var(--chip2);font-size:24px;font-weight:600;transition:background .3s}
+.chip.verb{background:var(--coral);color:#fff}
+.chip.weil{background:var(--teal);color:#fff}
+.chip.main{background:var(--surface);border:1px dashed var(--line2);color:var(--soft)}
+.tabs-mini{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.tabs-mini button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:5px 12px;cursor:pointer}
+.tabs-mini button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* true/false */
+.tf{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 0;border-bottom:1px solid var(--line)}
+.tf:last-child{border-bottom:0}
+.tf .s{font-size:21px;flex:1 1 380px}
+.tf .ans{flex-basis:100%;display:none;font-size:17px;border-radius:8px;padding:8px 12px}
+.tf.show .ans{display:block}
+.ans.ok{background:var(--green-l);color:var(--green)}
+.ans.bad{background:var(--coral-l);color:var(--bad)}
+
+/* puzzle */
+.pz{padding:16px 0;border-bottom:1px solid var(--line)}
+.pz:last-child{border-bottom:0}
+.pz .q{font-size:20px;margin-bottom:8px}
+.line{min-height:52px;border:2px dashed var(--line2);border-radius:10px;padding:6px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px;background:var(--bg)}
+.bank{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.word{font:inherit;font-size:19px;font-weight:600;border:0;border-radius:8px;padding:6px 12px;background:var(--chip2);cursor:pointer}
+.line .word{background:var(--teal-l);color:var(--teal)}
+.fb{font-weight:600;margin-left:6px}
+.fb.ok{color:var(--green)} .fb.bad{color:var(--coral)}
+.line.ok{border-color:var(--green);background:var(--green-l)}
+.line.bad{border-color:var(--coral);background:var(--coral-l)}
+
+/* transform */
+.tr{padding:14px 0;border-bottom:1px solid var(--line)}
+.tr:last-child{border-bottom:0}
+.tr .orig{font-size:19px;margin-bottom:6px}
+.tr .inrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tr .stem{font-size:19px}
+.tr input{font:inherit;font-size:19px;flex:1 1 300px;padding:8px 12px;border:2px solid var(--line2);border-radius:10px}
+.tr input.ok{border-color:var(--green);background:var(--green-l)}
+.tr input.bad{border-color:var(--coral);background:var(--coral-l)}
+.sol{display:none;color:var(--soft);font-size:16px;margin-top:4px}
+.tr.reveal .sol{display:block}
+
+/* scores */
+.teams{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.team{text-align:center;border-radius:var(--r);padding:14px;color:#fff}
+.team.a{background:var(--teal)} .team.b{background:var(--coral)}
+.team input{font:inherit;font-weight:700;font-size:18px;background:transparent;border:0;color:#fff;text-align:center;width:100%}
+.team .sc{font-size:54px;font-weight:800;line-height:1.1}
+.team button{font:inherit;font-size:18px;font-weight:700;border:0;border-radius:8px;width:44px;height:38px;cursor:pointer;background:#ffffff33;color:#fff;margin:0 4px}
+.counter{font-size:60px;font-weight:800;color:var(--teal);text-align:center;line-height:1}
+.chain{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.chain div{background:var(--teal-l);border-radius:8px;padding:8px 12px;font-size:17px}
+ul.q{margin:0;padding-left:22px}
+ul.q li{margin:6px 0;font-size:19px}
+.frame{font-size:19px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:6px 0}
+.frame u{text-decoration:none;border-bottom:2px dotted var(--soft);padding:0 26px}
+footer{color:var(--soft);font-size:14px;text-align:center;padding:20px}
+@media (max-width:640px){body{font-size:16px}.big{font-size:22px}h2{font-size:24px}.chip{font-size:18px}}
+</style>
+<link rel="stylesheet" href="kurs.css">
+</head>
+<body>
+<header class="k">
+  <div class="wrap">
+    <div class="top"><a class="wordmark" href="../"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5.5 11V5.5a4.5 4.5 0 0 1 9 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.3" stroke-linecap="round"/><rect x="1" y="10.5" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16.8" r="1.7" fill="#fff"/><circle cx="13" cy="16.8" r="1.7" fill="#fff"/><circle cx="7" cy="17" r=".75" fill="#0A2E4D"/><circle cx="13" cy="17" r=".75" fill="#0A2E4D"/></svg>Expert Tongue</a><a class="backlink" href="./">&larr; Moj kurs · Mein Kurs</a></div>
+    <span class="eyebrow">Wiederholung von Lektion 1</span>
+    <h1>Warum? Weil …!</h1>
+    <p>Deutsch A2 · Kennenlernen und Gründe nennen</p>
+    <nav id="nav" role="tablist"></nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- 1 -->
+<section data-tab="Hallo!" data-time="5 Min.">
+  <h2>Herzlich willkommen!</h2>
+  <span class="time">⏱ 5 Minuten</span>
+  <p class="lead">Ich heiße Deborah. Ich bin eure neue Deutschlehrerin. Schön, dass ihr da seid!</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>Heute machen wir …</h3>
+      <ol class="agenda">
+        <li>Wir lernen uns kennen.</li>
+        <li>Wir wiederholen <b class="w">weil</b>.</li>
+        <li>Wir bauen Sätze und spielen.</li>
+        <li>Wir machen ein Interview: <i>Mein Weg nach Deutschland</i>.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>Ratet mal! Fragen an Deborah</h3>
+      <p style="margin-top:0;color:var(--soft)">Was glaubt ihr? Fragt mich!</p>
+      <span class="pill">Woher kommst du?</span>
+      <span class="pill">Wo wohnst du?</span>
+      <span class="pill">Welche Sprachen sprichst du?</span>
+      <span class="pill">Seit wann bist du in Deutschland?</span>
+      <span class="pill">Warum bist du in Deutschland?</span>
+      <span class="pill">Was machst du gern?</span>
+      <span class="pill">Hast du Kinder?</span>
+      <span class="pill">Kannst du Bosnisch, Kroatisch oder Serbisch? 😉</span>
+    </div>
+  </div>
+  <div class="note">💬 <b>Tipp:</b> Im Kurs sagen wir <b>du</b>. Das ist okay!</div>
+</section>
+
+<!-- 2 -->
+<section data-tab="Kennenlernen" data-time="15 Min." hidden>
+  <h2>Wir lernen uns kennen</h2>
+  <span class="time">⏱ 15 Minuten</span>
+  <div class="grid2">
+    <div class="card">
+      <h3>1 · Stell dich vor!</h3>
+      <div class="frame">Ich heiße <u></u>.</div>
+      <div class="frame">Ich komme aus <u></u>.</div>
+      <div class="frame">Ich wohne seit <u></u> in <u></u>.</div>
+      <div class="frame">Ich bin <u></u> von Beruf. / Ich arbeite bei <u></u>.</div>
+      <div class="frame">Ich lerne Deutsch, <b class="w">weil</b> ich <u></u> <b class="v">…</b>.</div>
+    </div>
+    <div class="card">
+      <h3>2 · Frage-Würfel 🎲</h3>
+      <p style="margin-top:0;color:var(--soft)">Klick. Beantworte die Frage. Dann stellst <b>du</b> die nächste Frage an eine andere Person.</p>
+      <div class="big" id="qdice">🎲</div>
+      <div class="row" style="justify-content:center"><button class="btn" id="qdiceBtn">Neue Frage</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section data-tab="weil – Wiederholung" data-time="10 Min." hidden>
+  <h2>Warum? → Weil …</h2>
+  <span class="time">⏱ 10 Minuten</span>
+  <p class="lead">Mit <b class="w">weil</b> nennen wir einen Grund. Das Verb springt ans Ende!</p>
+  <div class="card">
+    <div class="tabs-mini" id="demoTabs"></div>
+    <div class="demo" id="demo"></div>
+    <div class="row" style="justify-content:center"><button class="btn" id="demoBtn">weil ➜</button></div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Die Regeln</h3>
+      <table>
+        <tr><td>1</td><td>Vor <b class="w">weil</b> steht immer ein <b>Komma</b>.</td></tr>
+        <tr><td>2</td><td>Das konjugierte Verb steht <b class="v">am Ende</b>.</td></tr>
+        <tr><td>3</td><td>Modalverb / <i>haben</i> / <i>sein</i> steht ganz am Ende: <br>… weil ich arbeiten <b class="v">muss</b>. <br>… weil ich einen Job gefunden <b class="v">habe</b>.</td></tr>
+        <tr><td>4</td><td>Trennbare Verben sind wieder zusammen: <br>Ich stehe früh auf. → … weil ich früh <b class="v">aufstehe</b>.</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3><span class="w">weil</span> oder <span class="denn">denn</span>?</h3>
+      <p style="margin-top:0">Beide nennen einen Grund. Aber die Wortstellung ist anders:</p>
+      <div class="frame">Ich lerne Deutsch, <b class="denn">denn</b> ich <b class="v">arbeite</b> hier.</div>
+      <div class="frame">Ich lerne Deutsch, <b class="w">weil</b> ich hier <b class="v">arbeite</b>.</div>
+      <p><b>denn</b> = Verb auf Position 2 (normal)<br><b>weil</b> = Verb am Ende</p>
+    </div>
+  </div>
+  <div class="bks">
+    <b>Na našem jeziku</b>
+    <i>Učim njemački <b>jer</b> radim u Njemačkoj.</i> – red riječi je normalan.<br>
+    Na njemačkom: <b>denn</b> = kao <i>jer</i>, red riječi ostaje isti.<br>
+    Ali <b>weil</b> šalje glagol na <b>kraj</b> rečenice: <i>…, weil ich in Deutschland <b class="v">arbeite</b>.</i><br>
+    I ne zaboravite: prije <b>weil</b> uvijek dolazi <b>zarez</b>!
+  </div>
+</section>
+
+<!-- 4 -->
+<section data-tab="Fehlerjagd" data-time="7 Min." hidden>
+  <h2>Fehlerjagd 🔍 Richtig oder falsch?</h2>
+  <span class="time">⏱ 7 Minuten</span>
+  <p class="lead">Lest den Satz. Daumen hoch 👍 oder Daumen runter 👎? Dann klickt auf „Lösung“.</p>
+  <div class="card" id="tfList"></div>
+</section>
+
+<!-- 5 -->
+<section data-tab="Satzbau" data-time="10 Min." hidden>
+  <h2>Satzbau-Puzzle 🧩</h2>
+  <span class="time">⏱ 10 Minuten</span>
+  <p class="lead">Klickt die Wörter in die richtige Reihenfolge. Ein Klick auf ein Wort in der Linie schickt es zurück.</p>
+  <div class="card" id="pzList"></div>
+</section>
+
+<!-- 6 -->
+<section data-tab="denn → weil" data-time="8 Min." hidden>
+  <h2>Aus <span class="denn">denn</span> mach <span class="w">weil</span></h2>
+  <span class="time">⏱ 8 Minuten</span>
+  <p class="lead">Schreibt den Satz mit <b class="w">weil</b>. Achtung: Wo steht jetzt das Verb?</p>
+  <div class="card" id="trList"></div>
+  <div class="row"><button class="btn" id="trCheck">Prüfen</button><button class="btn ghost" id="trShow">Lösungen zeigen</button><span id="trScore" class="fb"></span></div>
+</section>
+
+<!-- 7 -->
+<section data-tab="Warum-Kette" data-time="10 Min." hidden>
+  <h2>Spiel 1 · Die Warum-Kette ⛓️</h2>
+  <span class="time">⏱ 10 Minuten</span>
+  <div class="grid2">
+    <div class="card">
+      <h3>So geht's</h3>
+      <ol style="margin:0;padding-left:22px">
+        <li>Person A sagt den Startsatz. Alle fragen: <b>„Warum?“</b></li>
+        <li>Person B: <i>Ich komme zu spät, <b class="w">weil</b> ich den Bus verpasst <b class="v">habe</b>.</i></li>
+        <li>Person C macht aus dem Grund einen neuen Satz: <i>Ich <b class="v">habe</b> den Bus verpasst, <b class="w">weil</b> …</i></li>
+        <li>Wie lang wird eure Kette in 90 Sekunden?</li>
+      </ol>
+      <div class="note" style="margin-top:12px">💡 Achtung: Im Hauptsatz steht das Verb auf Position 2. Nach <b>weil</b> steht es am Ende!</div>
+    </div>
+    <div class="card">
+      <h3>Startsatz</h3>
+      <div class="big" id="chainStart">Klick auf „Neuer Start“</div>
+      <div class="row" style="justify-content:center;margin-bottom:14px">
+        <button class="btn" id="chainNew">Neuer Start</button>
+        <div class="timer" data-sec="90"></div>
+      </div>
+      <div class="counter" id="chainCount">0</div>
+      <p style="text-align:center;margin:4px 0 10px;color:var(--soft)">Glieder in der Kette</p>
+      <div class="row" style="justify-content:center">
+        <button class="btn" id="chainPlus">+1 Glied</button>
+        <button class="btn ghost small" id="chainReset">Zurück auf 0</button>
+      </div>
+      <p style="text-align:center;color:var(--soft);margin-bottom:0">Rekord heute: <b id="chainBest">0</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section data-tab="Ausreden!" data-time="10 Min." hidden>
+  <h2>Spiel 2 · Die beste Ausrede 🙈</h2>
+  <span class="time">⏱ 10 Minuten</span>
+  <p class="lead">Zwei Teams. Jedes Team hat 30 Sekunden für eine Ausrede mit <b class="w">weil</b>. Je verrückter, desto besser!</p>
+  <div class="grid2">
+    <div class="card">
+      <div class="big" id="excuse" style="font-size:25px">Klick auf „Neue Situation“</div>
+      <div class="row" style="justify-content:center">
+        <button class="btn" id="excuseNew">Neue Situation</button>
+        <div class="timer" data-sec="30"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Punkte</h3>
+      <div class="teams">
+        <div class="team a"><input value="Team A" aria-label="Teamname A"><div class="sc" id="scA">0</div><button data-t="A" data-d="-1">−</button><button data-t="A" data-d="1">+</button></div>
+        <div class="team b"><input value="Team B" aria-label="Teamname B"><div class="sc" id="scB">0</div><button data-t="B" data-d="-1">−</button><button data-t="B" data-d="1">+</button></div>
+      </div>
+      <p style="margin-bottom:0;font-size:16px;color:var(--soft)"><b>+1</b> Satz mit <i>weil</i> ist richtig (Verb am Ende!)<br><b>+1</b> Die Klasse wählt die lustigste Ausrede</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section data-tab="Interview" data-time="12 Min." hidden>
+  <h2>Partnerinterview · Mein Weg nach Deutschland 🧳</h2>
+  <span class="time">⏱ 12 Minuten</span>
+  <div class="grid2">
+    <div class="card">
+      <h3>1 · Fragt euch gegenseitig</h3>
+      <ul class="q">
+        <li>Wann bist du nach Deutschland gekommen?</li>
+        <li><b>Warum</b> bist du nach Deutschland gekommen?</li>
+        <li><b>Warum</b> wohnst du in deiner Stadt?</li>
+        <li>Was gefällt dir in Deutschland? <b>Warum?</b></li>
+        <li>Was ist schwer für dich? <b>Warum?</b></li>
+        <li>Was vermisst du aus der Heimat? <b>Warum?</b></li>
+        <li><b>Warum</b> lernst du Deutsch?</li>
+      </ul>
+      <div class="row" style="margin-top:12px"><span>Zeit pro Person:</span><div class="timer" data-sec="240"></div></div>
+    </div>
+    <div class="card">
+      <h3>2 · Stell deine Partnerin / deinen Partner vor</h3>
+      <div class="frame">Das ist <u></u>. Er / Sie kommt aus <u></u>.</div>
+      <div class="frame">Er / Sie ist <u></u> nach Deutschland gekommen, <b class="w">weil</b> er / sie <u></u> <b class="v">…</b>.</div>
+      <div class="frame">Ihm / Ihr gefällt <u></u>, <b class="w">weil</b> <u></u>.</div>
+      <div class="frame">Er / Sie lernt Deutsch, <b class="w">weil</b> <u></u>.</div>
+      <div class="note" style="margin-top:10px">🎧 Die anderen hören zu. Danach fragt die Klasse: <i>„Warum …?“</i></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section data-tab="Hausaufgabe" data-time="3 Min." hidden>
+  <h2>Hausaufgabe 📝</h2>
+  <span class="time">⏱ 3 Minuten</span>
+  <div class="grid2">
+    <div class="card">
+      <h3>Schreib einen kurzen Text: Mein Weg nach Deutschland</h3>
+      <p>6–8 Sätze. Benutze <b>mindestens 4 Sätze mit <span class="w">weil</span></b>.</p>
+      <p style="color:var(--soft)">Ideen: Wann bist du gekommen? Warum? Was ist gut, was ist schwer? Was vermisst du? Was sind deine Pläne?</p>
+      <div class="note">⭐ <b>Extra:</b> Schick eine Sprachnachricht (30 Sekunden): <i>Ich lerne Deutsch, weil …</i></div>
+    </div>
+    <div class="card">
+      <h3>Checkliste ✅</h3>
+      <p>☐ Komma vor <i>weil</i>?</p>
+      <p>☐ Verb am Ende?</p>
+      <p>☐ Modalverb / <i>haben</i> / <i>sein</i> ganz am Ende?</p>
+      <p>☐ Trennbares Verb zusammen? (<i>… weil ich früh aufstehe</i>)</p>
+      <p style="margin-bottom:0;font-size:22px;font-weight:700;color:var(--teal)">Danke! Bis nächste Woche! 👋</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="wrap">Expert Tongue · Deutsch A2 · Lektion 1 · <a href="./">Moj kurs · Mein Kurs</a> · <a href="../">Deutsch za govornike BKS</a></footer>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const norm=s=>s.toLowerCase().replace(/[.,!?;:„“"']/g,' ').replace(/\s+/g,' ').trim();
+
+/* tabs */
+const secs=$$('section[data-tab]'), nav=$('#nav');
+secs.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('role','tab');b.innerHTML='<b>'+(i+1)+'</b>'+s.dataset.tab;
+  b.onclick=()=>show(i);nav.appendChild(b);
+  if(i<secs.length-1){const n=document.createElement('div');n.className='next';n.innerHTML='<button class="btn">Weiter: '+secs[i+1].dataset.tab+' →</button>';n.firstChild.onclick=()=>show(i+1);s.appendChild(n)}});
+function show(i){secs.forEach((s,j)=>s.hidden=j!==i);[...nav.children].forEach((b,j)=>b.setAttribute('aria-selected',j===i));
+  window.scrollTo(0,0)}
+show(0);
+
+/* timers */
+$$('.timer').forEach(el=>{
+  const total=+el.dataset.sec;let left=total,id=null;
+  el.innerHTML='<span></span><button>Start</button><button>↺</button>';
+  const [disp,go,rs]=el.children;
+  const draw=()=>{disp.textContent=Math.floor(left/60)+':'+String(left%60).padStart(2,'0')};
+  const stop=()=>{clearInterval(id);id=null;go.textContent='Start'};
+  go.onclick=()=>{if(id){stop();return}if(left<=0)left=total;el.classList.remove('done');go.textContent='Pause';
+    id=setInterval(()=>{left--;draw();if(left<=0){stop();el.classList.add('done')}},1000)};
+  rs.onclick=()=>{stop();left=total;el.classList.remove('done');draw()};
+  el.reset=rs.onclick;draw();
+});
+
+/* question dice */
+const qs=["Wie heißt du?","Woher kommst du?","Wo wohnst du jetzt?","Seit wann wohnst du in Deutschland?","Was bist du von Beruf?","Wo arbeitest du?","Hast du Familie hier?","Was machst du gern in deiner Freizeit?","Was isst du gern?","Welche Sprachen sprichst du?","Was hast du am Wochenende gemacht?","Was magst du an deiner Stadt?","Was ist dein Lieblingsort in Deutschland?","Warum lernst du Deutsch?"];
+let qpool=[];
+$('#qdiceBtn').onclick=()=>{if(!qpool.length)qpool=shuffle(qs);$('#qdice').textContent=qpool.pop()};
+
+/* verb demo */
+const demos=[
+ {name:"Verb",main:"Ich lerne Deutsch.",a:["Ich","arbeite","in","Deutschland."],b:["weil","ich","in","Deutschland","arbeite."],verb:"arbeite"},
+ {name:"Modalverb",main:"Ich komme nicht.",a:["Ich","muss","heute","arbeiten."],b:["weil","ich","heute","arbeiten","muss."],verb:"muss"},
+ {name:"Perfekt",main:"Ich bin glücklich.",a:["Ich","habe","einen","Job","gefunden."],b:["weil","ich","einen","Job","gefunden","habe."],verb:"habe"},
+ {name:"Trennbar",main:"Ich bin müde.",a:["Ich","stehe","um","fünf","Uhr","auf."],b:["weil","ich","um","fünf","Uhr","aufstehe."],verb:"stehe"}
+];
+let di=0,dstate=0;
+const dt=$('#demoTabs'),demo=$('#demo'),dbtn=$('#demoBtn');
+demos.forEach((d,i)=>{const b=document.createElement('button');b.textContent=d.name;b.onclick=()=>{di=i;dstate=0;renderDemo(false)};dt.appendChild(b)});
+function keyFor(word,d){const w=word.replace(/[.,]/g,'');if(w===d.verb||w==='aufstehe'||w==='auf')return 'VERB';return w}
+function renderDemo(animate){
+  const d=demos[di];[...dt.children].forEach((b,i)=>b.classList.toggle('on',i===di));
+  const first=new Map();if(animate)[...demo.children].forEach(c=>first.set(c.dataset.k,c.getBoundingClientRect()));
+  demo.innerHTML='';
+  const words=dstate?d.b:d.a;
+  const mk=(t,cls,k)=>{const s=document.createElement('span');s.className='chip '+cls;s.textContent=t;s.dataset.k=k;demo.appendChild(s);return s};
+  if(dstate)mk(d.main.replace('.',','),'main','MAIN');else mk(d.main,'main','MAIN');
+  const seen={};
+  words.forEach(w=>{let k=keyFor(w,d);if(k==='auf')k='VERB';
+    if(w==='auf.'){k='AUF'}
+    seen[k]=(seen[k]||0)+1;const kk=k+seen[k];
+    const isV=(w.replace(/[.,]/g,'')===d.verb)||w==='aufstehe.'||w==='auf.';
+    mk(w,w==='weil'?'weil':(isV?'verb':''),kk)});
+  if(animate){[...demo.children].forEach(c=>{const f=first.get(c.dataset.k);const l=c.getBoundingClientRect();
+      if(f){c.animate([{transform:`translate(${f.left-l.left}px,${f.top-l.top}px)`},{transform:'none'}],{duration:900,easing:'cubic-bezier(.3,.7,.2,1)'})}
+      else c.animate([{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'none'}],{duration:500})})}
+  dbtn.textContent=dstate?'↺ zurück':'weil ➜';
+}
+dbtn.onclick=()=>{dstate=1-dstate;renderDemo(true)};
+renderDemo(false);
+
+/* true / false */
+const tf=[
+ ["Ich lerne Deutsch, weil ich habe eine Arbeit in Deutschland.",false,"Ich lerne Deutsch, weil ich eine Arbeit in Deutschland <b>habe</b>."],
+ ["Ich bleibe zu Hause, weil ich krank bin.",true,"Richtig! Das Verb <b>bin</b> steht am Ende."],
+ ["Ich kann nicht kommen weil ich arbeiten muss.",false,"Das Komma fehlt: Ich kann nicht kommen<b>,</b> weil ich arbeiten muss."],
+ ["Er ist müde, weil er muss früh aufstehen.",false,"Er ist müde, weil er früh aufstehen <b>muss</b>."],
+ ["Ich trinke viel Kaffee, denn ich bin immer müde.",true,"Richtig! Nach <b>denn</b> steht das Verb auf Position 2."],
+ ["Sie ist glücklich, denn sie eine neue Wohnung hat.",false,"Nach denn: Position 2! … denn sie <b>hat</b> eine neue Wohnung. Oder: … weil sie eine neue Wohnung hat."],
+ ["Wir kommen zu spät, weil der Zug fährt nicht.",false,"Wir kommen zu spät, weil der Zug nicht <b>fährt</b>."],
+ ["Ich gehe früh ins Bett, weil ich um fünf Uhr aufstehe.",true,"Richtig! Das trennbare Verb ist zusammen: <b>aufstehe</b>."],
+ ["Amir ist nach Deutschland gekommen, weil er hier einen Job gefunden hat.",true,"Richtig! Perfekt: <b>gefunden hat</b> – <i>hat</i> steht ganz am Ende."],
+ ["Ich rufe dich an, weil ich habe eine Frage.",false,"Ich rufe dich an, weil ich eine Frage <b>habe</b>."]
+];
+$('#tfList').innerHTML=tf.map((t,i)=>`<div class="tf"><div class="s"><b>${i+1}.</b> ${t[0]}</div><button class="btn small ghost">Lösung</button><div class="ans ${t[1]?'ok':'bad'}">${t[1]?'👍':'👎 Falsch.'} ${t[2]}</div></div>`).join('');
+$$('#tfList .tf').forEach(r=>r.querySelector('button').onclick=()=>r.classList.toggle('show'));
+
+/* puzzle */
+const pz=[
+ ["Ich lerne Deutsch,",["weil","ich","in","Deutschland","arbeite"]],
+ ["Ich bin heute so müde,",["weil","ich","schlecht","geschlafen","habe"]],
+ ["Marko kommt zu spät,",["weil","der","Bus","Verspätung","hat"]],
+ ["Wir bleiben zu Hause,",["weil","es","stark","regnet"]],
+ ["Ana ist glücklich,",["weil","sie","eine","neue","Wohnung","gefunden","hat"]],
+ ["Ich kann heute nicht kommen,",["weil","ich","lange","arbeiten","muss"]],
+ ["Emir ruft seine Mutter an,",["weil","sie","heute","Geburtstag","hat"]],
+ ["Ich gehe früh ins Bett,",["weil","meine","Schicht","um","sechs","Uhr","anfängt"],["weil um sechs uhr meine schicht anfängt"]]
+];
+const pzList=$('#pzList');
+pz.forEach((p,i)=>{
+  const box=document.createElement('div');box.className='pz';
+  box.innerHTML=`<div class="q"><b>${i+1}.</b> ${p[0]} …</div><div class="line"></div><div class="bank"></div><div class="row"><button class="btn small">Prüfen</button><button class="btn small ghost">Neu</button><span class="fb"></span></div>`;
+  pzList.appendChild(box);
+  const line=box.querySelector('.line'),bank=box.querySelector('.bank'),[chk,rst]=box.querySelectorAll('button'),fb=box.querySelector('.fb');
+  const target=p[1].join(' ').toLowerCase(), alts=[target,...(p[2]||[])];
+  function build(){line.innerHTML='';bank.innerHTML='';line.className='line';fb.textContent='';fb.className='fb';
+    let order=shuffle(p[1]);if(order.join(' ').toLowerCase()===target)order=order.reverse();
+    order.forEach(w=>{const b=document.createElement('button');b.className='word';b.textContent=w;
+      b.onclick=()=>{(b.parentNode===bank?line:bank).appendChild(b);line.className='line';fb.textContent=''};bank.appendChild(b)})}
+  chk.onclick=()=>{const got=[...line.children].map(b=>b.textContent).join(' ').toLowerCase();
+    if(bank.children.length){fb.textContent='Noch nicht alle Wörter!';fb.className='fb bad';return}
+    const ok=alts.includes(got);line.className='line '+(ok?'ok':'bad');fb.textContent=ok?'✔ Super!':'✘ Noch einmal – wo steht das Verb?';fb.className='fb '+(ok?'ok':'bad')};
+  rst.onclick=build;build();
+});
+
+/* denn -> weil */
+const tr=[
+ ["Ich lerne Deutsch, denn ich brauche es für die Arbeit.","Ich lerne Deutsch,",["weil ich es für die Arbeit brauche"]],
+ ["Elma ist nach Stuttgart gezogen, denn sie hat dort einen Job gefunden.","Elma ist nach Stuttgart gezogen,",["weil sie dort einen Job gefunden hat"]],
+ ["Wir kaufen heute ein, denn morgen ist Sonntag.","Wir kaufen heute ein,",["weil morgen Sonntag ist"]],
+ ["Ich nehme den Bus, denn mein Auto ist kaputt.","Ich nehme den Bus,",["weil mein Auto kaputt ist"]],
+ ["Dino kann nicht kommen, denn er muss lange arbeiten.","Dino kann nicht kommen,",["weil er lange arbeiten muss"]],
+ ["Lejla ist so glücklich, denn ihre Familie besucht sie.","Lejla ist so glücklich,",["weil ihre Familie sie besucht"]],
+ ["Ich stehe um fünf Uhr auf, denn meine Schicht fängt um sechs an.","Ich stehe um fünf Uhr auf,",["weil meine Schicht um sechs anfängt","weil meine Schicht um sechs Uhr anfängt"]],
+ ["Er ist nicht zur Party gegangen, denn er war krank.","Er ist nicht zur Party gegangen,",["weil er krank war"]]
+];
+const trList=$('#trList');
+tr.forEach((t,i)=>{const d=document.createElement('div');d.className='tr';
+  d.innerHTML=`<div class="orig"><b>${i+1}.</b> ${t[0]}</div><div class="inrow"><span class="stem">${t[1]}</span><input autocomplete="off" spellcheck="false" placeholder="weil …"></div><div class="sol">✔ ${t[1]} ${t[2][0]}.</div>`;
+  trList.appendChild(d);d.querySelector('input').oninput=e=>e.target.className=''});
+$('#trCheck').onclick=()=>{let n=0;$$('#trList .tr').forEach((d,i)=>{const inp=d.querySelector('input');let v=norm(inp.value);if(!v){inp.className='';return}
+  if(!v.startsWith('weil '))v='weil '+v;const ok=tr[i][2].map(norm).includes(v);inp.className=ok?'ok':'bad';if(ok)n++});
+  $('#trScore').textContent=n+' / '+tr.length+' richtig';$('#trScore').className='fb '+(n===tr.length?'ok':'')};
+$('#trShow').onclick=()=>$$('#trList .tr').forEach(d=>d.classList.toggle('reveal'));
+
+/* chain */
+const starts=["Ich komme heute zu spät.","Ich bin so müde.","Ich bin heute sehr glücklich.","Ich gehe heute nicht zur Arbeit.","Ich habe kein Geld mehr.","Ich rufe meine Mutter an.","Ich esse heute nur Salat.","Ich suche eine neue Wohnung.","Ich kaufe ein neues Handy.","Ich lerne jeden Tag Deutsch.","Ich trinke heute keinen Kaffee.","Ich fahre am Wochenende nach Hause."];
+let spool=[],cnt=0,best=0;const cTimer=$('#chainStart').closest('.card').querySelector('.timer');
+$('#chainNew').onclick=()=>{if(!spool.length)spool=shuffle(starts);$('#chainStart').textContent=spool.pop();cnt=0;$('#chainCount').textContent=0;cTimer.reset()};
+$('#chainPlus').onclick=()=>{cnt++;$('#chainCount').textContent=cnt;if(cnt>best){best=cnt;$('#chainBest').textContent=best}};
+$('#chainReset').onclick=()=>{cnt=0;$('#chainCount').textContent=0};
+
+/* excuses */
+const ex=["Du kommst 30 Minuten zu spät zur Arbeit. Dein Chef fragt: „Warum?“","Du hast deine Hausaufgaben nicht gemacht.","Du hast den Geburtstag von deiner besten Freundin vergessen.","Du kannst am Samstag nicht beim Umzug helfen.","Du warst letzte Woche nicht im Deutschkurs.","Du hast das letzte Stück Kuchen gegessen.","Dein Handy war den ganzen Tag aus.","Du gehst nicht zur Weihnachtsfeier von der Firma.","Du hast deine Mutter seit zwei Wochen nicht angerufen.","Du kommst ohne Geschenk zur Party.","Du hast im Supermarkt nicht bezahlt – du hast es vergessen!","Dein Nachbar fragt: „Warum ist deine Musik so laut?“"];
+let epool=[];const eTimer=$('#excuse').closest('.card').querySelector('.timer');
+$('#excuseNew').onclick=()=>{if(!epool.length)epool=shuffle(ex);$('#excuse').textContent=epool.pop();eTimer.reset()};
+const sc={A:0,B:0};
+$$('.team button').forEach(b=>b.onclick=()=>{const t=b.dataset.t;sc[t]=Math.max(0,sc[t]+(+b.dataset.d));$('#sc'+t).textContent=sc[t]});
+})();
+</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('../../sw.js').catch(()=>{})}</script>
+</body>
+</html>

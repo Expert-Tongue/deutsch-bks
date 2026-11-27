@@ -1,0 +1,94 @@
+/* Mein Kurs · lesson pages in the Expert Tongue look (navy, blue, light blue, orange · Poppins + Inter) */
+:root{
+  --navy:#0A2E4D; --blue:#0B76C5; --sky:#A9D3F0; --orange:#F2A33A;
+  --bg:#F4F8FB; --surface:#FFFFFF; --fg:#0A2E4D; --muted:#52657A; --line:#D6E4EF; --line2:#B9CDDF; --chip:#EAF4FB; --chip2:#EEF3F8;
+  --accent:#0B76C5; --accent-fg:#FFFFFF; --warn-bg:#FDF1DF; --warn-fg:#7A4A05; --hi:#B45309;
+  --der:#0B76C5; --die:#C2410C; --das:#15803D;
+  --ok:#15803D; --ok-bg:#E3F4E8; --bad:#B42318; --bad-bg:#FBE7E5;
+  --band:#0A2E4D; --band-fg:#FFFFFF; --band-sub:#A9D3F0;
+  --f-display:"Poppins","Segoe UI",system-ui,sans-serif; --f-body:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
+  /* names used inside the lesson pages */
+  --ink:var(--fg); --soft:var(--muted); --card:var(--surface); --teal:var(--accent); --teal-l:var(--chip);
+  --coral:var(--hi); --coral-l:var(--warn-bg); --gold:var(--orange); --gold-l:var(--warn-bg); --green:var(--ok); --green-l:var(--ok-bg);
+  --r:16px; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#06192B; --surface:#0C2740; --fg:#E4EEF7; --muted:#9FB4C8; --line:#1C3D5C; --line2:#2A5276; --chip:#123352; --chip2:#163A5C;
+  --accent:#4FA8EC; --accent-fg:#06192B; --warn-bg:#3A2A10; --warn-fg:#F7CD8A; --hi:#F7B96A;
+  --der:#62B2F0; --die:#F59565; --das:#5CCB86;
+  --ok:#5CCB86; --ok-bg:#12341F; --bad:#F28B82; --bad-bg:#3B1714; --band:#04121F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#06192B; --surface:#0C2740; --fg:#E4EEF7; --muted:#9FB4C8; --line:#1C3D5C; --line2:#2A5276; --chip:#123352; --chip2:#163A5C;
+  --accent:#4FA8EC; --accent-fg:#06192B; --warn-bg:#3A2A10; --warn-fg:#F7CD8A; --hi:#F7B96A;
+  --der:#62B2F0; --die:#F59565; --das:#5CCB86;
+  --ok:#5CCB86; --ok-bg:#12341F; --bad:#F28B82; --bad-bg:#3B1714; --band:#04121F; color-scheme:dark}
+
+html{background:var(--band)}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;text-wrap:balance}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px))!important;padding-right:max(16px,env(safe-area-inset-right,0px))!important}
+
+/* brand band */
+header.k{background:var(--band);color:var(--band-fg);padding:env(safe-area-inset-top,0px) 0 0}
+header.k .wrap{padding-block:18px 0}
+header.k .top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header.k .wordmark{font-family:var(--f-display);font-weight:300;font-size:17px;display:flex;align-items:center;gap:7px;color:var(--band-fg);text-decoration:none}
+header.k .wordmark svg{width:16px;height:20px}
+header.k .backlink{color:var(--band-sub);text-decoration:none;font-size:14px;font-weight:500}
+header.k .backlink:hover{color:#fff}
+header.k .eyebrow{display:inline-block;margin-top:16px;font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);background:var(--orange);border-radius:6px;padding:3px 9px}
+header.k h1{margin:8px 0 0;font-weight:500;font-size:clamp(26px,5vw,34px);line-height:1.2;color:#fff}
+header.k p{margin:4px 0 14px;color:var(--band-sub);font-size:15px}
+header.k nav button{color:var(--band-sub);font-family:var(--f-body)}
+header.k nav button[aria-selected="true"]{background:var(--bg);color:var(--fg)}
+header.k nav button[aria-selected="true"] b{background:var(--orange);color:var(--navy)}
+header.k .seg button{background:#ffffff1f;color:var(--band-sub)}
+header.k .seg button.on{background:var(--orange);color:var(--navy)}
+
+/* buttons, chips, states */
+.btn{background:var(--accent);color:var(--accent-fg);font-family:var(--f-body)}
+.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+.btn.coral,.btn.again{background:var(--orange);color:var(--navy)}
+.time{background:var(--warn-bg);color:var(--warn-fg)}
+.tabs-mini button{background:var(--surface);color:var(--fg);border-color:var(--line)}
+.tabs-mini button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tabs-mini button.on{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}}
+:root[data-theme="dark"] .tabs-mini button.on{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.timer{background:var(--navy);color:#fff;border:1px solid var(--line2)}
+.timer.done{background:var(--orange);color:var(--navy)}
+.timer.done button{color:var(--navy)}
+.chip{background:var(--chip2)}
+.chip.verb{background:var(--orange);color:var(--navy)}
+.chip.weil{background:var(--blue);color:#fff}
+.chip.main{background:var(--surface);border:1px dashed var(--line2);color:var(--muted)}
+.team.a{background:var(--blue);color:#fff}
+.team.b{background:var(--orange);color:var(--navy)}
+.team.b input,.team.b button{color:var(--navy)}
+.team.b button{background:#0A2E4D1f}
+.bks{background:var(--warn-bg);border-left-color:var(--orange)}
+.bks b:first-child{color:var(--warn-fg)}
+.frame{background:var(--surface)}
+.frame u{border-bottom-color:var(--muted)}
+.bank .word,.line .word{background:var(--chip2);color:var(--fg)}
+.line{border-color:var(--line2);background:var(--bg)}
+.line .word{background:var(--chip);color:var(--accent)}
+.tr input,.sel select{background:var(--surface);color:var(--fg);border-color:var(--line2)}
+.ans.ok,.fb.ok{color:var(--ok)}
+.ans.ok{background:var(--ok-bg)}
+.ans.bad{background:var(--bad-bg);color:var(--bad)}
+.fb.bad{color:var(--bad)}
+.line.ok,.tr input.ok,.sel select.ok{border-color:var(--ok);background:var(--ok-bg)}
+.line.bad,.tr input.bad,.sel select.bad{border-color:var(--bad);background:var(--bad-bg)}
+.note{background:var(--chip)}
+.pill{background:var(--chip);color:var(--accent)}
+.counter{color:var(--accent)}
+.chain div{background:var(--chip)}
+.v{color:var(--hi)}
+.w{color:var(--accent)}
+.denn{color:var(--warn-fg)}
+footer{color:var(--muted);font-size:13px}
+footer a{color:var(--accent)}
+.opts button{background:var(--surface);color:var(--fg)}
+.opts button.ok{border-color:var(--ok);background:var(--ok-bg);color:var(--ok)}
+.opts button.bad{border-color:var(--bad);background:var(--bad-bg);color:var(--bad)}
+.tabs-mini button.on span{color:inherit}

@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lektion 1 · Wo oder wohin? · Deutsch BKS</title>
+<meta name="theme-color" content="#0A2E4D">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" href="../../icons/favicon-64.png">
+<link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;font-family:var(--f-body);background:var(--bg);color:var(--ink);font-size:18px;line-height:1.5}
+header{background:var(--ink);color:#fff;padding:22px 24px 0}
+.wrap{max-width:1040px;margin:0 auto}
+header h1{margin:0;font-size:30px;letter-spacing:-.01em}
+header p{margin:4px 0 16px;color:var(--band-sub);font-size:16px}
+.flag{display:inline-flex;gap:0;vertical-align:middle;margin-right:10px;border-radius:3px;overflow:hidden}
+.flag i{display:block;width:8px;height:22px}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+.next{margin-top:26px;text-align:right}
+nav button{flex:0 0 auto;border:0;background:transparent;color:var(--band-sub);font:inherit;font-size:15px;padding:10px 14px;border-radius:10px 10px 0 0;cursor:pointer;white-space:nowrap}
+nav button b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#ffffff22;font-size:12px;margin-right:6px}
+nav button[aria-selected="true"]{background:var(--bg);color:var(--ink)}
+nav button[aria-selected="true"] b{background:var(--teal);color:#fff}
+main{padding:28px 24px 60px}
+section[hidden]{display:none!important}
+h2{font-size:30px;margin:0 0 4px;letter-spacing:-.01em}
+.time{display:inline-block;background:var(--gold-l);color:var(--warn-fg);font-size:14px;font-weight:600;padding:3px 10px;border-radius:99px;margin-bottom:14px}
+.lead{font-size:20px;color:var(--soft);margin:0 0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin-bottom:18px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+h3{margin:0 0 10px;font-size:21px}
+.btn{font:inherit;font-size:16px;font-weight:600;border:0;border-radius:10px;padding:10px 18px;cursor:pointer;background:var(--teal);color:#fff}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--teal);border:2px solid var(--teal)}
+.btn.coral{background:var(--coral)}
+.btn.small{font-size:14px;padding:6px 12px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.big{font-size:30px;font-weight:700;line-height:1.3;text-align:center;padding:28px 16px;min-height:120px;display:grid;place-items:center}
+.pill{display:inline-block;background:var(--teal-l);color:var(--teal);border-radius:99px;padding:4px 12px;margin:3px;font-weight:600;font-size:16px}
+.v{color:var(--coral);font-weight:700}
+.w{color:var(--teal);font-weight:700}
+.bks{background:var(--gold-l);border-left:5px solid var(--gold);border-radius:10px;padding:14px 18px;margin:14px 0}
+.bks b:first-child{display:block;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--warn-fg);margin-bottom:4px}
+.note{background:var(--teal-l);border-radius:10px;padding:12px 16px}
+ol.agenda{margin:0;padding-left:22px}
+ol.agenda li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:17px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:14px;text-transform:uppercase;letter-spacing:.05em;color:var(--soft)}
+
+/* timer */
+.timer{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border-radius:12px;padding:6px 8px 6px 14px}
+.timer span{font-variant-numeric:tabular-nums;font-size:22px;font-weight:700;min-width:62px}
+.timer button{font:inherit;font-size:14px;border:0;border-radius:8px;padding:6px 10px;cursor:pointer;background:#ffffff22;color:#fff}
+.timer.done{background:var(--coral);animation:pulse .6s 3}
+@keyframes pulse{50%{transform:scale(1.06)}}
+
+/* verb demo */
+.demo{display:flex;flex-wrap:wrap;gap:8px;min-height:64px;align-items:center;justify-content:center;padding:18px 8px}
+.chip{display:inline-block;padding:8px 14px;border-radius:10px;background:var(--chip2);font-size:24px;font-weight:600;transition:background .3s}
+.chip.verb{background:var(--coral);color:#fff}
+.chip.weil{background:var(--teal);color:#fff}
+.chip.main{background:var(--surface);border:1px dashed var(--line2);color:var(--soft)}
+.tabs-mini{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.tabs-mini button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:5px 12px;cursor:pointer}
+.tabs-mini button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* true/false */
+.tf{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 0;border-bottom:1px solid var(--line)}
+.tf:last-child{border-bottom:0}
+.tf .s{font-size:21px;flex:1 1 380px}
+.tf .ans{flex-basis:100%;display:none;font-size:17px;border-radius:8px;padding:8px 12px}
+.tf.show .ans{display:block}
+.ans.ok{background:var(--green-l);color:var(--green)}
+.ans.bad{background:var(--coral-l);color:var(--bad)}
+
+/* puzzle */
+.pz{padding:16px 0;border-bottom:1px solid var(--line)}
+.pz:last-child{border-bottom:0}
+.pz .q{font-size:20px;margin-bottom:8px}
+.line{min-height:52px;border:2px dashed var(--line2);border-radius:10px;padding:6px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px;background:var(--bg)}
+.bank{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.word{font:inherit;font-size:19px;font-weight:600;border:0;border-radius:8px;padding:6px 12px;background:var(--chip2);cursor:pointer}
+.line .word{background:var(--teal-l);color:var(--teal)}
+.fb{font-weight:600;margin-left:6px}
+.fb.ok{color:var(--green)} .fb.bad{color:var(--coral)}
+.line.ok{border-color:var(--green);background:var(--green-l)}
+.line.bad{border-color:var(--coral);background:var(--coral-l)}
+
+/* transform */
+.tr{padding:14px 0;border-bottom:1px solid var(--line)}
+.tr:last-child{border-bottom:0}
+.tr .orig{font-size:19px;margin-bottom:6px}
+.tr .inrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tr .stem{font-size:19px}
+.tr input{font:inherit;font-size:19px;flex:1 1 300px;padding:8px 12px;border:2px solid var(--line2);border-radius:10px}
+.tr input.ok{border-color:var(--green);background:var(--green-l)}
+.tr input.bad{border-color:var(--coral);background:var(--coral-l)}
+.sol{display:none;color:var(--soft);font-size:16px;margin-top:4px}
+.tr.reveal .sol{display:block}
+
+/* scores */
+.teams{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.team{text-align:center;border-radius:var(--r);padding:14px;color:#fff}
+.team.a{background:var(--teal)} .team.b{background:var(--coral)}
+.team input{font:inherit;font-weight:700;font-size:18px;background:transparent;border:0;color:#fff;text-align:center;width:100%}
+.team .sc{font-size:54px;font-weight:800;line-height:1.1}
+.team button{font:inherit;font-size:18px;font-weight:700;border:0;border-radius:8px;width:44px;height:38px;cursor:pointer;background:#ffffff33;color:#fff;margin:0 4px}
+.counter{font-size:60px;font-weight:800;color:var(--teal);text-align:center;line-height:1}
+.chain{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.chain div{background:var(--teal-l);border-radius:8px;padding:8px 12px;font-size:17px}
+ul.q{margin:0;padding-left:22px}
+ul.q li{margin:6px 0;font-size:19px}
+.frame{font-size:19px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:6px 0}
+.frame u{text-decoration:none;border-bottom:2px dotted var(--soft);padding:0 26px}
+footer{color:var(--soft);font-size:14px;text-align:center;padding:20px}
+@media (max-width:640px){body{font-size:16px}.big{font-size:22px}h2{font-size:24px}.chip{font-size:18px}}
+
+.der{color:var(--der)}.die{color:var(--die)}.das{color:var(--das)}
+td.der,td.die,td.das{font-weight:700}
+.room svg{width:100%;height:auto;display:block;border-radius:10px}
+.room [data-w]{cursor:pointer;transition:filter .2s}
+.room.learn [data-w]:hover{filter:drop-shadow(0 0 6px #0B76C5) brightness(1.05)}
+.room .hs{fill:transparent;cursor:pointer;stroke:transparent;stroke-width:3;stroke-dasharray:8 6}
+.room .hs:hover{stroke:#0B76C5;fill:#0B76C51f}
+.room.learn .hs{display:none}
+.room.key [data-w]{pointer-events:none}
+.room .hs.no{stroke:#B42318;fill:#B423182e;stroke-dasharray:none}
+.room .hs.yes{stroke:#15803D;fill:#15803D2e;stroke-dasharray:none}
+#preps button{font:inherit;font-size:17px;font-weight:600;border:2px solid var(--teal);background:var(--surface);color:var(--teal);border-radius:10px;padding:8px 14px;cursor:pointer}
+#preps button.on{background:var(--teal);color:#fff}
+.sel{padding:12px 0;border-bottom:1px solid var(--line);font-size:20px}
+.sel:last-child{border-bottom:0}
+.sel select{font:inherit;font-size:19px;padding:4px 8px;border:2px solid var(--line2);border-radius:8px;background:var(--surface)}
+.sel select.ok{border-color:var(--green);background:var(--green-l)}
+.sel select.bad{border-color:var(--coral);background:var(--coral-l)}
+.sel .sol{display:none;color:var(--soft);font-size:16px}
+.sel.reveal .sol{display:block}
+.moveCard{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 10px;min-height:150px;justify-content:center}
+.mc-item{font-size:28px;font-weight:700;text-align:center}
+.mc-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center}
+.mc-tag{background:var(--chip2);border-radius:10px;padding:8px 14px;font-size:24px;font-weight:700}
+.mc-tag.p{background:var(--teal);color:#fff}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.bins button{font:inherit;font-size:15px;font-weight:700;border:0;border-radius:10px;padding:12px 8px;cursor:pointer;color:#fff;line-height:1.25}
+.ans{border-radius:8px;padding:8px 12px}
+.big{display:block}
+.room{max-width:min(100%,calc(62vh * 16 / 9));margin:0 auto}
+</style>
+<link rel="stylesheet" href="kurs.css">
+</head>
+<body>
+<header class="k">
+  <div class="wrap">
+    <div class="top"><a class="wordmark" href="../"><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M5.5 11V5.5a4.5 4.5 0 0 1 9 0V7" fill="none" stroke="#A9D3F0" stroke-width="2.3" stroke-linecap="round"/><rect x="1" y="10.5" width="18" height="13" rx="3" fill="#0B76C5"/><circle cx="7" cy="16.8" r="1.7" fill="#fff"/><circle cx="13" cy="16.8" r="1.7" fill="#fff"/><circle cx="7" cy="17" r=".75" fill="#0A2E4D"/><circle cx="13" cy="17" r=".75" fill="#0A2E4D"/></svg>Expert Tongue</a><a class="backlink" href="./">&larr; Moj kurs · Mein Kurs</a></div>
+    <span class="eyebrow">Wiederholung von Lektion 1</span>
+    <h1>Wo oder wohin?</h1>
+    <p>Deutsch A2 · Zu Hause</p>
+    <nav id="nav" role="tablist"></nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- 1 -->
+<section data-tab="Weil-Blitz" data-time="12 Min.">
+  <h2>Weißt du noch? ⚡ Weil-Blitz</h2>
+  <span class="time">⏱ 12 Minuten</span>
+  <div class="grid2">
+    <div class="card">
+      <h3>1 · Eure Hausaufgabe</h3>
+      <p>Lies <b>einen</b> Satz mit <b class="w">weil</b> aus deinem Text vor.<br>Die Klasse fragt noch einmal: <b>„Warum?“</b> Du antwortest spontan.</p>
+      <div class="frame">Ich bin nach Deutschland gekommen, <b class="w">weil</b> … <b class="v">habe</b>.</div>
+      <div class="frame">– Warum? – <b class="w">Weil</b> …</div>
+    </div>
+    <div class="card">
+      <h3>2 · Verbindet die Sätze mit <span class="w">weil</span></h3>
+      <div class="big" id="blitz" style="font-size:24px">Klick auf „Nächster Satz“</div>
+      <div class="ans ok" id="blitzAns" style="display:none;text-align:center;font-size:19px"></div>
+      <div class="row" style="justify-content:center;margin-top:10px">
+        <button class="btn" id="blitzNext">Nächster Satz</button>
+        <button class="btn ghost" id="blitzShow">Lösung</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section data-tab="Mein Wohnzimmer" data-time="10 Min." hidden>
+  <h2>Mein Wohnzimmer 🛋️</h2>
+  <span class="time">⏱ 10 Minuten</span>
+  <p class="lead">Klickt auf die Sachen im Zimmer. Achtet auf die Farbe: <b class="der">der</b> · <b class="die">die</b> · <b class="das">das</b></p>
+  <div class="card">
+    <div class="tabs-mini" id="roomMode"><button class="on" data-m="learn">Entdecken</button><button data-m="quiz">Quiz: Wo ist …?</button></div>
+    <div class="room" id="roomVocab"></div>
+    <div class="big" id="roomInfo" style="min-height:80px;padding:14px">Klick auf etwas im Zimmer!</div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section data-tab="Präpositionen" data-time="10 Min." hidden>
+  <h2>Wo ist der Ball? ⚽</h2>
+  <span class="time">⏱ 10 Minuten</span>
+  <p class="lead">Klickt auf eine Präposition. Wechselt dann zu <b>Wohin?</b> – was passiert mit dem Artikel?</p>
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <div class="tabs-mini" id="woMode"><button class="on" data-m="wo">Wo? (Position)</button><button data-m="wohin">Wohin? (Bewegung)</button></div>
+      <div class="tabs-mini" id="nounMode"><button class="on" data-n="m"><span class="der">der</span> Karton</button><button data-n="f"><span class="die">die</span> Kiste</button><button data-n="n"><span class="das">das</span> Paket</button></div>
+    </div>
+    <svg id="ballSvg" viewBox="0 0 500 260" style="width:100%;max-height:300px;display:block">
+      <line x1="20" y1="248" x2="480" y2="248" stroke="#cfd5df" stroke-width="2"/>
+      <g id="box2" style="opacity:0;transition:opacity .5s"><rect x="340" y="120" width="100" height="80" rx="4" fill="#c79a63"/><rect x="340" y="150" width="100" height="50" rx="3" fill="#a87c48"/></g>
+      <g id="boxBack"><rect x="200" y="120" width="100" height="80" rx="4" fill="#c79a63"/><ellipse cx="250" cy="236" rx="46" ry="6" fill="#00000014"/></g>
+      <g id="ball" style="transition:transform .8s cubic-bezier(.3,.7,.2,1)"><circle r="16" fill="#e8742a"/><circle r="5" cx="-5" cy="-6" fill="#ffffff88"/></g>
+      <g id="boxFront"><rect x="200" y="150" width="100" height="50" rx="3" fill="#a87c48"/></g>
+    </svg>
+    <div class="row" id="preps" style="justify-content:center"></div>
+    <div class="big" id="prepSentence" style="min-height:80px;padding:16px">Der Ball ist …</div>
+  </div>
+  <div class="bks">
+    <b>Ovo već znate!</b>
+    Isto kao u našem jeziku: <b>Gdje?</b> → lokativ / <b>Kamo? Kuda?</b> → akuzativ.<br>
+    <i>Knjiga je na stol<u>u</u>.</i> → Das Buch liegt auf <b class="w">dem</b> Tisch. (Wo? → Dativ)<br>
+    <i>Stavljam knjigu na stol.</i> → Ich lege das Buch auf <b class="v">den</b> Tisch. (Wohin? → Akkusativ)
+  </div>
+</section>
+
+<!-- 4 -->
+<section data-tab="stehen / stellen" data-time="10 Min." hidden>
+  <h2>stehen oder stellen? liegen oder legen?</h2>
+  <span class="time">⏱ 10 Minuten</span>
+  <div class="grid2">
+    <div class="card">
+      <table>
+        <tr><th></th><th>Wo? <span class="w">+ Dativ</span></th><th>Wohin? <span class="v">+ Akkusativ</span></th></tr>
+        <tr><td>senkrecht ↕</td><td>Die Flasche <b>steht</b> auf <b class="w">dem</b> Tisch.</td><td>Ich <b>stelle</b> die Flasche auf <b class="v">den</b> Tisch.</td></tr>
+        <tr><td>waagrecht ↔</td><td>Das Handy <b>liegt</b> auf <b class="w">dem</b> Sofa.</td><td>Ich <b>lege</b> das Handy auf <b class="v">das</b> Sofa.</td></tr>
+        <tr><td>an der Wand</td><td>Das Bild <b>hängt</b> an <b class="w">der</b> Wand.</td><td>Ich <b>hänge</b> das Bild an <b class="v">die</b> Wand.</td></tr>
+        <tr><td>Personen</td><td>Ich <b>sitze</b> auf <b class="w">dem</b> Stuhl.</td><td>Ich <b>setze</b> mich auf <b class="v">den</b> Stuhl.</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Merk dir 🧠</h3>
+      <p><b>Wo?</b> = keine Bewegung → <b>stehen, liegen, hängen, sitzen</b> → <b class="w">Dativ</b></p>
+      <p><b>Wohin?</b> = Bewegung → <b>stellen, legen, hängen, setzen</b> → <b class="v">Akkusativ</b></p>
+      <table>
+        <tr><th></th><th>Dativ</th><th>Akkusativ</th></tr>
+        <tr><td class="der">der</td><td>dem</td><td>den</td></tr>
+        <tr><td class="die">die</td><td>der</td><td>die</td></tr>
+        <tr><td class="das">das</td><td>dem</td><td>das</td></tr>
+        <tr><td>die (Pl.)</td><td>den …n</td><td>die</td></tr>
+      </table>
+      <p style="margin-bottom:0;font-size:16px;color:var(--soft)">in dem = <b>im</b> · an dem = <b>am</b> · in das = <b>ins</b> · an das = <b>ans</b></p>
+    </div>
+  </div>
+  <div class="note">🙋 <b>Mitmachen!</b> Nehmt eine Sache vom Tisch (Handy, Flasche, Buch …). Sagt, was ihr macht: <i>„Ich lege das Handy auf den Stuhl.“</i> Die Klasse sagt: <i>„Jetzt liegt das Handy auf dem Stuhl.“</i></div>
+</section>
+
+<!-- 5 -->
+<section data-tab="Übung" data-time="8 Min." hidden>
+  <h2>Dativ oder Akkusativ? ✏️</h2>
+  <span class="time">⏱ 8 Minuten</span>
+  <p class="lead">Wählt das richtige Wort. Fragt euch immer: <b>Wo?</b> oder <b>Wohin?</b></p>
+  <div class="card" id="selList"></div>
+  <div class="row"><button class="btn" id="selCheck">Prüfen</button><button class="btn ghost" id="selShow">Lösungen zeigen</button><span id="selScore" class="fb"></span></div>
+</section>
+
+<!-- 6 -->
+<section data-tab="Schlüssel-Suche" data-time="12 Min." hidden>
+  <h2>Spiel 1 · Wo ist der Schlüssel? 🔑</h2>
+  <span class="time">⏱ 12 Minuten</span>
+  <p class="lead">Der Schlüssel ist im Zimmer versteckt. Fragt im ganzen Satz: <i>„Ist der Schlüssel <b>unter dem</b> Sofa?“</i> Nur ein richtiger Satz darf klicken!</p>
+  <div class="card">
+    <div class="room" id="roomKey"></div>
+    <div class="row" style="justify-content:space-between;margin-top:10px">
+      <div class="big" id="keyInfo" style="min-height:60px;padding:8px;font-size:22px;flex:1 1 300px;text-align:left">Wer fragt zuerst?</div>
+      <div class="row"><span>Fragen: <b id="keyTries">0</b></span><button class="btn" id="keyNew">Neues Spiel</button></div>
+    </div>
+  </div>
+  <div class="note">👥 <b>Variante:</b> Eine Person „versteckt“ den Schlüssel im Kopf. Die anderen fragen. Antwort: <i>„Nein, er ist nicht hinter dem Bild.“</i></div>
+</section>
+
+<!-- 7 -->
+<section data-tab="Umzug!" data-time="10 Min." hidden>
+  <h2>Spiel 2 · Der Umzug 📦</h2>
+  <span class="time">⏱ 10 Minuten</span>
+  <p class="lead">Ihr helft beim Umzug! Sagt dem anderen Team, wohin die Sachen kommen. Dann fragt: <b>Wo ist es jetzt?</b></p>
+  <div class="grid2">
+    <div class="card">
+      <div class="moveCard" id="moveCard"><div class="mc-item">Klick auf „Neue Karte“</div></div>
+      <div class="ans ok" id="moveAns" style="display:none;font-size:18px"></div>
+      <div class="row" style="justify-content:center;margin-top:10px">
+        <button class="btn" id="moveNew">Neue Karte</button>
+        <button class="btn ghost" id="moveShow">Lösung</button>
+        <div class="timer" data-sec="30"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Punkte</h3>
+      <div class="teams">
+        <div class="team a"><input value="Team A" aria-label="Teamname A"><div class="sc" id="scA">0</div><button data-t="A" data-d="-1">−</button><button data-t="A" data-d="1">+</button></div>
+        <div class="team b"><input value="Team B" aria-label="Teamname B"><div class="sc" id="scB">0</div><button data-t="B" data-d="-1">−</button><button data-t="B" data-d="1">+</button></div>
+      </div>
+      <p style="margin-bottom:0;font-size:16px;color:var(--soft)"><b>+1</b> Wohin? <i>Stell den Fernseher auf die Kommode!</i><br><b>+1</b> Wo? <i>Der Fernseher steht auf der Kommode.</i></p>
+    </div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section data-tab="Im Wohnhaus" data-time="15 Min." hidden>
+  <h2>Leben im Wohnhaus 🏢</h2>
+  <span class="time">⏱ 15 Minuten</span>
+  <div class="grid2">
+    <div class="card">
+      <h3>1 · Mülltrennung: Wohin kommt das? ♻️</h3>
+      <div class="big" id="trash" style="min-height:70px;padding:12px;font-size:26px">Klick auf „Start“</div>
+      <div class="bins" id="bins"></div>
+      <div class="ans" id="trashAns" style="display:none;font-size:18px;margin-top:8px"></div>
+      <div class="row" style="justify-content:center;margin-top:10px"><button class="btn" id="trashNew">Start / Weiter</button><span>Richtig: <b id="trashScore">0</b></span></div>
+    </div>
+    <div class="card">
+      <h3>2 · Sprecht in Gruppen</h3>
+      <ul class="q">
+        <li>Wo steht dein Fahrrad / dein Auto? <b>Warum</b> dort?</li>
+        <li>Was steht in eurer Hausordnung? (Ruhezeit, Kehrwoche …)</li>
+        <li>Kennst du die <b>Kehrwoche</b>? Was denkst du?</li>
+        <li>Was ist in deinem Haus anders als in Bosnien, Kroatien oder Serbien? <b>Warum?</b></li>
+        <li>Was ärgert dich im Haus? Was findest du gut?</li>
+      </ul>
+      <div class="frame" style="margin-top:12px">Mein Fahrrad steht <b class="w">im</b> Keller, <b class="w">weil</b> …</div>
+      <div class="frame">Ich finde die Hausordnung gut / komisch, <b class="w">weil</b> …</div>
+      <div class="row" style="margin-top:10px"><span>Zeit:</span><div class="timer" data-sec="420"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section data-tab="Hausaufgabe" data-time="3 Min." hidden>
+  <h2>Hausaufgabe 📝</h2>
+  <span class="time">⏱ 3 Minuten</span>
+  <div class="grid2">
+    <div class="card">
+      <h3>Mein Zimmer</h3>
+      <p>Mach ein Foto von einem Zimmer in deiner Wohnung (oder zeichne es).</p>
+      <p>Schreib <b>8 Sätze</b>: Wo steht / liegt / hängt was?</p>
+      <div class="frame">Das Sofa <b>steht</b> vor <b class="w">dem</b> Fenster.</div>
+      <div class="frame">Über <b class="w">dem</b> Sofa <b>hängt</b> ein Bild.</div>
+      <div class="note">⭐ <b>Extra:</b> 2 Sätze mit <b class="w">weil</b>: <i>Ich mag mein Zimmer, weil …</i></div>
+    </div>
+    <div class="card">
+      <h3>Checkliste ✅</h3>
+      <p>☐ <b>steht / liegt / hängt</b> → Dativ (dem, der, dem, den)</p>
+      <p>☐ <i>in dem → im</i>, <i>an dem → am</i></p>
+      <p>☐ Verb auf Position 2</p>
+      <p>☐ Artikel richtig? (der / die / das)</p>
+      <p style="margin-bottom:0;font-size:22px;font-weight:700;color:var(--teal)">Danke! Bis nächste Woche! 👋</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="wrap">Expert Tongue · Deutsch A2 · Lektion 1 · <a href="./">Moj kurs · Mein Kurs</a> · <a href="../">Deutsch za govornike BKS</a></footer>
+
+<script>
+{
+
+/* ---------- shared ---------- */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pool=arr=>{let p=[];return()=>{if(!p.length)p=shuffle(arr);return p.pop()}};
+const G={der:'der',die:'die',das:'das'};
+
+/* tabs */
+const secs=$$('section[data-tab]'), nav=$('#nav');
+secs.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('role','tab');b.innerHTML='<b>'+(i+1)+'</b>'+s.dataset.tab;
+  b.onclick=()=>show(i);nav.appendChild(b);
+  if(i<secs.length-1){const n=document.createElement('div');n.className='next';n.innerHTML='<button class="btn">Weiter: '+secs[i+1].dataset.tab+' →</button>';n.firstChild.onclick=()=>show(i+1);s.appendChild(n)}});
+function show(i){secs.forEach((s,j)=>s.hidden=j!==i);[...nav.children].forEach((b,j)=>b.setAttribute('aria-selected',j===i));window.scrollTo(0,0)}
+show(0);
+
+/* timers */
+$$('.timer').forEach(el=>{
+  const total=+el.dataset.sec;let left=total,id=null;
+  el.innerHTML='<span></span><button>Start</button><button>↺</button>';
+  const [disp,go,rs]=el.children;
+  const draw=()=>{disp.textContent=Math.floor(left/60)+':'+String(left%60).padStart(2,'0')};
+  const stop=()=>{clearInterval(id);id=null;go.textContent='Start'};
+  go.onclick=()=>{if(id){stop();return}if(left<=0)left=total;el.classList.remove('done');go.textContent='Pause';
+    id=setInterval(()=>{left--;draw();if(left<=0){stop();el.classList.add('done')}},1000)};
+  rs.onclick=()=>{stop();left=total;el.classList.remove('done');draw()};
+  el.reset=rs.onclick;draw();
+});
+
+/* ---------- 1 weil-Blitz ---------- */
+const blitz=[
+ ["Ich bin müde.","Ich habe schlecht geschlafen.","Ich bin müde, weil ich schlecht geschlafen habe."],
+ ["Ich lerne Deutsch.","Ich arbeite in Deutschland.","Ich lerne Deutsch, weil ich in Deutschland arbeite."],
+ ["Marko kommt nicht.","Er muss arbeiten.","Marko kommt nicht, weil er arbeiten muss."],
+ ["Ich stehe früh auf.","Die Arbeit fängt um sechs Uhr an.","Ich stehe früh auf, weil die Arbeit um sechs Uhr anfängt."],
+ ["Ana ist glücklich.","Sie hat eine neue Wohnung gefunden.","Ana ist glücklich, weil sie eine neue Wohnung gefunden hat."],
+ ["Wir suchen eine neue Wohnung.","Unsere Wohnung ist zu klein.","Wir suchen eine neue Wohnung, weil unsere Wohnung zu klein ist."],
+ ["Mein Nachbar ist sauer.","Meine Musik ist zu laut.","Mein Nachbar ist sauer, weil meine Musik zu laut ist."],
+ ["Ich bin nach Stuttgart gezogen.","Ich habe hier einen Job bekommen.","Ich bin nach Stuttgart gezogen, weil ich hier einen Job bekommen habe."]
+];
+const nextBlitz=pool(blitz);let curB=null;
+$('#blitzNext').onclick=()=>{curB=nextBlitz();$('#blitz').innerHTML=curB[0]+'<br><span style="color:var(--soft)">+ '+curB[1]+'</span>';$('#blitzAns').style.display='none'};
+$('#blitzShow').onclick=()=>{if(!curB)return;$('#blitzAns').innerHTML='✔ '+curB[2].replace(/weil (.*) (\S+)\.$/,'<b class="w">weil</b> $1 <b class="v">$2</b>.');$('#blitzAns').style.display='block'};
+
+/* ---------- room svg ---------- */
+const ITEMS={
+ fenster:["das","Fenster","die Fenster"], tuer:["die","Tür","die Türen"], bild:["das","Bild","die Bilder"],
+ uhr:["die","Uhr","die Uhren"], regal:["das","Regal","die Regale"], buecher:["das","Buch","die Bücher"],
+ sofa:["das","Sofa","die Sofas"], kissen:["das","Kissen","die Kissen"], tisch:["der","Tisch","die Tische"],
+ teppich:["der","Teppich","die Teppiche"], sessel:["der","Sessel","die Sessel"], lampe:["die","Lampe","die Lampen"],
+ pflanze:["die","Pflanze","die Pflanzen"]
+};
+const SPOTS=[
+ ["unter dem Sofa",'<rect class="hs" data-s="0" x="270" y="322" width="220" height="22" rx="6"/>',[380,338]],
+ ["hinter dem Kissen",'<rect class="hs" data-s="1" x="296" y="238" width="62" height="44" rx="10"/>',[327,262]],
+ ["hinter dem Bild",'<rect class="hs" data-s="2" x="316" y="86" width="128" height="88" rx="4"/>',[380,130]],
+ ["zwischen den Büchern",'<rect class="hs" data-s="3" x="534" y="230" width="104" height="44" rx="4"/>',[586,254]],
+ ["unter dem Teppich",'<ellipse class="hs" data-s="4" cx="385" cy="420" rx="200" ry="26"/>',[220,420]],
+ ["auf dem Tisch",'<rect class="hs" data-s="5" x="296" y="338" width="178" height="26" rx="6"/>',[420,352]],
+ ["im Blumentopf",'<rect class="hs" data-s="6" x="12" y="290" width="66" height="60" rx="6"/>',[45,318]],
+ ["vor der Tür",'<rect class="hs" data-s="7" x="650" y="345" width="130" height="80" rx="10"/>',[715,390]],
+ ["unter dem Sessel",'<rect class="hs" data-s="8" x="92" y="330" width="116" height="22" rx="6"/>',[150,344]],
+ ["neben der Lampe",'<rect class="hs" data-s="9" x="236" y="300" width="34" height="48" rx="6"/>',[252,330]],
+ ["auf der Fensterbank",'<rect class="hs" data-s="10" x="70" y="214" width="170" height="20" rx="4"/>',[160,222]],
+ ["auf dem Regal",'<rect class="hs" data-s="11" x="530" y="150" width="112" height="26" rx="4"/>',[586,160]]
+];
+function roomSVG(){return `<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="335" fill="#f1e7d3"/><rect y="335" width="800" height="115" fill="#c99d72"/><rect y="330" width="800" height="8" fill="#e6d6b8"/>
+<g data-w="fenster"><rect x="80" y="60" width="150" height="160" fill="#fff" rx="4"/><rect x="90" y="70" width="130" height="140" fill="#bfe1f2"/><rect x="152" y="70" width="6" height="140" fill="#fff"/><rect x="90" y="137" width="130" height="6" fill="#fff"/><rect x="70" y="216" width="170" height="10" fill="#fff" rx="3"/></g>
+<g data-w="tuer"><rect x="660" y="90" width="110" height="245" fill="#9c6b45" rx="3"/><rect x="672" y="104" width="86" height="96" fill="#8a5d3b" rx="3"/><rect x="672" y="214" width="86" height="106" fill="#8a5d3b" rx="3"/><circle cx="752" cy="212" r="6" fill="#f2c94c"/></g>
+<g data-w="bild"><rect x="320" y="90" width="120" height="80" fill="#5b4636" rx="3"/><rect x="328" y="98" width="104" height="64" fill="#cfe8d8"/><path d="M328 162 L362 120 L384 145 L400 128 L432 162Z" fill="#4f8a6a"/><circle cx="410" cy="112" r="8" fill="#f2c94c"/></g>
+<g data-w="uhr"><circle cx="586" cy="95" r="30" fill="#fff" stroke="#1d2433" stroke-width="5"/><line x1="586" y1="95" x2="586" y2="76" stroke="#1d2433" stroke-width="4" stroke-linecap="round"/><line x1="586" y1="95" x2="600" y2="101" stroke="#1d2433" stroke-width="4" stroke-linecap="round"/></g>
+<g data-w="regal"><rect x="530" y="160" width="112" height="175" fill="#b9875b"/><rect x="538" y="168" width="96" height="159" fill="#8f6440"/><rect x="530" y="222" width="112" height="7" fill="#b9875b"/><rect x="530" y="276" width="112" height="7" fill="#b9875b"/></g>
+<g data-w="buecher"><rect x="542" y="234" width="12" height="42" fill="#c53030"/><rect x="556" y="238" width="10" height="38" fill="#2b6cb0"/><rect x="568" y="232" width="14" height="44" fill="#e0a526"/><rect x="584" y="240" width="10" height="36" fill="#2f8f4e"/><rect x="602" y="240" width="26" height="36" fill="#6b46c1" transform="rotate(-14 615 276)"/><rect x="544" y="292" width="12" height="35" fill="#2f8f4e"/><rect x="558" y="296" width="14" height="31" fill="#c53030"/></g>
+<g data-w="pflanze"><path d="M20 300 h50 l-6 46 h-38z" fill="#b5532f"/><path d="M45 300 C20 260 10 230 30 200 C42 240 46 270 45 300Z M45 300 C60 250 80 230 90 210 C84 250 66 280 45 300Z M45 300 C40 250 50 210 52 180 C62 220 56 270 45 300Z" fill="#3f8f52"/></g>
+<g data-w="sessel"><rect x="92" y="262" width="116" height="62" rx="16" fill="#2b6c8f"/><rect x="84" y="290" width="24" height="46" rx="10" fill="#235a78"/><rect x="192" y="290" width="24" height="46" rx="10" fill="#235a78"/><rect x="104" y="300" width="92" height="30" rx="8" fill="#3480a8"/><rect x="104" y="332" width="8" height="12" fill="#5b4636"/><rect x="188" y="332" width="8" height="12" fill="#5b4636"/></g>
+<g data-w="lampe"><rect x="250" y="200" width="5" height="140" fill="#3b3f4a"/><ellipse cx="252" cy="342" rx="18" ry="5" fill="#3b3f4a"/><path d="M226 205 L278 205 L268 168 L236 168Z" fill="#f2c94c"/></g>
+<g data-w="sofa"><rect x="276" y="236" width="208" height="66" rx="18" fill="#d9534f"/><rect x="262" y="270" width="34" height="62" rx="12" fill="#b94440"/><rect x="464" y="270" width="34" height="62" rx="12" fill="#b94440"/><rect x="292" y="292" width="176" height="36" rx="8" fill="#e46a63"/><rect x="290" y="328" width="8" height="12" fill="#5b4636"/><rect x="462" y="328" width="8" height="12" fill="#5b4636"/></g>
+<g data-w="kissen"><rect x="302" y="244" width="50" height="38" rx="12" fill="#f2c94c" transform="rotate(-8 327 263)"/></g>
+<g data-w="teppich"><ellipse cx="385" cy="420" rx="200" ry="26" fill="#6b8f71"/><ellipse cx="385" cy="420" rx="170" ry="18" fill="none" stroke="#e8d9a8" stroke-width="3" stroke-dasharray="10 8"/></g>
+<g data-w="tisch"><rect x="300" y="352" width="170" height="12" rx="4" fill="#7a5233"/><rect x="312" y="364" width="9" height="50" fill="#5b3c24"/><rect x="449" y="364" width="9" height="50" fill="#5b3c24"/><rect x="400" y="340" width="20" height="14" rx="3" fill="#fff"/></g>
+${SPOTS.map(s=>s[1]).join('')}
+<g id="keyIcon" style="display:none"><circle r="20" fill="#fff" stroke="#2f8f4e" stroke-width="3"/><text text-anchor="middle" dy="8" font-size="22">🔑</text></g>
+</svg>`}
+
+/* vocab mode */
+const rv=$('#roomVocab');rv.innerHTML=roomSVG();rv.classList.add('room','learn');
+let rMode='learn',quizTarget=null;const nextQ=pool(Object.keys(ITEMS));
+const label=k=>{const [a,n,p]=ITEMS[k];return `<span class="${a}">${a} ${n}</span> <span style="color:var(--soft);font-weight:500;font-size:.75em">· Plural: ${p}</span>`};
+function askQuiz(){quizTarget=nextQ();const [a,n]=ITEMS[quizTarget];$('#roomInfo').innerHTML=`Wo ist <span class="${a}">${a==='der'?'der':a} ${n}</span>? Klick!`}
+rv.querySelectorAll('[data-w]').forEach(g=>g.onclick=()=>{const k=g.dataset.w;
+  if(rMode==='learn'){$('#roomInfo').innerHTML=label(k);return}
+  if(k===quizTarget){$('#roomInfo').innerHTML='✔ Richtig! '+label(k);setTimeout(askQuiz,1500)}
+  else{const [a,n]=ITEMS[k];$('#roomInfo').innerHTML=`✘ Das ist <span class="${a}">${a} ${n}</span>. Noch einmal!`;setTimeout(()=>{if(rMode==='quiz'){const [a2,n2]=ITEMS[quizTarget];$('#roomInfo').innerHTML=`Wo ist <span class="${a2}">${a2} ${n2}</span>? Klick!`}},1600)}});
+$$('#roomMode button').forEach(b=>b.onclick=()=>{rMode=b.dataset.m;$$('#roomMode button').forEach(x=>x.classList.toggle('on',x===b));
+  if(rMode==='quiz')askQuiz();else $('#roomInfo').textContent='Klick auf etwas im Zimmer!'});
+
+/* ---------- 3 prepositions ---------- */
+const POS={auf:[250,104,1],über:[250,52,1],unter:[250,222,1],in:[250,150,1],neben:[352,160,1],an:[184,160,1],vor:[250,178,1.3],hinter:[274,116,.82],zwischen:[320,160,1]};
+const NOUN={m:['Karton','Kartons'],f:['Kiste','Kisten'],n:['Paket','Paketen','Pakete']};
+const DAT={m:'dem',f:'der',n:'dem'},AKK={m:'den',f:'die',n:'das'};
+let wo='wo',gen='m',prep=null;
+const svg=$('#ballSvg'),ball=$('#ball'),back=$('#boxBack'),front=$('#boxFront'),box2=$('#box2');
+const setBall=(x,y,s,anim)=>{ball.style.transition=anim?'':'none';ball.style.transform=`translate(${x}px,${y}px) scale(${s})`};
+setBall(60,232,1,false);
+Object.keys(POS).forEach(p=>{const b=document.createElement('button');b.textContent=p;b.onclick=()=>{prep=p;render(true)};$('#preps').appendChild(b)});
+function phrase(){
+  if(prep==='zwischen'){const pl=gen==='m'?'Kartons':gen==='f'?'Kisten':(wo==='wo'?'Paketen':'Pakete');
+    return wo==='wo'?`zwischen <b class="w">den</b> ${pl}`:`zwischen <b class="v">die</b> ${pl}`}
+  const n=NOUN[gen][0];
+  if(wo==='wo'){if(prep==='in'&&gen!=='f')return `<b class="w">im</b> ${n}`;if(prep==='an'&&gen!=='f')return `<b class="w">am</b> ${n}`;return `${prep} <b class="w">${DAT[gen]}</b> ${n}`}
+  if(prep==='in'&&gen==='n')return `<b class="v">ins</b> ${n}`;if(prep==='an'&&gen==='n')return `<b class="v">ans</b> ${n}`;return `${prep} <b class="v">${AKK[gen]}</b> ${n}`}
+function render(anim){
+  $$('#preps button').forEach(b=>b.classList.toggle('on',b.textContent===prep));
+  if(!prep){$('#prepSentence').innerHTML=wo==='wo'?'Der Ball ist …':'Ich werfe den Ball …';return}
+  box2.style.opacity=prep==='zwischen'?1:0;
+  // z-order
+  if(prep==='hinter')svg.insertBefore(ball,back);else if(prep==='vor')svg.appendChild(ball);else svg.insertBefore(ball,front);
+  const [x,y,s]=POS[prep];
+  const go=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>setBall(x,y,s,true)));
+  if(wo==='wohin'&&anim){setBall(60,232,1,false);go()}else if(anim)go();else setBall(x,y,s,false);
+  $('#prepSentence').innerHTML=(wo==='wo'?'Der Ball ist ':'Ich werfe den Ball ')+phrase()+'.';
+}
+$$('#woMode button').forEach(b=>b.onclick=()=>{wo=b.dataset.m;$$('#woMode button').forEach(x=>x.classList.toggle('on',x===b));render(true)});
+$$('#nounMode button').forEach(b=>b.onclick=()=>{gen=b.dataset.n;$$('#nounMode button').forEach(x=>x.classList.toggle('on',x===b));render(false)});
+
+/* ---------- 5 selects ---------- */
+const sel=[
+ ["Das Buch liegt auf","Tisch.",["dem","den"],"dem","Wo? → Dativ"],
+ ["Ich lege das Buch auf","Tisch.",["dem","den"],"den","Wohin? → Akkusativ"],
+ ["Die Lampe steht neben","Sofa.",["dem","das"],"dem","Wo? → Dativ"],
+ ["Ich stelle die Lampe neben","Sofa.",["dem","das"],"das","Wohin? → Akkusativ"],
+ ["Das Bild hängt an","Wand.",["der","die"],"der","Wo? → Dativ"],
+ ["Ich hänge das Bild an","Wand.",["der","die"],"die","Wohin? → Akkusativ"],
+ ["Die Katze schläft unter","Bett.",["dem","das"],"dem","Wo? → Dativ"],
+ ["Die Katze springt auf","Bett.",["dem","das"],"das","Wohin? (Bewegung) → Akkusativ"],
+ ["Ich","die Milch in den Kühlschrank.",["stelle","stehe"],"stelle","Bewegung → stellen"],
+ ["Dein Handy","auf dem Sofa.",["liegt","legt"],"liegt","keine Bewegung → liegen"],
+ ["Mein Fahrrad","im Keller.",["steht","stellt"],"steht","keine Bewegung → stehen"],
+ ["Wir gehen heute Abend","Kino.",["im","ins"],"ins","Wohin? → in das = ins"]
+];
+$('#selList').innerHTML=sel.map((s,i)=>`<div class="sel"><b>${i+1}.</b> ${s[0]} <select><option value="">…</option>${shuffle(s[2]).map(o=>`<option>${o}</option>`).join('')}</select> ${s[1]}<div class="sol">✔ ${s[3]} – ${s[4]}</div></div>`).join('');
+$$('#selList select').forEach(x=>x.onchange=()=>x.className='');
+$('#selCheck').onclick=()=>{let n=0;$$('#selList select').forEach((x,i)=>{if(!x.value){x.className='';return}const ok=x.value===sel[i][3];x.className=ok?'ok':'bad';if(ok)n++});
+  $('#selScore').textContent=n+' / '+sel.length+' richtig';$('#selScore').className='fb '+(n===sel.length?'ok':'')};
+$('#selShow').onclick=()=>$$('#selList .sel').forEach(d=>d.classList.toggle('reveal'));
+
+/* ---------- 6 key search ---------- */
+const rk=$('#roomKey');rk.innerHTML=roomSVG();rk.classList.add('room','key');
+let hidden=0,tries=0,found=false;
+const keyIcon=rk.querySelector('#keyIcon');
+function newKey(){hidden=Math.floor(Math.random()*SPOTS.length);tries=0;found=false;$('#keyTries').textContent=0;
+  rk.querySelectorAll('.hs').forEach(h=>h.classList.remove('no','yes'));keyIcon.style.display='none';$('#keyInfo').textContent='Wer fragt zuerst?'}
+rk.querySelectorAll('.hs').forEach(h=>h.onclick=()=>{if(found)return;const i=+h.dataset.s;if(h.classList.contains('no'))return;
+  tries++;$('#keyTries').textContent=tries;
+  if(i===hidden){found=true;h.classList.add('yes');const [x,y]=SPOTS[i][2];keyIcon.setAttribute('transform',`translate(${x},${y})`);keyIcon.style.display='';
+    $('#keyInfo').innerHTML=`🎉 Ja! Der Schlüssel ist <b class="w">${SPOTS[i][0]}</b>!`}
+  else{h.classList.add('no');$('#keyInfo').innerHTML=`Nein, der Schlüssel ist nicht <b>${SPOTS[i][0]}</b>.`}});
+$('#keyNew').onclick=newKey;newKey();
+
+/* ---------- 7 moving ---------- */
+const moves=[
+ ["der Fernseher","auf","die Kommode","Stell den Fernseher auf die Kommode!","Der Fernseher steht auf der Kommode."],
+ ["das Sofa","vor","das Fenster","Stell das Sofa vor das Fenster!","Das Sofa steht vor dem Fenster."],
+ ["der Teppich","unter","der Tisch","Leg den Teppich unter den Tisch!","Der Teppich liegt unter dem Tisch."],
+ ["das Bild","über","das Sofa","Häng das Bild über das Sofa!","Das Bild hängt über dem Sofa."],
+ ["die Lampe","neben","der Sessel","Stell die Lampe neben den Sessel!","Die Lampe steht neben dem Sessel."],
+ ["die Pflanze","auf","der Balkon","Stell die Pflanze auf den Balkon!","Die Pflanze steht auf dem Balkon."],
+ ["der Spiegel","an","die Tür","Häng den Spiegel an die Tür!","Der Spiegel hängt an der Tür."],
+ ["die Bücher","in","das Regal","Stell die Bücher ins Regal!","Die Bücher stehen im Regal."],
+ ["das Bett","zwischen","die Fenster (Pl.)","Stell das Bett zwischen die Fenster!","Das Bett steht zwischen den Fenstern."],
+ ["der Kühlschrank","in","die Küche","Stell den Kühlschrank in die Küche!","Der Kühlschrank steht in der Küche."],
+ ["die Uhr","über","die Tür","Häng die Uhr über die Tür!","Die Uhr hängt über der Tür."],
+ ["das Fahrrad","in","der Keller","Stell das Fahrrad in den Keller!","Das Fahrrad steht im Keller."],
+ ["die Decke","auf","das Bett","Leg die Decke auf das Bett!","Die Decke liegt auf dem Bett."],
+ ["der Schrank","hinter","die Tür","Stell den Schrank hinter die Tür!","Der Schrank steht hinter der Tür."],
+ ["das Handy","auf","der Schreibtisch","Leg das Handy auf den Schreibtisch!","Das Handy liegt auf dem Schreibtisch."],
+ ["die Kiste","unter","das Bett","Stell die Kiste unter das Bett!","Die Kiste steht unter dem Bett."]
+];
+const tagG=s=>{const a=s.split(' ')[0];return `<span class="${a}">${a}</span> ${s.slice(a.length+1)}`};
+const nextMove=pool(moves);let curM=null;const mTimer=$('#moveCard').closest('.card').querySelector('.timer');
+$('#moveNew').onclick=()=>{curM=nextMove();$('#moveCard').innerHTML=`<div class="mc-row"><span class="mc-tag">${tagG(curM[0])}</span><span>➜</span><span class="mc-tag p">${curM[1]}</span><span class="mc-tag">${tagG(curM[2])}</span></div><div style="color:var(--soft)">Wohin? Und dann: Wo?</div>`;$('#moveAns').style.display='none';mTimer.reset()};
+$('#moveShow').onclick=()=>{if(!curM)return;$('#moveAns').innerHTML=`<b>Wohin?</b> ${curM[3]}<br><b>Wo?</b> ${curM[4]}`;$('#moveAns').style.display='block'};
+const sc={A:0,B:0};
+$$('.team button').forEach(b=>b.onclick=()=>{const t=b.dataset.t;sc[t]=Math.max(0,sc[t]+(+b.dataset.d));$('#sc'+t).textContent=sc[t]});
+
+/* ---------- 8 trash ---------- */
+const BINS=[["gelb","den Gelben Sack","Gelber Sack / Gelbe Tonne","#d4a20c"],["bio","die Biotonne","Biotonne","#7a5233"],["papier","die Papiertonne","Papiertonne","#2b6cb0"],["rest","die Restmülltonne","Restmüll","#3b3f4a"],["glas","den Glascontainer","Glascontainer","#2f8f4e"],["pfand","den Supermarkt (Pfand!)","Pfand → Supermarkt","#c53030"]];
+const trash=[["Der Joghurtbecher","kommt","gelb"],["Die Zeitung","kommt","papier"],["Die Bananenschale","kommt","bio"],["Das Marmeladenglas","kommt","glas"],["Die Windel","kommt","rest"],["Der Kaffeesatz","kommt","bio"],["Der Milchkarton","kommt","gelb"],["Die Konservendose","kommt","gelb"],["Die Eierschalen","kommen","bio"],["Der Karton","kommt","papier"],["Die Pfandflasche","kommt","pfand"],["Die alte Zahnbürste","kommt","rest"],["Die Weinflasche (ohne Pfand)","kommt","glas"],["Der Teebeutel","kommt","bio"]];
+$('#bins').innerHTML=BINS.map(b=>`<button data-b="${b[0]}" style="background:${b[3]}">${b[2]}</button>`).join('');
+const nextTrash=pool(trash);let curT=null,tScore=0,answered=false;
+$('#trashNew').onclick=()=>{curT=nextTrash();answered=false;$('#trash').textContent=curT[0];$('#trashAns').style.display='none'};
+$$('#bins button').forEach(b=>b.onclick=()=>{if(!curT||answered)return;answered=true;const right=BINS.find(x=>x[0]===curT[2]);const ok=b.dataset.b===curT[2];
+  if(ok){tScore++;$('#trashScore').textContent=tScore}
+  const s=curT[2]==='pfand'?'Die Pfandflasche bringe ich in den Supermarkt. Dort bekomme ich Geld zurück!':`${curT[0]} ${curT[1]} in ${right[1]}.`;
+  $('#trashAns').className='ans '+(ok?'ok':'bad');$('#trashAns').innerHTML=(ok?'✔ ':'✘ ')+s;$('#trashAns').style.display='block'});
+
+}
+</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('../../sw.js').catch(()=>{})}</script>
+</body>
+</html>
